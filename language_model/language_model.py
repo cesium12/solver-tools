@@ -1,8 +1,10 @@
 from nltk.probability import *
 from collections import defaultdict
-import sys, os, string, math
+import sys, os, string, math, os.path
 import cPickle as pickle
 
+basepath = os.path.normpath( os.path.join( __file__, "..") )
+dictpath = os.path.join(basepath, 'dict')
 ngrams = defaultdict(dict)
 words = {}
 wordlists = {}
@@ -12,16 +14,17 @@ d=4.253, e=12.702, f=2.228, g=2.015, h=6.094, i=6.996, j=0.153, k=0.772,
 l=4.025, m=2.406, n=6.749, o=7.507, p=1.929, q=0.095, r=5.987, s=6.327,
 t=9.056, u=2.758, v=0.978, w=2.360, x=0.150, y=1.974, z=0.074), normalize=True)
 
-f = open('all.txt')
+f = open(os.path.join(dictpath, 'all.txt'))
 wordlists['npl'] = [line.strip().lower() for line in f]
 f.close()
 
-f = open('enable.txt')
+f = open(os.path.join(dictpath, 'enable.txt'))
 wordlists['enable'] = [line.strip().lower() for line in f]
 f.close()
 
-if os.access('english.2g.pickle', os.F_OK):
-    f = open('english.2g.pickle')
+english_2g_pickle = os.path.join(basepath, 'pickle', 'english.2g.pickle')
+if os.access(english_2g_pickle, os.F_OK):
+    f = open(english_2g_pickle)
     ngrams['English'][2] = pickle.load(f)
     f.close()
 else:
@@ -32,13 +35,14 @@ else:
         word = ''.join(let for let in word.lower() if let in string.letters)
         for i in xrange(len(word)-1):
             bigrams.inc(word[i:i+2])
-    f = open('english.2g.pickle', 'w')
+    f = open(english_2g_pickle, 'w')
     ngrams['English'][2] = LaplaceProbDist(bigrams)
     pickle.dump(ngrams['English'][2], f)
     f.close()
 
-if os.access('english.words.pickle', os.F_OK):
-    f = open('english.words.pickle')
+english_words_pickle = os.path.join(basepath, 'pickle', 'english.words.pickle')
+if os.access(english_words_pickle, os.F_OK):
+    f = open(english_words_pickle)
     words['English'] = pickle.load(f)
     f.close()
 else:
@@ -52,7 +56,7 @@ else:
         worddist.inc(word)
     for word in wordlists['enable']:
         worddist.inc(word, 2)
-    f = open('english.words.pickle', 'w')
+    f = open(english_words_pickle, 'w')
     words['English'] = MLEProbDist(worddist)
     pickle.dump(words['English'], f)
     f.close()
