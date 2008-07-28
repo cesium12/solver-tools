@@ -49,11 +49,9 @@ else:
         word = ''.join(let for let in word.lower() if let in string.letters)
         worddist.inc(word)
     for word in wordlists['npl']:
-        word = line.strip().lower()
         worddist.inc(word)
     for word in wordlists['enable']:
-        word = line.strip().lower()
-        worddist.inc(word)
+        worddist.inc(word, 2)
     f = open('english.words.pickle', 'w')
     words['English'] = MLEProbDist(worddist)
     pickle.dump(words['English'], f)
@@ -66,7 +64,7 @@ def bigrams(text):
         if fragment[0] in string.letters and fragment[1] in string.letters:
             yield fragment
 
-def word_prob(word, lang='English', bigram_prob=0.0005):
+def word_prob(word, lang='English', bigram_prob=0.0001):
     """
     Look up a word in both the word frequency distribution and the bigram
     frequency distribution (to account for unknown words).
@@ -79,15 +77,9 @@ def word_prob(word, lang='English', bigram_prob=0.0005):
         for bigram in bigrams(word): logprob += bigramdist.logprob(bigram)
     return logprob
 
-print word_prob('the')
-print word_prob('spatula')
-print word_prob('defenestrate')
-print word_prob('splendiferosity')
-print word_prob('qejvkobckh')
-
 if __name__ == '__main__':
     print "Demo:"
-    for word in ['the', 'spatula', 'defenestrate', 'splendiferosity',
-    'qejvkobckh']:
-    print "Word: %s\tLog probability: %3.3f" % (word, word_prob(word))
+    for word in ['the', 'cat', 'spatula', 'huzzah', 'defenestrate',
+    'adogslife', 'cka', 'splendiferosity', 'qejvkobckh']:
+        print "Word: %s\tLog probability: %3.3f" % (word, word_prob(word))
 
