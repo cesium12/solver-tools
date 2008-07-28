@@ -1,4 +1,4 @@
-from nltk.probability import *
+from probability import *
 from collections import defaultdict
 import sys, os, string, math, os.path
 import cPickle as pickle
