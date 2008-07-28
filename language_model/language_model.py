@@ -5,6 +5,9 @@ import cPickle as pickle
 
 basepath = os.path.normpath( os.path.join( __file__, "..") )
 dictpath = os.path.join(basepath, 'dict')
+sys.path.append(os.path.normpath(os.path.join(basepath, '..')))
+from sagesutil import export
+
 ngrams = defaultdict(dict)
 words = {}
 wordlists = {}
@@ -68,13 +71,17 @@ def bigrams(text):
         if fragment[0] in string.letters and fragment[1] in string.letters:
             yield fragment
 
-def word_prob(word, lang='English', bigram_prob=0.0001):
+@export(description="""An estimated probability that this word would appear
+as a word of natural language.""",
+  args=["The word to test", "The language model to use (default is 'English')"],
+  ret="The log likelihood of the word in the language model")
+def word_likelihood(word, lang='English', bigram_prob=0.0001):
     """
     Look up a word in both the word frequency distribution and the bigram
     frequency distribution (to account for unknown words).
     """
-    actual_word_prob = 1-bigram_prob
-    logprob = words[lang].logprob(word) + math.log(actual_word_prob)
+    actual_word_likelihood = 1-bigram_prob
+    logprob = words[lang].logprob(word) + math.log(actual_word_likelihood)
     bigramdist = ngrams[lang][2]
     if logprob <= -1e300:
         logprob = math.log(bigram_prob)
@@ -85,5 +92,5 @@ if __name__ == '__main__':
     print "Demo:"
     for word in ['the', 'cat', 'spatula', 'huzzah', 'defenestrate',
     'adogslife', 'cka', 'splendiferosity', 'qejvkobckh']:
-        print "Word: %s\tLog probability: %3.3f" % (word, word_prob(word))
+        print "Word: %s\tLog likelihood: %3.3f" % (word, word_likelihood(word))
 

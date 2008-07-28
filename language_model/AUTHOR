@@ -1,0 +1,8 @@
+Rob Speer <rspeer@mit.edu>
+
+probability.py comes from NLTK, with authors specified in the file.
+
+all.txt was derived from the NPL Wordlist. It was put into this form by
+Jeremy Sawicki.
+
+enable.txt is ENABLE, a public domain Scrabble wordlist.
