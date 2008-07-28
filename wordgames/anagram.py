@@ -152,15 +152,15 @@ class AnagramDict:
                     yield p
 
 # TODO: replace this with proper documentation
+USAGE = """Usage: anagram [options] word                       
+-d file    --dictionary=file    use file as dictionary
+                                (default /usr/share/dict/words)
+-h         --help               print this message
+           --max-letters=n      search words with <=n letters (default 80)
+           --min-letters=n      search words with >=n letters (default 2)
+"""
 def usage():
-    print "Usage: anagram [options] word"
-    print " -d file\t--dictionary=file\tuse file as dictionary"
-    print "\t\t\t\t\t(default /usr/share/dict/words)"
-    print " -h\t\t--help\t\t\tprint this message"
-    print "\t\t--max-letters=n\t\tsearch words with <=n letters"
-    print "\t\t\t\t\t(default 80)"
-    print "\t\t--min-letters=n\t\tsearch words with >=n letters"
-    print "\t\t\t\t\t(default 2)"
+    print USAGE
     
 
 def main():
@@ -199,7 +199,7 @@ def main():
     input_word = ' '.join(args)
 
     adict = AnagramDict.new_from_file(dictfile, min_letters, max_letters)
-    print 'Dictionary initialized with %d words.' % len(adict.wordlist)
+    #print 'Dictionary initialized with %d words.' % len(adict.wordlist)
 
     for phr in adict.find_phrases(AnagramWord(input_word)):
         print phr
