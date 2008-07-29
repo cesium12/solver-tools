@@ -25,22 +25,26 @@ f = open(os.path.join(dictpath, 'enable.txt'))
 wordlists['enable'] = [line.strip().lower() for line in f]
 f.close()
 
-english_2g_pickle = os.path.join(basepath, 'pickle', 'english.2g.pickle')
-if os.access(english_2g_pickle, os.F_OK):
-    f = open(english_2g_pickle)
-    ngrams['English'][2] = pickle.load(f)
+english_ngrams_pickle = os.path.join(basepath, 'pickle', 'english.ngrams.pickle')
+if os.access(english_ngrams_pickle, os.F_OK):
+    f = open(english_ngrams_pickle)
+    ngrams['English'] = pickle.load(f)
     f.close()
 else:
-    print "Collecting English bigrams: english.2g.pickle."
+    print "Collecting English bigrams and trigrams: english.ngrams.pickle."
     from nltk.corpus import brown
-    bigrams = FreqDist()
+    bigramdist = FreqDist()
+    trigramdist = FreqDist()
     for word in brown.words():
         word = ''.join(let for let in word.lower() if let in string.letters)
         for i in xrange(len(word)-1):
-            bigrams.inc(word[i:i+2])
-    f = open(english_2g_pickle, 'w')
-    ngrams['English'][2] = LaplaceProbDist(bigrams)
-    pickle.dump(ngrams['English'][2], f)
+            bigramdist.inc(word[i:i+2])
+        for i in xrange(len(word)-2):
+            trigramdist.inc(word[i:i+3])
+    f = open(english_ngrams_pickle, 'w')
+    ngrams['English'][2] = LaplaceProbDist(bigramdist)
+    ngrams['English'][3] = LaplaceProbDist(trigramdist)
+    pickle.dump(ngrams['English'], f)
     f.close()
 
 english_words_pickle = os.path.join(basepath, 'pickle', 'english.words.pickle')
@@ -64,10 +68,10 @@ else:
     pickle.dump(words['English'], f)
     f.close()
 
-def bigrams(text):
+def scan_ngrams(text, n=2):
     text = text.lower()
-    for i in xrange(len(text)-1):
-        fragment = text[i:i+2]
+    for i in xrange(len(text)-n+1):
+        fragment = text[i:i+n]
         if fragment[0] in string.letters and fragment[1] in string.letters:
             yield fragment
 
@@ -75,18 +79,30 @@ def bigrams(text):
 as a word of natural language.""",
   args=["The word to test", "The language model to use (default is 'English')"],
   ret="The log likelihood of the word in the language model")
-def word_likelihood(word, lang='English', bigram_prob=0.0001):
+def word_likelihood(word, lang='English', ngram_prob=0.001):
     """
-    Look up a word in both the word frequency distribution and the bigram
+    Look up a word in both the word frequency distribution and the ngram
     frequency distribution (to account for unknown words).
     """
-    actual_word_likelihood = 1-bigram_prob
-    logprob = words[lang].logprob(word) + math.log(actual_word_likelihood)
-    bigramdist = ngrams[lang][2]
+    actual_word_likelihood = 1-ngram_prob
+    logprob = words[lang].logprob(word) + math.log(actual_word_likelihood, 2)
     if logprob <= -1e300:
-        logprob = math.log(bigram_prob)
-        for bigram in bigrams(word): logprob += bigramdist.logprob(bigram)
+        logprob = math.log(ngram_prob, 2)
+        for bigram in scan_ngrams(word, 2):
+            logprob += ngrams[lang][2].logprob(bigram)
+        for trigram in scan_ngrams(word, 3):
+            logprob += ngrams[lang][3].logprob(trigram)
     return logprob
+
+def text_likelihood(text, lang='English', ngram_prob=0.001, good_words=[]):
+    text = ''.join(let for let in text.lower() if let in string.letters+' ')
+    total = 0.0
+    for word in text.split():
+        if word in good_words:
+            total += 3
+        else:
+            total += word_likelihood(word, lang, ngram_prob)
+    return total
 
 if __name__ == '__main__':
     print "Demo:"
