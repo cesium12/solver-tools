@@ -34,6 +34,7 @@ __author__ = 'alexrs@csail.mit.edu (Alex Schwendner)'
 
 import unittest
 
+import wrap_thunk
 from uncertain import *
 
 
@@ -44,23 +45,30 @@ class TestMakeUncertainFromList(unittest.TestCase):
                     (-1,"world")]
 
     def testEmptyList(self):
-        bob = Uncertain(lambda : iter([]))
+        bob = Uncertain(wrap_thunk.WrapThunk([]))
         self.assertEqual([v for v in bob], [])
         
     def testWithoutOffset(self):
-        bob = Uncertain(lambda : iter(self.lst))
+        bob = Uncertain(wrap_thunk.WrapThunk(self.lst))
+        self.assertEqual([v for v in bob], self.lst)
+        
+    def testIdempotentWithoutOffset(self):
+        bob = Uncertain(wrap_thunk.WrapThunk(self.lst))
+        self.assertEqual([v for v in bob], self.lst)
+        self.assertEqual([v for v in bob], self.lst)
+        self.assertEqual([v for v in bob], self.lst)
         self.assertEqual([v for v in bob], self.lst)
         
     def testWithZeroOffset(self):
-        bob = Uncertain(lambda : iter(self.lst), 0)
+        bob = Uncertain(wrap_thunk.WrapThunk(self.lst), 0)
         self.assertEqual([v for v in bob], self.lst)
         
     def testWithNegativeOffset(self):
-        bob = Uncertain(lambda : iter(self.lst), -10)
+        bob = Uncertain(wrap_thunk.WrapThunk(self.lst), -10)
         self.assertEqual([v for v in bob], map(lambda (w,v): (w-10, v), self.lst))
         
     def testWithPositiveOffset(self):
-        bob = Uncertain(lambda : iter(self.lst), +10)
+        bob = Uncertain(wrap_thunk.WrapThunk(self.lst), +10)
         self.assertEqual([v for v in bob], map(lambda (w,v): (w+10, v), self.lst))
 
 
@@ -92,7 +100,7 @@ class TestMakeUncertainFromGenerator(unittest.TestCase):
 
 class TestUncertainAdmisiveHeuristic(unittest.TestCase):
     def runTest(self):
-        bob = Uncertain(lambda : iter([(0,"moo")]))
+        bob = Uncertain(wrap_thunk.WrapThunk([(0,"moo")]))
         bob.Shift(-1);
         bob.Shift(+2);
         bob.Shift(-3);
@@ -147,16 +155,27 @@ class TestUncertainMerge(unittest.TestCase):
     def testNontrivialMerge(self):
         lst1 = [(0,'a'), (-3,'b'), (-4,'c')]
         lst2 = [(-1, 'd'), (-2, 'e'), (-5, 'f')]
-        result = [v for v in Merge([Uncertain(lambda : iter(lst1)),
-                                    Uncertain(lambda : iter(lst2))])]
+        result = [v for v in Merge([Uncertain(wrap_thunk.WrapThunk(lst1)),
+                                    Uncertain(wrap_thunk.WrapThunk(lst2))])]
         answer = [(0,'a'), (-1,'d'), (-2,'e'), (-3,'b'), (-4,'c'), (-5,'f')]
+        self.assertEqual([v for v in result], answer)
+
+    def testNontrivialMergeIsIdempotent(self):
+        lst1 = [(0,'a'), (-3,'b'), (-4,'c')]
+        lst2 = [(-1, 'd'), (-2, 'e'), (-5, 'f')]
+        result = [v for v in Merge([Uncertain(wrap_thunk.WrapThunk(lst1)),
+                                    Uncertain(wrap_thunk.WrapThunk(lst2))])]
+        answer = [(0,'a'), (-1,'d'), (-2,'e'), (-3,'b'), (-4,'c'), (-5,'f')]
+        self.assertEqual([v for v in result], answer)
+        self.assertEqual([v for v in result], answer)
+        self.assertEqual([v for v in result], answer)
         self.assertEqual([v for v in result], answer)
 
     def testMergeWithEmpty(self):
         lst1 = [(0,'a'), (-3,'b'), (-4,'c')]
         lst2 = []
-        result = [v for v in Merge([Uncertain(lambda : iter(lst1)),
-                                    Uncertain(lambda : iter(lst2))])]
+        result = [v for v in Merge([Uncertain(wrap_thunk.WrapThunk(lst1)),
+                                    Uncertain(wrap_thunk.WrapThunk(lst2))])]
         self.assertEqual([v for v in result], lst1)
 
 

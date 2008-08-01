@@ -38,6 +38,7 @@ import operator
 import memoize
 import trie
 import uncertain
+import wrap_thunk
 
 
 def metasolve(pattern, dict_trie, lang_model):
@@ -71,14 +72,18 @@ def metasolve(pattern, dict_trie, lang_model):
             return uncertain.Uncertain(lambda : iter([(0,[])]))
         options = []
         for (next, rest_pat) in fits(dict_trie, pat, ""):
-            #print "(%s,%s)" % (next, rest_pat)
             opt = dp(rest_pat, lang_model.trim_context(history + [next]))
-            opt.Shift(math.log(lang_model.prob(next, history)))
-            it = iter([(w, [next]+rest) for (w,rest) in opt])
-            options.append(uncertain.Uncertain((lambda x: lambda : x)(it)))
-        print "fits(dict_trie, pat, '') = %s" % fits(dict_trie, pat, "")
-        print [[x for x in y] for y in options]
-        print [y for y in uncertain.Merge(options)]
+            #print "    (%s,%s)" % (next, rest_pat)
+            #print "    %s" % [x for x in opt]
+            opt = opt.Shift(math.log(lang_model.prob(next, history)))
+            #options.append(uncertain.Uncertain((lambda x: lambda : x)(it)))
+            options.append(
+                uncertain.Uncertain(
+                    wrap_thunk.WrapThunk(
+                        [(w, [next]+rest) for (w,rest) in opt])))
+        #print "fits(dict_trie, pat, '') = %s" % fits(dict_trie, pat, "")
+        #print [[x for x in y] for y in options]
+        #print [y for y in uncertain.Merge(options)]
         return uncertain.Merge(options)
             
     return dp(pattern, [])

@@ -32,6 +32,7 @@
 __author__ = 'alexrs@csail.mit.edu (Alex Schwendner)'
 
 
+import math
 import unittest
 
 import model_freq
@@ -55,14 +56,14 @@ class TestMetasolve(unittest.TestCase):
 
     def testNoWildsWithUniqueAnswer(self):
         self.assertEqual(
-            [(0.12, ["COWS","WITH"])],
+            [(math.log(0.12), ["COWS","WITH"])],
             [x for x in metasolve("COWSWITH", self.dict_trie, self.model)]
             )
 
     def testNoWildsWithTwoAnswers(self):
         self.assertEqual(
-            [(0.04,  ["COWS","WITHGUNS"]),
-             (0.024, ["COWS","WITH","GUNS"])],
+            [(math.log(0.04),  ["COWS","WITHGUNS"]),
+             (math.log(0.024), ["COWS","WITH","GUNS"])],
             [x for x in metasolve("COWSWITHGUNS", self.dict_trie, self.model)]
             )
 
@@ -70,6 +71,21 @@ class TestMetasolve(unittest.TestCase):
         self.assertEqual(
             [],
             [x for x in metasolve("DEADBEEF", self.dict_trie, self.model)]
+            )
+
+    def testConstrainedWilds(self):
+        self.assertEqual(
+            [(math.log(0.04),  ["COWS","WITHGUNS"]),
+             (math.log(0.024), ["COWS","WITH","GUNS"])],
+            [x for x in metasolve("C??S?ITHG???", self.dict_trie, self.model)]
+            )
+
+    def testFreeWild(self):
+        self.assertEqual(
+            [(math.log(0.12),  ["COWS","WITH"]),
+             (math.log(0.09),  ["WITH","WITH"]),
+             (math.log(0.06),  ["GUNS","WITH"])],
+            [x for x in metasolve("?????ITH", self.dict_trie, self.model)]
             )
 
 

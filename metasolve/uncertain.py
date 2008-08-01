@@ -93,11 +93,11 @@ class Uncertain(object):
         The offset may be positive or negative, and the resulting
         offset weights be also be positive or negative.
         """
-        self.__offset += dv
+        return Uncertain(self.__make_iter, self.__offset + dv)
 
     def __iter__(self):
         """Returns a fresh iterator over the sorted set of options."""
-        return UncertainIterator(self.__make_iter(),
+        return UncertainIterator(iter(self.__make_iter()),
                                  self.__offset)
 
 
