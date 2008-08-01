@@ -33,13 +33,15 @@ __author__ = 'alexrs@csail.mit.edu (Alex Schwendner)'
 
 
 class FreqModel:
-    """A very simple language model which uses word frequencies
-    only. No context is used, so "FREEDOM HAT" is just as likely as
-    "PIRATES HAT".
+    """A simple language model using only single word frequencies.
+    
+    No context is used, so "HAT" is equally likely as the second word
+    of both "PIRATES HAT" and "FREEDOM HAT".
     """
 
     def __init__(self):
         self.dict_ = {}
+        self.total_freq = 0
 
     def readBNC(self, filename):
         """Reads the file format of the bnc.all.al word list built
@@ -48,7 +50,7 @@ class FreqModel:
         Argument filename is the name of the file to open.
 
         The file should comprise lines of the form
-        [FREQ1] [WORD] [POS] [FREQ2]
+        FREQ1 WORD POS FREQ2
         where
         
         FREQ1 is a measure of frequency (in bnc.all.al, it is the
@@ -69,11 +71,7 @@ class FreqModel:
             word = fields[1]
             if word.isalpha():
                 word = word.upper()
-                if self.dict_.has_key(word):
-                    self.dict_[word.upper()] += freq
-                else:
-                    self.dict_[word.upper()] = freq
-                self.total_freq += freq
+                self.insert(word, freq)
                 
             line = fin.readline()
 
@@ -83,7 +81,18 @@ class FreqModel:
         
         return self.dict_.keys()
 
-    def prob(self, word, context):
+    def insert(self, word, freq):
+        """Inserts a word with specified additional relative frequency.
+        """
+        if not word.isalpha(): return
+        word = word.upper()
+        if word in self.dict_:
+            self.dict_[word] += freq
+        else:
+            self.dict_[word] = freq
+        self.total_freq += freq
+
+    def prob(self, word, context=[]):
         """Returns the model's estimated probability of a word given
         the preceding words.
 

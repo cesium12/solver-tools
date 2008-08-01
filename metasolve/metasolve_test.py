@@ -32,27 +32,46 @@
 __author__ = 'alexrs@csail.mit.edu (Alex Schwendner)'
 
 
-import metasolve
+import unittest
+
 import model_freq
 import trie
+import uncertain
+from metasolve import *
 
 
-model = model_freq.FreqModel()
-print "Reading file..."
-model.readBNC("bnc.all.al")
-print "DONE"
+class TestMetasolve(unittest.TestCase):
 
-print "Building dict trie..."
-dict_trie = trie.Trie()
-for word in model.all_words():
-    dict_trie.insert(word)
-print "DONE"
+    def setUp(self):
+        self.model = model_freq.FreqModel()
+        self.model.insert("cows", 4)
+        self.model.insert("with", 3)
+        self.model.insert("guns", 2)
+        self.model.insert("withguns", 1)
+        
+        self.dict_trie = trie.Trie()
+        for word in self.model.all_words():
+            self.dict_trie.insert(word)
 
-#for x in metasolve.metasolve("hello", dict_trie, model):
-#    print x
+    def testNoWildsWithUniqueAnswer(self):
+        self.assertEqual(
+            [(0.12, ["COWS","WITH"])],
+            [x for x in metasolve("COWSWITH", self.dict_trie, self.model)]
+            )
 
-for x in metasolve.metasolve("origamipirateshat", dict_trie, model):
-    print x
+    def testNoWildsWithTwoAnswers(self):
+        self.assertEqual(
+            [(0.04,  ["COWS","WITHGUNS"]),
+             (0.024, ["COWS","WITH","GUNS"])],
+            [x for x in metasolve("COWSWITHGUNS", self.dict_trie, self.model)]
+            )
 
-#for x in metasolve.metasolve("ori?amip?rate?h?t", dict_trie, model):
-#    print x
+    def testNoWildsWithNoAnswers(self):
+        self.assertEqual(
+            [],
+            [x for x in metasolve("DEADBEEF", self.dict_trie, self.model)]
+            )
+
+
+if __name__ == '__main__':
+    unittest.main()

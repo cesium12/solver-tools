@@ -143,13 +143,21 @@ class TestUncertainIteratorAdmisiveHeuristic(unittest.TestCase):
 
 
 class TestUncertainMerge(unittest.TestCase):
-    def runTest(self):
+
+    def testNontrivialMerge(self):
         lst1 = [(0,'a'), (-3,'b'), (-4,'c')]
         lst2 = [(-1, 'd'), (-2, 'e'), (-5, 'f')]
         result = [v for v in Merge([Uncertain(lambda : iter(lst1)),
                                     Uncertain(lambda : iter(lst2))])]
         answer = [(0,'a'), (-1,'d'), (-2,'e'), (-3,'b'), (-4,'c'), (-5,'f')]
         self.assertEqual([v for v in result], answer)
+
+    def testMergeWithEmpty(self):
+        lst1 = [(0,'a'), (-3,'b'), (-4,'c')]
+        lst2 = []
+        result = [v for v in Merge([Uncertain(lambda : iter(lst1)),
+                                    Uncertain(lambda : iter(lst2))])]
+        self.assertEqual([v for v in result], lst1)
 
 
 if __name__ == '__main__':

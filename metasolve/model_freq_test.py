@@ -32,27 +32,39 @@
 __author__ = 'alexrs@csail.mit.edu (Alex Schwendner)'
 
 
-import metasolve
-import model_freq
-import trie
+import unittest
+
+from model_freq import *
 
 
-model = model_freq.FreqModel()
-print "Reading file..."
-model.readBNC("bnc.all.al")
-print "DONE"
+class TestFreqModel(unittest.TestCase):
 
-print "Building dict trie..."
-dict_trie = trie.Trie()
-for word in model.all_words():
-    dict_trie.insert(word)
-print "DONE"
+    def testEmptyModel(self):
+        bob = FreqModel()
+        self.assertEqual([], bob.all_words())
 
-#for x in metasolve.metasolve("hello", dict_trie, model):
-#    print x
+    def testSequentialInsert(self):
+        bob = FreqModel()
 
-for x in metasolve.metasolve("origamipirateshat", dict_trie, model):
-    print x
+        bob.insert("cows", 5)
+        self.assertEqual(["COWS"], bob.all_words())
+        self.assertTrue(abs(1-bob.prob("cows")) < 0.001)
+        self.assertTrue(abs(1-bob.prob("cows",[])) < 0.001)
+        self.assertTrue(abs(1-bob.prob("cows",["cows"])) < 0.001)
+        self.assertTrue(abs(1-bob.prob("cows",["moo"])) < 0.001)
+        self.assertTrue(abs(bob.prob("with")) < 0.001)
+        self.assertTrue(abs(bob.prob("guns")) < 0.001)
 
-#for x in metasolve.metasolve("ori?amip?rate?h?t", dict_trie, model):
-#    print x
+        bob.insert("with", 3)
+        self.assertTrue(abs(0.625-bob.prob("cows")) < 0.001)
+        self.assertTrue(abs(0.375-bob.prob("with")) < 0.001)
+        self.assertTrue(abs(bob.prob("guns")) < 0.001)
+
+        bob.insert("guns", 2)
+        self.assertTrue(abs(0.5-bob.prob("cows")) < 0.001)
+        self.assertTrue(abs(0.3-bob.prob("with")) < 0.001)
+        self.assertTrue(abs(0.2-bob.prob("guns")) < 0.001)
+
+
+if __name__ == '__main__':
+    unittest.main()

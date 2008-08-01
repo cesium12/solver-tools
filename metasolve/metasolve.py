@@ -56,7 +56,7 @@ def metasolve(pattern, dict_trie, lang_model):
                                 partial_word + c)
                            for c in trie.next_dict.keys()],
                           options)
-        elif trie.next_dict.has_key(pat[0]):
+        elif pat[0] in trie.next_dict:
             return options + fits(trie.next_dict[pat[0]],
                                   pat[1:],
                                   partial_word + pat[0])
@@ -74,7 +74,11 @@ def metasolve(pattern, dict_trie, lang_model):
             #print "(%s,%s)" % (next, rest_pat)
             opt = dp(rest_pat, lang_model.trim_context(history + [next]))
             opt.Shift(math.log(lang_model.prob(next, history)))
-            options.append(uncertain.Uncertain(lambda : iter([(w, [next]+rest) for (w,rest) in opt])))
+            it = iter([(w, [next]+rest) for (w,rest) in opt])
+            options.append(uncertain.Uncertain((lambda x: lambda : x)(it)))
+        print "fits(dict_trie, pat, '') = %s" % fits(dict_trie, pat, "")
+        print [[x for x in y] for y in options]
+        print [y for y in uncertain.Merge(options)]
         return uncertain.Merge(options)
             
     return dp(pattern, [])
