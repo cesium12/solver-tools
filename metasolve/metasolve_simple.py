@@ -50,7 +50,7 @@ def metasolve_simple(pattern, hits):
     if not model:
         model = model_freq.FreqModel()
         print "Reading file..."
-        model.readBNC("metasolve/bnc.all.al")
+        model.readBNC("metasolve/bnc.all.al.gz")
         print "DONE"
     if not dict_trie:
         print "Building dict trie..."

@@ -32,6 +32,9 @@
 __author__ = 'alexrs@csail.mit.edu (Alex Schwendner)'
 
 
+import gzip
+
+
 class FreqModel:
     """A simple language model using only single word frequencies.
     
@@ -62,7 +65,7 @@ class FreqModel:
         """
         self.dict_ = {}
         self.total_freq = 0
-        fin = file(filename, 'r')
+        fin = gzip.GzipFile(filename, 'r')
 
         line = fin.readline()
         while line:

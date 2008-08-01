@@ -39,7 +39,7 @@ import trie
 
 model = model_freq.FreqModel()
 print "Reading file..."
-model.readBNC("bnc.all.al")
+model.readBNC("bnc.all.al.gz")
 print "DONE"
 
 print "Building dict trie..."
