@@ -32,6 +32,9 @@
 __author__ = 'alexrs@csail.mit.edu (Alex Schwendner)'
 
 
+from metasolve import metasolve
+import model_freq
+import trie
 from sagesutil import export
 
 
@@ -42,10 +45,12 @@ dict_trie = None
   args=["The pattern", "The desired number or results"],
   ret="A sorted list of possible completions, each of which is a pair (log-probability, list of answer words).")
 def metasolve_simple(pattern, hits):
+    global model
+    global dict_trie
     if not model:
         model = model_freq.FreqModel()
         print "Reading file..."
-        model.readBNC("bnc.all.al")
+        model.readBNC("metasolve/bnc.all.al")
         print "DONE"
     if not dict_trie:
         print "Building dict trie..."
@@ -55,8 +60,8 @@ def metasolve_simple(pattern, hits):
         print "DONE"
 
     ans = []
-    for (w,v) in metasolve(pattern, dict_trie, lang_model):
-        ans.append(w,v)
+    for (w,v) in metasolve(pattern, dict_trie, model):
+        ans.append((w,v))
         if len(ans) >= hits:
             break
 
