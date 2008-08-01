@@ -18,11 +18,11 @@ l=4.025, m=2.406, n=6.749, o=7.507, p=1.929, q=0.095, r=5.987, s=6.327,
 t=9.056, u=2.758, v=0.978, w=2.360, x=0.150, y=1.974, z=0.074), normalize=True)
 
 f = open(os.path.join(dictpath, 'all.txt'))
-wordlists['npl'] = [line.strip().lower() for line in f]
+wordlists['npl'] = set(line.strip().lower() for line in f)
 f.close()
 
 f = open(os.path.join(dictpath, 'enable.txt'))
-wordlists['enable'] = [line.strip().lower() for line in f]
+wordlists['enable'] = set(line.strip().lower() for line in f)
 f.close()
 
 english_ngrams_pickle = os.path.join(basepath, 'pickle', 'english.ngrams.pickle')
@@ -94,6 +94,13 @@ def word_likelihood(word, lang='English', ngram_prob=0.001):
             logprob += ngrams[lang][3].logprob(trigram)
     return logprob
 
+@export(description="""An estimated probability that this text would appear
+in natural language. You can also suggest certain words that are likely to
+appear in the puzzle.""",
+  args=["The text", "The language model to use (default is 'English')",
+        "The probability of a word that is not contained in the word list",
+        "A list of words that should be assigned very high probabilities"],
+  ret="The log likelihood of the text in the language model")
 def text_likelihood(text, lang='English', ngram_prob=0.001, good_words=[]):
     text = ''.join(let for let in text.lower() if let in string.letters+' ')
     total = 0.0
