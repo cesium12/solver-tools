@@ -63,27 +63,21 @@ def metasolve(pattern, dict_trie, lang_model):
                                   partial_word + pat[0])
         else:
             return options
-            
+
+    def PrependWordAndShift(g, dw, next):
+        for (w,rest) in g:
+            yield (w+dw, [next]+rest)
 
     @memoize.Memoize
     def dp(pat, history):
-        #print "dp(%s,%s)" % (pat, history)
         if not pat:
-            return uncertain.Uncertain(lambda : iter([(0,[])]))
+            return uncertain.Uncertain([(0,[])])
         options = []
-        for (next, rest_pat) in fits(dict_trie, pat, ""):
+        q = fits(dict_trie, pat, "")
+        for (next, rest_pat) in q:
             opt = dp(rest_pat, lang_model.trim_context(history + [next]))
-            #print "    (%s,%s)" % (next, rest_pat)
-            #print "    %s" % [x for x in opt]
-            opt = opt.Shift(math.log(lang_model.prob(next, history)))
-            #options.append(uncertain.Uncertain((lambda x: lambda : x)(it)))
-            options.append(
-                uncertain.Uncertain(
-                    wrap_thunk.WrapThunk(
-                        [(w, [next]+rest) for (w,rest) in opt])))
-        #print "fits(dict_trie, pat, '') = %s" % fits(dict_trie, pat, "")
-        #print [[x for x in y] for y in options]
-        #print [y for y in uncertain.Merge(options)]
+            dw = math.log(lang_model.prob(next, history))
+            options.append(uncertain.Uncertain(PrependWordAndShift(opt, dw, next)))
         return uncertain.Merge(options)
             
     return dp(pattern, [])

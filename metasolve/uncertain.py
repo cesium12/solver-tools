@@ -41,35 +41,15 @@ class Uncertain(object):
     The Uncertain class represents an immutable lazy list of options
     with associated log-probabilities, sorted with the most likely
     first.
-
-    Representation invariants:
-    * Attribute __make_iter should be an idempotent thunk which
-      returns an iterator over the list of options. This thunk should
-      be idempotent (i.e. multiple calls should return independant
-      iterators over the same collection) so that the instance of
-      Uncertain can be immutable. The list of options should be
-      structured as a list of pairs of the form (weight, value). The
-      weights should all be non-positive to represent
-      log-probabilities and they should be sorted in decending order.
-    * Attribute __offset should be a real number.
-
-    Abstraction function:
-      The lazy list of options is the list iterated over by the result
-      of calling __make_iter, with weights additively offset by
-      __offset.
     """
 
-    def __init__(self, make_iter, offset=0):
+    def __init__(self, options, offset=0):
         """Construct an instance of Uncertain.
 
         Args:
 
-          make_iter: an idempotent thunk which returns an iterator
-            over the list of options. This thunk should be idempotent
-            (i.e. multiple calls should return independant iterators
-            over the same collection) so that the instance of
-            Uncertain can be immutable. The list of options should be
-            structured as a list of pairs of the form (weight,
+          opts: an iterable collection of options. The iter(opts)
+            should return the options as pairs of the form (weight,
             value). The weights should all be non-positive to
             represent log-probabilities and they should be sorted in
             decending order.
@@ -80,90 +60,46 @@ class Uncertain(object):
             also be positive or negative. It is the initial input
             weights which must all be non-positive.
         """
-        self.__make_iter = make_iter
+        self.__opt_list = []
+        self.__opt_iter = iter(options)
         self.__offset = offset
-
-    def AdmisiveHeuristic(self):
-        """An upper bound on the weights of the options."""
-        return self.__offset
 
     def Shift(self, dv):
         """Shifts all weights in the set by the same additive offset.
 
         The offset may be positive or negative, and the resulting
-        offset weights be also be positive or negative.
+        offset weights may be also be positive or negative.
         """
-        return Uncertain(self.__make_iter, self.__offset + dv)
+        bob = Uncertain([])
+        bob.__opt_list = self.__opt_list
+        bob.__opt_iter = self.__opt_iter
+        bob.__offset = self.__offset + dv
+        return bob
 
     def __iter__(self):
         """Returns a fresh iterator over the sorted set of options."""
-        return UncertainIterator(iter(self.__make_iter()),
-                                 self.__offset)
+        return self._UncertainIterator(self.__opt_list,
+                                       self.__opt_iter,
+                                       self.__offset)
 
+    class _UncertainIterator(object):
 
-class UncertainIterator(Uncertain):
-    """An iterator over a lazy list of options with associated
-    log-probabilities, sorted with the most likely first.
+        def __init__(self, opt_list, opt_iter, offset=0):
+            self.__opt_list = opt_list
+            self.__opt_iter = opt_iter
+            self.__offset = offset
+            self.__index = 0
 
-    This will usually be the result of calling iter on some instance
-    of Uncertain.
-
-    Representation invariants:
-    * Attribute __opt_iter should be an iterator over a set of options
-      structured as pairs of the form (weight, value). The weights
-      should all be non-positive to represent log-probabilities and
-      they should be sorted in decending order.
-    * Attribute __offset should be a real number.
-    * Attribute __offset should be a real number which is greater than
-      or equal to all of the weights in the unoffset option set
-      iterated over by __opt_iter.
-    """
-
-    def __init__(self, opt_iter, offset=0):
-        """Construct an instance of UncertainIterator.
-
-        The argument opt_iter should be an iterator over a set of
-        options structured as pairs of the form (weight, value). The
-        weights should all be non-positive to represent
-        log-probabilities and they should be sorted in decending
-        order.
-
-        The optional argument offset may be given to adjust the
-        weights of all of the options at once. The offset may be
-        positive or negative, and the resulting offset weights be also
-        be positive or negative. It is the initial input weights which
-        must all be non-positive.
-        """
-        
-        self.__opt_iter = opt_iter
-        self.__offset = offset
-        self.__hval = 0
-
-    def AdmisiveHeuristic(self):
-        """Returns a real number which should be greater than or equal
-        to the weights of any options in the option set.
-        """
-        
-        return self.__hval + self.__offset
-
-    def next(self):
-        """Returns the next most likely option in the option set as a
-        pair (weight, value).
-
-        Raises UncertainSortedViolation if it discovers that the
-        options are not sorted as specified by the representation
-        invariant.
-        """
-        
-        (w,v) = self.__opt_iter.next()
-        if w > self.__hval:
-            raise UncertainSortedViolation()
-        self.__hval = w
-        return (w + self.__offset, v)
-
-
-class UncertainSortedViolation:
-    pass
+        def next(self):
+            if self.__index < len(self.__opt_list):
+                (w,v) = self.__opt_list[self.__index]
+                self.__index += 1
+                return (w + self.__offset, v)
+            else:
+                (w,v) = self.__opt_iter.next()
+                self.__opt_list.append((w,v))
+                self.__index += 1
+                return (w + self.__offset, v)
 
 
 def Merge(option_lists):
@@ -178,22 +114,24 @@ def Merge(option_lists):
     def MergeIterators():
         heap = []
         for lst in option_lists:
-            w = lst.AdmisiveHeuristic()
-            it = iter(lst)
-            heap.append((-w,True,0,it))
-
-        heapq.heapify(heap)
-        while len(heap) > 0:
-            (w,fake,v,it) = heapq.heappop(heap)
             try:
-                (wp,vp) = it.next()
-                heapq.heappush(heap,(-wp,False,vp,it))
+                it = iter(lst)
+                (w,v) = it.next()
+                heap.append((-w,v,it))
             except StopIteration:
                 pass
-            if not fake:
-                yield (-w,v)
+        
+        heapq.heapify(heap)
+        while len(heap) > 0:
+            (w,v,it) = heapq.heappop(heap)
+            yield (-w,v)
+            try:
+                (wp,vp) = it.next()
+                heapq.heappush(heap,(-wp,vp,it))
+            except StopIteration:
+                pass
 
-    return Uncertain(MergeIterators)
+    return Uncertain(MergeIterators())
 
 
 def MapG(f,generator):

@@ -54,5 +54,5 @@ print "DONE"
 #for x in metasolve.metasolve("origamipirateshat", dict_trie, model):
 #    print x
 
-for x in metasolve.metasolve("ori?amip?rate?h?t", dict_trie, model):
+for x in metasolve.metasolve("ori??mip?r?te?h?t", dict_trie, model):
     print x
