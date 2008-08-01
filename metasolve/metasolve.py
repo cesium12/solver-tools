@@ -42,9 +42,39 @@ import wrap_thunk
 
 
 def metasolve(pattern, dict_trie, lang_model):
+    """Returns a lazy list of possible metapuzzle answers.
+
+    Args:
+
+      pattern: a string with the letters known and '?' as a wildcard
+
+      dict_trie: a trie containing all words
+
+      lang_model: a language model implementing the
+        trim_context(history) and prob(next, history) methods.
+        prob(next, history) should return a real number in the range
+        [0,1] for the estimated probability of the next word being
+        'next' given the preceeding words contained in the list
+        'history'. trim_context(history) takes a list of preceeding
+        words and returns a (hopefully shorter) suffix which yields
+        the same probability distributions.
+
+    Returns: an instance of Uncertain containing (log-probability,
+      word sequence) pairs sorted in decending order of probability.
+    """
     pattern = pattern.upper()
 
     def fits(trie, pat, partial_word):
+        """Returns a list of words which might fit next in a pattern.
+
+        Args:
+
+          trie: a dictionary trie
+
+          pat: a pattern string using '?' as a wildcard
+
+          partial_word: the word prefix already matched
+        """
         options = []
         if trie.value:
             options.append((partial_word, pat))
