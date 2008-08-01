@@ -38,7 +38,6 @@ import operator
 import memoize
 import trie
 import uncertain
-import wrap_thunk
 
 
 def metasolve(pattern, dict_trie, lang_model):
