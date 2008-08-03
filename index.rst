@@ -10,6 +10,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   docs/README
    data/answers/README
 
 Indices and tables
