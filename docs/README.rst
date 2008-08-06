@@ -3,7 +3,9 @@ Automated sphinx-based documentation system
 
 The documentation system for solver-tools is called Sphinx.
 Documentation on it is available at
-http://sphinx.pocoo.org/contents.html.
+http://sphinx.pocoo.org/contents.html.  Particular attention should be
+given to the instructions for automatically generating code from
+docstrings: http://sphinx.pocoo.org/ext/autodoc.html.
 
 The top-level index document is :file:`index.rst` in the top of the
 repository, and the documentation can be built by use of the
