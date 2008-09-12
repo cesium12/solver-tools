@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-# anagrep.py
+# caesar.py
 # Copyright 2008 Ben Aisen
 #
 # Redistribution and use in source and binary forms, with or without
@@ -31,44 +31,47 @@
 # ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
-from anagram import *
 
-def main():
-    dictfile = '/usr/share/dict/words'
+import string, sys
+from operator import isNumberType
 
-    if len(sys.argv) == 1:
-        print 'Usage: anagrep [options] length word'
-        sys.exit(1)
+class CaesarCipher:
+    def __init__(self,
+                 lower_alph = string.ascii_lowercase,
+                 upper_alph = string.ascii_uppercase):
+        self.l_alph = lower_alph
+        self.u_alph = upper_alph
 
-    (optlist, args) = \
-        getopt.getopt(sys.argv[1:], 'd:h',
-                      ['dictionary=', 
-                       'help'])
-    
-    for o,a in optlist:
-        if o == '-h' or o =='--help':
-            usage()
-            sys.exit(0)
-        elif o == '-d' or o == '--dictionary':
-            dictfile = a
+
+    def encipher(self,key,plaintext):
+        return plaintext.translate(self.transtable(key,inv = False))
+
+    def decipher(self,key,ciphertext):
+        return ciphertext.translate(self.transtable(key,inv = True))
+
+    def transtable(self,key,inv = False):
+        if isNumberType(key):
+            k = key%26
+        elif key in self.l_alph:
+            k = self.l_alph.index(key)
+        elif key in self.u_alph:
+            k = self.u_alph.index(key)
         else:
-            assert False, 'unhandled option '+o
+            raise ValueError, 'Bad key value "%s"' % key
 
-    if len(args) < 2:
-        print 'Usage: anagram [options] length word'
-        sys.exit(1)
+        from_alph = self.l_alph + self.u_alph
+        to_alph = self.l_alph[k:] + self.l_alph[:k] + self.u_alph[k:] + \
+            self.u_alph[:k]
+        if inv:
+            return string.maketrans(to_alph,from_alph)
+        else:
+            return string.maketrans(from_alph,to_alph)
 
-    length = int(args[0])
-    input_word = AnagramWord(' '.join(args[1:]))
-
-    adict = AnagramDict.new_from_file(dictfile, length, length)
-    #print 'Dictionary initialized with %d words.' % len(adict.wordlist)
-
-    if length <= input_word.length():
-        for w in adict.wordlist:
-            if input_word.contains(w): print w
-    else:
-        for w in adict.wordlist:
-            if w.contains(input_word): print w
-
-main()
+if __name__ == '__main__':
+    # ROT13 demo.
+    c = CaesarCipher()
+    try:
+        while True:
+            print c.encipher(13,raw_input())
+    except EOFError:
+        pass
