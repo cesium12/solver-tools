@@ -6,7 +6,8 @@ import cPickle as pickle
 basepath = os.path.normpath( os.path.join( __file__, "..") )
 dictpath = os.path.join(basepath, 'dict')
 sys.path.append(os.path.normpath(os.path.join(basepath, '..')))
-from sagesutil import export
+from sagesutil import export, data_file
+from answer_reader import answer_reader
 
 ngrams = defaultdict(dict)
 words = {}
@@ -112,8 +113,7 @@ def text_likelihood(text, lang='English', ngram_prob=0.001, good_words=[]):
     return total
 
 if __name__ == '__main__':
-    print "Demo:"
-    for word in ['the', 'cat', 'spatula', 'huzzah', 'defenestrate',
-    'adogslife', 'cka', 'splendiferosity', 'qejvkobckh']:
-        print "Word: %s\tLog likelihood: %3.3f" % (word, word_likelihood(word))
+    for year in range(2004, 2009):
+        for answer in answer_reader(year):
+            print answer, text_likelihood(answer)/len(answer)
 

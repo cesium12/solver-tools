@@ -1,3 +1,5 @@
+import os
+SAGES_ROOT = os.sep.join(__file__.split(os.sep)[:-1] + ['..']) + os.sep
 
 # This function taken from <http://docs.python.org/lib/built-in-funcs.html>:
 def my_import(name):
@@ -40,3 +42,7 @@ def listExports(module):
                "args": module_attr.args,
                "ret": module_attr.ret }
              for module_attr in listExportedModules(module) )
+
+def data_file(path):
+    return open(SAGES_ROOT + path)
+

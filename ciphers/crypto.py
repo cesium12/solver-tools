@@ -99,14 +99,13 @@ def demo():
     print crypto_solve("""
     WDF HWFK L HFLX IJET ETF HFSWD: L EFD-MLBZ WQ NXLDZ QXWMMJFK QWP TJK KWYX.
     -- DFJX RLJSLD
-    """, ['neil', 'gaiman'])
+    """)
     print crypto_solve("""
     XKG DVXA XKNX KNB TDDOWVGB PGQN DNJNNJ RNQ JTR PNLDKVJZ NDLTQQ XKG WHNVJ.
     -- ZLGZ UGNL
     """)
     print crypto_solve("""AE ZDWUB'E WBZ CAEM DBW---AE IWRABU CAEM X CMASYWT.
-    -- T. X. HXOOWTEF""",
-    ['whimper'])
+    -- T. X. HXOOWTEF""")
     print crypto_solve("""
     SGKDK BDK SIR IBLP SR SKOO B IMFBDV.
     -- SKDDL QMPPRA
