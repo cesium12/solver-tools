@@ -1,4 +1,4 @@
-from model import english_model, LanguageModel, wordlists
+from model.language_model import english_model
 from string import lowercase
 from collections import defaultdict
 from random import shuffle, random
@@ -30,7 +30,7 @@ def smash_words(text):
 def possible_substitutions(cryptword):
     pattern = make_pattern(cryptword)
     for word in patterns[pattern]:
-        val = math.pow(2, english_model.word_likelihood(word)+len(word))
+        val = math.pow(2, english_model.words_logprob([word])+len(word))
         yield val, zip(cryptword, word)
 
 def text_substitutions(ciphertext, good_words=[]):
@@ -68,7 +68,7 @@ def crypto_solve(text, hints=[]):
     print len(subs)
     while True:
         result = decrypt(text, decryptdict)
-        likelihood = english_model.text_likelihood(result)
+        likelihood = english_model.text_logprob(result)
         print likelihood, result
         best_likelihood = likelihood
         best_dicts = None
@@ -84,7 +84,7 @@ def crypto_solve(text, hints=[]):
                 newdecrypt[c2] = p2
                 newencrypt[p2] = c2
             tried = decrypt(text, newdecrypt)
-            tried_likelihood = english_model.text_likelihood(tried)
+            tried_likelihood = english_model.text_logprob(tried)
             if (tried_likelihood > best_likelihood):
                 decryptdict, encryptdict = (newdecrypt, newencrypt)
                 switched = True
