@@ -1,11 +1,8 @@
-from language_model import word_likelihood, text_likelihood, ngrams, wordlists
+from model import english_model, LanguageModel, wordlists
 from string import lowercase
 from collections import defaultdict
 from random import shuffle, random
 import math
-
-unigram_dict = ngrams['English'][1]._prob_dict
-ordered_unigrams = sorted(unigram_dict.items(), key=lambda x: -x[1])
 
 def make_pattern(word):
     # word must be all lowercase with no punctuation
@@ -20,7 +17,8 @@ def make_pattern(word):
     return tuple(pattern)
 
 patterns = defaultdict(list)
-for word in wordlists['enable']:
+for word in english_model.all_words():
+    word = ''.join(let.lower() for let in word if let.lower() in lowercase)
     pattern = make_pattern(word)
     patterns[pattern].append(word)
 patterns[(0,)].append('a')
@@ -32,7 +30,7 @@ def smash_words(text):
 def possible_substitutions(cryptword):
     pattern = make_pattern(cryptword)
     for word in patterns[pattern]:
-        val = math.pow(2, word_likelihood(word)+len(word))
+        val = math.pow(2, english_model.word_likelihood(word)+len(word))
         yield val, zip(cryptword, word)
 
 def text_substitutions(ciphertext, good_words=[]):
@@ -58,19 +56,19 @@ def crypto_solve(text, hints=[]):
     for ch in lowercase: counts[ch] += 1
     for ch in text:
         if ch in lowercase: counts[ch] += 1
-    ordered = sorted(counts.items(), key=lambda x: -x[1])
-    shuffle(ordered)
+    disordered = list(lowercase)
+    shuffle(disordered)
     decryptdict = {}
     encryptdict = {}
-    for cipher, plain in zip(ordered, ordered_unigrams):
+
+    for cipher, plain in zip(lowercase, disordered):
         decryptdict[cipher[0]] = plain[0]
         encryptdict[plain[0]] = cipher[0]
     subs = text_substitutions(text, hints)
     print len(subs)
     while True:
         result = decrypt(text, decryptdict)
-        likelihood = text_likelihood(result, ngram_prob=0.000001,
-        good_words=hints)
+        likelihood = english_model.text_likelihood(result)
         print likelihood, result
         best_likelihood = likelihood
         best_dicts = None
@@ -86,8 +84,7 @@ def crypto_solve(text, hints=[]):
                 newdecrypt[c2] = p2
                 newencrypt[p2] = c2
             tried = decrypt(text, newdecrypt)
-            tried_likelihood = text_likelihood(tried, ngram_prob=0.000001,
-            good_words=hints)
+            tried_likelihood = english_model.text_likelihood(tried)
             if (tried_likelihood > best_likelihood):
                 decryptdict, encryptdict = (newdecrypt, newencrypt)
                 switched = True
