@@ -9,6 +9,8 @@ sys.path.append(os.path.normpath(os.path.join(basepath, '..')))
 from sagesutil import export, data_file
 from answer_reader import answer_reader
 
+valid_chars = string.lowercase + string.digits + ' '
+
 def scan_ngrams(text, n=2):
     for i in xrange(len(text)-n+1):
         fragment = text[i:i+n]
@@ -30,6 +32,9 @@ class LanguageModel(object):
         self.word_freq = defaultdict(FreqDist)
         self.letter_dist = {}
         self.word_dist = {}
+
+    def convert(self, text):
+        return ''.join(t for t in text.lower() if t in valid_chars)
     
     def learnLetters(self, word, letter_n=3):
         """Learn the letter n-gram frequencies from a word."""
@@ -45,7 +50,7 @@ class LanguageModel(object):
         for word in words:
             counter += 1
             if counter % 10000 == 0: print 'nom'
-            word = word.lower()
+            word = self.convert(word)
             self.wordlist.add(word)
             wordHistory = wordHistory[0:word_n-1] + (word,)
             for n in range(1, min(word_n, len(wordHistory))+1):
@@ -59,9 +64,9 @@ class LanguageModel(object):
 
     def finalize(self):
         for key in self.letter_freq:
-            self.letter_dist[key] = LaplaceProbDist(self.letter_freq[key])
+            self.letter_dist[key] = LidstoneProbDist(self.letter_freq[key], 0.1)
         for key in self.word_freq:
-            self.word_dist[key] = LidstoneProbDist(self.word_freq[key], 0.1)
+            self.word_dist[key] = LaplaceProbDist(self.word_freq[key])
     
     def letters_logprob(self, word):
         logprob = count = 0
@@ -71,29 +76,29 @@ class LanguageModel(object):
                 count += 1
         return logprob/count
 
-    def words_logprob(self, words, ngram_logprob=-10):
+    def words_logprob(self, words, ngram_logprob=-20):
         words = tuple(words)
         logprob = 0
         for n, probdist in self.word_dist.items():
             for ngram in scan_ngrams(words, n):
                 lp = probdist.logprob(ngram)
                 if n == 1:
-                    lp_ngram = self.letters_logprob(ngram[0])
-                    lp += lp_ngram
+                    if ngram[0] not in self.wordlist:
+                        lp = ngram_logprob + self.letters_logprob(ngram[0])
                 logprob += lp
         return logprob
 
-    def text_logprob(self, text, ngram_logprob=-10):
-        return self.words_logprob(text.lower().split(), ngram_logprob)
+    def text_logprob(self, text, ngram_logprob=-20):
+        return self.words_logprob(self.convert(text).split(), ngram_logprob)
 
-    def given_logprob(self, word, context, ngram_logprob=-10):
+    def given_logprob(self, word, context, ngram_logprob=-20):
         return (self.words_logprob(tuple(context)+(word,), ngram_logprob) -
                 self.words_logprob(context, ngram_logprob))
     
     # This one is compatible with metasolve
     def prob(self, word, context=[]):
-        word = word.lower()
-        context = [w.lower() for w in context]
+        word = self.convert(word)
+        context = [self.convert(w) for w in context]
         return math.pow(2, self.given_logprob(word, context))
 
 def get_english_model():
@@ -104,8 +109,13 @@ def get_english_model():
     enable = [line.strip().lower() for line in f]
     f.close()
     
+    f = open(os.path.join(dictpath, 'all.txt'))
+    npl = [line.strip().lower() for line in f]
+    f.close()
+    
     model.learnWords(brown.words(), word_n=1)
     model.learnWords(enable, word_n=1)
+    #model.learnWords(npl, word_n=1)
     model.finalize()
     return model
 
