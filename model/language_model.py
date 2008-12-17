@@ -101,6 +101,11 @@ class LanguageModel(object):
         context = [self.convert(w) for w in context]
         return math.pow(2, self.given_logprob(word, context))
 
+    def trim_context(self, context):
+        return []
+        #n = max(self.word_dist.keys())-1
+        #return context[-n:]
+
 def get_english_model():
     from nltk.corpus import brown
     model = LanguageModel()
