@@ -6,6 +6,8 @@ from heapq import heappush, heappop
 from random import shuffle, random
 import math, re
 
+unigram = english_model.word_dist[1]
+
 def make_pattern(word):
     # word must be all lowercase with no punctuation
     letters = []
@@ -36,6 +38,22 @@ def eval_ngrams(text):
                 logprob += ngram_blanks[n][ngram] - 4.7*dots
     return logprob/len(text)
 
+def possible_substitutions(cryptword):
+    pattern = make_pattern(cryptword)
+    for word in patterns[pattern]:
+        val = unigram.logprob((word,)) + len(word)
+        yield val, zip(cryptword, word)
+
+def text_substitutions(ciphertext):
+    ciphertext = smash_words(ciphertext.replace('-', ' '))
+    possible = defaultdict(float)
+    for word in ciphertext.split():
+        pattern = make_pattern(word)
+        for value, sub in possible_substitutions(word):
+            possible[tuple(sub)] = value
+    items = sorted(possible.items(), key=lambda x: -x[1])
+    return [item[0] for item in items]
+
 memo = {}
 def eval_text(text, patternlist):
     tot_logprob = 0
@@ -43,15 +61,15 @@ def eval_text(text, patternlist):
         if (frame, pattern) in memo:
             tot_logprob += memo[(frame, pattern)]
         else:
-            wordprob = 1e-7
+            wordprob = 1e-9
             regex = re.compile(frame)
             for word in patterns[pattern]:
                 if regex.match(word):
-                    wordprob += english_model.word_dist[1].prob((word,))
+                    wordprob += unigram.prob((word,))
             logprob = math.log(wordprob)
             memo[(frame, pattern)] = logprob
             tot_logprob += logprob
-    return tot_logprob
+    return tot_logprob + eval_ngrams(text)
 
 
 def decrypt(text, decryptdict):
@@ -64,34 +82,45 @@ def crypto_solve(text):
 
     q = [(10000, '..........................')]
     already = set()
+    subs = text_substitutions(text)
 
     while q:
         decryptdict = {}
+        encryptdict = {}
         score, trans = heappop(q)
         unknown_in = set()
         unknown_out = set(lowercase)
         for c1, c2 in zip(lowercase, trans):
             decryptdict[c1] = c2
-            if c2 == '.' and c1 in text: unknown_in.add(c1)
+            encryptdict[c2] = c1
+            if c2 == '.':
+                if c1 in text: unknown_in.add(c1)
             else: unknown_out.remove(c2)
 
         result = decrypt(text, decryptdict)
         print score, result
         if len(unknown_in) == 0: return result
 
-        for ci in unknown_in:
-            for co in unknown_out:
-                decryptdict[ci] = co
+        for sub in subs:
+            newdecrypt = dict(decryptdict)
+            newencrypt = dict(encryptdict)
+            for c, p in sub:
+                if p in newencrypt:
+                    c2 = newencrypt[p]
+                    decryptdict[c2] = '.'
+                if newdecrypt[c] != '.':
+                    p2 = newdecrypt[c]
+                    del newencrypt[p2]
+                newdecrypt[c] = p
+                newencrypt[p] = c
 
-                tried = decrypt(text, decryptdict)
-                triedprob = eval_text(tried, patternlist) - 10*len(unknown_in)
-                newtrans = ''.join(decryptdict[x] for x in lowercase)
-                entry = (-triedprob, newtrans)
-                if newtrans not in already:
-                    heappush(q, entry)
-                    already.add(newtrans)
-
-                decryptdict[ci] = '.'
+            tried = decrypt(text, newdecrypt)
+            triedprob = eval_text(tried, patternlist) - 10*len(unknown_in)
+            newtrans = ''.join(newdecrypt[x] for x in lowercase)
+            entry = (-triedprob, newtrans)
+            if newtrans not in already:
+                heappush(q, entry)
+                already.add(newtrans)
 
 def demo():
     print crypto_solve("""
