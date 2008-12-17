@@ -2,7 +2,6 @@ known_transforms = []
 
 
 def register_transform(f):
-    print "moo"
     known_transforms.append(f)
     return f
 

@@ -19,9 +19,7 @@ def character_sample(char):
 
 def generate_samples(text, n):
     for i in xrange(n):
-        sample = ''.join(character_sample(c) for c in text)
-        print sample
-        yield sample
+        yield ''.join(character_sample(c) for c in text)
 
 def recursive_likelihood(puzzle):
     if isinstance(puzzle, basestring):
@@ -61,5 +59,6 @@ def test():
     print entropy('THIS IS A T?ST')
     print entropy('THIS ?S A ??ST')
     print entropy(['THIS', 'IS', 'A', 'TEST'])
-test()
+
+if __name__ == '__main__': test()
 
