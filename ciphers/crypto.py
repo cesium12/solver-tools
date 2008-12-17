@@ -1,12 +1,8 @@
-from model.language_model import english_model, valid_chars, scan_ngrams
-from model.blanks import ngram_blanks
+from model.language_model import english_model
 from string import lowercase
 from collections import defaultdict
-from heapq import heappush, heappop
 from random import shuffle, random
-import math, re
-
-unigram = english_model.word_dist[1]
+import math
 
 def make_pattern(word):
     # word must be all lowercase with no punctuation
@@ -21,106 +17,86 @@ def make_pattern(word):
     return tuple(pattern)
 
 patterns = defaultdict(list)
-for word in english_model.all_words():
-    word = english_model.convert(word)
+#for word in english_model.all_words():
+for word in open('../model/dict/enable.txt'):
+    word = word.strip()
+    word = ''.join(let.lower() for let in word if let.lower() in lowercase)
     pattern = make_pattern(word)
     patterns[pattern].append(word)
+patterns[(0,)].append('a')
+patterns[(0,)].append('i')
+
+print patterns[0,1,2,3,4,5,0,4]
+print patterns[0,1,2,0,3,4,0,4]
 
 def smash_words(text):
     return ''.join(ch for ch in text.lower() if ch in lowercase+' ')
 
-def eval_ngrams(text):
-    logprob = 0
-    for word in text.split():
-        for n in (1, 2, 3):
-            for ngram in scan_ngrams(word, n):
-                dots = ngram.count('.')
-                logprob += ngram_blanks[n][ngram] - 4.7*dots
-    return logprob/len(text)
-
 def possible_substitutions(cryptword):
     pattern = make_pattern(cryptword)
     for word in patterns[pattern]:
-        val = unigram.logprob((word,)) + len(word)
+        # no longer + len(word)
+        val = math.pow(2, english_model.words_logprob([word]) + len(word)/2)
         yield val, zip(cryptword, word)
 
-def text_substitutions(ciphertext):
+def text_substitutions(ciphertext, good_words=[]):
     ciphertext = smash_words(ciphertext.replace('-', ' '))
     possible = defaultdict(float)
     for word in ciphertext.split():
         pattern = make_pattern(word)
         for value, sub in possible_substitutions(word):
-            possible[tuple(sub)] = value
+            possible[tuple(sub)] += value
+        for gword in good_words:
+            if make_pattern(gword) == pattern:
+                possible[tuple(zip(word, gword))] += 8
     items = sorted(possible.items(), key=lambda x: -x[1])
     return [item[0] for item in items]
-
-memo = {}
-def eval_text(text, patternlist):
-    tot_logprob = 0
-    for frame, pattern in zip(text.split(), patternlist):
-        if (frame, pattern) in memo:
-            tot_logprob += memo[(frame, pattern)]
-        else:
-            wordprob = 1e-9
-            regex = re.compile(frame)
-            for word in patterns[pattern]:
-                if regex.match(word):
-                    wordprob += unigram.prob((word,))
-            logprob = math.log(wordprob)
-            memo[(frame, pattern)] = logprob
-            tot_logprob += logprob
-    return tot_logprob + eval_ngrams(text)
-
 
 def decrypt(text, decryptdict):
     return ''.join((decryptdict[ch] if ch in lowercase else ch)
                    for ch in text)
 
-def crypto_solve(text):
-    text = english_model.convert(text)
-    patternlist = [make_pattern(x) for x in text.split()]
+def crypto_solve(text, hints=[]):
+    text = text.lower()
+    counts = defaultdict(int)
+    for ch in lowercase: counts[ch] += 1
+    for ch in text:
+        if ch in lowercase: counts[ch] += 1
+    disordered = list(lowercase)
+    shuffle(disordered)
+    decryptdict = {}
+    encryptdict = {}
 
-    q = [(10000, '..........................')]
-    already = set()
-    subs = text_substitutions(text)
-
-    while q:
-        decryptdict = {}
-        encryptdict = {}
-        score, trans = heappop(q)
-        unknown_in = set()
-        unknown_out = set(lowercase)
-        for c1, c2 in zip(lowercase, trans):
-            decryptdict[c1] = c2
-            encryptdict[c2] = c1
-            if c2 == '.':
-                if c1 in text: unknown_in.add(c1)
-            else: unknown_out.remove(c2)
-
+    for cipher, plain in zip(lowercase, disordered):
+        decryptdict[cipher[0]] = plain[0]
+        encryptdict[plain[0]] = cipher[0]
+    subs = text_substitutions(text, hints)
+    print len(subs)
+    while True:
         result = decrypt(text, decryptdict)
-        print score, result
-        if len(unknown_in) == 0: return result
-
+        likelihood = english_model.text_logprob(result)
+        print likelihood, result
+        best_likelihood = likelihood
+        best_dicts = None
+        switched = False
         for sub in subs:
             newdecrypt = dict(decryptdict)
             newencrypt = dict(encryptdict)
             for c, p in sub:
-                if p in newencrypt:
-                    c2 = newencrypt[p]
-                    decryptdict[c2] = '.'
-                if newdecrypt[c] != '.':
-                    p2 = newdecrypt[c]
-                    del newencrypt[p2]
+                c2 = newencrypt[p]
+                p2 = newdecrypt[c]
                 newdecrypt[c] = p
                 newencrypt[p] = c
-
+                newdecrypt[c2] = p2
+                newencrypt[p2] = c2
             tried = decrypt(text, newdecrypt)
-            triedprob = eval_text(tried, patternlist) - 10*len(unknown_in)
-            newtrans = ''.join(newdecrypt[x] for x in lowercase)
-            entry = (-triedprob, newtrans)
-            if newtrans not in already:
-                heappush(q, entry)
-                already.add(newtrans)
+            tried_likelihood = english_model.text_logprob(tried)
+            if (tried_likelihood > best_likelihood):
+                decryptdict, encryptdict = (newdecrypt, newencrypt)
+                switched = True
+                break
+        if not switched:
+            return result
 
 def demo():
     print crypto_solve("""

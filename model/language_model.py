@@ -1,7 +1,7 @@
 from probability import *
 from collections import defaultdict
 from model.numbers import number_logprob
-import sys, os, string, math, os.path, gzip
+import sys, os, string, math, os.path, gzip, random
 import cPickle as pickle
 
 basepath = os.path.normpath( os.path.join( __file__, "..") )
@@ -10,9 +10,9 @@ sys.path.append(os.path.normpath(os.path.join(basepath, '..')))
 from sagesutil import export, data_file
 from answer_reader import answer_reader
 
-valid_chars = string.lowercase + string.digits + ' '
+valid_chars = string.uppercase + string.digits + " '"
 
-def isnumeric(word):
+def is_numeric(word):
     try:
         int(word)
         return True
@@ -42,7 +42,7 @@ class LanguageModel(object):
         self.word_dist = {}
 
     def convert(self, text):
-        return ''.join(t for t in text.lower() if t in valid_chars)
+        return ''.join(t for t in text.upper().replace('-', ' ') if t in valid_chars)
     
     def learnLetters(self, word, letter_n=3):
         """Learn the letter n-gram frequencies from a word."""
@@ -72,7 +72,7 @@ class LanguageModel(object):
 
     def finalize(self):
         for key in self.letter_freq:
-            self.letter_dist[key] = LidstoneProbDist(self.letter_freq[key], 0.1)
+            self.letter_dist[key] = LidstoneProbDist(self.letter_freq[key], 0.01)
         for key in self.word_freq:
             self.word_dist[key] = LaplaceProbDist(self.word_freq[key])
     
@@ -80,11 +80,11 @@ class LanguageModel(object):
         logprob = count = 0
         for n, probdist in self.letter_dist.items():
             for ngram in scan_ngrams(word, n):
-                logprob += probdist.logprob(ngram)
+                logprob += probdist.logprob(ngram) * n
                 count += 1
         return logprob/count
 
-    def words_logprob(self, words, ngram_logprob=-20):
+    def words_logprob(self, words, ngram_logprob=-5):
         words = tuple(words)
         logprob = 0
         for n, probdist in self.word_dist.items():
@@ -92,17 +92,17 @@ class LanguageModel(object):
                 lp = probdist.logprob(ngram)
                 if n == 1:
                     word = ngram[0]
-                    if isnumeric(word):
-                        lp = -4 + number_logprob(int(word))
+                    if is_numeric(word):
+                        lp = number_logprob(int(word))
                     elif word not in self.wordlist:
-                        lp = ngram_logprob + self.letters_logprob(ngram[0])
+                        lp = ngram_logprob*len(word) + self.letters_logprob(ngram[0])
                 logprob += lp
         return logprob
 
-    def text_logprob(self, text, ngram_logprob=-20):
+    def text_logprob(self, text, ngram_logprob=-5):
         return self.words_logprob(self.convert(text).split(), ngram_logprob)
 
-    def given_logprob(self, word, context, ngram_logprob=-20):
+    def given_logprob(self, word, context, ngram_logprob=-5):
         return (self.words_logprob(tuple(context)+(word,), ngram_logprob) -
                 self.words_logprob(context, ngram_logprob))
     
@@ -122,11 +122,11 @@ def get_english_model():
     model = LanguageModel()
     
     f = open(os.path.join(dictpath, 'enable.txt'))
-    enable = [line.strip().lower() for line in f]
+    enable = [line.strip().upper() for line in f]
     f.close()
     
     f = open(os.path.join(dictpath, 'all.txt'))
-    npl = [line.strip().lower() for line in f]
+    npl = [line.strip().upper() for line in f]
     f.close()
     
     model.learnWords(brown.words(), word_n=1)
@@ -134,6 +134,18 @@ def get_english_model():
     #model.learnWords(npl, word_n=1)
     model.finalize()
     return model
+
+def unigram_sampler(model):
+    p = random.random()
+    for let in valid_chars:
+        if let == ' ': continue
+        p -= model.letter_dist[1].prob(let)
+        if p < 0: return let
+    return unigram_sampler(model)
+
+def unigram_replace(char, model):
+    if char == ' ': return char
+    else: return unigram_sampler(model)
 
 english_pickle = os.path.join(basepath, 'pickle', 'english.model.pickle.gz')
 if os.access(english_pickle, os.F_OK):
@@ -152,6 +164,17 @@ if __name__ == '__main__':
     results = []
     for year in range(2004, 2009):
         for answer in answer_reader(year):
-            results.append((english_model.text_logprob(answer)/len(answer.split()), answer))
-    for score, result in sorted(results):
-        print "%5.5f %s" % (score, result)
+            answer = english_model.convert(answer)
+            results.append((english_model.text_logprob(answer)/len(answer),
+            answer, True))
+            fakeanswer = ''.join(unigram_replace(x, english_model) for x in
+            answer)
+            results.append((english_model.text_logprob(fakeanswer) / 
+                            len(fakeanswer), fakeanswer, False))
+    usefulness = 0.0
+    for score, result, good in sorted(results):
+        if good: usefulness += score
+        else: usefulness -= score
+        print "%s\t%5.5f %s" % (good, score, result)
+    print usefulness
+
