@@ -8,7 +8,7 @@ import string
 
 @solver.register_transform
 def trans_take_first_letters(puzzle):
-    if not isinstance(puzzle, list):
+    if not isinstance(puzzle, tuple):
         return
     foo = ""
     for s in puzzle:
@@ -19,7 +19,7 @@ def trans_take_first_letters(puzzle):
 
 @solver.register_transform
 def trans_take_second_letters(puzzle):
-    if not isinstance(puzzle, list):
+    if not isinstance(puzzle, tuple):
         return
     foo = ""
     for s in puzzle:
@@ -29,32 +29,32 @@ def trans_take_second_letters(puzzle):
     yield (10,foo,"take second letters")
 
 def trans_take_item_n(puzzle):
-    if not isinstance(puzzle, list):
+    if not isinstance(puzzle, tuple):
         return
     for n in itertools.count():
         collected = []
         for item in puzzle:
-            if not isinstance(item, list) or len(item) < 1:
+            if not isinstance(item, tuple) or len(item) < 1:
                 return
             collected.append(item[n])
-        yield (-number_logprob(n), collected, "take item %d" % n)
+        yield (-number_logprob(n), tuple(collected), "take item %d" % n)
 
 @solver.register_transform
 def trans_sort(puzzle):
-    if isinstance(puzzle, list):
+    if isinstance(puzzle, tuple):
         yield (2, sorted(puzzle))
     return
 
 @solver.register_transform
 def trans_sort_by_length(puzzle):
-    if not isinstance(puzzle, list):
+    if not isinstance(puzzle, tuple):
         return
-    yield (4, [b for (a,b) in sorted([(len(s),s) for s in puzzle])],
+    yield (4, tuple(b for (a,b) in sorted([(len(s),s) for s in puzzle])),
               "sort by length")
 
 @solver.register_transform
 def trans_diagonalize(puzzle):
-    if not isinstance(puzzle, list):
+    if not isinstance(puzzle, tuple):
         return
     foo = ""
     for i in range(len(puzzle)):
@@ -67,7 +67,7 @@ def trans_diagonalize(puzzle):
 
 @solver.register_transform
 def trans_reverse(puzzle):
-    if not isinstance(puzzle, list):
+    if not isinstance(puzzle, tuple):
         return
     yield (3, reversed(puzzle), "reverse")
 
@@ -92,7 +92,7 @@ def trans_optimal_caesar(puzzle):
             best_score = score
             best_n = n
     shift_a = caesar_shift('A', best_n)
-    yield (2+(log(26)/log(2)/length), [shift_a, caesar_shift(puzzle, best_n)],
+    yield (2+(log(26)/log(2)/length), (shift_a, caesar_shift(puzzle, best_n)),
            "Caesar shift A->%s" % shift_a)
 
 def demo():

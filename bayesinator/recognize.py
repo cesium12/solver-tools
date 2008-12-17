@@ -30,10 +30,10 @@ def recursive_likelihood(puzzle):
             return number_logprob(int(puzzle))
         else:
             return english_model.text_logprob(puzzle)
-    elif isinstance(puzzle, list):
+    elif isinstance(puzzle, tuple):
         return sum(recursive_likelihood(part) for part in puzzle)
     else:
-        raise ValueError("Puzzles must be made of lists and strings; got %r"\
+        raise ValueError("Puzzles must be made of tuples and strings; got %r"\
                          % puzzle)
 
 def normalize(text):
@@ -50,15 +50,15 @@ def entropy(puzzle):
 
 def test():
     print entropy('THIS IS A TEST')
-    print entropy(['THIS', 'IS', 'A', 'TEST'])
-    print entropy(['16', '2#', '26', '26', '12', '5'])
-    print entropy(['16', '21', '27', '26', '12', '5'])
+    print entropy(('THIS', 'IS', 'A', 'TEST'))
+    print entropy(('16', '2#', '26', '26', '12', '5'))
+    print entropy(('16', '21', '27', '26', '12', '5'))
     print entropy('SNARGLE FROTZ')
     print entropy('BENOISY')
     print entropy('BE NOISY')
     print entropy('THIS IS A T?ST')
     print entropy('THIS ?S A ??ST')
-    print entropy(['THIS', 'IS', 'A', 'TEST'])
+    print entropy(('THIS', 'IS', 'A', 'TEST'))
 
 if __name__ == '__main__': test()
 
