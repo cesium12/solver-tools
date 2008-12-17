@@ -19,13 +19,15 @@ def character_sample(char):
 
 def generate_samples(text, n):
     for i in xrange(n):
-        yield ''.join(character_sample(c) for c in text)
+        sample = ''.join(character_sample(c) for c in text)
+        print sample
+        yield sample
 
 def recursive_likelihood(puzzle):
     if isinstance(puzzle, basestring):
         if '?' in puzzle or '#' in puzzle:
             samples = generate_samples(puzzle, 100)
-            return sum(recursive_likelihood(s) for s in samples)/100
+            return max(recursive_likelihood(s) for s in samples)
         elif is_numeric(puzzle):
             return number_logprob(int(puzzle))
         else:
@@ -51,9 +53,13 @@ def entropy(puzzle):
 def test():
     print entropy('THIS IS A TEST')
     print entropy(['THIS', 'IS', 'A', 'TEST'])
-    print entropy(['16', '21', '26', '26', '12', '5'])
+    print entropy(['16', '2#', '26', '26', '12', '5'])
     print entropy(['16', '21', '27', '26', '12', '5'])
     print entropy('SNARGLE FROTZ')
     print entropy('BENOISY')
     print entropy('BE NOISY')
+    print entropy('THIS IS A T?ST')
+    print entropy('THIS ?S A ??ST')
+    print entropy(['THIS', 'IS', 'A', 'TEST'])
 test()
+

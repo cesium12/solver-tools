@@ -25,7 +25,7 @@ def trans_map_trans(puzzle):
             x = [q[0] for q in x]
             ps = [a for (a,b) in x]
             ys = [b for (a,b) in x]
-            next_steps.append((reduce(lambda x, y: x+y, ps), ys))
+            next_steps.append(sum(ps), ys))
     return next_steps
             
 
