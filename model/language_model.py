@@ -1,6 +1,6 @@
 from probability import *
 from collections import defaultdict
-from model.numbers import natnumber_logprob
+from model.numbers import number_logprob
 import sys, os, string, math, os.path, gzip
 import cPickle as pickle
 
@@ -11,6 +11,13 @@ from sagesutil import export, data_file
 from answer_reader import answer_reader
 
 valid_chars = string.lowercase + string.digits + ' '
+
+def isnumeric(word):
+    try:
+        int(word)
+        return True
+    except ValueError:
+        return False
 
 def scan_ngrams(text, n=2):
     for i in xrange(len(text)-n+1):
@@ -86,7 +93,7 @@ class LanguageModel(object):
                 if n == 1:
                     word = ngram[0]
                     if isnumeric(word):
-                        lp = -4 + natnumber_logprob(int(word))
+                        lp = -4 + number_logprob(int(word))
                     elif word not in self.wordlist:
                         lp = ngram_logprob + self.letters_logprob(ngram[0])
                 logprob += lp
