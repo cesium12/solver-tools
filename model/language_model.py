@@ -1,5 +1,6 @@
 from probability import *
 from collections import defaultdict
+from model.numbers import natnumber_logprob
 import sys, os, string, math, os.path, gzip
 import cPickle as pickle
 
@@ -83,7 +84,10 @@ class LanguageModel(object):
             for ngram in scan_ngrams(words, n):
                 lp = probdist.logprob(ngram)
                 if n == 1:
-                    if ngram[0] not in self.wordlist:
+                    word = ngram[0]
+                    if isnumeric(word):
+                        lp = -4 + natnumber_logprob(int(word))
+                    elif word not in self.wordlist:
                         lp = ngram_logprob + self.letters_logprob(ngram[0])
                 logprob += lp
         return logprob
