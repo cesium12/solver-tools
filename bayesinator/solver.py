@@ -1,7 +1,7 @@
 import itertools
 from model.numbers import number_logprob
 from model.language_model import english_model
-from recognize import entropy
+from recognize import puzzle_logprob
 known_transforms = []
 
 def register_transform(f):
@@ -33,7 +33,7 @@ def trans_map_trans(puzzle):
 import transforms
 
 def a_star(initial_puzzle):
-    initial_estimate = entropy(initial_puzzle)
+    initial_estimate = puzzle_logprob(initial_puzzle)
     queue = [(initial_estimate, 0.0, (initial_puzzle,), ())]
     extended = []
     while queue:
@@ -46,7 +46,7 @@ def a_star(initial_puzzle):
         # TODO: interleave these better
         for transform in known_transforms:
             for nextcost, next, step in transform(puzzle):
-                estimate = entropy(next)
+                estimate = puzzle_logprob(next)
                 heappush(queue, (actual_cost+nextcost+estimate,
                                  actual_cost+nextcost,
                                  path+(next,),

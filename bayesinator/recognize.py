@@ -21,17 +21,17 @@ def generate_samples(text, n):
     for i in xrange(n):
         yield ''.join(character_sample(c) for c in text)
 
-def recursive_likelihood(puzzle):
+def puzzle_logprob(puzzle):
     if isinstance(puzzle, basestring):
         if '?' in puzzle or '#' in puzzle:
             samples = generate_samples(puzzle, 100)
-            return max(recursive_likelihood(s) for s in samples)
+            return max(puzzle_logprob(s) for s in samples)
         elif is_numeric(puzzle):
             return number_logprob(int(puzzle))
         else:
             return english_model.text_logprob(puzzle)
     elif isinstance(puzzle, tuple):
-        return sum(recursive_likelihood(part) for part in puzzle)
+        return sum(puzzle_logprob(part) for part in puzzle)
     else:
         raise ValueError("Puzzles must be made of tuples and strings; got %r"\
                          % puzzle)
@@ -42,23 +42,22 @@ def normalize(text):
 
 def entropy(puzzle):
     """
-    Output the negative log likelihood that this puzzle is, or is close to, the
-    'un-puzzle' (a data structure that does not need to be deciphered).
+    Like puzzle_logprob, but measured per character. Not currently used.
     """
     n = characters(puzzle)
-    return -recursive_likelihood(puzzle)/n
+    return -puzzle_logprob(puzzle)/n
 
 def test():
-    print entropy('THIS IS A TEST')
-    print entropy(('THIS', 'IS', 'A', 'TEST'))
-    print entropy(('16', '2#', '26', '26', '12', '5'))
-    print entropy(('16', '21', '27', '26', '12', '5'))
-    print entropy('SNARGLE FROTZ')
-    print entropy('BENOISY')
-    print entropy('BE NOISY')
-    print entropy('THIS IS A T?ST')
-    print entropy('THIS ?S A ??ST')
-    print entropy(('THIS', 'IS', 'A', 'TEST'))
+    print puzzle_logprob('THIS IS A TEST')
+    print puzzle_logprob(('THIS', 'IS', 'A', 'TEST'))
+    print puzzle_logprob(('16', '2#', '26', '26', '12', '5'))
+    print puzzle_logprob(('16', '21', '27', '26', '12', '5'))
+    print puzzle_logprob('SNARGLE FROTZ')
+    print puzzle_logprob('QZLUX KVJTSEB')
+    print puzzle_logprob('BENOISY')
+    print puzzle_logprob('BE NOISY')
+    print puzzle_logprob('THIS IS A T?ST')
+    print puzzle_logprob('THIS ?S A ??ST')
 
 if __name__ == '__main__': test()
 
