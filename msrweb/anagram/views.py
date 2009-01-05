@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from anagram import AnagramDict, AnagramWord
 from django import forms
+import re
 
 dictfile = '/usr/share/dict/words'
 min_letters = 2
@@ -22,6 +23,7 @@ def anag_index(request):
         form = AnagramForm(request.GET)
         if form.is_valid():
             word = form.cleaned_data['word']
+            word = re.sub('\s','',word,0)
             mode = form.cleaned_data['mode']
             if mode =='1':
                 return HttpResponseRedirect('/anagram/%s/phrases'%word)
