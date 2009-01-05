@@ -153,7 +153,7 @@ class AnagramDict:
     def find_words(self, word):
         if not hasattr(word,'matches'):
             word = AnagramWord(word)
-        for w in wordlist:
+        for w in self.wordlist:
             if word.matches(w):
                 yield w
 
