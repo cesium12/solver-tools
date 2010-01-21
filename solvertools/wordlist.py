@@ -1,9 +1,16 @@
 from __future__ import with_statement
 from util import get_dictfile
-import os, sys, re, codecs
+import os, sys, re, codecs, unicodedata
 
 def identity(s):
     return s
+
+def asciify(s):
+    """
+    A wonderfully simple function to remove accents from characters, and
+    discard other non-ASCII characters. Outputs a plain ASCII string.
+    """
+    return unicodedata.normalize('NFKD', input).encode('ASCII', 'ignore')
 
 def ensure_unicode(s):
     if isinstance(s, str):
@@ -13,11 +20,14 @@ def ensure_unicode(s):
 def case_insensitive(s):
     return ensure_unicode(s).upper()
 
+def case_insensitive_ascii(s):
+    return asciify(ensure_unicode(s).upper())
+
 def comma_separated(s):
     return s.split(',', 1)
 
 def alphanumerics_only(s):
-    return re.sub("[^A-Z0-9]", "", case_insensitive(s))
+    return re.sub("[^A-Z0-9]", "", case_insensitive_ascii(s))
 
 class Wordlist(object):
     """
@@ -40,9 +50,9 @@ class Wordlist(object):
         The default convert function ensures that all strings are Unicode and
         collapses case.
 
-        If you want case to matter, use `ensure_unicode` as the convert
-        function. Using `identity` is just asking for trouble the moment you
-        encounter a stray umlaut.
+        If you want case to matter, use `ensure_unicode` or `asciify`
+        as the convert function. Using `identity` is just asking for trouble
+        the moment you encounter a stray umlaut.
         """
         self.filename = filename
         self.words = None
