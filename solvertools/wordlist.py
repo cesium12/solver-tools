@@ -8,6 +8,7 @@ def identity(s):
 def ensure_unicode(s):
     if isinstance(s, str):
         return s.decode('utf-8')
+    else: return s
 
 def case_insensitive(s):
     return ensure_unicode(s).upper()
@@ -66,7 +67,7 @@ class Wordlist(object):
     # load the data when necessary
     def _load(self):
         self.words = {}
-        with codecs.open(get_dictfile(self.filename), 'utf-8') as wordlist:
+        with codecs.open(get_dictfile(self.filename), encoding='utf-8') as wordlist:
             entries = [self.reader(line.strip()) for line in wordlist]
             for entry in entries:
                 if isinstance(entry, tuple):

@@ -1,7 +1,9 @@
-from solvertools.util import *
+# -*- coding: utf-8 -*-
+from solvertools.wordlist import *
 
 def test_load():
-    enable = Wordlist('enable.txt')
-    enable._load()
-    assert 'THE' in enable.words
+    assert 'THE' in ENABLE
+    assert 'the' in ENABLE
+    assert 'zyzzlvaria' not in ENABLE
+    assert u'zürich' in NPL
 

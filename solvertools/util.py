@@ -9,9 +9,9 @@ package_dir = os.path.dirname(module_path())
 
 def get_datafile(path):
     "Get a file from the data directory."
-    return os.path.sep.join([module_path(), 'data', path])
+    return os.path.sep.join([package_dir, 'data', path])
 
 def get_dictfile(path):
     "Get a file from the data/dict directory."
-    return os.path.sep.join([module_path(), 'data', 'dict', path])
+    return os.path.sep.join([package_dir, 'data', 'dict', path])
 
