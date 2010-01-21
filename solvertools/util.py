@@ -55,3 +55,4 @@ class Wordlist(object):
     def __str__(self):
         return repr(self)
 
+ENABLE = Wordlist('enable.txt')
