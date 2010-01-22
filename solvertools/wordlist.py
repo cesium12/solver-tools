@@ -10,7 +10,7 @@ def asciify(s):
     A wonderfully simple function to remove accents from characters, and
     discard other non-ASCII characters. Outputs a plain ASCII string.
     """
-    return unicodedata.normalize('NFKD', input).encode('ASCII', 'ignore')
+    return unicodedata.normalize('NFKD', s).encode('ASCII', 'ignore')
 
 def ensure_unicode(s):
     if isinstance(s, str):
@@ -23,10 +23,11 @@ def case_insensitive(s):
 def case_insensitive_ascii(s):
     return asciify(ensure_unicode(s).upper())
 
-def comma_separated(s):
-    return s.split(',', 1)
+def with_frequency(s):
+    word, freq = s.split(',', 1)
+    return (word, int(freq))
 
-def alphanumerics_only(s):
+def alphanumeric_only(s):
     return re.sub("[^A-Z0-9]", "", case_insensitive_ascii(s))
 
 class Wordlist(object):
@@ -78,9 +79,9 @@ class Wordlist(object):
     def _load(self):
         self.words = {}
         with codecs.open(get_dictfile(self.filename), encoding='utf-8') as wordlist:
-            entries = [self.reader(line.strip()) for line in wordlist]
+            entries = [self.reader(line.strip()) for line in wordlist if line.strip()]
             for entry in entries:
-                if isinstance(entry, tuple):
+                if isinstance(entry, tuple) or isinstance(entry, list):
                     # this word has a frequency attached
                     word, val = entry
                     self.words[self.convert(word)] = val
@@ -98,7 +99,7 @@ class Wordlist(object):
         if self.words is None: self._load()
         return iter(self.sorted)
 
-    def __iteritems__(self):
+    def iteritems(self):
         "Yield the wordlist entries and their frequencies in sorted order."
         if self.words is None: self._load()
         for word in self.sorted:
@@ -129,7 +130,8 @@ class Wordlist(object):
         return self.sorted
 
     def __repr__(self):
-        return "Wordlist(%r, %s)" % (self.filename, self.convert.__name__)
+        return "Wordlist(%r, %s, %s)" % (self.filename, self.convert.__name__,
+                                         self.reader.__name__)
     def __str__(self):
         return repr(self)
     def __hash__(self):
@@ -142,4 +144,4 @@ class Wordlist(object):
 # Define two useful wordlists
 ENABLE = Wordlist('enable.txt', case_insensitive)
 NPL = Wordlist('npl_allwords2.txt', case_insensitive)
-
+Google1M = Wordlist('google1M.txt', case_insensitive, with_frequency)
