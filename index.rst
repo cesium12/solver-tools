@@ -11,8 +11,8 @@ Contents:
    :maxdepth: 2
 
    docs/README
+   INSTALL
    data/answers/README
-   metasolve/index
 
 Indices and tables
 ==================
