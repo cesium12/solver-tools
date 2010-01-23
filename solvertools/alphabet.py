@@ -39,7 +39,7 @@ class Alphabet(OrderedSet):
         if (index >= 1) and (index <= len(self)):
             return self[index-1]
         else:
-            return '?'
+            return u'?'
     def shift(self, letter, offset):
         "The basic operation of a Caesar shift. The math here is 0-based."
         if letter not in self: return letter
