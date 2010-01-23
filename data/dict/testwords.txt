@@ -1,0 +1,4 @@
+duck,3
+the,4
+zürich,1
+
