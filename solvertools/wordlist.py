@@ -1,6 +1,7 @@
 from __future__ import with_statement
-from util import get_dictfile
-import os, sys, re, codecs, unicodedata
+from util import get_dictfile, get_picklefile, save_pickle, load_pickle, file_exists
+import os, sys, re, codecs, unicodedata, logging
+logger = logging.getLogger('wordlist')
 
 def identity(s):
     return s
@@ -29,6 +30,9 @@ def with_frequency(s):
 
 def alphanumeric_only(s):
     return re.sub("[^A-Z0-9]", "", case_insensitive_ascii(s))
+
+def letters_only(s):
+    return re.sub("[^A-Z]", "", case_insensitive_ascii(s))
 
 class Wordlist(object):
     """
@@ -76,9 +80,25 @@ class Wordlist(object):
         return Wordlist(self.filename, convert, reader)
 
     # load the data when necessary
-    def _load(self):
+    def load(self):
+        if file_exists(get_picklefile(self.pickle_name())):
+            return self._load_pickle()
+        elif file_exists(get_dictfile(self.filename+'.txt')):
+            return self._load_txt()
+        else:
+            raise IOError("Cannot find a dictionary named '%s'." %
+            self.filename)
+
+    def _load_pickle(self):
+        picklename = self.pickle_name()
+        logger.info("Loading %s" % picklename)
+        self.words, self.sorted = load_pickle(picklename)
+
+    def _load_txt(self):
         self.words = {}
-        with codecs.open(get_dictfile(self.filename), encoding='utf-8') as wordlist:
+        filename = get_dictfile(self.filename+'.txt')
+        logger.info("Loading %s" % filename)
+        with codecs.open(filename, encoding='utf-8') as wordlist:
             entries = [self.reader(line.strip()) for line in wordlist if line.strip()]
             for entry in entries:
                 if isinstance(entry, tuple) or isinstance(entry, list):
@@ -92,16 +112,19 @@ class Wordlist(object):
             # then alphabetically
             self.sorted = sorted(self.words.keys(),
               key=lambda word: (-self.words[word], word))
+        picklename = self.pickle_name()
+        logger.info("Saving %s" % picklename)
+        save_pickle((self.words, self.sorted), picklename)
     
     # Implement the read-only dictionary methods
     def __iter__(self):
         "Yield the wordlist entries in sorted order."
-        if self.words is None: self._load()
+        if self.words is None: self.load()
         return iter(self.sorted)
 
     def iteritems(self):
         "Yield the wordlist entries and their frequencies in sorted order."
-        if self.words is None: self._load()
+        if self.words is None: self.load()
         for word in self.sorted:
             yield (word, self.words[word])
 
@@ -110,7 +133,7 @@ class Wordlist(object):
         Check if a word is in the list. This applies the same `convert`
         function that was used to build the list to the word.
         """
-        if self.words is None: self._load()
+        if self.words is None: self.load()
         return self.convert(word) in self.words
     
     def __getitem__(self, word):
@@ -118,15 +141,15 @@ class Wordlist(object):
         Get a word's frequency in the list. This applies the same `convert`
         function that was used to build the list to the word.
         """
-        if self.words is None: self._load()
+        if self.words is None: self.load()
         return self.words[self.convert(word)]
     
     def get(self, word, default=None):
-        if self.words is None: self._load()
+        if self.words is None: self.load()
         return self.words.get(self.convert(word))
 
     def keys(self):
-        if self.words is None: self._load()
+        if self.words is None: self.load()
         return self.sorted
 
     def __repr__(self):
@@ -134,6 +157,9 @@ class Wordlist(object):
                                          self.reader.__name__)
     def __str__(self):
         return repr(self)
+    def pickle_name(self):
+        return "%s.%s.%s.pickle" % (self.filename, self.convert.__name__,
+        self.reader.__name__)
     def __hash__(self):
         return hash((self.convert, self.filename))
     def __cmp__(self, other):
@@ -142,6 +168,8 @@ class Wordlist(object):
                    (other.filename, other.convert))
 
 # Define two useful wordlists
-ENABLE = Wordlist('enable.txt', case_insensitive)
-NPL = Wordlist('npl_allwords2.txt', case_insensitive)
-Google1M = Wordlist('google1M.txt', case_insensitive, with_frequency)
+ENABLE = Wordlist('enable', case_insensitive)
+NPL = Wordlist('npl_allwords2', case_insensitive)
+Google1M = Wordlist('google1M', letters_only, with_frequency)
+Google200K = Wordlist('google200K', letters_only, with_frequency)
+COMBINED = Wordlist('sages_combined', alphanumeric_only, with_frequency)

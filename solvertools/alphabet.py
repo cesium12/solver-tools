@@ -2,8 +2,11 @@
 """
 You never know what alphabet you'll end up trying to solve a cryptogram in.
 
-If the alphabet has a concept of uppercase and lowercase versions of a letter,
-use only the uppercase ones. Feel free to add more alphabets.
+If, like most alphabets implemented here, the alphabet has a concept of
+uppercase and lowercase versions of a letter, use a CaseAlphabet, and give only
+the uppercase ones to the constructor.
+
+Feel free to add more alphabets.
 """
 
 from solvertools.lib.ordered_set import OrderedSet
@@ -15,10 +18,12 @@ class Alphabet(OrderedSet):
         OrderedSet.__init__(self, [self.normalize(c) for c in letters])
     def normalize(self, char):
         """
-        When comparing letters in the alphabet, we want to ensure that
-        they are Unicode characters, and capitalized if possible.
+        Don't do anything to the inputs by default.
+        
+        This enables the default Alphabet class to be used for any hashable
+        object, not just strings, if a reason to do so arises.
         """
-        return unicode(char).upper()
+        return char
     def __contains__(self, char):
         return self.indices.__contains__(self.normalize(char))
     def letter_index(self, char):
@@ -44,55 +49,105 @@ class Alphabet(OrderedSet):
         "The basic operation of a Caesar shift. The math here is 0-based."
         if letter not in self: return letter
         return self[(self.index(letter) + offset) % len(self)]
+    def text_to_indices(self, text):
+        return [self.letter_index(char) for char in text]
+    def indices_to_text(self, indices):
+        return [self.letter_at(i) for i in indices]
+    def sort(self, texts):
+        """
+        Sort a list according to the ordering of a particular alphabet.
+        """
+        return sorted(texts, key=self.text_to_indices)
+    def __repr__(self):
+        return unicode(self).encode('utf-8')
+    def __unicode__(self):
+        return u"%s(%r)" % (self.__class__.__name__, self.items)
+
+class TextAlphabet(Alphabet):
+    def __init__(self, letters):
+        Alphabet.__init__(self, letters)
+        self.max_width = max(len(letter) for letter in self.items)
+    def normalize(self, char):
+        """
+        Just make sure everything is Unicode.
+        """
+        return unicode(char)
+    def __unicode__(self):
+        if self.max_width == 1:
+            return u'%s(u"%s")' % (self.__class__.__name__, u''.join(self.items))
+        else:
+            return Alphabet.__unicode__(self)
+
+class CaseAlphabet(TextAlphabet):
+    """
+    Use this class for alphabets that have an upper/lowercase distinction that
+    we want to ignore. This is the case for most European-derived alphabets.
+    
+    This requires that string.upper() does the right thing.
+    """
+    def normalize(self, char):
+        """
+        When comparing letters in the alphabet, we want to ensure that
+        they are Unicode characters, and capitalized if possible.
+        """
+        return unicode(char).upper()
 
 ALPHABETS = {
   ### Latin-derived alphabets ###
 
   # our favorite, 26-letter alphabet
-  'english': Alphabet(string.uppercase),
+  'english': CaseAlphabet(string.uppercase),
   
   # 25-letter variants of the alphabet
-  'english_mit': Alphabet(u"ABCDEFGHIJKLMNOPQRSTVWXYZ"),
-  'english_playfair': Alphabet(u"ABCDEFGHIKLMNOPQRSTUVWXYZ"),
+  'english_mit': CaseAlphabet(u"ABCDEFGHIJKLMNOPQRSTVWXYZ"),
+  'english_playfair': CaseAlphabet(u"ABCDEFGHIKLMNOPQRSTUVWXYZ"),
   
   # Modern Spanish alphabet (27 letters, standardized in 1994)
-  'spanish': Alphabet(u"ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"),
+  'spanish': CaseAlphabet(u"ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"),
 
   # Obsolete Spanish alphabet (pre-1994)
   # (29 letters including digraphs; RR is not considered a letter, however)
-  'spanish_old': Alphabet(['A', 'B', 'C', 'CH', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'LL', 'M', 'N', u'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']),
+  'spanish_old': CaseAlphabet(['A', 'B', 'C', 'CH', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'LL', 'M', 'N', u'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']),
 
   # The 12-letter Hawaiian alphabet
   # (disregarding the okina, because everybody does)
-  'hawaiian': Alphabet(u"AEIOUHKLMNPW"),
+  'hawaiian': CaseAlphabet(u"AEIOUHKLMNPW"),
   
   # The 29-letter Swedish alphabet
-  'swedish': Alphabet(unicode(string.uppercase)+u'ÅÄÖ'),
+  'swedish': CaseAlphabet(unicode(string.uppercase)+u'ÅÄÖ'),
 
   # The 29-letter Norwegian alphabet (which is also the Danish alphabet)
-  'norwegian': Alphabet(unicode(string.uppercase)+u'ÆØÅ'),
+  'norwegian': CaseAlphabet(unicode(string.uppercase)+u'ÆØÅ'),
 
-  # The 29-letter Turkish alphabet
-  # (WARNING: str.upper() and str.lower() do not work for Turkish! They'll put
-  # the dots on the wrong i's.)
-  'turkish': Alphabet(u"ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ"),
+  # Turkish is hard to do right, skipping it for now.
 
   ### Non-Latin alphabets ###
 
   # The 24-letter Greek alphabet, written in two ways:
   # With Greek Unicode characters that often look deceptively like Latin ones
-  'greek': Alphabet(u"ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ"),
+  'greek': CaseAlphabet(u"ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ"),
 
   # Or, as Latinized in the Microsoft Symbol font
-  'greek_ascii': Alphabet(u"ABGDEZHQIKLMNXOPRSTUFCYW"),
+  'greek_ascii': CaseAlphabet(u"ABGDEZHQIKLMNXOPRSTUFCYW"),
 
   ### Cyrillic alphabets ###
   # The 33-letter Russian alphabet
-  'russian': Alphabet(u"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"),
+  'russian': CaseAlphabet(u"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"),
   
   # The 33-letter Ukrainian alphabet
-  'ukrainian': Alphabet(u"АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ"),
+  'ukrainian': CaseAlphabet(u"АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ"),
+
+  ### Computational 'alphabets' ###
+  'digits': TextAlphabet(string.digits),
+  'hex': CaseAlphabet(string.digits + "ABCDEF"),
+  'base64': TextAlphabet(string.uppercase + string.lowercase + string.digits + "+/")
 }
 
 ENGLISH = ALPHABETS['english']
+
+def demo():
+    for key, value in ALPHABETS.items():
+        print "%s: %s" % (key, value)
+
+if __name__ == '__main__': demo()
 # vim:tw=0:
