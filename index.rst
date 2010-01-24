@@ -10,12 +10,12 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   coding
    INSTALL
+   coding
    docs/README
    data/README
-   data/dict/wordlists
    data/answers/README
+   data/dict/wordlists
 
 Indices and tables
 ==================
