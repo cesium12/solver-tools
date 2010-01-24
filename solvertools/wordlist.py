@@ -1,9 +1,16 @@
+"""
+The `solvertools.wordlist` module contains a class for working with
+lazily-loaded wordlists, along with various string wrangling functions that
+ensure you don't have to worry about things like capitalization and encoding.
+"""
+
 from __future__ import with_statement
 from util import get_dictfile, get_picklefile, save_pickle, load_pickle, file_exists
 import os, sys, re, codecs, unicodedata, logging
-logger = logging.getLogger('wordlist')
+logger = logging.getLogger(__name__)
 
 def identity(s):
+    "Returns what you give it."
     return s
 
 def asciify(s):
@@ -14,50 +21,67 @@ def asciify(s):
     return unicodedata.normalize('NFKD', s).encode('ASCII', 'ignore')
 
 def ensure_unicode(s):
+    "Given a string of some kind, return the appropriate Unicode string."
     if isinstance(s, str):
         return s.decode('utf-8')
     else: return s
 
 def case_insensitive(s):
+    "Collapse case by converting everything to uppercase."
     return ensure_unicode(s).upper()
 
 def case_insensitive_ascii(s):
+    "Convert everything to uppercase and discard non-ASCII stuff."
     return asciify(ensure_unicode(s).upper())
 
 def with_frequency(s):
+    """
+    Use this as a reader when the wordlist has comma-separated entries of the
+    form `WORD,freq`.
+    """
     word, freq = s.split(',', 1)
     return (word, int(freq))
 
 def alphanumeric_only(s):
+    """
+    Convert everything to uppercase and discard everything but letters and
+    digits.
+    """
     return re.sub("[^A-Z0-9]", "", case_insensitive_ascii(s))
 
 def letters_only(s):
+    "Convert everything to uppercase and discard everything but letters."
     return re.sub("[^A-Z]", "", case_insensitive_ascii(s))
 
 class Wordlist(object):
     """
     A lazily-loaded wordlist.
 
-    Words are represented as a dictionary, mapping each word in the list to
-    a number that is intended to represent the word's frequency. For wordlists
-    that do not include frequency information, the frequency will be 1.
+    Words are represented as a read-only dictionary, mapping each word in the
+    list to a number that is intended to represent the word's frequency. For
+    wordlists that do not include frequency information, the frequency will be
+    1.
 
-    Wordlists are intended to be read-only. You index them as if they were
-    dictionaries.
+    You can use the syntax `word in wordlist` to test whether the wordlist
+    contains a given word; `wordlist[word]` will be its frequency. Standard
+    methods including `keys()`, `get()`, and `iteritems()` work as well.
+
+    To load a wordlist, call this constructor with the filename (no path) of
+    the wordlist to load. You should also provide a `convert` function,
+    representing how to convert an arbitrary string to the format the wordlist
+    uses. It will be applied to all words in the wordlist, in addition to
+    strings you query it with later.  The default convert function ensures that
+    all strings are Unicode and collapses case.
+
+    If you want case to matter, use `ensure_unicode` or `asciify`
+    as the convert function. Using `identity` is just asking for trouble
+    the moment you encounter a stray umlaut.
+
+    Use the `reader` function to specify how to read a word from each line.
+    In most cases, this will be `identity` or `with_frequency`.
     """
     def __init__(self, filename, convert=case_insensitive, reader=identity):
         """
-        Load a wordlist given a filename.
-
-        You should provide a `convert` function, representing how to convert
-        an arbitrary string to the format you want. It will be applied to all
-        words in the wordlist, in addition to strings you query it with later.
-        The default convert function ensures that all strings are Unicode and
-        collapses case.
-
-        If you want case to matter, use `ensure_unicode` or `asciify`
-        as the convert function. Using `identity` is just asking for trouble
-        the moment you encounter a stray umlaut.
         """
         self.filename = filename
         self.words = None
@@ -74,6 +98,7 @@ class Wordlist(object):
         For example, if you want a version of the NPL wordlist that omits
         punctuation and spaces, you can ask for
         NPL.variant(alphanumerics_only).
+
         """
         if convert is None: convert = self.convert
         if reader is None: reader = self.reader
@@ -81,6 +106,7 @@ class Wordlist(object):
 
     # load the data when necessary
     def load(self):
+        "Force this wordlist to be loaded."
         if file_exists(get_picklefile(self.pickle_name())):
             return self._load_pickle()
         elif file_exists(get_dictfile(self.filename+'.txt')):
@@ -116,6 +142,13 @@ class Wordlist(object):
         logger.info("Saving %s" % picklename)
         save_pickle((self.words, self.sorted), picklename)
     
+    def sorted(self):
+        """
+        Returns the words in the list in sorted order. The order is descending
+        order by frequency, and lexicographic order after that.
+        """
+        return self.sorted
+
     # Implement the read-only dictionary methods
     def __iter__(self):
         "Yield the wordlist entries in sorted order."
@@ -146,7 +179,7 @@ class Wordlist(object):
     
     def get(self, word, default=None):
         if self.words is None: self.load()
-        return self.words.get(self.convert(word))
+        return self.words.get(self.convert(word), default)
 
     def keys(self):
         if self.words is None: self.load()
@@ -158,6 +191,11 @@ class Wordlist(object):
     def __str__(self):
         return repr(self)
     def pickle_name(self):
+        """
+        The filename that this wordlist will have when pickled. This is
+        determined from its base filename and the names of the functions that
+        transformed it.
+        """
         return "%s.%s.%s.pickle" % (self.filename, self.convert.__name__,
         self.reader.__name__)
     def __hash__(self):

@@ -1,3 +1,5 @@
+.. _answers:
+
 :mod:`data.answers` -- The MH 2004-2008 answer corpus
 =====================================================
 

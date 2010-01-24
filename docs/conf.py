@@ -62,6 +62,7 @@ today_fmt = '%B %d, %Y'
 # for source files.
 #exclude_dirs = []
 
+default_role = 'data'
 # If true, '()' will be appended to :func: etc. cross-reference text.
 #add_function_parentheses = True
 

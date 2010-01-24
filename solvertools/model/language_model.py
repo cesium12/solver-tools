@@ -5,7 +5,7 @@ from solvertools.model.answer_reader import answer_reader
 from solvertools.util import load_pickle, save_pickle, get_picklefile, file_exists
 from solvertools import wordlist
 import random, string, logging
-logger = logging.getLogger('model.language_model')
+logger = logging.getLogger(__name__)
 
 def scan_ngrams(seq, n=2):
     for i in xrange(len(seq)-n+1):

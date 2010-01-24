@@ -10,8 +10,11 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   docs/README
+   coding
    INSTALL
+   docs/README
+   data/README
+   data/dict/wordlists
    data/answers/README
 
 Indices and tables
