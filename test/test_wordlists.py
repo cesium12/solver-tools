@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from solvertools.wordlist import *
 
-TestWords = Wordlist('testwords.txt', case_insensitive, with_frequency)
+TestWords = Wordlist('testwords', case_insensitive, with_frequency,
+pickle=False)
 
 def test_wordlists():
     assert 'THE' in TestWords

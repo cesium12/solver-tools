@@ -66,8 +66,12 @@ class Wordlist(object):
     contains a given word; `wordlist[word]` will be its frequency. Standard
     methods including `keys()`, `get()`, and `iteritems()` work as well.
 
-    To load a wordlist, call this constructor with the filename (no path) of
-    the wordlist to load. You should also provide a `convert` function,
+    To load a wordlist, call this constructor with the name of
+    the wordlist to load, as in `Wordlist("enable")`. Don't give an extension
+    or a path, because those depend on whether it's loading from a `.txt` or
+    `.pickle` file anyway.
+    
+    You should also provide a `convert` function,
     representing how to convert an arbitrary string to the format the wordlist
     uses. It will be applied to all words in the wordlist, in addition to
     strings you query it with later.  The default convert function ensures that
@@ -79,8 +83,12 @@ class Wordlist(object):
 
     Use the `reader` function to specify how to read a word from each line.
     In most cases, this will be `identity` or `with_frequency`.
+
+    Finally, you can set `pickle=False` if you don't want the wordlist to be
+    saved as a pickle.
     """
-    def __init__(self, filename, convert=case_insensitive, reader=identity):
+    def __init__(self, filename, convert=case_insensitive, reader=identity,
+                 pickle=True):
         """
         """
         self.filename = filename
@@ -88,6 +96,7 @@ class Wordlist(object):
         self.sorted = None
         self.convert = convert
         self.reader = reader
+        self.pickle = pickle
 
     def variant(self, convert=None, reader=None):
         """
@@ -140,7 +149,7 @@ class Wordlist(object):
               key=lambda word: (-self.words[word], word))
         picklename = self.pickle_name()
         logger.info("Saving %s" % picklename)
-        save_pickle((self.words, self.sorted), picklename)
+        if self.pickle: save_pickle((self.words, self.sorted), picklename)
     
     def sorted(self):
         """
