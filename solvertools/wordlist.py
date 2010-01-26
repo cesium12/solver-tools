@@ -85,12 +85,10 @@ class Wordlist(object):
     In most cases, this will be `identity` or `with_frequency`.
 
     Finally, you can set `pickle=False` if you don't want the wordlist to be
-    saved as a pickle.
+    loaded from or saved to a pickle file.
     """
     def __init__(self, filename, convert=case_insensitive, reader=identity,
                  pickle=True):
-        """
-        """
         self.filename = filename
         self.words = None
         self.sorted = None
@@ -111,12 +109,12 @@ class Wordlist(object):
         """
         if convert is None: convert = self.convert
         if reader is None: reader = self.reader
-        return Wordlist(self.filename, convert, reader)
+        return Wordlist(self.filename, convert, reader, pickle=self.pickle)
 
     # load the data when necessary
     def load(self):
         "Force this wordlist to be loaded."
-        if file_exists(get_picklefile(self.pickle_name())):
+        if self.pickle and file_exists(get_picklefile(self.pickle_name())):
             return self._load_pickle()
         elif file_exists(get_dictfile(self.filename+'.txt')):
             return self._load_txt()
@@ -148,8 +146,9 @@ class Wordlist(object):
             self.sorted = sorted(self.words.keys(),
               key=lambda word: (-self.words[word], word))
         picklename = self.pickle_name()
-        logger.info("Saving %s" % picklename)
-        if self.pickle: save_pickle((self.words, self.sorted), picklename)
+        if self.pickle:
+            logger.info("Saving %s" % picklename)
+            save_pickle((self.words, self.sorted), picklename)
     
     def sorted(self):
         """
