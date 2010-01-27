@@ -46,9 +46,32 @@ class Alphabet(OrderedSet):
         else:
             return u'?'
     def shift(self, letter, offset):
-        "The basic operation of a Caesar shift. The math here is 0-based."
+        """
+        The basic operation of a Caesar shift. Shifts the given letter forward
+        in the alphabet by `offset`, or backward if it is negative.
+
+        Use `letter_shift` if you want to instead specify, for example, what
+        the letter A maps to.
+        """
         if letter not in self: return letter
         return self[(self.index(letter) + offset) % len(self)]
+    def letter_difference(self, letter1, letter2):
+        """
+        Returns the distance in the alphabet that `letter2` comes after
+        `letter1`, wrapping around if necessary. Conceptually, it's
+        `letter2 - letter1`.
+        """
+        if letter1 not in self:
+            raise IndexError("%s is not a letter" % letter1)
+        if letter2 not in self:
+            raise IndexError("%s is not a letter" % letter2)
+        return (self.index(letter2) - self.index(letter1)) % len(self)
+    def letter_shift(self, letter, sourceletter, targetletter):
+        """
+        If `sourceletter` shifts to `targetletter`, what does `letter` shift to?
+        """
+        if sourceletter is None: sourceletter = self.letter_at(1)
+        return self.shift(letter, self.letter_difference(sourceletter, targetletter))
     def text_to_indices(self, text):
         return [self.letter_index(char) for char in text]
     def indices_to_text(self, indices):
@@ -85,6 +108,13 @@ class CaseAlphabet(TextAlphabet):
     
     This requires that string.upper() does the right thing.
     """
+    def shift(self, letter, offset):
+        "The basic operation of a Caesar shift. The math here is 0-based."
+        if letter not in self: return letter
+        output = self[(self.index(letter) + offset) % len(self)]
+        if letter == letter.lower():
+            output = output.lower()
+        return output
     def normalize(self, char):
         """
         When comparing letters in the alphabet, we want to ensure that
