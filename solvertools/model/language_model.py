@@ -7,6 +7,9 @@ from solvertools import wordlist
 import random, string, logging
 logger = logging.getLogger(__name__)
 
+# Loaded language models go here. (TODO: more elegant code for this?)
+CACHE = {}
+
 def scan_ngrams(seq, n=2):
     for i in xrange(len(seq)-n+1):
         fragment = seq[i:i+n]
@@ -81,6 +84,9 @@ class WordListModel(LanguageModel):
             logprob += self.word_logprob(word, fallback_logprob)
         return logprob
 
+    def text_goodness(self, text):
+        return self.text_logprob(text) / len(text)
+
 def unigram_sampler(model):
     p = random.random()
     for let in string.uppercase:
@@ -94,7 +100,9 @@ def unigram_replace(char, model):
     else: return unigram_sampler(model)
 
 def getEnglishModel():
-    return WordListModel('english', wordlist.COMBINED)
+    if 'english' not in CACHE:
+        CACHE['english'] = WordListModel('english', wordlist.COMBINED)
+    return CACHE['english']
 
 def demo():
     theModel = getEnglishModel()
@@ -102,12 +110,9 @@ def demo():
     results = []
     for year in range(2004, 2009):
         for answer in answer_reader(year):
-            results.append((theModel.text_logprob(answer)/len(answer),
-            answer, True))
-            fakeanswer = ''.join(unigram_replace(x, theModel) for x in
-            answer)
-            results.append((theModel.text_logprob(fakeanswer) / 
-                            len(fakeanswer), fakeanswer, False))
+            results.append((theModel.text_goodness(answer), answer, True))
+            fakeanswer = ''.join(unigram_replace(x, theModel) for x in answer)
+            results.append((theModel.text_goodness(fakeanswer), fakeanswer, False))
     usefulness = 0.0
     for score, result, good in sorted(results):
         if good: usefulness += score

@@ -50,9 +50,12 @@ class Alphabet(OrderedSet):
         if letter not in self: return letter
         return self[(self.index(letter) + offset) % len(self)]
     def text_to_indices(self, text):
-        return [self.letter_index(char) for char in text]
-    def indices_to_text(self, indices):
+        return [self.letter_index(char) for char in text if char in self]
+    letters_to_indices = text_to_indices
+    def indices_to_letters(self, indices):
         return [self.letter_at(i) for i in indices]
+    def indices_to_text(self, indices):
+        return ''.join([self.letter_at(i) for i in indices])
     def sort(self, texts):
         """
         Sort a list according to the ordering of a particular alphabet.
