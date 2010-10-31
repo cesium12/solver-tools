@@ -54,3 +54,8 @@ def untokenize(text):
     step6 = step5.replace(" ` ", " '")
     return step6.strip()
 
+def tokenize_list(text):
+    return tokenize(text).split()
+
+def untokenize_list(text):
+    return untokenize(' '.join(text))
