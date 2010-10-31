@@ -8,6 +8,12 @@ def caesar_shift(text, offset, alph=alphabet.ENGLISH):
     If the offset is a letter, it will look it up in the alphabet to convert
     it to a shift. (For example, a shift of 'C' means that 'A' goes to 'C',
     which is the same as a shift of 2.)
+        
+        >>> print caesar_shift('CAESAR', 13)
+        PNRFNE
+        >>> print caesar_shift(u'ЦАР', 17, alphabet.ALPHABETS['russian'])
+        ЖРБ
+
     """
     if isinstance(offset, basestring):
         try:
@@ -20,6 +26,7 @@ def caesar_shift(text, offset, alph=alphabet.ENGLISH):
     N = len(alph)
     shifted = [(idx - 1 + offset) % N + 1 for idx in indices]
     return alph.indices_to_text(shifted)
+
 
 def detect_caesar_shift(text, alph=alphabet.ENGLISH):
     """

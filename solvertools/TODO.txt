@@ -2,7 +2,6 @@ Things to be done
 -----------------
 (from David's e-mail in Jan 2010)
 
-- Caesar Shift operations
 - simultaneous sorting and indexing
 - diagonalizing
 - word grid class
@@ -44,4 +43,5 @@ Things that are done or essentially done now
 - statistical detection of normal english vs. weird
 - handles unicode okay (utf-8).
 - deaccenting characters (at the wordlist library level)
+- Caesar Shift operations (solvertools.cipher.caesar)
 

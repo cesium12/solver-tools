@@ -20,6 +20,9 @@ def asciify(s):
     """
     return unicodedata.normalize('NFKD', s).encode('ASCII', 'ignore')
 
+def split_accents(s):
+    return unicodedata.normalize('NFKD', s)
+
 def ensure_unicode(s):
     "Given a string of some kind, return the appropriate Unicode string."
     if isinstance(s, str):
