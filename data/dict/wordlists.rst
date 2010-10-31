@@ -3,7 +3,10 @@
 Wordlists
 =========
 
-The `data/dict/` directory contains the following files:
+You can work with files in the `data/dict` directory using the
+:ref:`wordlist API <wordlist>`.
+
+The directory contains the following files:
 
 `enable.txt`
 ------------
@@ -50,10 +53,5 @@ For efficiency, once these wordlists have been loaded, they are stored as
 pickle files in the `data/pickle/` directory. If you change one of these
 wordlists for some reason, you will need to remove the corresponding pickle
 file so that it gets updated.
-
-The `solvertools.wordlist` API
-------------------------------
-.. automodule:: solvertools.wordlist
-    :members:
 
 *Rob Speer, 2010*
