@@ -13,7 +13,7 @@ def vigenere_encipher(plaintext, key, alph=alphabet.ENGLISH):
     Enciphers text using a Vigenère cipher.
 
         >>> print vigenere_encipher('attack at dawn', 'melon')
-        MXEOPWEERNIR
+        MXEOPW EE RNIR
     """
     cycle = itertools.cycle(key)
     out = []
@@ -29,8 +29,8 @@ def vigenere_decipher(plaintext, key, alph=alphabet.ENGLISH):
     """
     Deciphers text using a Vigenère cipher.
         
-        >>> print vigenere_encipher('MXEOPWEERNIR', 'melon')
-        ATTACKATDAWN
+        >>> print vigenere_decipher('MXEOPW EE RNIR', 'melon')
+        ATTACK AT DAWN
     """
     cycle = itertools.cycle(key)
     out = []
