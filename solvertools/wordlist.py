@@ -13,6 +13,13 @@ def identity(s):
     "Returns what you give it."
     return s
 
+def _reverse_freq(val):
+    "If this value is a number, negate it. Otherwise, leave it alone."
+    if isinstance(val, (int, float)):
+        return -val
+    else:
+        return val
+
 def asciify(s):
     """
     A wonderfully simple function to remove accents from characters, and
@@ -44,6 +51,15 @@ def with_frequency(s):
     """
     word, freq = s.split(',', 1)
     return (word, int(freq))
+
+def with_values(s):
+    """
+    Use this when each word is associated with one or more values -- for
+    example, a phonetic dictionary or a translation dictionary.
+    """
+    word, valstr = s.split(',', 1)
+    values = valstr.split('|')
+    return (word, values)
 
 def alphanumeric_only(s):
     """
@@ -138,7 +154,7 @@ class Wordlist(object):
             entries = [self.reader(line.strip()) for line in wordlist if line.strip()]
             for entry in entries:
                 if isinstance(entry, tuple) or isinstance(entry, list):
-                    # this word has a frequency attached
+                    # this word has a value attached
                     word, val = entry
                     self.words[self.convert(word)] = val
                 else:
@@ -146,8 +162,9 @@ class Wordlist(object):
 
             # Sort the words by reverse frequency if possible,
             # then alphabetically
+
             self.sorted = sorted(self.words.keys(),
-              key=lambda word: (-self.words[word], word))
+              key=lambda word: (_reverse_freq(self.words[word]), word))
         picklename = self.pickle_name()
         if self.pickle:
             logger.info("Saving %s" % picklename)
@@ -216,9 +233,11 @@ class Wordlist(object):
         return cmp((self.filename, self.convert),
                    (other.filename, other.convert))
 
-# Define two useful wordlists
+# Define useful wordlists
 ENABLE = Wordlist('enable', case_insensitive)
 NPL = Wordlist('npl_allwords2', case_insensitive)
 Google1M = Wordlist('google1M', letters_only, with_frequency)
 Google200K = Wordlist('google200K', letters_only, with_frequency)
+PHONETIC = Wordlist('phonetic', letters_only, with_values)
 COMBINED = Wordlist('sages_combined', alphanumeric_only, with_frequency)
+

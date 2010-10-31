@@ -37,12 +37,24 @@ The problem with the most frequent 1 million words is that most of them suck.
 You can access these lists as `solvertools.wordlist.Google1M` and
 `solvertools.wordlist.Google200K`.
 
+`phonetic.txt`
+--------------
+A phonetic wordlist adapted from the CMU dictionary. Each word is spelled in
+rough IPA, sometimes with multiple pronunciations separated by a vertical bar.
+
+Note: the CMU phonetic dictionary is kind of weird. It has some misspellings,
+some weird or dialectal pronunciations, and it omits a number of common words.
+We may need to write some code to adapt.
+
+You can access this list as `solvertools.wordlist.PHONETIC`.
+
 `sages_combined.txt`
 --------------------
 This is the file that I trained the English `language_model` on. It contains
-ENABLE, NPL, and Google200K, all smashed together, with fake frequency counts
-for ENABLE and NPL. It does not include any of the phrases with spaces from
-NPL, and all the text is smashed down into plain ASCII.
+ENABLE, NPL, PHONETIC, and Google200K, all smashed together, with fake
+frequency counts for ENABLE, NPL, and PHONETIC. It does not include any of the
+phrases with spaces from NPL, and all the text is smashed down into plain
+ASCII.
 
 You can access this list as `solvertools.wordlist.COMBINED`.
 
