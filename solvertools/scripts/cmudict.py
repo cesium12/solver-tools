@@ -13,24 +13,21 @@ from collections import defaultdict
 # things that are the same when pronounced with a Pittsburgh accent, or just
 # guessed wrong about some pronunciations.
 #
-# Anyway. This representation pretends that there are the following ten
+# Anyway. This representation pretends that there are the following nine
 # monophthongs in English (following a sort of continuum):
 #
-# u ʊ o ə ʌ a æ e ɪ i
+# u ʊ o ə a æ e ɪ i
 
 CMU_PHONEMES = {
    'AA': u'a',
    'AE': u'æ',
-   'AH': u'ʌ',
-   'AH0': u'ə',
+   'AH': u'ə',
    'AW': u'aʊ',
    'AY': u'aɪ',
    'EH': u'e',
-   'ER': u'ʌr',
-   'ER0': u'ər',
+   'ER': u'ər',
    'EY': u'eɪ',
    'IH': u'ɪ',
-   'IH0': u'ə',
    'IY': u'i',
    'AO': u'o',
    'OW': u'oʊ',
@@ -65,10 +62,7 @@ CMU_PHONEMES = {
 }
 
 def translate_cmu_phoneme(s):
-    if s.endswith('0') and s in CMU_PHONEMES:
-        # special cases for reduced weak vowels
-        return CMU_PHONEMES[s]
-    elif s[-1] in string.digits:
+    if s[-1] in string.digits:
         phon = CMU_PHONEMES[s[:-1]]
         if s[-1] == '1':
             return u"'" + phon
