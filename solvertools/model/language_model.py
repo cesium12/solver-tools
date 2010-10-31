@@ -1,8 +1,15 @@
-from solvertools.lib.probability import FreqDist, LidstoneProbDist, LaplaceProbDist, MLEProbDist
+"""
+Some NLP code designed to answer the question: "How much does this text look
+like reasonable English?"
+"""
+
+from solvertools.lib.probability import FreqDist, LidstoneProbDist, \
+                                        LaplaceProbDist, MLEProbDist
 from solvertools.lib.tokenize import tokenize
 from solvertools.model.numbers import number_logprob, is_numeric
 from solvertools.model.answer_reader import answer_reader
-from solvertools.util import load_pickle, save_pickle, get_picklefile, file_exists
+from solvertools.util import load_pickle, save_pickle, get_picklefile, \
+                             file_exists
 from solvertools import wordlist
 import random, string, logging
 logger = logging.getLogger(__name__)
@@ -11,15 +18,27 @@ logger = logging.getLogger(__name__)
 CACHE = {}
 
 def scan_ngrams(seq, n=2):
+    """
+    Given a sequence, extract all n-grams of a given length from it.
+    """
     for i in xrange(len(seq)-n+1):
         fragment = seq[i:i+n]
         yield fragment
 
 class LanguageModel(object):
-    # Allowing for the possibility of other language models
+    """
+    A base class of language models. Right now there's only one subclass,
+    but this allows for the possibility of others.
+    """
     pass
 
 class WordListModel(LanguageModel):
+    """
+    A language model that extrapolates from a list of words in that language.
+
+    Given appropriate wordlists, this could easily be extended to other
+    languages besides English.
+    """
     def __init__(self, name, wordlist):
         if file_exists(get_picklefile(name+'.model.pickle')):
             self._load_from_pickle(name+'.model.pickle')
@@ -55,6 +74,10 @@ class WordListModel(LanguageModel):
         save_pickle(stuff, filename)
     
     def letters_logprob(self, word):
+        """
+        Get the relative probability of this word according to the letter
+        bigrams in it.
+        """
         word = self.wordlist.convert(word)
         logprob = self.letter_dist.logprob(' ')
         if not word: return logprob
@@ -67,6 +90,10 @@ class WordListModel(LanguageModel):
         return logprob
 
     def word_logprob(self, word, fallback_logprob=-35.0):
+        """
+        Get the relative probability of this word given its appearance in
+        a wordlist.
+        """
         if is_numeric(word):
             return number_logprob(int(word))
         else:
@@ -76,6 +103,9 @@ class WordListModel(LanguageModel):
                 return fallback_logprob + self.letters_logprob(word)
 
     def text_logprob(self, text, fallback_logprob=-35.0):
+        """
+        Get the relative probability of a text.
+        """
         text = text.replace('-', ' ')
         words = [word for word in tokenize(text).split() if
         self.wordlist.convert(word)]
@@ -85,39 +115,65 @@ class WordListModel(LanguageModel):
         return logprob
 
     def text_goodness(self, text):
+        """
+        Get the overall "goodness" of a text, which adjusts its log probability
+        for its length.
+        """
         return self.text_logprob(text) / len(text)
 
 def unigram_sampler(model):
+    """
+    Extract random letters from a unigram distribution.
+
+    This is used for generating negative examples for the answer recognizer.
+    """
     p = random.random()
     for let in string.uppercase:
-        if let == ' ': continue
+        if let == ' ':
+            continue
         p -= model.letter_dist.prob(let)
-        if p < 0: return let
+        if p < 0:
+            return let
     return unigram_sampler(model)
 
 def unigram_replace(char, model):
+    """
+    Given a phrase, replace its alphabetic characters with random letters,
+    yielding nonsense that looks like the phrase.
+    """
     if char == ' ': return char
     else: return unigram_sampler(model)
 
-def getEnglishModel():
+def get_english_model():
+    """
+    Load the cached English language model.
+    """
     if 'english' not in CACHE:
         CACHE['english'] = WordListModel('english', wordlist.COMBINED)
     return CACHE['english']
 
 def demo():
-    theModel = getEnglishModel()
-    assert 'AMY' in theModel.wordlist
+    """
+    Demonstrate this module's ability to distinguish real Mystery Hunt answers
+    from gibberish.
+    """
+    the_model = get_english_model()
+    assert 'AMY' in the_model.wordlist
     results = []
     for year in range(2004, 2009):
         for answer in answer_reader(year):
-            results.append((theModel.text_goodness(answer), answer, True))
-            fakeanswer = ''.join(unigram_replace(x, theModel) for x in answer)
-            results.append((theModel.text_goodness(fakeanswer), fakeanswer, False))
+            results.append((the_model.text_goodness(answer), answer, True))
+            fakeanswer = ''.join(unigram_replace(x, the_model) for x in answer)
+            results.append((the_model.text_goodness(fakeanswer),
+                            fakeanswer, False))
     usefulness = 0.0
     for score, result, good in sorted(results):
-        if good: usefulness += score
-        else: usefulness -= score
+        if good:
+            usefulness += score
+        else:
+            usefulness -= score
         print "%s\t%5.5f %s" % (good, score, result)
     print usefulness
 
-if __name__ == '__main__': demo()
+if __name__ == '__main__':
+    demo()

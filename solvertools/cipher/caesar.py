@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from solvertools import alphabet
-from solvertools.model.language_model import getEnglishModel
+from solvertools.model.language_model import get_english_model
 
 def caesar_shift(text, offset, alph=alphabet.ENGLISH):
     """
@@ -58,7 +58,7 @@ def detect_caesar_shift(text, alph=alphabet.ENGLISH):
         (u'IBM', 1, -4.6171190236825206)
 
     """
-    theModel = getEnglishModel()
+    theModel = get_english_model()
     N = len(alph)
     results = []
     for shift in xrange(N):

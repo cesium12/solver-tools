@@ -6,16 +6,23 @@ If, like most alphabets implemented here, the alphabet has a concept of
 uppercase and lowercase versions of a letter, use a CaseAlphabet, and give only
 the uppercase ones to the constructor.
 
+Alphabets can be indexed in both directions. Keep in mind that all indices are
+1-based, following puzzle traditions while breaking Python traditions.
+
 Feel free to add more alphabets.
 """
 
 from solvertools.lib.ordered_set import OrderedSet
 import string
-import numpy
 
 class Alphabet(OrderedSet):
+    """
+    The base class of alphabets. Implements the bi-directional, 1-based index,
+    and that's about it.
+    """
     def __init__(self, letters):
         OrderedSet.__init__(self, [self.normalize(c) for c in letters])
+
     def normalize(self, char):
         """
         Don't do anything to the inputs by default.
@@ -24,8 +31,10 @@ class Alphabet(OrderedSet):
         object, not just strings, if a reason to do so arises.
         """
         return char
+
     def __contains__(self, char):
         return self.indices.__contains__(self.normalize(char))
+
     def letter_index(self, char):
         """
         Implements A=1, B=2, C=3, etc.
@@ -36,6 +45,7 @@ class Alphabet(OrderedSet):
         if char in self:
             return self.index(self.normalize(char))+1
         else: return 0
+
     def letter_at(self, index):
         """
         Returns the letter at the given 1-based position. Returns '?' for
@@ -45,39 +55,62 @@ class Alphabet(OrderedSet):
             return self[index-1]
         else:
             return u'?'
+
     def shift(self, letter, offset):
         "The basic operation of a Caesar shift. The math here is 0-based."
-        if letter not in self: return letter
-        return self[(self.index(letter) + offset) % len(self)]
+        if letter not in self:
+            return letter
+        return self[(self.index(self.normalize(letter)) + offset) % len(self)]
+
     def text_to_indices(self, text):
+        """
+        Represent text as a sequence of letter indices.
+        """
         return [self.letter_index(char) for char in text if char in self]
     letters_to_indices = text_to_indices
+
     def indices_to_letters(self, indices):
+        """
+        Turn a sequence of letter indices into a sequence of letters.
+        """
         return [self.letter_at(i) for i in indices]
+
     def indices_to_text(self, indices):
+        """
+        Turn a sequence of letter indices into a string from the alphabet.
+        """
         return ''.join([self.letter_at(i) for i in indices])
+
     def sort(self, texts):
         """
         Sort a list according to the ordering of a particular alphabet.
         """
         return sorted(texts, key=self.text_to_indices)
+
     def __repr__(self):
         return unicode(self).encode('utf-8')
+
     def __unicode__(self):
         return u"%s(%r)" % (self.__class__.__name__, self.items)
 
 class TextAlphabet(Alphabet):
+    """
+    An alphabet whose symbols are Unicode strings (which is all of them so far).
+    """
     def __init__(self, letters):
         Alphabet.__init__(self, letters)
         self.max_width = max(len(letter) for letter in self.items)
+
     def normalize(self, char):
         """
         Just make sure everything is Unicode.
         """
         return unicode(char)
+
     def __unicode__(self):
         if self.max_width == 1:
-            return u'%s(u"%s")' % (self.__class__.__name__, u''.join(self.items))
+            return u'%s(u"%s")' % (self.__class__.__name__,
+                                   u''.join(self.items))
         else:
             return Alphabet.__unicode__(self)
 
@@ -110,7 +143,10 @@ ALPHABETS = {
 
   # Obsolete Spanish alphabet (pre-1994)
   # (29 letters including digraphs; RR is not considered a letter, however)
-  'spanish_old': CaseAlphabet(['A', 'B', 'C', 'CH', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'LL', 'M', 'N', u'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']),
+  'spanish_old': CaseAlphabet(['A', 'B', 'C', 'CH', 'D', 'E', 'F', 'G', 'H',
+                               'I', 'J', 'K', 'L', 'LL', 'M', 'N', u'Ñ', 'O',
+                               'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
+                               'Y', 'Z']),
 
   # The 12-letter Hawaiian alphabet
   # (disregarding the okina, because everybody does)
@@ -143,14 +179,17 @@ ALPHABETS = {
   ### Computational 'alphabets' ###
   'digits': TextAlphabet(string.digits),
   'hex': CaseAlphabet(string.digits + "ABCDEF"),
-  'base64': TextAlphabet(string.uppercase + string.lowercase + string.digits + "+/")
+  'base64': TextAlphabet(string.uppercase + string.lowercase
+                         + string.digits + "+/")
 }
 
 ENGLISH = ALPHABETS['english']
 
 def demo():
+    "Demo: Show all defined alphabets."
     for key, value in ALPHABETS.items():
         print "%s: %s" % (key, value)
 
-if __name__ == '__main__': demo()
+if __name__ == '__main__':
+    demo()
 # vim:tw=0:
