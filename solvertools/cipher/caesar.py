@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from solvertools import alphabet
 from solvertools.model.language_model import getEnglishModel
 
@@ -21,12 +22,29 @@ def caesar_shift(text, offset, alph=alphabet.ENGLISH):
         except KeyError:
             raise ValueError("The offset should either be an integer, or a "
                              "letter of the alphabet.")
+    
+    shifted = [alph.shift(ch, offset) for ch in text]
+    return ''.join(shifted)
 
-    indices = alph.text_to_indices(text)
-    N = len(alph)
-    shifted = [(idx - 1 + offset) % N + 1 for idx in indices]
-    return alph.indices_to_text(shifted)
-
+def caesar_unshift(text, offset, alph=alphabet.ENGLISH):
+    """
+    Performs a Caesar shift backwards by the given offset.
+    
+    If the offset is a letter, it will look it up in the alphabet to convert
+    it to a shift. (For example, a shift of 'C' means that 'C' goes to 'A',
+    which is the same as a backward shift of 2.)
+        
+        >>> print caesar_unshift('DBFTBS TIJGU', 1)
+        CAESAR SHIFT
+    
+    """
+    if isinstance(offset, basestring):
+        try:
+            offset = alph.letter_index(offset) - 1
+        except KeyError:
+            raise ValueError("The offset should either be an integer, or a "
+                             "letter of the alphabet.")
+    return caesar_shift(text, -offset, alph)
 
 def detect_caesar_shift(text, alph=alphabet.ENGLISH):
     """
@@ -34,8 +52,10 @@ def detect_caesar_shift(text, alph=alphabet.ENGLISH):
     English text. Returns the resulting text, the distance shifted
     (from 0 to 25), and the goodness of the result.
 
-        >>> print detect_caesar_shift('TERRA')
-        (u'GREEN', 13, -2.4847891081091316)
+        >>> print detect_caesar_shift('DBFTBS TIJGU')
+        (u'CAESAR SHIFT', 25, -2.7035009155418437)
+        >>> print detect_caesar_shift('HAL')
+        (u'IBM', 1, -4.6171190236825206)
 
     """
     theModel = getEnglishModel()
