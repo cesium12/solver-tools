@@ -34,4 +34,9 @@ for word in NPL:
         print word
         used_words.add(word)
         out.write(u"%s,1000\n" % word)
+
+for word in PHONETIC:
+    if word not in used_words:
+        print word
+        out.write(u"%s,10000\n" % word)
 out.close()

@@ -5,53 +5,76 @@ ensure you don't have to worry about things like capitalization and encoding.
 """
 
 from __future__ import with_statement
-from util import get_dictfile, get_picklefile, save_pickle, load_pickle, file_exists
-import os, sys, re, codecs, unicodedata, logging
+from solvertools.util import get_dictfile, get_picklefile, save_pickle, \
+                             load_pickle, file_exists
+import re, codecs, unicodedata, logging
 logger = logging.getLogger(__name__)
 
-def identity(s):
+def identity(text):
     "Returns what you give it."
-    return s
+    return text
 
-def asciify(s):
+def _reverse_freq(val):
+    "If this value is a number, negate it. Otherwise, leave it alone."
+    if isinstance(val, (int, float)):
+        return -val
+    else:
+        return val
+
+def asciify(text):
     """
     A wonderfully simple function to remove accents from characters, and
     discard other non-ASCII characters. Outputs a plain ASCII string.
     """
-    return unicodedata.normalize('NFKD', s).encode('ASCII', 'ignore')
+    return unicodedata.normalize('NFKD', text).encode('ASCII', 'ignore')
 
-def ensure_unicode(s):
+def split_accents(text):
+    """
+    Separate accents from their base characters in Unicode text.
+    """
+    return unicodedata.normalize('NFKD', text)
+
+def ensure_unicode(text):
     "Given a string of some kind, return the appropriate Unicode string."
-    if isinstance(s, str):
-        return s.decode('utf-8')
-    else: return s
+    if isinstance(text, str):
+        return text.decode('utf-8')
+    else: return text
 
-def case_insensitive(s):
+def case_insensitive(text):
     "Collapse case by converting everything to uppercase."
-    return ensure_unicode(s).upper()
+    return ensure_unicode(text).upper()
 
-def case_insensitive_ascii(s):
+def case_insensitive_ascii(text):
     "Convert everything to uppercase and discard non-ASCII stuff."
-    return asciify(ensure_unicode(s).upper())
+    return asciify(ensure_unicode(text).upper())
 
-def with_frequency(s):
+def with_frequency(text):
     """
     Use this as a reader when the wordlist has comma-separated entries of the
     form `WORD,freq`.
     """
-    word, freq = s.split(',', 1)
+    word, freq = text.split(',', 1)
     return (word, int(freq))
 
-def alphanumeric_only(s):
+def with_values(text):
+    """
+    Use this when each word is associated with one or more values -- for
+    example, a phonetic dictionary or a translation dictionary.
+    """
+    word, valstr = text.split(',', 1)
+    values = valstr.split('|')
+    return (word, values)
+
+def alphanumeric_only(text):
     """
     Convert everything to uppercase and discard everything but letters and
     digits.
     """
-    return re.sub("[^A-Z0-9]", "", case_insensitive_ascii(s))
+    return re.sub("[^A-Z0-9]", "", case_insensitive_ascii(text))
 
-def letters_only(s):
+def letters_only(text):
     "Convert everything to uppercase and discard everything but letters."
-    return re.sub("[^A-Z]", "", case_insensitive_ascii(s))
+    return re.sub("[^A-Z]", "", case_insensitive_ascii(text))
 
 class Wordlist(object):
     """
@@ -91,7 +114,7 @@ class Wordlist(object):
                  pickle=True):
         self.filename = filename
         self.words = None
-        self.sorted = None
+        self.sorted_words = None
         self.convert = convert
         self.reader = reader
         self.pickle = pickle
@@ -107,8 +130,10 @@ class Wordlist(object):
         NPL.variant(alphanumerics_only).
 
         """
-        if convert is None: convert = self.convert
-        if reader is None: reader = self.reader
+        if convert is None:
+            convert = self.convert
+        if reader is None:
+            reader = self.reader
         return Wordlist(self.filename, convert, reader, pickle=self.pickle)
 
     # load the data when necessary
@@ -123,19 +148,22 @@ class Wordlist(object):
             self.filename)
 
     def _load_pickle(self):
+        "Load this wordlist from a pickle."
         picklename = self.pickle_name()
         logger.info("Loading %s" % picklename)
-        self.words, self.sorted = load_pickle(picklename)
+        self.words, self.sorted_words = load_pickle(picklename)
 
     def _load_txt(self):
+        "Load this wordlist from a plain text file."
         self.words = {}
         filename = get_dictfile(self.filename+'.txt')
         logger.info("Loading %s" % filename)
         with codecs.open(filename, encoding='utf-8') as wordlist:
-            entries = [self.reader(line.strip()) for line in wordlist if line.strip()]
+            entries = [self.reader(line.strip()) for line in wordlist
+                       if line.strip()]
             for entry in entries:
                 if isinstance(entry, tuple) or isinstance(entry, list):
-                    # this word has a frequency attached
+                    # this word has a value attached
                     word, val = entry
                     self.words[self.convert(word)] = val
                 else:
@@ -143,30 +171,33 @@ class Wordlist(object):
 
             # Sort the words by reverse frequency if possible,
             # then alphabetically
-            self.sorted = sorted(self.words.keys(),
-              key=lambda word: (-self.words[word], word))
+
+            self.sorted_words = sorted(self.words.keys(),
+              key=lambda word: (_reverse_freq(self.words[word]), word))
         picklename = self.pickle_name()
         if self.pickle:
             logger.info("Saving %s" % picklename)
-            save_pickle((self.words, self.sorted), picklename)
+            save_pickle((self.words, self.sorted_words), picklename)
     
     def sorted(self):
         """
         Returns the words in the list in sorted order. The order is descending
         order by frequency, and lexicographic order after that.
         """
-        return self.sorted
+        return self.sorted_words
 
     # Implement the read-only dictionary methods
     def __iter__(self):
         "Yield the wordlist entries in sorted order."
-        if self.words is None: self.load()
-        return iter(self.sorted)
+        if self.words is None:
+            self.load()
+        return iter(self.sorted_words)
 
     def iteritems(self):
         "Yield the wordlist entries and their frequencies in sorted order."
-        if self.words is None: self.load()
-        for word in self.sorted:
+        if self.words is None:
+            self.load()
+        for word in self.sorted_words:
             yield (word, self.words[word])
 
     def __contains__(self, word):
@@ -174,7 +205,8 @@ class Wordlist(object):
         Check if a word is in the list. This applies the same `convert`
         function that was used to build the list to the word.
         """
-        if self.words is None: self.load()
+        if self.words is None:
+            self.load()
         return self.convert(word) in self.words
     
     def __getitem__(self, word):
@@ -182,22 +214,32 @@ class Wordlist(object):
         Get a word's frequency in the list. This applies the same `convert`
         function that was used to build the list to the word.
         """
-        if self.words is None: self.load()
+        if self.words is None:
+            self.load()
         return self.words[self.convert(word)]
     
     def get(self, word, default=None):
-        if self.words is None: self.load()
+        """
+        Get the data (frequency) for a word.
+        """
+        if self.words is None:
+            self.load()
         return self.words.get(self.convert(word), default)
 
     def keys(self):
-        if self.words is None: self.load()
-        return self.sorted
+        """
+        Get all the words in the list, in sorted order.
+        """
+        if self.words is None:
+            self.load()
+        return self.sorted_words
 
     def __repr__(self):
         return "Wordlist(%r, %s, %s)" % (self.filename, self.convert.__name__,
                                          self.reader.__name__)
     def __str__(self):
         return repr(self)
+
     def pickle_name(self):
         """
         The filename that this wordlist will have when pickled. This is
@@ -206,16 +248,21 @@ class Wordlist(object):
         """
         return "%s.%s.%s.pickle" % (self.filename, self.convert.__name__,
         self.reader.__name__)
+
     def __hash__(self):
         return hash((self.convert, self.filename))
+
     def __cmp__(self, other):
-        if self.__class__ != other.__class__: return -1
+        if self.__class__ != other.__class__:
+            return -1
         return cmp((self.filename, self.convert),
                    (other.filename, other.convert))
 
-# Define two useful wordlists
+# Define useful wordlists
 ENABLE = Wordlist('enable', case_insensitive)
 NPL = Wordlist('npl_allwords2', case_insensitive)
 Google1M = Wordlist('google1M', letters_only, with_frequency)
 Google200K = Wordlist('google200K', letters_only, with_frequency)
+PHONETIC = Wordlist('phonetic', letters_only, with_values)
 COMBINED = Wordlist('sages_combined', alphanumeric_only, with_frequency)
+
