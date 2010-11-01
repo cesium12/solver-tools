@@ -12,6 +12,7 @@ from solvertools.util import load_pickle, save_pickle, get_picklefile, \
                              file_exists
 from solvertools import wordlist
 import random, string, logging
+import numpy as np
 logger = logging.getLogger(__name__)
 
 # Loaded language models go here. (TODO: more elegant code for this?)
@@ -31,6 +32,10 @@ class LanguageModel(object):
     but this allows for the possibility of others.
     """
     pass
+
+# TODO: make these configurable
+MINIMUM_LOGPROB = -1000000.0
+SPLIT_LOGPROB = -10.0
 
 class WordListModel(LanguageModel):
     """
@@ -61,6 +66,8 @@ class WordListModel(LanguageModel):
             self.letter_dist = MLEProbDist(letter_freq)
             self.bigram_dist = LidstoneProbDist(bigram_freq, 1000)
             self.word_dist = LaplaceProbDist(word_freq)
+            
+
             self._save_pickle(name+'.model.pickle')
 
     def _load_from_pickle(self, filename):
@@ -89,7 +96,7 @@ class WordListModel(LanguageModel):
                 logprob -= self.letter_dist.logprob(bigram[0])
         return logprob
 
-    def word_logprob(self, word, fallback_logprob=-35.0):
+    def word_logprob(self, word):
         """
         Get the relative probability of this word given its appearance in
         a wordlist.
@@ -100,18 +107,50 @@ class WordListModel(LanguageModel):
             if word in self.wordlist:
                 return self.word_dist.logprob(self.wordlist.convert(word))
             elif word not in self.wordlist:
-                return fallback_logprob + self.letters_logprob(word)
+                return MINIMUM_LOGPROB
 
-    def text_logprob(self, text, fallback_logprob=-35.0):
+    def split_words(self, text):
         """
-        Get the relative probability of a text.
+        Find the best English text to match the given string by inserting
+        spaces (and possibly filling blanks, once we have a model for this).
+        """
+        best_matches = [None] * (len(text) + 1)
+
+        # start with very negative log probabilities
+        best_logprobs = np.ones((len(text) + 1,)) * -10000
+
+        best_matches[0] = ''
+        best_logprobs[0] = 1.0
+        for right in xrange(1, len(text)+1):
+            for left in xrange(right):
+                left_text = best_matches[left]
+                left_logprob = best_logprobs[left]
+                right_text = text[left:right]
+                right_logprob = self.word_logprob(right_text)
+                if left_text:
+                    combined_text = left_text + ' ' + right_text
+                    combined_logprob = (left_logprob + right_logprob
+                                        + SPLIT_LOGPROB)
+                else:
+                    combined_logprob = right_logprob
+                    combined_text = right_text
+
+                if combined_logprob > best_logprobs[right]:
+                    best_logprobs[right] = combined_logprob
+                    best_matches[right] = combined_text
+        return best_matches[-1], best_logprobs[-1]
+
+    def text_logprob(self, text):
+        """
+        Get the relative probability of a text, inserting spaces when
+        necessary.
         """
         text = text.replace('-', ' ')
         words = [word for word in tokenize(text).split() if
         self.wordlist.convert(word)]
         logprob = 0.0
         for word in words:
-            logprob += self.word_logprob(word, fallback_logprob)
+            logprob += self.split_words(word)[1]
         return logprob
 
     def text_goodness(self, text):
@@ -152,7 +191,7 @@ def get_english_model():
         CACHE['english'] = WordListModel('english', wordlist.COMBINED)
     return CACHE['english']
 
-def demo():
+def demo(omit_spaces=True):
     """
     Demonstrate this module's ability to distinguish real Mystery Hunt answers
     from gibberish.
@@ -162,6 +201,9 @@ def demo():
     results = []
     for year in range(2004, 2009):
         for answer in answer_reader(year):
+            if omit_spaces:
+                answer = answer.replace(' ', '').replace('-', '')\
+                  .replace('.', '').replace(',', '').replace("'", '')
             results.append((the_model.text_goodness(answer), answer, True))
             fakeanswer = ''.join(unigram_replace(x, the_model) for x in answer)
             results.append((the_model.text_goodness(fakeanswer),
