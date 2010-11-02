@@ -133,6 +133,9 @@ class OrderedSet(object):
         for item in lst: self.add(item)
     __iadd__ = extend
 
+    def size(self):
+        return len(self.items)
+
     def __setitem__(self, n, newkey):
         oldkey = self.items[n]
         del self.indices[oldkey]
