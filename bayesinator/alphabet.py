@@ -48,6 +48,10 @@ def russian(s):
     return all (c in ALPHABETS['russian'] for c in ''.join(s.split()))
 
 @puzzle_property(basestring)
+def ukrainian(s):
+    return all (c in ALPHABETS['ukrainian'] for c in ''.join(s.split()))
+
+@puzzle_property(basestring)
 def digits(s):
     return all (c in ALPHABETS['digits'] for c in ''.join(s.split()))
 
