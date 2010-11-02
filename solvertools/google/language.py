@@ -29,6 +29,8 @@ Examples::
     >>> print to_english(u"नमस्ते")
     (something in Sanskrit)
 
+*Do not call these functions in a loop*. You might get us banned from using the
+API. Google's rule is that every request has to be initiated by a user.
 """
 
 import urllib, urllib2, json
