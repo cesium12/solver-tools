@@ -149,7 +149,7 @@ class CaseAlphabet(TextAlphabet):
     def shift(self, letter, offset):
         "The basic operation of a Caesar shift. The math here is 0-based."
         if letter not in self: return letter
-        output = self[(self.index(letter) + offset) % len(self)]
+        output = self[(self.index(self.normalize(letter)) + offset) % len(self)]
         if letter == letter.lower():
             output = output.lower()
         return output
