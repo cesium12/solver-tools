@@ -1,10 +1,10 @@
 from bayesinator.core import *
-import math
+from solvertools.model.numbers import number_logprob
 
 @puzzle_property(int)
-def even(x):
-    return (x % 2) == 0
+def is_1_to_26(x):
+    return 1 <= x <= 26
 
 @entropy_function(int)
-def integer_bits(x):
-    return 1+math.log(abs(x)+1,2)
+def integer_entropy(n):
+    return -number_logprob(n)
