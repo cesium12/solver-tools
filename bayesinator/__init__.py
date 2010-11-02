@@ -1,5 +1,4 @@
-from bayesinator.core import *
-import bayesinator.crypto
-import bayesinator.langmodel
-import bayesinator.numbers
-from bayesinator.ui import *
+import alphabet
+import crypto
+import language
+import numbers

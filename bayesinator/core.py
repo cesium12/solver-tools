@@ -124,8 +124,6 @@ def _entropy_combiner(puzzle, entropies):
 def _transform_combiner(puzzle, transform_lists):
     transforms = []
     for (ts,f) in transform_lists:
-        if not isinstance(ts, list):
-            ts = [ts]
         for t in ts:
             if not isinstance(t, Transform):
                 t = Transform(t)

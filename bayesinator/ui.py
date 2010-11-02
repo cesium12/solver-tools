@@ -1,4 +1,4 @@
-from bayesinator import *
+from bayesinator.core import *
 
 
 def show_solution(state):
