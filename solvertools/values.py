@@ -43,15 +43,12 @@ def alphanumeric_filter(seq):
 
 def character_value(item):
     """
-    Represent anything that can be represented as a single character, as a
-    single character.
+    Represent how a value would appear in a regex.
     """
-    if not item:
-        return u' '
-    elif isinstance(item, basestring):
+    if isinstance(item, basestring):
         return item
     elif isinstance(item, FlagValue):
-        return item.as_char()
+        return item.as_regex()
     else:
         return unicode(item)
 
@@ -60,11 +57,11 @@ class FlagValue(object):
     The parent class of entries that aren't supposed to be literal
     values, but are supposed to flag that something else is going on.
     """
-    def as_char(self):
+    def as_regex(self):
         """
         Represent this as a single character if at all possible.
         """
-        return unicode(self)[0:1]
+        raise NotImplementedError
     
     def __str__(self):
         return unicode(self).encode('utf-8')
@@ -106,6 +103,9 @@ class Header(FlagValue):
 
     def __str__(self):
         return unicode(self).encode('utf-8')
+    
+    def as_regex(self):
+        return ''
 
     def __unicode__(self):
         return u'__%s__' % (self.text,)
@@ -125,6 +125,9 @@ class UnknownValue(NondeterministicValue):
 
     def __unicode__(self):
         return u'???'
+
+    def as_regex(self):
+        return '.'
 
     def __repr__(self):
         return 'UNKNOWN'
@@ -148,8 +151,7 @@ class ChoiceValue(NondeterministicValue):
     def __init__(self, choices):
         self.choices = tuple(choices)
 
-    def as_char(self):
-        # no way to fit in a single char, so show it all
+    def as_regex(self):
         return unicode(self)
     
     def __str__(self):
@@ -185,6 +187,10 @@ class InvalidValue(FlagValue):
     
     def __unicode__(self):
         return u'###'
+
+    def as_regex(self):
+        # too bad we can't make a character that never matches
+        return u'#'
     
     def __repr__(self):
         return 'INVALID'
@@ -199,12 +205,13 @@ class PuzzleString(object):
     Acts like a Unicode string, but can contain FlagValues instead of just
     characters.
     
-    Do not call the constructor with arbitrary sequences! Instead, call
-    PuzzleString.make(seq), which gives you a nice, efficient, normal Unicode
-    string when you actually do have all normal characters.
+    The constructor will return you a plain Unicode string if it is made of
+    plain old characters, even decoding utf-8 if necessary.
     """
     def __new__(cls, chars):
-        if all(isinstance(char, basestring) for char in chars):
+        if all(isinstance(char, str) for char in chars):
+            return ''.join(chars).decode('utf-8', 'ignore')
+        elif all(isinstance(char, basestring) for char in chars):
             return u''.join(chars)
         else:
             return object.__new__(cls)
@@ -216,7 +223,7 @@ class PuzzleString(object):
         return unicode(self).encode('utf-8')
 
     def __unicode__(self):
-        return u''.join(character_value(char) for char in self.chars)
+        return u''.join(regex_value(char) for char in self.chars)
     
     def __repr__(self):
         return "PuzzleString(%r)" % (self.chars,)

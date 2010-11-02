@@ -6,7 +6,7 @@ ensure you don't have to worry about things like capitalization and encoding.
 
 from __future__ import with_statement
 from solvertools.util import get_dictfile, get_picklefile, save_pickle, \
-                             load_pickle, file_exists
+                             load_pickle, file_exists, asciify
 import re, codecs, unicodedata, logging
 logger = logging.getLogger(__name__)
 
@@ -20,13 +20,6 @@ def _reverse_freq(val):
         return -val
     else:
         return val
-
-def asciify(text):
-    """
-    A wonderfully simple function to remove accents from characters, and
-    discard other non-ASCII characters. Outputs a plain ASCII string.
-    """
-    return unicodedata.normalize('NFKD', text).encode('ASCII', 'ignore')
 
 def split_accents(text):
     """

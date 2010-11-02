@@ -8,6 +8,15 @@ import os
 import sys
 import cPickle as pickle
 
+def asciify(text):
+    """
+    A wonderfully simple function to remove accents from characters, and
+    discard other non-ASCII characters. Outputs a plain ASCII string.
+    """
+    if not isinstance(text, unicode):
+        text = text.decode('utf-8', 'ignore')
+    return unicodedata.normalize('NFKD', text).encode('ASCII', 'ignore')
+
 def _build_path(parts):
     "Make a path out of the given path fragments."
     return os.path.sep.join(p for p in parts if p)

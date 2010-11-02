@@ -56,6 +56,25 @@ class PuzzleArray(np.ndarray):
             return PuzzleString([item for item in self
                                  if not isinstance(item, Header)])
 
+    def sort_by(self, col):
+        """
+        Sort this puzzle according to one of its columns. The column can be
+        specified as either a 0-based index, a header name, or the column of
+        data to sort by itself.
+
+        This tries to keep headers at the top.
+        """
+        if isinstance(col, int):
+            col = self[:, col]
+        elif isinstance(col, basestring):
+            col = self.column(col)
+        col = col.copy()
+        for i, item in enumerate(col):
+            if isinstance(item, Header):
+                col[i] = None
+        sort_order = np.argsort(col)
+        return self[sort_order]
+
 def index_into(text, index):
     """
     Gets the letter at a certain position in a text. Makes assumptions that are
