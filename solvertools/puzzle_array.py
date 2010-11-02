@@ -15,39 +15,34 @@ class PuzzleArray(np.ndarray):
     
     def column(self, title):
         """
-        Get the column containing a given header, or raise a KeyError if it's
-        not there.
+        Get the column containing a given header or with a given 0-based
+        index, or raise a KeyError if it's not there.
 
         This does not use any sort of efficient index.
         """
+        if isinstance(title, int):
+            return self[:, title]
+
         header = Header(title)
         for col in xrange(self.shape[1]):
             if header in list(self[:, col]):
                 return self[:, col]
+
+    def column_title(self, index):
+        """
+        Get the header of the column with a given index, or just the index
+        as a string if it has no header.
+        """
+        for item in self[:, index]:
+            if isinstance(item, Header):
+                return item.text
+        return u'column '+unicode(index)
 
     def _one_line_repr(self):
         if type(self[0]) == PuzzleArray:
             return repr([row._one_line_repr() for row in self])
         else:
             return repr(list(self))
-
-    def __repr__(self):
-        if self.ndim == 0:
-            # hate it when this happens
-            return repr(self[()])
-        if type(self[0]) == PuzzleArray:
-            reprs = [row._one_line_repr() for row in self]
-            formatted = ',\n\t'.join(reprs)
-            return 'PuzzleArray([\n\t' + formatted + '\n])'
-        else:
-            return 'PuzzleArray(%r)' % list(self)
-
-    def __str__(self):
-        if self.ndim == 2:
-            return array_to_string(self)
-        elif self.ndim == 1:
-            return array_to_string(self[:,np.newaxis])
-        else: return repr(self)
 
     def to_puzzle_string(self):
         if self.ndim > 1:
@@ -74,6 +69,77 @@ class PuzzleArray(np.ndarray):
                 col[i] = None
         sort_order = np.argsort(col)
         return self[sort_order]
+
+    def index_everything_into_everything(self):
+        from solvertools.model.language_model import get_english_model
+        model = get_english_model()
+
+        assert self.ndim == 2
+        ncol = self.shape[1]
+        titles = [self.column_title(idx) for idx in xrange(ncol)]
+        results = []
+
+        def evaluate(indexed, description):
+            if INVALID not in indexed:
+                text = indexed.to_puzzle_string()
+                goodness = model.text_goodness(unicode(text))
+                results.append((description, text, goodness))
+        
+        def try_sorted(sorted, sort_title):
+            for text_col in xrange(ncol):
+                text_title = titles[text_col]
+                for index_col in xrange(ncol):
+                    index_title = titles[index_col]
+                    description = u"(%s) %s[%s]" %\
+                      (sort_title, text_title, index_title)
+                    
+                    indexed = index_lists(sorted[:,text_col],
+                                          sorted[:,index_col])
+                    evaluate(indexed, description)
+
+                # also try diagonalizing
+                description = u"(%s) %s[diag]" %\
+                  (sort_title, text_title)
+                indexed = sorted[:, text_col].diagonalize()
+                evaluate(indexed, description)
+
+        for sort_col in xrange(ncol):
+            sorted = self.sort_by(sort_col)
+            sort_title = titles[sort_col]
+            try_sorted(sorted, sort_title)
+            try_sorted(sorted[::-1], '-'+sort_title)
+        try_sorted(self, '+')
+        try_sorted(self[::-1], '-')
+
+        results.sort(key=lambda item: -item[2])
+        result_headers = (Header('operation'), Header('text'),
+                          Header('goodness'))
+        return PuzzleArray([result_headers] + results)
+    
+    def diagonalize(self):
+        assert self.ndim == 1
+        values = [item for item in self if not isinstance(item, Header)]
+        indices = np.arange(len(values)) + 1
+        return index_lists(values, indices)
+
+    def __repr__(self):
+        if self.ndim == 0:
+            # hate it when this happens
+            return repr(self[()])
+        if type(self[0]) == PuzzleArray:
+            reprs = [row._one_line_repr() for row in self]
+            formatted = ',\n\t'.join(reprs)
+            return 'PuzzleArray([\n\t' + formatted + '\n])'
+        else:
+            return 'PuzzleArray(%r)' % list(self)
+
+    def __str__(self):
+        if self.ndim == 2:
+            return array_to_string(self, height=25)
+        elif self.ndim == 1:
+            return array_to_string(self[:,np.newaxis], height=25)
+        else: return repr(self)
+
 
 def index_into(text, index):
     """
@@ -118,8 +184,7 @@ if __name__ == '__main__':
         [4, 9, 'Wednesday', 'water'],
         [5, 8, 'Thursday', 'wood'],
         [6, 6, 'Friday', 'metal'],
-        [7, 7, 'Saturday', 'earth']
+        [7, 8, 'Saturday', 'earth']
     ])
     print puz
-    print index_lists(puz.column('day'), puz.column('order'))
-
+    print puz.index_everything_into_everything()

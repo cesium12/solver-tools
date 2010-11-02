@@ -41,7 +41,7 @@ def alphanumeric_filter(seq):
     return PuzzleString([item for item in seq
                          if passes_alphanumeric_filter(item)])
 
-def character_value(item):
+def regex_value(item):
     """
     Represent how a value would appear in a regex.
     """
