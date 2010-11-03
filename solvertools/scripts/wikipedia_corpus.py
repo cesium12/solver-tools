@@ -25,7 +25,8 @@ class WikipediaHandler(ContentHandler):
         brackets = 0
         for word in tokenize_list(text):
             if ':' in word: continue
-            if word == 'REDIRECT' or word == 'NOTOC': continue
+            if word == '#REDIRECT' or word == '__NOTOC__':
+                continue
             if word in "({[<":
                 brackets += 1
             elif word in ">]})":
