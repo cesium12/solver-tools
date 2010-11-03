@@ -183,13 +183,27 @@ def unigram_replace(char, model):
     if char == ' ': return char
     else: return unigram_sampler(model)
 
+LANGUAGE_DEFS = {
+    'en': ('english', wordlist.COMBINED),
+    'la': ('latin', wordlist.LATIN),
+}
+
+def get_model(lcode):
+    if lcode not in LANGUAGE_DEFS:
+        raise KeyError(
+          "There's no model defined for the language '%s' in language_model.py."
+          "\nThe defined models are: %s" % (LANGUAGE_DEFS.keys(),)
+        )
+    language_name, lang_wordlist = LANGUAGE_DEFS[lcode]
+    if lcode not in CACHE:
+        CACHE[lcode] = WordListModel(language_name, lang_wordlist)
+    return CACHE[lcode]
+
 def get_english_model():
     """
     Load the cached English language model.
     """
-    if 'english' not in CACHE:
-        CACHE['english'] = WordListModel('english', wordlist.COMBINED)
-    return CACHE['english']
+    return get_model('en')
 
 def demo(omit_spaces=True):
     """
@@ -197,7 +211,6 @@ def demo(omit_spaces=True):
     from gibberish.
     """
     the_model = get_english_model()
-    assert 'AMY' in the_model.wordlist
     results = []
     for year in range(2004, 2009):
         for answer in answer_reader(year):
