@@ -34,7 +34,7 @@ def tokenize(text):
     step2 = re.sub('"([^"]*)"', r" `` \1 '' ", step1)
     step3 = re.sub(r'([.,:;?!%]+) ', r" \1 ", step2)
     step4 = re.sub(r'([.,:;?!%]+)$', r" \1", step3)
-    step5 = re.sub(r'([()])', r" \1 ", step4)
+    step5 = re.sub(r'([()\[\]{}<>|])', r" \1 ", step4)
     return re.sub(r'  +', ' ', step5).strip()
 
 def untokenize(text):

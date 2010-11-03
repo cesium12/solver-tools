@@ -69,6 +69,10 @@ def letters_only(text):
     "Convert everything to uppercase and discard everything but letters."
     return re.sub("[^A-Z]", "", case_insensitive_ascii(text))
 
+def classical_latin_letters(text):
+    "Enforce I=J and U=V as some Latin-themed puzzles do."
+    return letters_only(text).replace('U', 'V').replace('J', 'I')
+
 class Wordlist(object):
     """
     A lazily-loaded wordlist.
@@ -258,4 +262,4 @@ Google1M = Wordlist('google1M', letters_only, with_frequency)
 Google200K = Wordlist('google200K', letters_only, with_frequency)
 PHONETIC = Wordlist('phonetic', letters_only, with_values)
 COMBINED = Wordlist('sages_combined', alphanumeric_only, with_frequency)
-
+LATIN = Wordlist('wikipedia_la', classical_latin_letters, with_frequency)
