@@ -114,20 +114,20 @@ class WordListModel(LanguageModel):
         Find the best English text to match the given string by inserting
         spaces (and possibly filling blanks, once we have a model for this).
         """
-        best_matches = [None] * (len(text) + 1)
+        best_matches = ['???'] * (len(text) + 1)
 
         # start with very negative log probabilities
         best_logprobs = np.ones((len(text) + 1,)) * -10000
 
         best_matches[0] = ''
-        best_logprobs[0] = 1.0
+        best_logprobs[0] = 0.0
         for right in xrange(1, len(text)+1):
             for left in xrange(right):
                 left_text = best_matches[left]
                 left_logprob = best_logprobs[left]
                 right_text = text[left:right]
                 right_logprob = self.word_logprob(right_text)
-                if left_text:
+                if left_text != '':
                     combined_text = left_text + ' ' + right_text
                     combined_logprob = (left_logprob + right_logprob
                                         + SPLIT_LOGPROB)
@@ -184,20 +184,28 @@ def unigram_replace(char, model):
     else: return unigram_sampler(model)
 
 LANGUAGE_DEFS = {
+    # add definitions here of the form:
+    # key: (language_name, wordlist)
     'en': ('english', wordlist.COMBINED),
+    'english': ('english', wordlist.COMBINED),
     'la': ('latin', wordlist.LATIN),
+    'latin': ('latin', wordlist.LATIN),
+    'chaos': ('chaotic', wordlist.CHAOTIC),
+    'chaotic': ('chaotic', wordlist.CHAOTIC),
+    'chaotian': ('chaotic', wordlist.CHAOTIC),
 }
 
 def get_model(lcode):
+    lcode = lcode.lower()
     if lcode not in LANGUAGE_DEFS:
         raise KeyError(
           "There's no model defined for the language '%s' in language_model.py."
           "\nThe defined models are: %s" % (LANGUAGE_DEFS.keys(),)
         )
     language_name, lang_wordlist = LANGUAGE_DEFS[lcode]
-    if lcode not in CACHE:
-        CACHE[lcode] = WordListModel(language_name, lang_wordlist)
-    return CACHE[lcode]
+    if language_name not in CACHE:
+        CACHE[language_name] = WordListModel(language_name, lang_wordlist)
+    return CACHE[language_name]
 
 def get_english_model():
     """

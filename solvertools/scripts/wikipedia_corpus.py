@@ -23,7 +23,7 @@ class WikipediaHandler(ContentHandler):
         self.current_text = ''
     def count_words(self, text):
         brackets = 0
-        for word in tokenize_list(text):
+        for word in tokenize_list(text.replace('-', ' ')):
             if ':' in word: continue
             if word == '#REDIRECT' or word == '__NOTOC__':
                 continue
@@ -47,7 +47,7 @@ def read_wikipedia(filename, converter):
     parser.setContentHandler(handler)
     parser.parse(filename)
     items = handler.counts.items()
-    items.sort(key=lambda x: -x[1])
+    items.sort(key=lambda x: (-x[1], x[0]))
     return items
 
 def write_wordlist(filename, items, cutoff):
@@ -57,7 +57,10 @@ def write_wordlist(filename, items, cutoff):
             print >> output, "%s,%s" % (key,value)
     output.close()
 
-if __name__ == '__main__':
-    items = read_wikipedia(get_datafile('wikidumps/lawiki-20101031-pages-articles.xml'), converter=letters_only)
-    write_wordlist(get_datafile('dict/latin.txt'), items, cutoff=4)
+def make_wordlist(data_in, data_out, cutoff):
+    items = read_wikipedia(get_datafile(data_in), converter=letters_only)
+    write_wordlist(get_datafile(data_out), items, cutoff=cutoff)
+
+#make_wordlist('corpora/wikidumps/lawiki-20101031-pages-articles.xml', 'dict/wikipedia_la.txt', cutoff=4)
+make_wordlist('corpora/texts/chaotic.xml', 'dict/chaotic.txt', cutoff=1)
 

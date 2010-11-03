@@ -171,7 +171,7 @@ ALPHABETS = {
   'english_playfair': CaseAlphabet(u"ABCDEFGHIKLMNOPQRSTUVWXYZ"),
 
   # Latin (23 letters, I=J, U=V, no W)
-  'latin': CaseAlphabet(u"ABCDEFGHIKLMNOPQRSTVXYZ")
+  'latin': CaseAlphabet(u"ABCDEFGHIKLMNOPQRSTVXYZ"),
   
   # Modern Spanish alphabet (27 letters, standardized in 1994)
   'spanish': CaseAlphabet(u"ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"),
