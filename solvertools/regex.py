@@ -16,8 +16,11 @@ def regex_len(regex):
 
 def _regex_index(struct, index):
     lo_counter = hi_counter = 0
+    choices = []
     for sub in struct:
         lo, hi = _regex_len(sub)
+        lo_counter += lo
+        hi_counter += hi
     raise NotImplementedError
 
 def unparse(struct):
