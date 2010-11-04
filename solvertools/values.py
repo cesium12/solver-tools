@@ -6,6 +6,7 @@ Note that most of this module is repetitive, boring boilerplate.
 """
 
 import string
+REGEX_CHARS = r".\[]{}()*+?^$-"
 
 def string_map(op, value):
     """
@@ -19,13 +20,14 @@ def string_map(op, value):
 
 def passes_alphanumeric_filter(char):
     """
-    Is this character a letter, a number, or a FlagValue?
+    Is this character a letter, a number, a FlagValue, or a regex character?
     """
     if isinstance(char, FlagValue):
         return True
     else:
         char = unicode(char)
-        return (char in string.letters or char in string.digits)
+        return (char in string.letters or char in string.digits or
+                char in REGEX_CHARS)
 
 def alphanumeric_filter(seq):
     """
@@ -38,8 +40,19 @@ def alphanumeric_filter(seq):
     """
     if isinstance(seq, FlagValue):
         return seq
-    return PuzzleString([item for item in seq
-                         if passes_alphanumeric_filter(item)])
+    return u''.join([unicode(item) for item in seq
+                     if passes_alphanumeric_filter(item)])
+
+#def unparse(sre_object):
+#    if isinstance(sre_object, list):
+#        return ''.join(unparse(x) for x in sre_object)
+#    elif isinstance(sre_object, tuple):
+#        raise NotImplementedError
+#    else:
+#        raise TypeError("%s doesn't belong in a compiled regex" % sre_object)
+
+def re_filter(predicate, str_or_regex):
+    parsed = sre_parse.parse(str_or_regex)
 
 def to_regex(item):
     """
@@ -48,7 +61,7 @@ def to_regex(item):
     if isinstance(item, basestring):
         return item
     elif isinstance(item, FlagValue):
-        return item.as_regex()
+        return item.to_regex()
     else:
         return unicode(item)
 
@@ -57,7 +70,7 @@ class FlagValue(object):
     The parent class of entries that aren't supposed to be literal
     values, but are supposed to flag that something else is going on.
     """
-    def as_regex(self):
+    def to_regex(self):
         """
         Represent this as a single character if at all possible.
         """
@@ -104,7 +117,7 @@ class Header(FlagValue):
     def __str__(self):
         return unicode(self).encode('utf-8')
     
-    def as_regex(self):
+    def to_regex(self):
         return ''
 
     def __unicode__(self):
@@ -126,7 +139,7 @@ class UnknownValue(NondeterministicValue):
     def __unicode__(self):
         return u'???'
 
-    def as_regex(self):
+    def to_regex(self):
         return '.'
 
     def __repr__(self):
@@ -151,7 +164,7 @@ class ChoiceValue(NondeterministicValue):
     def __init__(self, choices):
         self.choices = tuple(choices)
 
-    def as_regex(self):
+    def to_regex(self):
         return unicode(self)
     
     def __str__(self):
@@ -188,7 +201,7 @@ class InvalidValue(FlagValue):
     def __unicode__(self):
         return u'###'
 
-    def as_regex(self):
+    def to_regex(self):
         # too bad we can't make a character that never matches
         return u'#'
     
@@ -199,86 +212,3 @@ class InvalidValue(FlagValue):
         return INVALID
 
 INVALID = InvalidValue()
-
-class PuzzleString(tuple):
-    """
-    Acts like a Unicode string, but can contain FlagValues instead of just
-    characters.
-    
-    The constructor will return you a plain Unicode string if it is made of
-    plain old characters, even decoding utf-8 if necessary.
-    """
-    def __new__(cls, chars):
-        if all(isinstance(char, str) for char in chars):
-            return ''.join(chars).decode('utf-8', 'ignore')
-        elif all(isinstance(char, basestring) for char in chars):
-            return u''.join(chars)
-        else:
-            return tuple.__new__(cls, chars)
-    
-    def __str__(self):
-        return unicode(self).encode('utf-8')
-
-    def __unicode__(self):
-        return u''.join(to_regex(char) for char in self)
-
-    def to_regex(self):
-        return unicode(self)
-    
-    def __repr__(self):
-        return "PuzzleString(%s)" % (tuple.__repr__(self))
-    
-    def __getitem__(self, index):
-        if isinstance(index, slice):
-            return PuzzleString(tuple.__getitem__(self, index))
-        else:
-            return tuple.__getitem__(self, index)
-
-    def __getslice__(self, start, end):
-        return PuzzleString(tuple.__getslice__(self, start, end))
-    
-    def string_map(self, op):
-        return PuzzleString([string_map(op, item) for item in self])
-
-    def upper(self):
-        return string_map(unicode.upper, self)
-
-    def lower(self):
-        return string_map(unicode.lower, self)
-
-    def startswith(self, text):
-        return self[:len(text)] == text
-
-    def endswith(self, text):
-        if len(text) == 0: return True
-        return self[-len(text):] == text
-    
-    def find(self, seq):
-        seq = PuzzleString(seq)
-        length = len(seq)
-        for offset in xrange(len(self) - length + 1):
-            if self[offset:offset+length] == seq:
-                return offset
-        return -1
-        
-    def replace(self, old, new, count=None):
-        old = PuzzleString(old)
-        new = PuzzleString(new)
-        length = len(old)
-        offset = 0
-        found = 0
-        thelist = list(self)
-        while offset + length <= len(self):
-            if PuzzleString(thelist[offset:offset+length]) == old:
-                thelist[offset:offset+length] = new
-                offset += len(new)
-                found += 1
-                if count and found >= count:
-                    break
-            else:
-                offset += 1
-        return PuzzleString(thelist)
-    
-    # TODO: strip, lstrip, rstrip, split, join
-    # Less important: is*, format, partition
-

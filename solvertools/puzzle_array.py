@@ -1,5 +1,5 @@
-from values import alphanumeric_filter, PuzzleString, Header, FlagValue, \
-                   ChoiceValue, UNKNOWN, INVALID
+from values import alphanumeric_filter, Header, FlagValue, \
+                   ChoiceValue, UNKNOWN, INVALID, to_regex
 
 from solvertools.lib.print_grid import array_to_string
 import numpy as np
@@ -7,7 +7,7 @@ import numpy as np
 class PuzzleArray(np.ndarray):
     """
     A class designed to hold a grid of stuff, particularly strings,
-    PuzzleStrings, and FlagValues.
+    and FlagValues.
     """
     def __new__(cls, data, copy=False):
         arr = np.array(data, dtype=object, copy=copy).view(cls)
@@ -44,13 +44,6 @@ class PuzzleArray(np.ndarray):
         else:
             return repr(list(self))
 
-    def to_puzzle_string(self):
-        if self.ndim > 1:
-            return PuzzleArray([to_puzzle_string(row) for row in self])
-        else:
-            return PuzzleString([item for item in self
-                                 if not isinstance(item, Header)])
-
     def sort_by(self, col):
         """
         Sort this puzzle according to one of its columns. The column can be
@@ -69,6 +62,12 @@ class PuzzleArray(np.ndarray):
                 col[i] = None
         sort_order = np.argsort(col)
         return self[sort_order]
+    
+    def to_regex(self):
+        assert self.ndim == 1
+        return u''.join(to_regex(item) for item in self
+                        if not isinstance(item, Header))
+
 
     def index_everything_into_everything(self):
         from solvertools.model.language_model import get_english_model
@@ -81,7 +80,7 @@ class PuzzleArray(np.ndarray):
 
         def evaluate(indexed, description):
             if INVALID not in indexed:
-                text = indexed.to_puzzle_string()
+                text = indexed.to_regex()
                 goodness = model.text_goodness(unicode(text))
                 results.append((description, text, goodness))
         
@@ -90,7 +89,7 @@ class PuzzleArray(np.ndarray):
                 text_title = titles[text_col]
                 for index_col in xrange(ncol):
                     index_title = titles[index_col]
-                    description = u"(%s) %s[%s]" %\
+                    description = u"%s%s[%s]" %\
                       (sort_title, text_title, index_title)
                     
                     indexed = index_lists(sorted[:,text_col],
@@ -98,17 +97,17 @@ class PuzzleArray(np.ndarray):
                     evaluate(indexed, description)
 
                 # also try diagonalizing
-                description = u"(%s) %s[diag]" %\
+                description = u"%s%s[diag]" %\
                   (sort_title, text_title)
                 indexed = sorted[:, text_col].diagonalize()
                 evaluate(indexed, description)
 
         for sort_col in xrange(ncol):
             sorted = self.sort_by(sort_col)
-            sort_title = titles[sort_col]
+            sort_title = titles[sort_col] + ':'
             try_sorted(sorted, sort_title)
             try_sorted(sorted[::-1], '-'+sort_title)
-        try_sorted(self, '+')
+        try_sorted(self, '')
         try_sorted(self[::-1], '-')
 
         results.sort(key=lambda item: -item[2])
