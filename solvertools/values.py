@@ -200,7 +200,7 @@ class InvalidValue(FlagValue):
 
 INVALID = InvalidValue()
 
-class PuzzleString(object):
+class PuzzleString(tuple):
     """
     Acts like a Unicode string, but can contain FlagValues instead of just
     characters.
@@ -214,35 +214,20 @@ class PuzzleString(object):
         elif all(isinstance(char, basestring) for char in chars):
             return u''.join(chars)
         else:
-            return object.__new__(cls)
-    
-    def __init__(self, chars):
-        self.chars = tuple(chars)
+            return tuple.__new__(cls, chars)
     
     def __str__(self):
         return unicode(self).encode('utf-8')
 
     def __unicode__(self):
-        return u''.join(regex_value(char) for char in self.chars)
+        return u''.join(regex_value(char) for char in self)
     
     def __repr__(self):
-        return "PuzzleString(%r)" % (self.chars,)
+        return "PuzzleString(%s)" % (tuple.__repr__(self))
     
-    def __hash__(self):
-        return hash(unicode(self))
-
-    def __cmp__(self, other):
-        return cmp((str(type(self)), unicode(self))
-                   (str(type(other)), unicode(other)))
-
-    def __iter__(self):
-        return iter(self.chars)
-
-    def __getitem__(self, index):
-        return self.chars[index]
-
     def string_op(self, op):
-        return PuzzleString([op(item) for item in self.chars])
+        return PuzzleString([op(item) if isinstance(item, basestring) else item
+                             for item in self])
 
     def upper(self):
         return self.string_op(str.upper)
