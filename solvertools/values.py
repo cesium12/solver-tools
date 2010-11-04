@@ -7,13 +7,13 @@ Note that most of this module is repetitive, boring boilerplate.
 
 import string
 
-def string_op(op, value):
+def string_map(op, value):
     """
     Perform an operation that expects strings on something that might not
     actually be a string.
     """
-    if isinstance(value, FlagValue):
-        return value.string_op(op)
+    if hasattr(value, 'string_map'):
+        return value.string_map(op)
     else:
         return op(unicode(value))
 
@@ -41,7 +41,7 @@ def alphanumeric_filter(seq):
     return PuzzleString([item for item in seq
                          if passes_alphanumeric_filter(item)])
 
-def regex_value(item):
+def to_regex(item):
     """
     Represent how a value would appear in a regex.
     """
@@ -79,7 +79,7 @@ class FlagValue(object):
     def __getitem__(self, index):
         return INVALID
 
-    def string_op(self, op):
+    def string_map(self, op):
         return self
 
 class NondeterministicValue(FlagValue):
@@ -174,8 +174,8 @@ class ChoiceValue(NondeterministicValue):
                 pass
         return ChoiceValue(choices)
 
-    def string_op(self, op):
-        return ChoiceValue([string_op(op, item) for item in self.choices])
+    def string_map(self, op):
+        return ChoiceValue([string_map(op, item) for item in self.choices])
 
 class InvalidValue(FlagValue):
     """
@@ -220,17 +220,65 @@ class PuzzleString(tuple):
         return unicode(self).encode('utf-8')
 
     def __unicode__(self):
-        return u''.join(regex_value(char) for char in self)
+        return u''.join(to_regex(char) for char in self)
+
+    def to_regex(self):
+        return unicode(self)
     
     def __repr__(self):
         return "PuzzleString(%s)" % (tuple.__repr__(self))
     
-    def string_op(self, op):
-        return PuzzleString([op(item) if isinstance(item, basestring) else item
-                             for item in self])
+    def __getitem__(self, index):
+        if isinstance(index, slice):
+            return PuzzleString(tuple.__getitem__(self, index))
+        else:
+            return tuple.__getitem__(self, index)
+
+    def __getslice__(self, start, end):
+        return PuzzleString(tuple.__getslice__(self, start, end))
+    
+    def string_map(self, op):
+        return PuzzleString([string_map(op, item) for item in self])
 
     def upper(self):
-        return self.string_op(str.upper)
+        return string_map(unicode.upper, self)
 
     def lower(self):
-        return self.string_op(str.lower)
+        return string_map(unicode.lower, self)
+
+    def startswith(self, text):
+        return self[:len(text)] == text
+
+    def endswith(self, text):
+        if len(text) == 0: return True
+        return self[-len(text):] == text
+    
+    def find(self, seq):
+        seq = PuzzleString(seq)
+        length = len(seq)
+        for offset in xrange(len(self) - length + 1):
+            if self[offset:offset+length] == seq:
+                return offset
+        return -1
+        
+    def replace(self, old, new, count=None):
+        old = PuzzleString(old)
+        new = PuzzleString(new)
+        length = len(old)
+        offset = 0
+        found = 0
+        thelist = list(self)
+        while offset + length <= len(self):
+            if PuzzleString(thelist[offset:offset+length]) == old:
+                thelist[offset:offset+length] = new
+                offset += len(new)
+                found += 1
+                if count and found >= count:
+                    break
+            else:
+                offset += 1
+        return PuzzleString(thelist)
+    
+    # TODO: strip, lstrip, rstrip, split, join
+    # Less important: is*, format, partition
+
