@@ -1,0 +1,2075 @@
+AAF	KAAF	Apalachicola Municipal Airport	Apalachicola, Florida, United States
+ABE	KABE	Lehigh Valley International Airport	Allentown, Pennsylvania, United States
+ABI	KABI	Abilene Regional Airport	Abilene, Texas, United States
+ABL	PAFM	Ambler Airport (FAA: AFM)	Ambler, Alaska, United States
+ABQ	KABQ	Albuquerque International Sunport	Albuquerque, New Mexico, United States
+ABR	KABR	Aberdeen Regional Airport	Aberdeen, South Dakota, United States
+ABY	KABY	Southwest Georgia Regional Airport	Albany, Georgia, United States
+ACB	KACB	Antrim County Airport	Bellaire, Michigan, United States
+ACK	KACK	Nantucket Memorial Airport	Nantucket, Massachusetts, United States
+ACT	KACT	Waco Regional Airport	Waco, Texas, United States
+ACV	KAVC	Arcata-Eureka Airport	McKinleyville, California, United States
+ACY	KACY	Atlantic City International Airport	Atlantic City, New Jersey, United States
+ADG	KADG	Lenawee County Airport	Adrian, Michigan, United States
+ADK	PADK	Adak Island Airport	Adak Island, Alaska, United States
+ADM	KADM	Ardmore Municipal Airport	Ardmore, Oklahoma, United States
+ADQ	PADQ	Kodiak Airport	Kodiak, Alaska, United States
+ADR	KPHH	Robert F. Swinnie Airport (FAA: PHH)	Andrews, South Carolina, United States
+ADS	KADS	Addison Airport	Dallas, Texas, United States
+ADT	KADH	Ada Municipal Airport (FAA: ADH)	Ada, Oklahoma, United States
+ADW	KADW	Andrews Air Force Base	Camp Springs, Maryland, United States
+AED		Aleneva Airport	Aleneva, Alaska, United States
+AEL	KAEL	Albert Lea Municipal Airport	Albert Lea, Minnesota, United States
+AET	PFAL	Allakaket Airport (FAA: 6A8)	Allakaket, Alaska, United States
+AEX	KAEX	Alexandria International Airport	Alexandria, Louisiana, United States
+AFF	KAFF	United States Air Force Academy Airfield	Colorado Springs, Colorado, United States
+AFN	KAFN	Jaffrey Airport - Silver Ranch Airpark	Jaffrey, New Hampshire, United States
+AFO	KAFO	Afton Municipal Airport	Afton, Wyoming, United States
+AFW	KAFW	Fort Worth Alliance Airport	Fort Worth, Texas, United States
+AGC	KAGC	Allegheny County Airport	Pittsburgh, Pennsylvania, United States
+AGN	PAGN	Angoon Seaplane Base	Angoon, Alaska, United States
+AGO	KAGO	Magnolia Municipal Airport	Magnolia, Arkansas, United States
+AGS	KAGS	Augusta Regional Airport at Bush Field	Augusta, Georgia, United States
+AHD		Ardmore Downtown Executive Airport (FAA: 1F0)	Ardmore, Oklahoma, United States
+AHF		Arapahoe Municipal Airport (FAA: 37V)	Arapahoe, Nebraska, United States
+AHH	KAHH	Amery Municipal Airport	Amery, Wisconsin, United States
+AHN	KAHN	Athens-Ben Epps Airport	Athens, Georgia, United States
+AIA	KAIA	Alliance Municipal Airport	Alliance, Nebraska, United States
+AID	KAID	Anderson Municipal Airport (Darlington Field)	Anderson, Indiana, United States
+AIK	KAIK	Aiken Municipal Airport	Aiken, South Carolina, United States
+AIN	PAWI	Wainwright Airport (Alaska)|Wainwright Airport (FAA: AWI)	Fort Wainwright, Alaska, United States
+AIO	KAIO	Atlantic Municipal Airport	Atlantic, Iowa, United States
+AIV	KAIV	George Downer Airport	Aliceville, Alabama, United States
+AIY	KAIY	Bader Field|Atlantic City Municipal Airport (Bader Field) (closed 2006)	Atlantic City, New Jersey, United States
+AIZ	KAIZ	Lee C. Fine Memorial Airport	Lake Ozark, Missouri, United States
+AKB	PAAK	Atka Airport (FAA: AKA)	Atka, Alaska, United States
+AKC	KAKR	Akron Fulton International Airport (FAA: AKR)	Akron, Ohio, United States
+AKI	PFAK	Akiak Airport	Akiak, Alaska, United States
+AKK	PAKH	Akhiok Airport	Akhiok, Alaska, United States
+AKN	PAKN	King Salmon Airport	King Salmon, Alaska, United States
+AKO	KAKO	Colorado Plains Regional Airport	Akron, Colorado, United States
+AKP	PAKP	Anaktuvuk Pass Airport	Anaktuvuk Pass, Alaska, United States
+ALB	KALB	Albany International Airport	Albany, New York, United States
+ALE		Alpine-Casparis Municipal Airport (FAA: E38)	Alpine, Texas, United States
+ALI	KALI	Alice International Airport	Alice, Texas, United States
+ALM	KALM	Alamogordo-White Sands Regional Airport	Alamogordo, New Mexico, United States
+ALN	KALN	St. Louis Regional Airport	Alton, Illinois, United States
+ALO	KALO	Waterloo Regional Airport	Waterloo, Iowa, United States
+ALS	KALS	San Luis Valley Regional Airport	Alamosa, Colorado, United States
+ALW	KALW	Walla Walla Regional Airport	Walla Walla, Washington, United States
+ALX	KALX	Thomas C. Russell Field	Alexander City, Alabama, United States
+ALZ		Alitak Seaplane Base	Lazy Bay, Alaska, United States
+AMA	KAMA	Rick Husband Amarillo International Airport	Amarillo, Texas, United States
+AMK		Animas Air Park (FAA: 00C)	Durango, Colorado, United States
+AMN	KAMN	Gratiot Community Airport	Alma, Michigan, United States
+AMW	KAMW	Ames Municipal Airport	Ames, Iowa, United States
+ANB	KANB	Anniston Metropolitan Airport	Anniston, Alabama, United States
+ANC	PANC	Ted Stevens Anchorage International Airport	Anchorage, Alaska, United States
+AND	KAND	Anderson Regional Airport	Anderson, South Carolina, United States
+ANI	PANI	Aniak Airport	Aniak, Alaska, United States
+ANN	PANT	Annette Island Airport	Annette Island, Alaska, United States
+ANP	KANP	Lee Airport	Annapolis, Maryland, United States
+ANQ	KANQ	Tri-State Steuben County Airport	Angola, Indiana, United States
+ANV	PANV	Anvik Airport	Anvik, Alaska, United States
+ANW	KANW	Ainsworth Municipal Airport	Ainsworth, Nebraska, United States
+ANY	KANY	Anthony Municipal Airport	Anthony, Kansas, United States
+AOH	KAOH	Lima Allen County Airport	Lima, Ohio, United States
+AOO	KAOO	Altoona-Blair County Airport	Altoona, Pennsylvania, United States
+AOS		Amook Bay Seaplane Base (FAA: AK81)	Amook Bay, Alaska, United States
+APA	KAPA	Centennial Airport	Arapahoe County, Colorado, United States
+APC	KAPC	Napa County Airport	Napa, California, United States
+APF	KAPF	Naples Municipal Airport	Naples, Florida, United States
+APG	KAPG	Phillips Army Airfield	Aberdeen Proving Ground, Maryland, United States
+APH	KAPH	A.P. Hill Army Airfield	Fort A.P. Hill, Virginia, United States
+APN	KAPN	Alpena County Regional Airport	Alpena, Michigan, United States
+APT	KAPT	Marion County Airport (Tennessee)|Marion County Airport (Brown Field)	Jasper, Tennessee, United States
+APV	KAPV	Apple Valley Airport (California)|Apple Valley Airport	Apple Valley, California, United States
+ARA	KARA	Acadiana Regional Airport	New Iberia, Louisiana, United States
+ARB	KARB	Ann Arbor Municipal Airport	Ann Arbor, Michigan, United States
+ARC	PARC	Arctic Village Airport	Arctic Village, Alaska, United States
+ARG	KARG	Walnut Ridge Regional Airport	Walnut Ridge, Arkansas, United States
+ART	KART	Watertown International Airport	Watertown, New York, United States
+ARV	KARV	Lakeland Airport (Noble F. Lee Memorial Field)	Minocqua, Wisconsin|Minocqua/Woodruff, Wisconsin, United States
+ARX		Asbury Park Neptune Airport (closed 1977)	Asbury Park, New Jersey, United States
+ASE	KASE	Aspen-Pitkin County Airport (Sardy Field)	Aspen, Colorado, United States
+ASH	KASH	Boire Field	Nashua, New Hampshire, United States
+ASL	KASL	Harrison_County_Airport_(Texas)|Harrison County Airport	Marshall, Texas, United States
+ASN	KASN	Talladega Municipal Airport	Talladega, Alabama, United States
+ASQ		Austin Airport (FAA: 9U3)	Austin, Nevada, United States
+AST	KAST	Astoria Regional Airport	Astoria, Oregon, United States
+ASX	KASX	John F. Kennedy Memorial Airport	Ashland, Wisconsin, United States
+ASY	KASY	Ashley Municipal Airport	Ashley, North Dakota, United States
+ATE		Antlers Municipal Airport (FAA: 80F)	Antlers, Oklahoma, United States
+ATK	PATQ	Atqasuk Edward Burnell Sr. Memorial Airport	Atqasuk, Alaska, United States
+ATL	KATL	Hartsfield-Jackson Atlanta International Airport	Atlanta, Georgia, United States
+ATO	KUNI	Ohio University Airport (Snyder Field) (FAA: UNI)	Athens, Ohio|Athens/Albany, Ohio, United States
+ATS	KATS	Artesia Municipal Airport	Artesia, New Mexico, United States
+ATT		Atmautluak Airport (FAA: 4A2)	Atmautluak, Alaska, United States
+ATU	PAAT	Casco Cove Coast Guard Station	Attu Island, Alaska, United States
+ATW	KATW	Outagamie County Regional Airport	Greenville, Wisconsin, United States
+ATY	KATY	Watertown Regional Airport	Watertown, South Dakota, United States
+AUG	KAUG	Augusta State Airport	Augusta, Maine, United States
+AUK		Alakanuk Airport	Alakanuk, Alaska, United States
+AUM	KAUM	Austin Municipal Airport	Austin, Minnesota, United States
+AUN	KAUN	Auburn Municipal Airport (California)|Auburn Municipal Airport	Auburn, California, United States
+AUO	KAUO	Auburn-Opelika Robert G. Pitts Airport	Auburn, Alabama, United States
+AUS	KAUS	Austin-Bergstrom International Airport	Austin, Texas, United States
+AUW	KAUW	Wausau Downtown Airport	Wausau, Wisconsin, United States
+AUZ	KARR	Aurora Municipal Airport (Illinois)|Aurora Municipal Airport (FAA: ARR)	Aurora, Illinois, United States
+AVL	KAVL	Asheville Regional Airport	Fletcher, North Carolina, United States
+AVO	KAVO	Avon Park Executive Airport	Avon Park, Florida, United States
+AVP	KAVP	Wilkes-Barre/Scranton International Airport	Avoca, Pennsylvania, United States
+AVW	KAVQ	Marana Regional Airport (FAA: AVQ)	Tucson, Arizona, United States
+AWK	PWAK	Wake Island Airfield	Wake Island, United States Minor Outlying Islands
+AWM	KAWM	West Memphis Municipal Airport	West Memphis, Arkansas, United States
+AXB		Maxson Airfield (FAA: 89N)	Alexandria Bay, New York, United States
+AXG	KAXA	Algona Municipal Airport (FAA: AXA)	Algona, Iowa, United States
+AXN	KAXN	Chandler Field	Alexandria, Minnesota, United States
+AXS	KAXS	Altus/Quartz Mountain Regional Airport	Altus, Oklahoma, United States
+AXV	KAXV	Neil Armstrong Airport	Wapakoneta, Ohio, United States
+AXX	KAXX	Angel Fire Airport	Angel Fire, New Mexico, United States
+AYE		Moore Army Airfield (Fort Devens) (closed 1995-2000)	Leominster, Massachusetts, United States
+AYS	KAYS	Waycross-Ware County Airport	Waycross, Georgia, United States
+AZA	KIWA	Phoenix-Mesa Gateway Airport (FAA: IWA)	Phoenix, Arizona, United States
+AZO	KAZO	Kalamazoo/Battle Creek International Airport	Kalamazoo, Michigan|Kalamazoo/Battle Creek, Michigan, United States
+BAB	KBAB	Beale Air Force Base	Marysville, California, United States
+BAD	KBAD	Barksdale Air Force Base	Bossier City, Louisiana, United States
+BAF	KBAF	Barnes Municipal Airport	Westfield, Massachusetts|Westfield / Springfield, Massachusetts, United States
+BAM	KBAM	Battle Mountain Airport (Lander County Airport)	Battle Mountain, Nevada, United States
+BAR		Baker Army Airfield (abandoned)	Baker Island, United States Minor Outlying Islands
+BBB	KBBB	Benson Municipal Airport (Minnesota)|Benson Municipal Airport	Benson, Minnesota, United States
+BBC	KBYY	Bay City Municipal Airport (FAA: BYY)	Bay City, Texas, United States
+BBD	KBBD	Curtis Field	Brady, Texas, United States
+BBW	KBBW	Broken Bow Municipal Airport	Broken Bow, Nebraska, United States
+BBX	KLOM	Wings Field (FAA: LOM)	Blue Bell, Pennsylvania, United States
+BCB	KBCB	Virginia Tech Montgomery Executive Airport	Blacksburg, Virginia, United States
+BCC		Bear Creek 3 Airport (FAA: Z48)	Bear Creek, Alaska, United States
+BCE	KBCE	Bryce Canyon Airport	Bryce Canyon, Utah|Bryce Canyon, Utah, United States
+BCS		Southern Seaplane Airport (FAA: 65LA)	Belle Chasse, Louisiana, United States
+BCT	KBCT	Boca Raton Airport	Boca Raton, Florida, United States
+BDE	KBDE	Baudette International Airport	Baudette, Minnesota, United States
+BDF		Rinkenberger RLA Airport (FAA: 3IS8)	Bradford, Illinois, United States
+BDG	KBDG	Blanding Municipal Airport	Blanding, Utah, United States
+BDL	KBDL	Bradley International Airport	Windsor Locks (near Hartford, Connecticut|Hartford), Connecticut, United States
+BDR	KBDR	Igor I. Sikorsky Memorial Airport	Bridgeport, Connecticut, United States
+BDY		Bandon State Airport (FAA: S05)	Bandon, Oregon, United States
+BEC	KBEC	Beech Factory Airport	Wichita, Kansas, United States
+BED	KBED	Hanscom Field|Laurence G. Hanscom Field	Bedford, Massachusetts, United States
+BEH	KBEH	Southwest Michigan Regional Airport	Benton Harbor, Michigan, United States
+BET	PABE	Bethel Airport	Bethel, Alaska, United States
+BFD	KBFD	Bradford Regional Airport	Bradford, Pennsylvania, United States
+BFF	KBFF	Western Nebraska Regional Airport (William B. Heilig Field)	Scottsbluff, Nebraska, United States
+BFG		Bullfrog Basin Airport (FAA: U07)	Glen Canyon National Recreation Area|Glen Canyon, Utah, United States
+BFI	KBFI	Boeing Field|Boeing Field/King County International Airport	Seattle, Washington, United States
+BFL	KBFL	Meadows Field	Bakersfield, California, United States
+BFM	KBFM	Mobile Downtown Airport	Mobile, Alabama, United States
+BFP	KBVI	Beaver County Airport (FAA: BVI)	Beaver Falls, Pennsylvania, United States
+BFR	KBFR	Virgil I. Grissom Municipal Airport	Bedford, Indiana, United States
+BFT	KARW	Beaufort County Airport (FAA: ARW)	Beaufort County, South Carolina, United States
+BGD	KBGD	Hutchinson County Airport	Borger, Texas, United States
+BGE	KBGE	Decatur County Industrial Air Park	Bainbridge, Georgia, United States
+BGM	KBGM	Greater Binghamton Airport (Edwin A. Link Field)	Binghamton, New York, United States
+BGQ	PAGQ	Big Lake Airport	Big Lake, Alaska, United States
+BGR	KBGR	Bangor International Airport	Bangor, Maine, United States
+BGS		Webb Air Force Base (closed 1977)	Big Spring, Texas, United States
+BGT		Bagdad Airport (FAA: E51)	Bagdad, Arizona, United States
+BHB	KBHB	Hancock County-Bar Harbor Airport	Bar Harbor, Maine, United States
+BHM	KBHM	Birmingham-Shuttlesworth International Airport	Birmingham, Alabama, United States
+BID	KBID	Block Island State Airport	Block Island, Rhode Island, United States
+BIE	KBIE	Beatrice Municipal Airport	Beatrice, Nebraska, United States
+BIF	KBIF	Biggs Army Airfield	Fort Bliss, El Paso, Texas, United States
+BIG	PABI	Allen Army Airfield (formerly Big Delta Army Airfield)	Fort Greely, Alaska|Fort Greely, Delta Junction, Alaska, United States
+BIH	KBIH	Eastern Sierra Regional Airport	Bishop, California, United States
+BIL	KBIL	Billings Logan International Airport	Billings, Montana, United States
+BIS	KBIS	Bismarck Municipal Airport	Bismarck, North Dakota, United States.
+BIX	KBIX	Keesler Air Force Base	Biloxi, Mississippi, United States
+BJC	KBJC	Rocky Mountain Metropolitan Airport	Denver, Colorado, United States
+BJI	KBJI	Bemidji Regional Airport	Bemidji, Minnesota, United States
+BJJ	KBJJ	Wayne County Airport (Ohio)|Wayne County Airport	Wooster, Ohio, United States
+BKC	PABL	Buckland Airport (FAA: BVK)	Buckland, Alaska, United States
+BKD	KBKD	Stephens County Airport	Breckenridge, Texas, United States
+BKE	KBKE	Baker City Municipal Airport	Baker City, Oregon, United States
+BKF	KBKF	Buckley Air Force Base	Aurora, Colorado, United States
+BKG	KBBG	Branson Airport (FAA: BBG)	Branson, Missouri, United States
+BKH	PHBK	Pacific Missile Range Facility|Barking Sands PMRF	Kekaha, Hawaii, United States
+BKL	KBKL	Burke Lakefront Airport	Cleveland, Ohio, United States
+BKT	KBKT	Allen C. Perkinson Airport / Blackstone Army Airfield	Blackstone, Virginia, United States
+BKW	KBKW	Raleigh County Memorial Airport	Beckley, West Virginia, United States
+BKX	KBKX	Brookings Regional Airport	Brookings, South Dakota, United States
+BLD		Boulder City Municipal Airport (FAA: 61B)	Boulder City, Nevada, United States
+BLF	KBLF	Mercer County Airport (West Virginia)|Mercer County Airport	Bluefield, West Virginia, United States
+BLH	KBLH	Blythe Airport	Blythe, California, United States
+BLI	KBLI	Bellingham International Airport	Bellingham, Washington, United States
+BLM	KBLM	Monmouth Executive Airport	Belmar, New Jersey|Belmar/Farmingdale, New Jersey|Farmingdale, New Jersey, United States
+BLU	KBLU	Blue Canyon - Nyack Airport	Emigrant Gap, California, United States
+BLV	KBLV	MidAmerica St. Louis Airport / Scott Air Force Base	Belleville, Illinois, United States
+BMC	KBMC	Brigham City Airport	Brigham City, Utah, United States
+BMG	KBMG	Monroe County Airport (Indiana)|Monroe County Airport	Bloomington, Indiana, United States
+BMI	KBMI	Central Illinois Regional Airport	Bloomington, Illinois, United States
+BML	KBML	Berlin Regional Airport	Berlin, New Hampshire, United States
+BMT	KBMT	Beaumont Municipal Airport	Beaumont, Texas, United States
+BMX	PABM	Big Mountain Air Force Station (FAA: 37AK)	Big Mountain, Alaska|Big Mountain, Alaska, United States
+BNA	KBNA	Nashville International Airport	Nashville, Tennessee, United States
+BNF		Warm Springs Bay Seaplane Base	Baranof, Alaska, United States
+BNG	KBNG	Banning Municipal Airport	Banning, California, United States
+BNL	KBNL	Barnwell Regional Airport	Barnwell, South Carolina, United States
+BNO	KBNO	Burns Municipal Airport	Burns, Oregon, United States
+BNW	KBNW	Boone Municipal Airport	Boone, Iowa, United States
+BOF	KBOF	Bolling Air Force Base	Washington, D.C., United States
+BOI	KBOI	Boise Airport|Boise Air Terminal (Gowen Field)	Boise, Idaho, United States
+BOK	KBOK	Brookings Airport	Brookings, Oregon, United States
+BOS	KBOS	Logan International Airport	Boston, Massachusetts, United States
+BOW	KBOW	Bartow Municipal Airport	Bartow, Florida, United States
+BPI	KBPI	Big Piney-Marbleton Airport	Big Piney, Wyoming, United States
+BPT	KBPT	Southeast Texas Regional Airport	Beaumont, Texas|Beaumont/Port Arthur, Texas|Port Arthur), Texas, United States
+BQK	KBQK	Brunswick Golden Isles Airport	Brunswick, Georgia, United States
+BQV		Bartlett Cove Seaplane Base	Bartlett Cove, Alaska|Bartlett Cove, Alaska, United States
+BRD	KBRD	Brainerd Lakes Regional Airport	Brainerd, Minnesota, United States
+BRL	KBRL	Southeast Iowa Regional Airport	Burlington, Iowa, United States
+BRO	KBRO	Brownsville/South Padre Island International Airport	Brownsville, Texas, United States
+BRW	PABR	Wiley Post-Will Rogers Memorial Airport	Barrow, Alaska, United States
+BRY	KBRY	Samuels Field	Bardstown, Kentucky, United States
+BSF	PHSF	Bradshaw Army Airfield	Camp Pohakuloa, Hawaii, United States
+BSQ		Bisbee Municipal Airport (FAA: P04)	Bisbee, Arizona, United States
+BSW		Boswell Bay Airport (FAA: AK97)	Boswell Bay, Alaska|Boswell Bay, Alaska, United States
+BTF	KBTF	Skypark Airport	Bountiful, Utah, United States
+BTI	PABA	Barter Island LRRS Airport	Barter Island, Alaska, United States
+BTL	KBTL	W. K. Kellogg Airport	Battle Creek, Michigan, United States
+BTM	KBTM	Bert Mooney Airport	Butte, Montana, United States
+BTN	KBBP	Marlboro County Jetport (FAA: BBP)	Bennettsville, South Carolina, United States
+BTP	KBTP	Butler County Airport (K.W. Scholter Field)	Butler, Pennsylvania, United States
+BTR	KBTR	Baton Rouge Metropolitan Airport (Ryan Field)	Baton Rouge, Louisiana, United States
+BTT	PABT	Bettles Airport	Bettles, Alaska, United States
+BTV	KBTV	Burlington International Airport	Burlington, Vermont, United States
+BTY	KBTY	Beatty Airport	Beatty, Nevada, United States
+BUB	KBUB	Cram Field	Burwell, Nebraska, United States
+BUF	KBUF	Buffalo Niagara International Airport	Buffalo, New York, United States
+BUM	KBUM	Butler Memorial Airport	Butler, Missouri, United States
+BUR	KBUR	Bob Hope Airport	Burbank, California, United States
+BVO	KBVO	Bartlesville Municipal Airport	Bartlesville, Oklahoma, United States
+BVU	PABG	Beluga Airport (FAA: BLG)	Beluga, Alaska, United States
+BVX	KBVX	Batesville Regional Airport	Batesville, Arkansas, United States
+BVY	KBVY	Beverly Municipal Airport	Beverly, Massachusetts, United States
+BWC	KBWC	Brawley Municipal Airport	Brawley, California, United States
+BWD	KBWD	Brownwood Regional Airport	Brownwood, Texas, United States
+BWG	KBWG	Bowling Green-Warren County Regional Airport	Bowling Green, Kentucky, United States
+BWI	KBWI	Baltimore-Washington International Thurgood Marshall Airport	between Baltimore, Maryland and Washington, DC, United States
+BWL		Earl Henry Airport (FAA: 6OK6)	Blackwell, Oklahoma, United States
+BWM	KBPP	Bowman Municipal Airport (FAA: BPP)	Bowman, North Dakota, United States
+BWS		Blaine Municipal Airport (FAA: 4W6)	Blaine, Washington, United States
+BXA	KBXA	George R. Carr Memorial Air Field	Bogalusa, Louisiana, United States
+BXK	KBXK	Buckeye Municipal Airport	Buckeye, Arizona, United States
+BXS		Borrego Valley Airport (FAA: L08)	Borrego Springs, California, United States
+BYA		Boundary Airport	Boundary, Alaska, United States
+BYG	KBYG	Johnson County Airport (Wyoming)|Johnson County Airport	Buffalo, Wyoming, United States
+BYH	KBYH	Arkansas International Airport	Blytheville, Arkansas, United States
+BYI	KBYI	Burley Municipal Airport	Burley, Idaho, United States
+BYS	KBYS	Bicycle Lake Army Airfield (Fort Irwin)	Barstow, California, United States
+BYW		Blakely Island Airport (FAA: 38WA)	Blakely Island, Washington, United States
+BZN	KBZN	Gallatin Field Airport	Bozeman, Montana, United States
+CAD	KCAD	Wexford County Airport	Cadillac, Michigan, United States
+CAE	KCAE	Columbia Metropolitan Airport	West Columbia, South Carolina|West Columbia (near Columbia, South Carolina|Columbia), South Carolina, United States
+CAK	KCAK	Akron-Canton Regional Airport	Akron, Ohio|Akron / Canton, Ohio, United States
+CAO	KCAO	Clayton Municipal Airpark	Clayton, New Mexico, United States
+CAR	KCAR	Caribou Municipal Airport	Caribou, Maine, United States
+CBE	KCBE	Greater Cumberland Regional Airport	Cumberland, Maryland, United States
+CBF	KCBF	Council Bluffs Municipal Airport	Council Bluffs, Iowa, United States
+CBK	KCBK	Colby Municipal Airport (Shalz Field)	Colby, Kansas, United States
+CBM	KCBM	Columbus Air Force Base	Columbus, Mississippi, United States
+CCB	KCCB	Cable Airport	Upland, California, United States
+CCD		Century City Heliport (FAA: 84CL)	Los Angeles, California, United States
+CCG		Crane County Airport (FAA: E13)	Crane, Texas, United States
+CCR	KCCR	Buchanan Field	Concord, California, United States
+CCY	KCCY	Northeast Iowa Regional Airport	Charles City, Iowa, United States
+CDB	PACD	Cold Bay Airport	Cold Bay, Alaska, United States
+CDC	KCDC	Cedar City Regional Airport	Cedar City, Utah, United States
+CDE	PACE	Cape Decision Coast Guard Heliport	Cape Decision, Alaska, United States
+CDH	KCDH	Harrell Field	Camden, Arkansas, United States
+CDK	KCDK	George T. Lewis Airport	Cedar Key, Florida, United States
+CDL		Candle 2 Airport (FAA: AK75)	Candle, Alaska|Candle, Alaska, United States
+CDN	KCDN	Woodward Field (airport)|Woodward Field	Camden, South Carolina, United States
+CDR	KCDR	Chadron Municipal Airport	Chadron, Nebraska, United States
+CDS	KCDS	Childress Municipal Airport	Childress, Texas, United States
+CDV	PACV	Merle K. (Mudhole) Smith Airport	Cordova, Alaska, United States
+CDW	KCDW	Essex County Airport	Caldwell, New Jersey, United States
+CEA	KCEA	Cessna Aircraft Field	Wichita, Kansas, United States
+CEC	KCEC	Jack McNamara Field	Crescent City, California, United States
+CEF	KCEF	Westover ARB/Westover Metropolitan Airport	Springfield, Massachusetts|Springfield/Chicopee, Massachusetts, United States
+CEM	PARL	Central Airport	Central, Alaska, United States
+CEU	KCEU	Oconee County Regional Airport	Clemson, South Carolina, United States
+CEV	KCEV	Mettel Field	Connersville, Indiana, United States
+CEW	KCEW	Bob Sikes Airport	Crestview, Florida, United States
+CEX		Chena Hot Springs Airport (FAA: AK13)	Chena Hot Springs, Alaska, United States
+CEY	KCEY	Murray-Calloway County Airport	Murray, Kentucky, United States
+CEZ	KCEZ	Cortez Municipal Airport	Cortez, Colorado, United States
+CFD	KCFD	Coulter Field	Bryan, Texas, United States
+CFT	KCFT	Greenlee County Airport	Clifton, Arizona|Clifton/Morenci, Arizona, United States
+CFV	KCFV	Coffeyville Municipal Airport	Coffeyville, Kansas, United States
+CGA		Craig Seaplane Base	Craig, Alaska, United States
+CGE	KCGE	Cambridge-Dorchester Airport	Cambridge, Maryland, United States
+CGF	KCGF	Cuyahoga County Airport	Cleveland, Ohio, United States
+CGI	KCGI	Cape Girardeau Regional Airport	Cape Girardeau, Missouri, United States
+CGS	KCGS	College Park Airport	College Park, Maryland, United States
+CGZ	KCGZ	Casa Grande Municipal Airport	Casa Grande, Arizona, United States
+CHA	KCHA	Chattanooga Metropolitan Airport (Lovell Field)	Chattanooga, Tennessee, United States
+CHI		List of airports in the Chicago area|All Airports	Chicago, Illinois, United States
+CHK	KCHK	Chickasha Municipal Airport	Chickasha, Oklahoma, United States
+CHL	KLLJ	Challis Airport (FAA: LLJ)	Challis, Idaho, United States
+CHO	KCHO	Charlottesville-Albemarle Airport	Charlottesville, Virginia, United States
+CHP		Circle Hot Springs Airport	Circle Hot Springs, Alaska, United States
+CHS	KCHS	Charleston International Airport / Charleston AFB	Charleston, South Carolina, United States
+CHU		Chuathbaluk Airport (FAA: 9A3)	Chuathbaluk, Alaska, United States
+CHZ		Chiloquin State Airport (FAA: 2S7)	Chiloquin, Oregon, United States
+CIB	KAVX	Catalina Airport (FAA: AVX)	Avalon, California, United States
+CIC	KCIC	Chico Municipal Airport	Chico, California, United States
+CID	KCID	The Eastern Iowa Airport	Cedar Rapids, Iowa, United States
+CIG	KCAG	Craig-Moffat Airport (FAA: CAG)	Craig, Colorado, United States
+CIK	PACI	Chalkyitsik Airport	Chalkyitsik, Alaska, United States
+CIL		Council Airport (FAA: K29)	Council, Alaska, United States
+CIN	KCIN	Arthur N. Neu Airport	Carroll, Iowa, United States
+CIR	KCIR	Cairo Regional Airport	Cairo, Illinois, United States
+CIU	KCIU	Chippewa County International Airport	Sault Ste Marie, Michigan, United States
+CKA	KCKA	Kegelman Air Force Auxiliary Field	Cherokee, Oklahoma, United States
+CKB	KCKB	North Central West Virginia Airport	Clarksburg, West Virginia, United States
+CKD		Crooked Creek Airport (FAA: CJX)	Crooked Creek, Alaska, United States
+CKE		Ferndale Resort Seaplane Base (FAA: CN20)	Kelseyville, California, United States
+CKF	KCKF	Crisp County-Cordele Airport	Cordele, Georgia, United States
+CKM	KCKM	Fletcher Field	Clarksdale, Mississippi, United States
+CKN	KCKN	Crookston Municipal Airport (Kirkwood Field)	Crookston, Minnesota, United States
+CKU		Cordova Municipal Airport	Cordova, Alaska, United States
+CKV	KCKV	Outlaw Field	Clarksville, Tennessee, United States
+CKX		Chicken Airport	Chicken, Alaska, United States
+CLD	KCRQ	McClellan-Palomar Airport (FAA: CRQ)	Carlsbad, California, United States
+CLE	KCLE	Cleveland Hopkins International Airport	Cleveland, Ohio, United States
+CLF		Clear Sky Lodge Airport	Clear, Alaska|Clear, Alaska, United States
+CLG		New Coalinga Municipal Airport (FAA: C80)	Coalinga, California, United States
+CLI	KCLI	Clintonville Municipal Airport	Clintonville, Wisconsin, United States
+CLK	KCLK	Clinton Regional Airport	Clinton, Oklahoma, United States
+CLL	KCLL	Easterwood Airport (Easterwood Field)	College Station, Texas, United States
+CLM	KCLM	William R. Fairchild International Airport	Port Angeles, Washington, United States
+CLP	PFCL	Clarks Point Airport	Clarks Point, Alaska, United States
+CLR	KCLR	Cliff Hatfield Memorial Airport	Calipatria, California, United States
+CLS	KCLS	Chehalis-Centralia Airport	Chehalis, Washington, United States
+CLT	KCLT	Charlotte/Douglas International Airport	Charlotte, North Carolina, United States
+CLU	KBAK	Columbus Municipal Airport (Indiana)|Columbus Municipal Airport (FAA: BAK)	Columbus, Indiana, United States
+CLW	KCLW	Clearwater Air Park	Clearwater, Florida, United States
+CMH	KCMH	Port Columbus International Airport	Columbus, Ohio, United States
+CMI	KCMI	University of Illinois Willard Airport	Champaign-Urbana, Illinois, United States
+CMX	KCMX	Houghton County Memorial Airport	Hancock, Michigan, United States
+CMY	KCMY	Sparta/Fort McCoy Airport	Sparta, Wisconsin, United States
+CNE		Fremont County Airport (FAA: 1V6)	Cañon City, Colorado, United States
+CNH	KCNH	Claremont Municipal Airport	Claremont, New Hampshire, United States
+CNK	KCNK	Blosser Municipal Airport	Concordia, Kansas, United States
+CNM	KCNM	Cavern City Air Terminal	Carlsbad, New Mexico, United States
+CNO	KCNO	Chino Airport	Chino, California, United States
+CNU	KCNU	Chanute Martin Johnson Airport	Chanute, Kansas, United States
+CNW	KCNW	TSTC Waco Airport	Waco, Texas, United States
+CNY	KCNY	Canyonlands Field	Moab, Utah, United States
+COA		Columbia Airport (California)|Columbia Airport (FAA: O22)	Columbia, California, United States
+COD	KCOD	Yellowstone Regional Airport	Cody, Wyoming, United States
+COE	KCOE	Coeur d'Alene Air Terminal	Coeur d'Alene, Idaho, United States
+COF	KCOF	Patrick Air Force Base	Cocoa Beach, Florida, United States
+COI	KCOI	Merritt Island Airport	Merritt Island, Florida, United States
+COM	KCOM	Coleman Municipal Airport	Coleman, Texas, United States
+CON	KCON	Concord Municipal Airport	Concord, New Hampshire, United States
+COP		Cooperstown-Westville Airport (FAA: K23)	Cooperstown, New York, United States
+COS	KCOS	Colorado Springs Airport	Colorado Springs, Colorado, United States
+COT	KCOT	Cotulla-La Salle County Airport	Cotulla, Texas, United States
+COU	KCOU	Columbia Regional Airport	Columbia, Missouri, United States
+CPM	KCPM	Compton/Woodley Airport	Compton, California, United States
+CPR	KCPR	Natrona County International Airport	Casper, Wyoming, United States
+CPS	KCPS	St. Louis Downtown Airport	Cahokia, Illinois (near St. Louis, Missouri), United States
+CRE	KCRE	Grand Strand Airport	North Myrtle Beach, South Carolina, United States
+CRG	KCRG	Craig Municipal Airport	Jacksonville, Florida, United States
+CRO	KCRO	Corcoran Airport	Corcoran, California, United States
+CRP	KCRP	Corpus Christi International Airport	Corpus Christi, Texas, United States
+CRS	KCRS	Corsicana Municipal Airport (C. David Campbell Field)	Corsicana, Texas, United States
+CRT	KCRT	Z.M. Jack Stell Field	Crossett, Arkansas, United States
+CRW	KCRW	Yeager Airport	Charleston, West Virginia, United States
+CRX	KCRX	Roscoe Turner Airport	Corinth, Mississippi, United States
+CSE		Buckhorn Ranch Airport (FAA: 0CO2)	Crested Butte, Colorado, United States
+CSG	KCSG	Columbus Metropolitan Airport	Columbus, Georgia, United States
+CSL	KCSL	O'Sullivan Army Heliport	Camp San Luis Obispo, California, United States
+CSM	KCSM	Clinton-Sherman Airport	Clinton, Oklahoma, United States
+CSN	KCXP	Carson Airport (FAA: CXP)	Carson City, Nevada, United States
+CSP	PACA	Cape Spencer Coast Guard Heliport	Cape Spencer, Alaska|Cape Spencer, Alaska, United States
+CSQ	KCSQ	Creston Municipal Airport	Creston, Iowa, United States
+CSV	KCSV	Crossville Memorial-Whitson Field	Crossville, Tennessee, United States
+CTB	KCTB	Cut Bank Municipal Airport	Cut Bank, Montana, United States
+CTH	KMQS	Chester County G. O. Carlson Airport (FAA: MQS)	Coatesville, Pennsylvania, United States
+CTK		Canton Municipal Airport (FAA: 7G9)	Canton, South Dakota, United States
+CTO		Calverton Executive Airpark (FAA: 3C8)	Calverton, New York, United States
+CTW		Cottonwood Airport (FAA: P52)	Cottonwood, Arizona, United States
+CTX		Cortland County Airport (Chase Field, FAA: N03)	Cortland, New York, United States
+CTY	KCTY	Cross City Airport	Cross City, Florida, United States
+CTZ	KCTZ	Sampson County Airport	Clinton, North Carolina, United States
+CUB	KCUB	Columbia Owens Downtown Airport	Columbia, South Carolina, United States
+CUH	KCUH	Cushing Municipal Airport	Cushing, Oklahoma, United States
+CUS		Columbus Municipal Airport (New Mexico)|Columbus Municipal Airport (FAA: 0NM0)	Columbus, New Mexico, United States
+CUX		Cuddihy Field (FAA: 07TE)	Corpus Christi, Texas, United States
+CVG	KCVG	Cincinnati/Northern Kentucky International Airport	Hebron, Kentucky (near Cincinnati, Ohio), United States
+CVN	KCVN	Clovis Municipal Airport	Clovis, New Mexico, United States
+CVO	KCVO	Corvallis Municipal Airport	Corvallis, Oregon, United States
+CVS	KCVS	Cannon Air Force Base	Clovis, New Mexico, United States
+CWA	KCWA	Central Wisconsin Airport	Mosinee, Wisconsin, United States
+CWF	KCWF	Chennault International Airport	Lake Charles, Louisiana, United States
+CWI	KCWI	Clinton Municipal Airport (Iowa)|Clinton Municipal Airport	Clinton, Iowa, United States
+CWS		Center Island Airport (FAA: 78WA)	Center Island (Washington)|Center Island, Washington (U.S. state)|Washington, United States
+CXC		Chitina Airport	Chitina, Alaska, United States
+CXF	PACX	Coldfoot Airport	Coldfoot, Alaska, United States
+CXL	KCXL	Calexico International Airport	Calexico, California, United States
+CXO	KCXO	Lone Star Executive Airport	Houston, Texas, United States
+CYF	PACK	Chefornak Airport (FAA: CFK)	Chefornak, Alaska, United States
+CYM		Chatham Seaplane Base	Chatham, Alaska|Chatham, Alaska, United States
+CYS	KCYS	Cheyenne Regional Airport (Jerry Olson Field)	Cheyenne, Wyoming, United States
+CYT	PACY	Yakataga Airport	Cape Yakataga, Alaska|Cape Yakataga, Alaska, United States
+CZC		Copper Center 2 Airport (FAA: Z93)	Copper Center, Alaska, United States
+CZF	PACZ	Cape Romanzof Long Range Radar Station	Cape Romanzof, Alaska|Cape Romanzof, Alaska, United States
+CZK	KCZK	Cascade Locks State Airport	Cascade Locks, Oregon, United States
+CZN		Chisana Airport	Chisana, Alaska, United States
+CZO		Chistochina Airport	Chistochina, Alaska, United States
+CZP		Cape Pole Seaplane Base (FAA: Z71)	Cape Pole, Alaska|Cape Pole, Alaska, United States
+CZT	KCZT	Dimmit County Airport	Carrizo Springs, Texas, United States
+DAA	KDAA	Davison Army Airfield	Fort Belvoir, Virginia, United States
+DAB	KDAB	Daytona Beach International Airport	Daytona Beach, Florida, United States
+DAG	KDAG	Barstow-Daggett Airport	Daggett, California, United States
+DAL	KDAL	Dallas Love Field	Dallas, Texas, United States
+DAN	KDAN	Danville Regional Airport	Danville, Virginia, United States
+DAY	KDAY	James M. Cox International Airport	Dayton, Ohio, United States
+DBN	KDBN	W. H. 'Bud' Barron Airport	Dublin, Georgia, United States
+DBQ	KDBQ	Dubuque Regional Airport	Dubuque, Iowa, United States
+DBS		Dubois Municipal Airport (FAA: U41)	Dubois, Idaho, United States
+DCA	KDCA	Ronald Reagan Washington National Airport	Arlington County, Virginia (near Washington, D.C.), United States
+DCK		Dahl Creek Airport	Dahl Creek, Alaska, United States
+DCR	KDCR	Decatur Hi-Way Airport (closed)	Decatur, Indiana, United States
+DCU	KDCU	Pryor Field Regional Airport	Decatur, Alabama, United States
+DDC	KDDC	Dodge City Regional Airport	Dodge City, Kansas, United States
+DEC	KDEC	Decatur Airport	Decatur, Illinois, United States
+DEH	KDEH	Decorah Municipal Airport	Decorah, Iowa, United States
+DEN	KDEN	Denver International Airport (succeeded Stapleton Airport)	Denver, Colorado, United States
+DET	KDET	Coleman A. Young International Airport	Detroit, Michigan, United States
+DFI	KDFI	Defiance Memorial Airport	Defiance, Ohio, United States
+DFW	KDFW	Dallas-Fort Worth International Airport	Dallas, Texas|Dallas and Fort Worth, Texas, United States
+DGL	KDGL	Douglas Municipal Airport (Arizona)|Douglas Municipal Airport	Douglas, Arizona, United States
+DGN	KNDY	Dahlgren Naval Surface Warfare Center (FAA: NDY)	Dahlgren, Virginia, United States
+DGW	KDGW	Converse County Airport	Douglas, Wyoming, United States
+DHN	KDHN	Dothan Regional Airport	Dothan, Alabama, United States
+DHT	KDHT	Dalhart Municipal Airport	Dalhart, Texas, United States
+DIK	KDIK	Theodore Roosevelt Regional Airport	Dickinson, North Dakota, United States
+DIO		Diomede Heliport (FAA: DM2)	Diomede, Alaska, United States
+DJN	PABI	Delta Junction Airport (FAA: D66)	Delta Junction, Alaska, United States
+DKK	KDKK	Chautauqua County/Dunkirk Airport	Dunkirk, New York, United States
+DLF	KDLF	Laughlin Air Force Base	Del Rio, Texas, United States
+DLG	PADL	Dillingham Airport	Dillingham, Alaska, United States
+DLH	KDLH	Duluth International Airport	Duluth, Minnesota, United States
+DLL	KDLC	Dillon County Airport (FAA: DLC)	Dillon, South Carolina, United States
+DLN	KDLN	Dillon Airport	Dillon, Montana, United States
+DLS	KDLS	Columbia Gorge Regional Airport (The Dalles Municipal Airport)	The Dalles, Oregon, United States
+DMA	KDMA	Davis Monthan Air Force Base	Tucson, Arizona, United States
+DMN	KDMN	Deming Municipal Airport	Deming, New Mexico, United States
+DMO	KDMO	Sedalia Memorial Airport	Sedalia, Missouri, United States
+DNL	KDNL	Daniel Field	Augusta, Georgia, United States
+DNN	KDNN	Dalton Municipal Airport	Dalton, Georgia, United States
+DNS	KDNS	Denison Municipal Airport	Denison, Iowa, United States
+DNV	KDNV	Vermilion County Airport	Danville, Illinois, United States
+DOV	KDOV	Dover Air Force Base	Dover, Delaware, United States
+DPA	KDPA	Dupage Airport	West Chicago, Illinois, United States
+DPG	KDPG	Michael Army Airfield	Dugway Proving Ground, Utah, United States
+DQH	PALP	Alpine Airstrip (FAA: AK15)	Deadhorse, Alaska, United States
+DRA	KDRA	Desert Rock Airport	Mercury, Nevada, United States
+DRE	KDRM	Drummond Island Airport (FAA: DRM)	Drummond Island, Michigan, United States
+DRG	PADE	Deering Airport (FAA: DEE)	Deering, Alaska, United States
+DRI	KDRI	Beauregard Regional Airport	De Ridder, Louisiana, United States
+DRO	KDRO	Durango-La Plata County Airport	Durango, Colorado, United States
+DRT	KDRT	Del Rio International Airport	Del Rio, Texas, United States
+DRU		Drummond Airport (FAA: M26)	Drummond, Montana, United States
+DSI	KDTS	Destin-Fort Walton Beach Airport (FAA: DTS)	Destin, Florida, United States
+DSM	KDSM	Des Moines International Airport	Des Moines, Iowa, United States
+DSV	KDSV	Dansville Municipal Airport	Dansville, New York, United States
+DTA	KDTA	Delta Municipal Airport	Delta, Utah, United States
+DTH		Death Valley National Park Airport	Death Valley, United States
+DTL	KDTL	Detroit Lakes Airport (Wething Field)	Detroit Lakes, Minnesota, United States
+DTN	KDTN	Shreveport Downtown Airport	Shreveport, Louisiana, United States
+DTT		All Airports	Detroit, Michigan, United States
+DTW	KDTW	Detroit Metropolitan Wayne County Airport	Romulus, Michigan|Romulus (near Detroit), Michigan, United States
+DUA	KDUA	Eaker Field	Durant, Oklahoma, United States
+DUC	KDUC	Halliburton Field (airport)|Halliburton Field	Duncan, Oklahoma, United States
+DUF		Pine Island Airport (FAA: 7NC2)	Corolla, North Carolina, United States
+DUG	KDUG	Bisbee-Douglas International Airport	Bisbee, Arizona|Bisbee/Douglas, Arizona, United States
+DUJ	KDUJ	DuBois Regional Airport (formerly DuBois-Jefferson County Airport)	DuBois, Pennsylvania, United States
+DUT	PADU	Unalaska Airport	Unalaska, Alaska, United States
+DVL	KDVL	Devils Lake Municipal Airport	Devils Lake, North Dakota, United States
+DVN	KDVN	Davenport Municipal Airport (Iowa)|Davenport Municipal Airport	Davenport, Iowa, United States
+DVT	KDVT	Phoenix Deer Valley Airport	Phoenix, Arizona, United States
+DWH	KDWH	David Wayne Hooks Memorial Airport	Houston, Texas, United States
+DWN		Downtown Airpark (FAA: OK03)	Oklahoma City, Oklahoma, United States
+DWS		Walt Disney World Airport (no FAA code)	Walt Disney World / Orlando, Florida, United States http://www.airfields-freeman.com/FL/Airfields_FL_OrlandoSW.htm#disney
+DXR	KDXR	Danbury Municipal Airport	Danbury, Connecticut, United States
+DYL	KDYL	Doylestown Airport	Doylestown, Pennsylvania, United States
+DYS	KDYS	Dyess Air Force Base	Abilene, Texas, United States
+EAA	PAEG	Eagle Airport	Eagle, Alaska, United States
+EAN	KEAN	Phifer Airfield	Wheatland, Wyoming, United States
+EAR	KEAR	Kearney Regional Airport	Kearney, Nebraska, United States
+EAT	KEAT	Pangborn Memorial Airport	Wenatchee, Washington, United States
+EAU	KEAU	Chippewa Valley Regional Airport	Eau Claire, Wisconsin, United States
+EBS	KEBS	Webster City Municipal Airport	Webster City, Iowa, United States
+ECA		Iosco County Airport (FAA: 6D9)	East Tawas, Michigan, United States
+ECG	KECG	Elizabeth City Regional Airport / Elizabeth City CGAS	Elizabeth City, North Carolina, United States
+ECP	KECP	Northwest Florida Beaches International Airport	Panama City, Florida, United States
+ECS	KECS	Mondell Field	Newcastle, Wyoming, United States
+EDA		Edna Bay Municipal Airport (or Seaplane Base?)	Edna Bay, Alaska, United States
+EDE	KEDE	Northeastern Regional Airport	Edenton, North Carolina, United States
+EDF	PAED	Elmendorf Air Force Base	Anchorage, Alaska, United States
+EDG	KEDG	Weide Army Airfield	Edgewood Arsenal, Maryland, United States
+EDK	KEQA	Captain Jack Thomas/El Dorado Airport (FAA: EQA)	El Dorado, Kansas, United States
+EDW	KEDW	Edwards Air Force Base	Edwards, California, United States
+EED	KEED	Needles Airport	Needles, California, United States
+EEK	PAEE	Eek Airport	Eek, Alaska, United States
+EEN	KEEN	Dillant-Hopkins Airport	Keene, New Hampshire, United States
+EFD	KEFD	Ellington Field	Houston, Texas, United States
+EFK	KEFK	Newport State Airport (Vermont)|Newport State Airport	Newport, Vermont, United States
+EFW	KEFW	Jefferson Municipal Airport	Jefferson, Iowa, United States
+EGE	KEGE	Eagle County Regional Airport	Eagle, Colorado (near Vail, Colorado|Vail), United States
+EGI	KEGI	Duke Field (Eglin Auxiliary Field 3)	Crestview, Florida, United States
+EGP		Maverick County Airport	Eagle Pass, Texas, United States
+EGV	KEGV	Eagle River Union Airport	Eagle River, Wisconsin, United States
+EGX	PAII	Egegik Airport (FAA: EII)	Egegik, Alaska, United States
+EHM	PAEH	Cape Newenham LRRS Airport	Cape Newenham, Alaska, United States
+EHT		Rentschler Heliport (FAA: CT88)	East Hartford, Connecticut, United States
+EIL	PAEI	Eielson Air Force Base	Fairbanks, Alaska, United States
+EKA	KEKA	Murray Field	Eureka, California, United States
+EKI	KEKM	Elkhart Municipal Airport (FAA: EKM)	Elkhart, Indiana, United States
+EKN	KEKN	Elkins-Randolph Co.-Jennings Randolph Field	Elkins, West Virginia, United States
+EKO	KEKO	Elko Regional Airport	Elko, Nevada, United States
+EKX	KEKX	Addington Field (Elizabethtown Regional Airport)	Elizabethtown, Kentucky, United States
+ELA	KELA	Eagle Lake Airport	Eagle Lake, Texas, United States
+ELD	KELD	South Arkansas Regional Airport at Goodwin Field	El Dorado, Arkansas, United States
+ELI	PFEL	Elim Airport	Elim, Alaska, United States
+ELK	KELK	Elk City Municipal Airport	Elk City, Oklahoma, United States
+ELM	KELM	Elmira/Corning Regional Airport	Elmira, New York|Elmira/Big Flats, New York|Big Flats, New York, United States
+ELN	KELN	Bowers Field	Ellensburg, Washington, United States
+ELP	KELP	El Paso International Airport	El Paso, Texas, United States
+ELV	PAEL	Elfin Cove Seaplane Base	Elfin Cove, Alaska, United States
+ELW		Ellamar Seaplane Base (FAA: 1Z9)	Ellamar, Alaska, United States
+ELY	KELY	Ely Airport	Ely, Nevada, United States
+ELZ	KELZ	Wellsville Municipal Airport (Tarantine Field)	Wellsville, New York, United States
+EMK	PAEM	Emmonak Airport (FAA: ENM)	Emmonak, Alaska, United States
+EMM	KEMM	Kemmerer Municipal Airport	Kemmerer, Wyoming, United States
+EMP	KEMP	Emporia Municipal Airport	Emporia, Kansas, United States
+EMT	KEMT	El Monte Airport	El Monte, California, United States
+ENA	PAEN	Kenai Municipal Airport	Kenai, Alaska, United States
+END	KEND	Vance Air Force Base	Enid, Oklahoma, United States
+ENL	KENL	Centralia Municipal Airport	Centralia, Illinois, United States
+ENN	PANN	Nenana Municipal Airport	Nenana, Alaska, United States
+ENV	KENV	Wendover Airport	Wendover, Utah, United States
+ENW	KENW	Kenosha Regional Airport	Kenosha, Wisconsin, United States
+EOK	KEOK	Keokuk Municipal Airport	Keokuk, Iowa, United States
+EOS	KEOS	Neosho Hugh Robinson Airport	Neosho, Missouri, United States
+EPG		Browns Airport (FAA: NE69)	Weeping Water, Nebraska, United States
+EPH	KEPH	Ephrata Municipal Airport	Ephrata, Washington, United States
+ERI	KERI	Erie International Airport (Tom Ridge Field)	Erie, Pennsylvania, United States
+ERR	KERR	Errol Airport	Errol, New Hampshire, United States
+ERV	KERV	Kerrville Municipal Airport (Louis Schreiner Field)	Kerrville, Texas, United States
+ESC	KESC	Delta County Airport	Escanaba, Michigan, United States
+ESD	KORS	Orcas Island Airport (FAA: ORS)	Eastsound, Washington, United States
+ESF	KESF	Esler Regional Airport	Alexandria, Louisiana, United States
+ESN	KESN	Easton/Newnam Field	Easton, Maryland, United States
+ESO		Ohkay Owingeh Airport (FAA: E14)	Española, New Mexico, United States
+ESP		Stroudsburg-Pocono Airport (FAA: N53)	East Stroudsburg, Pennsylvania, United States
+EST	KEST	Estherville Municipal Airport	Estherville, Iowa, United States
+ESW	KESW	Easton State Airport	Easton, Washington, United States
+ETB	KETB	West Bend Municipal Airport	West Bend, Wisconsin, United States
+ETN	KETN	Eastland Municipal Airport	Eastland, Texas, United States
+ETS	KEDN	Enterprise Municipal Airport (Alabama)|Enterprise Municipal Airport (FAA: EDN)	Enterprise, Alabama, United States
+EUE		Eureka Airport (Nevada)|Eureka Airport (FAA: 05U)	Eureka, Nevada, United States
+EUF	KEUF	Weedon Field	Eufaula, Alabama, United States
+EUG	KEUG	Mahlon Sweet Airport|Eugene Airport / Mahlon Sweet Field	Eugene, Oregon, United States
+EVA		Ben Bruce Memorial Airpark (FAA: 4TE8)	Evadale, Texas, United States
+EVM	KEVM	Eveleth-Virginia Municipal Airport	Eveleth, Minnesota, United States
+EVV	KEVV	Evansville Regional Airport	Evansville, Indiana, United States
+EVW	KEVW	Evanston-Uinta County Burns Field	Evanston, Wyoming, United States
+EWB	KEWB	New Bedford Regional Airport	New Bedford, Massachusetts, United States
+EWK	KEWK	Newton City/County Airport	Newton, Kansas, United States
+EWN	KEWN	Craven County Regional Airport	New Bern, North Carolina, United States
+EWR	KEWR	Newark Liberty International Airport	Newark, New Jersey|Newark/Elizabeth, New Jersey|Elizabeth, New Jersey, United States
+EXI		Excursion Inlet Seaplane Base	Excursion Inlet, Alaska, United States
+EYW	KEYW	Key West International Airport	Key West, Florida, United States
+FAF	KFAF	Felker Army Airfield	Fort Eustis, Virginia, United States
+FAI	PAFA	Fairbanks International Airport	Fairbanks, Alaska, United States
+FAJ	TJFA	Diego Jimenez Torres Airport (FAA: X95)	Fajardo, Puerto Rico, United States
+FAK		False Island Seaplane Base (FAA: 2Z6)	False Island, Alaska, United States
+FAM	KFAM	Farmington Regional Airport	Farmington, Missouri, United States
+FAR	KFAR	Hector International Airport	Fargo, North Dakota, United States
+FAT	KFAT	Fresno Yosemite International Airport	Fresno, California, United States
+FAY	KFAY	Fayetteville Regional Airport (Grannis Field)	Fayetteville, North Carolina, United States
+FBG	KFBG	Simmons Army Airfield	Fort Bragg, North Carolina, United States
+FBK	PAFB	Wainwright Army Airfield	Fairbanks, Alaska|Fairbanks / Fort Wainwright, Alaska|Fort Wainwright, Alaska, United States
+FBL	KFBL	Faribault Municipal Airport	Faribault, Minnesota, United States
+FBR	KFBR	Fort Bridger Airport	Fort Bridger, Wyoming, United States
+FBS		Friday Harbor Seaplane Base (FAA: W33)	Friday Harbor, Washington, United States
+FBY	KFBY	Fairbury Municipal Airport	Fairbury, Nebraska, United States
+FCA	KGPI	Glacier Park International Airport (FAA: GPI)	Kalispell, Montana, United States
+FCH	KFCH	Fresno Chandler Executive Airport	Fresno, California, United States
+FCM	KFCM	Flying Cloud Airport	Eden Prairie, Minnesota, United States
+FCS	KFCS	Butts Army Airfield (Fort Carson)	Fort Carson, Colorado, United States
+FCT	KFCT	Vagabond Army Airfield	Yakima, Washington, United States
+FCY	KFCY	Forrest City Municipal Airport	Forrest City, Arkansas, United States
+FDK	KFDK	Frederick Municipal Airport (Maryland)|Frederick Municipal Airport	Frederick, Maryland, United States
+FDR	KFDR	Frederick Municipal Airport (Oklahoma)|Frederick Municipal Airport	Frederick, Oklahoma, United States
+FDY	KFDY	Findlay Airport	Findlay, Ohio, United States
+FEP	KFEP	Albertus Airport	Freeport, Illinois, United States
+FET	KFET	Fremont Municipal Airport (Nebraska)|Fremont Municipal Airport	Fremont, Nebraska, United States
+FEW	KFEW	Francis E. Warren Air Force Base	Cheyenne, Wyoming, United States
+FFA	KFFA	First Flight Airport	Kill Devil Hills, North Carolina, United States
+FFL	KFFL	Fairfield Municipal Airport (Iowa)|Fairfield Municipal Airport	Fairfield, Iowa, United States
+FFM	KFFM	Fergus Falls Municipal Airport (Einar Mickelson Field)	Fergus Falls, Minnesota, United States
+FFO	KFFO	Wright-Patterson Air Force Base	Dayton, Ohio, United States
+FFT	KFFT	Capital City Airport (Kentucky)|Capital City Airport	Frankfort, Kentucky, United States
+FHU	KFHU	Sierra Vista Municipal Airport / Libby Army Airfield	Fort Huachuca, Sierra Vista, Arizona, United States
+FID		Elizabeth Field (FAA: 0B8)	Fishers Island, New York, United States
+FIL	KFOM	Fillmore Municipal Airport (FAA: FOM)	Fillmore, Utah, United States
+FIV		Five Finger Coast Guard Heliport (FAA: 2AK3)	Five Finger, Alaska|Five Finger, Alaska, United States
+FKL	KFKL	Venango Regional Airport (Chess Lamberton Field)	Franklin, Pennsylvania, United States
+FKN	KFKN	Franklin Municipal Airport (John Beverly Rose Field)	Franklin, Virginia, United States
+FLD	KFLD	Fond du Lac County Airport	Fond du Lac, Wisconsin, United States
+FLE		Fort Lee Army Airfield (FAA: VA35)	Fort Lee (Virginia)|Fort Lee, Virginia, United States
+FLG	KFLG	Flagstaff Pulliam Airport	Flagstaff, Arizona, United States
+FLL	KFLL	Fort Lauderdale-Hollywood International Airport	Fort Lauderdale, Florida|Fort Lauderdale / Hollywood, Florida|Hollywood, Florida, United States
+FLO	KFLO	Florence Regional Airport	Florence, South Carolina, United States
+FLP	KFLP	Marion County Regional Airport	Flippin, Arkansas, United States
+FLT		Flat Airport	Flat, Alaska, United States
+FLU	KFLU	Flushing Airport	Flushing, Queens|Flushing, New York, United States
+FLV	KFLV	Sherman Army Airfield	Fort Leavenworth, Kansas, United States
+FLX	KFLX	Fallon Municipal Airport	Fallon, Nevada, United States
+FMC	PAFV	Five Mile Airport (FAA: FVM)	Five Mile, Alaska|Five Mile, Alaska, United States
+FME	KFME	Tipton Airport (Fort Meade)	Odenton, Maryland, United States
+FMH	KFMH	Otis ANGB (Cape Cod CGAS)	Falmouth, Massachusetts, United States
+FMN	KFMN	Four Corners Regional Airport	Farmington, New Mexico, United States
+FMS	KFSW	Fort Madison Municipal Airport (FAA: FSW)	Fort Madison, Iowa, United States
+FMY	KFMY	Page Field	Fort Myers, Florida, United States
+FNL	KFNL	Fort Collins-Loveland Municipal Airport	Fort Collins, Colorado|Fort Collins/Loveland, Colorado|Loveland, Colorado, United States
+FNR	PANR	Funter Bay Seaplane Base	Funter Bay, Alaska, United States
+FNT	KFNT	Bishop International Airport	Flint, Michigan, United States
+FOB		Fort Bragg Airport (FAA: 82CL)	Fort Bragg, California, United States
+FOD	KFOD	Fort Dodge Regional Airport	Fort Dodge, Iowa, United States
+FOE	KFOE	Forbes Field	Topeka, Kansas, United States
+FOK	KFOK	Francis S. Gabreski Airport	Westhampton Beach, New York, United States
+FOT	KFOT	Rohnerville Airport	Fortuna, California, United States
+FPR	KFPR	St. Lucie County International Airport	Fort Pierce, Florida, United States
+FPY		Perry-Foley Airport (FAA: 40J)	Perry, Florida, United States
+FRD	KFHR	Friday Harbor Airport (FAA: FHR)	Friday Harbor, Washington, United States
+FRG	KFRG	Republic Airport	East Farmingdale, New York, United States
+FRH	KFRH	French Lick Municipal Airport	French Lick, Indiana, United States
+FRI	KFRI	Marshall Army Airfield (Fort Riley)	Junction City, Kansas, United States
+FRM	KFRM	Fairmont Municipal Airport (Minnesota)|Fairmont Municipal Airport	Fairmont, Minnesota, United States
+FRN	PAFR	Bryant Army Heliport / Bryant AAF	Fort Richardson, Anchorage, Alaska, United States
+FRR	KFRR	Front Royal-Warren County Airport	Front Royal, Virginia, United States
+FRY	KIZG	Eastern Slopes Regional Airport (FAA: IZG)	Fryeburg, Maine, United States
+FSD	KFSD	Sioux Falls Regional Airport (Joe Foss Field)	Sioux Falls, South Dakota, United States
+FSI	KFSI	Henry Post Army Airfield (Fort Sill)	Fort Sill, Oklahoma, United States
+FSK	KFSK	Fort Scott Municipal Airport	Fort Scott, Kansas, United States
+FSM	KFSM	Fort Smith Regional Airport	Fort Smith, Arkansas, United States
+FST	KFST	Fort Stockton-Pecos County Airport	Fort Stockton, Texas, United States
+FSU	KFSU	Fort Sumner Municipal Airport	Fort Sumner, New Mexico, United States
+FTI	NSFQ	Fitiuta Airport (FAA: FAQ)	Fitiuta, American Samoa|Fiti‘uta, American Samoa, United States
+FTK	KFTK	Godman Army Airfield	Fort Knox, Kentucky, United States
+FTW	KFTW	Fort Worth Meacham International Airport	Fort Worth, Texas, United States
+FTY	KFTY	Fulton County Airport (Georgia)|Fulton County Airport (Brown Field)	Atlanta, Georgia, United States
+FUL	KFUL	Fullerton Municipal Airport	Fullerton, California, United States
+FWA	KFWA	Fort Wayne International Airport	Fort Wayne, Indiana, United States
+FWH	KNFW	Naval Air Station Joint Reserve Base Fort Worth|NAS JRB Fort Worth / Carswell Field (FAA: NFW)	Fort Worth, Texas, United States
+FWL	PAFW	Farewell Airport	Farewell, Alaska|Farewell, Alaska, United States
+FXE	KFXE	Fort Lauderdale Executive Airport	Fort Lauderdale, Florida, United States
+FXY	KFXY	Forest City Municipal Airport	Forest City, Iowa, United States
+FYM	KFYM	Fayetteville Municipal Airport (Tennessee)|Fayetteville Municipal Airport	Fayetteville, Tennessee, United States
+FYU	PFYU	Fort Yukon Airport	Fort Yukon, Alaska, United States
+FYV	KFYV	Drake Field	Fayetteville, Arkansas, United States
+GAB	KGAB	Gabbs Airport	Gabbs, Nevada, United States
+GAD	KGAD	Northeast Alabama Regional Airport	Gadsden, Alabama, United States
+GAG	KGAG	Gage Airport	Gage, Oklahoma, United States
+GAI	KGAI	Montgomery County Airpark	Gaithersburg, Maryland, United States
+GAL	PAGA	Edward G. Pitka Sr. Airport	Galena, Alaska, United States
+GAM	PAGM	Gambell Airport	Gambell, Alaska, United States
+GBD	KGBD	Great Bend Municipal Airport	Great Bend, Kansas, United States
+GBG	KGBG	Galesburg Municipal Airport	Galesburg, Illinois, United States
+GBH	PAGB	Galbraith Lake Airport	Galbraith Lake, Alaska, United States
+GBR	KGBR	Walter J. Koladza Airport	Great Barrington, Massachusetts, United States
+GCC	KGCC	Gillette-Campbell County Airport	Gillette, Wyoming, United States
+GCK	KGCK	Garden City Regional Airport	Garden City, Kansas, United States
+GCN	KGCN	Grand Canyon National Park Airport	Tusayan, Arizona, United States
+GCY	KGCY	Greeneville-Greene County Municipal Airport	Greeneville, Tennessee, United States
+GDC	KGYH	Donaldson Center Airport (FAA: GYH)	Greenville, South Carolina|Greenville, South Carolina, United States
+GDH		Golden Horn Lodge Seaplane Base (FAA: 3Z8)	Golden Horn Lodge, Alaska, United States
+GDM	KGDM	Gardner Municipal Airport (Massachusetts)|Gardner Municipal Airport	Gardner, Massachusetts, United States
+GDV	KGDV	Dawson Community Airport	Glendive, Montana, United States
+GDW	KGDW	Gladwin Zettel Memorial Airport	Gladwin, Michigan, United States
+GED	KGED	Sussex County Airport	Georgetown, Delaware, United States
+GEG	KGEG	Spokane International Airport	Spokane, Washington, United States
+GEO	KGEO	Brown County Airport	Georgetown, Ohio, United States
+GEY	KGEY	South Big Horn County Airport	Greybull, Wyoming, United States
+GFA	KGFA	Malmstrom Air Force Base (heliport)	Great Falls, Montana, United States
+GFD	KGFD	Pope Field	Greenfield, Indiana, United States
+GFK	KGFK	Grand Forks International Airport	Grand Forks, North Dakota, United States
+GFL	KGFL	Floyd Bennett Memorial Airport	Glens Falls, New York, United States
+GGE	KGGE	Georgetown County Airport	Georgetown, South Carolina, United States
+GGG	KGGG	East Texas Regional Airport	Longview, Texas, United States
+GGW	KGGW	Glasgow Airport (U.S.)|Glasgow Airport (Wokal Field)	Glasgow, Montana, United States
+GHM	KGHM	Centerville Municipal Airport (Tennessee)|Centerville Municipal Airport	Centerville, Tennessee, United States
+GIF	KGIF	Winter Haven's Gilbert Airport	Winter Haven, Florida, United States
+GJT	KGJT	Grand Junction Regional Airport (Walker Field)	Grand Junction, Colorado, United States
+GKN	PAGK	Gulkana Airport	Gulkana, Alaska, United States
+GKT	KGKT	Gatlinburg-Pigeon Forge Airport	Sevierville, Tennessee, United States
+GLD	KGLD	Goodland Municipal Airport (Renner Field)	Goodland, Kansas, United States
+GLE	KGLE	Gainesville Municipal Airport	Gainesville, Texas, United States
+GLH	KGLH	Mid-Delta Regional Airport	Greenville, Mississippi, United States
+GLR	KGLR	Gaylord Regional Airport	Gaylord, Michigan, United States
+GLS	KGLS	Scholes International Airport at Galveston	Galveston, Texas, United States
+GLV	PAGL	Golovin Airport	Golovin, Alaska, United States
+GLW	KGLW	Glasgow Municipal Airport	Glasgow, Kentucky, United States
+GMJ	KGMJ	Grove Municipal Airport	Grove, Oklahoma, United States
+GMT	PAGZ	Granite Mountain Air Station (FAA: GSZ)	Granite Mountain, Alaska|Granite Mountain, Alaska, United States
+GMU	KGMU	Greenville Downtown Airport	Greenville, South Carolina, United States
+GMV		Monument Valley Airport (FAA: UT25)	Monument Valley, Utah, United States
+GNG	KGNG	Gooding Municipal Airport	Gooding, Idaho, United States
+GNT	KGNT	Grants-Milan Municipal Airport	Grants, New Mexico, United States
+GNU		Goodnews Airport	Goodnews, Alaska, United States
+GNV	KGNV	Gainesville Regional Airport	Gainesville, Florida, United States
+GOF		Goodfellow Air Force Base	San Angelo, Texas, United States
+GOK	KGOK	Guthrie-Edmond Regional Airport (was Guthrie Municipal)	Guthrie, Oklahoma, United States
+GOL		Gold Beach Municipal Airport (FAA: 4S1)	Gold Beach, Oregon, United States
+GON	KGON	Groton-New London Airport	Groton, Connecticut, United States
+GPT	KGPT	Gulfport-Biloxi International Airport	Gulfport, Mississippi, United States
+GPZ	KGPZ	Grand Rapids/Itasca County Airport (Gordon Newstrom Field)	Grand Rapids, Minnesota, United States
+GQQ	KGQQ	Galion Municipal Airport	Galion, Ohio, United States
+GRB	KGRB	Austin Straubel International Airport	Green Bay, Wisconsin, United States
+GRD	KGRD	Greenwood County Airport	Greenwood, South Carolina, United States
+GRE	KGRE	Greenville Airport	Greenville, Illinois, United States
+GRF	KGRF	Gray Army Airfield (Fort Lewis)	Tacoma, Washington, United States
+GRI	KGRI	Central Nebraska Regional Airport	Grand Island, Nebraska, United States
+GRK	KGRK	Killeen-Fort Hood Regional Airport (Robert Gray Army Airfield)	Fort Hood / Killeen, Texas, United States
+GRM	KCKC	Grand Marais/Cook County Airport (FAA: CKC)	Grand Marais, Minnesota|Grand Marais, Minnesota, United States
+GRN	KGRN	Gordon Municipal Airport	Gordon, Nebraska, United States
+GRR	KGRR	Gerald R. Ford International Airport	Grand Rapids, Michigan, United States
+GSB	KGSB	Seymour Johnson Air Force Base	Goldsboro, North Carolina, United States
+GSH	KGSH	Goshen Municipal Airport	Goshen, Indiana, United States
+GSO	KGSO	Piedmont Triad International Airport	Greensboro, North Carolina, United States
+GSP	KGSP	Greenville-Spartanburg International Airport	Greenville, South Carolina|Greenville / Spartanburg, South Carolina, United States
+GST	PAGS	Gustavus Airport	Gustavus, Alaska, United States
+GTF	KGTF	Great Falls International Airport	Great Falls, Montana, United States
+GTG	KGTG	Grantsburg Municipal Airport	Grantsburg, Wisconsin, United States
+GTR	KGTR	Golden Triangle Regional Airport	Columbus, Mississippi|Columbus/West Point, Mississippi|West Point/Starkville, Mississippi, United States
+GTY		Gettysburg Regional Airport (FAA: W05)	Gettysburg, Pennsylvania, United States
+GUC	KGUC	Gunnison-Crested Butte Regional Airport	Gunnison, Colorado, United States
+GUF	KJKA	Jack Edwards Airport (FAA: JKA)	Gulf Shores, Alabama, United States
+GUP	KGUP	Gallup Municipal Airport	Gallup, New Mexico, United States
+GUS	KGUS	Grissom Air Reserve Base	Peru, Indiana, United States
+GUY	KGUY	Guymon Municipal Airport	Guymon, Oklahoma, United States
+GVE	KGVE	Gordonsville Municipal Airport	Gordonsville, Virginia, United States
+GVL	KGVL	Lee Gilmer Memorial Airport	Gainesville, Georgia, United States
+GVT	KGVT	Majors Airport (Texas)|Majors Airport	Greenville, Texas, United States
+GWO	KGWO	Greenwood-Leflore Airport	Greenwood, Mississippi, United States
+GWR	KGWR	Gwinner-Roger Melroe Field	Gwinner, North Dakota, United States
+GWS	KGWS	Glenwood Springs Municipal Airport	Glenwood Springs, Colorado, United States
+GWV		Glendale Fokker Field (FAA: WV66)	Glendale, West Virginia|Glendale, West Virginia, United States
+GXY	KGXY	Greeley-Weld County Airport	Greeley, Colorado, United States
+GYR	KGYR	Phoenix Goodyear Airport	Goodyear, Arizona, United States
+GYY	KGYY	Gary/Chicago International Airport	Gary, Indiana (near Chicago), United States
+HAB	KHAB	Marion County - Rankin Fite Airport	Hamilton, Alabama, United States
+HAE		Lava Falls Heliport (FAA: AZ15) (Havasupai Airport)	Supai Village, Arizona, United States
+HAF	KHAF	Half Moon Bay Airport	Half Moon Bay, California, United States
+HAI	KHAI	Three Rivers Municipal Airport (Dr. Haines Flying Field)	Three Rivers, Michigan, United States
+HAO	KHAO	Butler County Regional Airport	Hamilton, Ohio, United States
+HAR	KCXY	Capital City Airport (Pennsylvania)|Capital City Airport (FAA: CXY)	Harrisburg, Pennsylvania, United States
+HAX	KHAX	Hatbox Field	Muskogee, Oklahoma, United States
+HAY		Haycock Airport	Haycock, Alaska, United States
+HBB		Industrial Airpark (FAA: NM83)	Hobbs, New Mexico, United States
+HBG	KHBG	Bobby L. Chain Municipal Airport	Hattiesburg, Mississippi, United States
+HBH		Entrance Island Seaplane Base (Hobart Bay) (FAA: 2Z1)	Entrance Island, Alaska, United States
+HBR	KHBR	Hobart Municipal Airport	Hobart, Oklahoma, United States
+HCC		Columbia County Airport (FAA: 1B1)	Hudson, New York, United States
+HCW	KCQW	Cheraw Municipal Airport / Lynch Bellinger Field  (FAA: CQW)	Cheraw, South Carolina, United States
+HCR	PAHC	Holy Cross Airport (FAA: HCA)	Holy Cross, Alaska, United States
+HDE	KHDE	Brewster Field	Holdrege, Nebraska, United States
+HDH	PHDH	Dillingham Airfield	Mokuleia, Hawaii, United States
+HDN	KHDN	Yampa Valley Airport	Hayden, Colorado, United States
+HDO	KHDO	Hondo Municipal Airport (former Hondo AAF)	Hondo, Texas, United States
+HED		Herendeen Bay Airport (FAA: AK33)	Herendeen Bay, Alaska, United States
+HEE	KHEE	Thompson-Robbins Airport	Helena, Arkansas|Helena / West Helena, Arkansas, United States
+HEF	KHEF	Manassas Regional Airport (Harry P. Davis Field)	Manassas, Virginia, United States
+HES	KHRI	Hermiston Municipal Airport (FAA: HRI)	Hermiston, Oregon, United States
+HEY	KHEY	Hanchey Army Heliport	Fort Rucker, Dale County, Alabama, United States
+HEZ	KHEZ	Natchez-Adams County Airport (Hardy-Anders Field)	Natchez, Mississippi, United States
+HFD	KHFD	Hartford-Brainard Airport	Hartford, Connecticut, United States
+HFF	KHFF	Mackall Army Airfield	Camp Mackall, North Carolina, United States
+HGR	KHGR	Hagerstown Regional Airport (Richard A. Henson Field)	Hagerstown, Maryland, United States
+HGT	KHGT	Tusi Army Heliport	Fort Hunter Liggett / Jolon, California, United States
+HGZ		Hog River Airport (FAA: 2AK6)	Hogatza, Alaska, United States
+HHH	KHXD	Hilton Head Airport (FAA: HXD)	Hilton Head Island, South Carolina, United States
+HHI	PHHI	Wheeler Army Airfield	Wahiawa, Hawaii, United States
+HHR	KHHR	Hawthorne Municipal Airport (California)|Hawthorne Municipal Airport (Jack Northrop Field)	Hawthorne, California, United States
+HIB	KHIB	Chisholm-Hibbing Airport	Hibbing, Minnesota, United States
+HIE	KHIE	Mount Washington Regional Airport	Whitefield, New Hampshire, United States
+HIF	KHIF	Hill Air Force Base	Ogden, Utah, United States
+HII	KHII	Lake Havasu City Airport	Lake Havasu City, Arizona, United States
+HIK	PHIK	Hickam Air Force Base	Honolulu, Hawaii, United States
+HIO	KHIO	Portland-Hillsboro Airport	Hillsboro, Oregon|Hillsboro / Portland, Oregon, United States
+HKA	KHKA	Blytheville Municipal Airport	Blytheville, Arkansas, United States
+HKB	PAHV	Healy River Airport (FAA: HRR)	Healy, Alaska, United States
+HKS	KHKS	Hawkins Field (airport)|Hawkins Field	Jackson, Mississippi, United States
+HKY	KHKY	Hickory Regional Airport	Hickory, North Carolina, United States
+HLB	KHLB	Hillenbrand Industries Airport	Batesville, Indiana, United States
+HLC	KHLC	Hill City Municipal Airport	Hill City, Kansas, United States
+HLG	KHLG	Wheeling Ohio County Airport	Wheeling, West Virginia, United States
+HLI	KCVH	Hollister Municipal Airport (FAA: CVH)	Hollister, California, United States
+HLM	KHLM	Park Township Airport	Holland, Michigan, United States
+HLN	KHLN	Helena Regional Airport	Helena, Montana, United States
+HLR	KHLR	Hood Army Airfield	Fort Hood / Killeen, Texas, United States
+HMN	KHMN	Holloman Air Force Base	Alamogordo, New Mexico, United States
+HMT	KHMT	Hemet-Ryan Airport	Hemet, California, United States
+HNB	KHNB	Huntingburg Airport	Huntingburg, Indiana, United States
+HNC	KHSE	Billy Mitchell Airport (FAA: HSE)	Hatteras, North Carolina, United States
+HNE	PAHE	Tahneta Pass Airport (closed)	Tahneta Pass Lodge, Alaska, United States
+HNH	PAOH	Hoonah Airport	Hoonah, Alaska, United States
+HNL	PHNL	Honolulu International Airport	Honolulu, Hawaii, United States
+HNM	PHHN	Hana Airport	Hana, Hawaii, United States
+HNS	PAHN	Haines Airport	Haines, Alaska, United States
+HOB	KHOB	Lea County Regional Airport	Hobbs, New Mexico, United States
+HOM	PAHO	Homer Airport	Homer, Alaska, United States
+HON	KHON	Huron Regional Airport	Huron, South Dakota, United States
+HOP	KHOP	Campbell Army Airfield	Fort Campbell, Kentucky|Fort Campbell / Hopkinsville, Kentucky, United States
+HOT	KHOT	Hot Springs Memorial Field Airport	Hot Springs, Arkansas, United States
+HOU	KHOU	William P. Hobby Airport	Houston, Texas, United States
+HPB	PAHP	Hooper Bay Airport	Hooper Bay, Alaska, United States
+HPN	KHPN	Westchester County Airport	White Plains, New York, United States
+HPT	KHPT	Hampton Municipal Airport	Hampton, Iowa, United States
+HPV		Princeville Airport (FAA: HI01)	Hanalei, Hawaii, United States
+HPY	KHPY	Baytown Airport	Baytown, Texas, United States
+HQM	KHQM	Bowerman Airport	Hoquiam, Washington, United States
+HRL	KHRL	Valley International Airport	Harlingen, Texas, United States
+HRO	KHRO	Boone County Airport (Arkansas)|Boone County Airport	Harrison, Arkansas, United States
+HSB	KHSB	Harrisburg-Raleigh Airport	Harrisburg, Illinois, United States
+HSD	KHSD	Sundance Airpark	Oklahoma City, Oklahoma, United States
+HSH	KHND	Henderson Executive Airport (FAA: HND)	Henderson, Nevada|Henderson / Las Vegas, Nevada, United States
+HSI	KHSI	Hastings Municipal Airport	Hastings, Nebraska, United States
+HSL	PAHL	Huslia Airport (FAA: HLA)	Huslia, Alaska, United States
+HSP	KHSP	Ingalls Field	Hot Springs, Virginia, United States
+HST	KHST	Homestead Air Reserve Base	Homestead, Florida, United States
+HSV	KHSV	Huntsville International Airport (Carl T. Jones Field)	Huntsville, Alabama|Huntsville / Decatur, Alabama, United States
+HTH	KHTH	Hawthorne Industrial Airport	Hawthorne, Nevada, United States
+HTL	KHTL	Roscommon County - Blodgett Memorial Airport	Houghton Lake, Michigan, United States
+HTO	KHTO	East Hampton Airport	East Hampton (town), New York|East Hampton, New York, United States
+HTS	KHTS	Tri-State Airport (Milton J. Ferguson Field)	Huntington, West Virginia, United States
+HTV	KUTS	Huntsville Municipal Airport (Texas)|Huntsville Municipal Airport	Huntsville, Texas, United States
+HTW	KHTW	Lawrence County Airpark	Chesapeake, Ohio / Huntington, West Virginia, United States
+HUA	KHUA	Redstone Army Airfield	Redstone Arsenal (near Huntsville, Alabama|Huntsville), Alabama, United States
+HUC		Humacao Airport	Humacao, Puerto Rico, United States
+HUD		Humboldt Municipal Airport (Iowa)|Humboldt Municipal Airport (FAA: 0K7)	Humboldt, Iowa, United States
+HUF	KHUF	Terre Haute International Airport (Hulman Field)	Terre Haute, Indiana, United States
+HUJ	KHHW	Stan Stamper Municipal Airport (FAA: HHW)	Hugo, Oklahoma, United States
+HUL	KHUL	Houlton International Airport	Houlton, Maine, United States
+HUM	KHUM	Houma-Terrebonne Airport	Houma, Louisiana, United States
+HUS	PAHU	Hughes Airport (Alaska)|Hughes Airport	Hughes, Alaska, United States
+HUT	KHUT	Hutchinson Municipal Airport (Kansas)|Hutchinson Municipal Airport	Hutchinson, Kansas, United States
+HVE	KHVE	Hanksville Airport	Hanksville, Utah, United States
+HVN	KHVN	Tweed-New Haven Airport	New Haven, Connecticut, United States
+HVR	KHVR	Havre City-County Airport	Havre, Montana, United States
+HVS	KHVS	Hartsville Regional Airport	Hartsville, South Carolina, United States
+HWD	KHWD	Hayward Executive Airport	Hayward, California, United States
+HWI		Hawk Inlet Seaplane Base	Hawk Inlet, Alaska, United States
+HWO	KHWO	North Perry Airport	Hollywood, Florida, United States
+HYA	KHYA	Barnstable Municipal Airport (Boardman/Polando Field)	Hyannis, Massachusetts, United States
+HYG	PAHY	Hydaburg Seaplane Base	Hydaburg, Alaska, United States
+HYL		Hollis Seaplane Base	Hollis, Alaska, United States
+HYR	KHYR	Sawyer County Airport	Hayward, Wisconsin, United States
+HYS	KHYS	Hays Regional Airport	Hays, Kansas, United States
+HZL	KHZL	Hazleton Municipal Airport	Hazleton, Pennsylvania, United States
+HZR	KHZR	False River Regional Airport	New Roads, Louisiana, United States
+IAB	KIAB	McConnell Air Force Base	Wichita, Kansas, United States
+IAD	KIAD	Washington Dulles International Airport	Washington, D.C. / Virginia, United States
+IAG	KIAG	Niagara Falls International Airport	Niagara Falls, New York, United States
+IAH	KIAH	George Bush Intercontinental Airport	Houston, Texas, United States
+IAN	PAIK	Bob Baker Memorial Airport	Kiana, Alaska, United States
+ICL	KICL	Schenck Field	Clarinda, Iowa, United States
+ICT	KICT	Wichita Mid-Continent Airport	Wichita, Kansas, United States
+ICY		Icy Bay Airport (FAA: 19AK)	Icy Bay, Alaska, United States
+IDA	KIDA	Idaho Falls Regional Airport	Idaho Falls, Idaho, United States
+IDG	KIDG	Ida Grove Municipal Airport	Ida Grove, Iowa, United States
+IDI	KIDI	Indiana County Airport (Jimmy Stewart Field)	Indiana, Pennsylvania, United States
+IDP	KIDP	Independence Municipal Airport (Kansas)|Independence Municipal Airport	Independence, Kansas, United States
+IEN	KIEN	Pine Ridge Airport	Pine Ridge, South Dakota, United States
+IFA	KIFA	Iowa Falls Municipal Airport	Iowa Falls, Iowa, United States
+IFP	KIFP	Laughlin/Bullhead International Airport	Bullhead City, Arizona, United States
+IGG	PAIG	Igiugig Airport	Igiugig, Alaska, United States
+IGM	KIGM	Kingman Airport (Arizona)|Kingman Airport	Kingman, Arizona, United States
+IJX	KIJX	Jacksonville Municipal Airport	Jacksonville, Illinois, United States
+IKB	KUKF	Wilkes County Airport (FAA: UKF)	North Wilkesboro, North Carolina, United States
+IKK	KIKK	Greater Kankakee Airport	Kankakee, Illinois, United States
+IKO	PAKO	Nikolski Air Station	Nikolski, Alaska, United States
+IKV	KIKV	Ankeny Regional Airport	Ankeny, Iowa, United States
+ILE	KILE	Skylark Field	Killeen, Texas, United States
+ILG	KILG	New Castle Airport	Wilmington, Delaware, United States
+ILI	PAIL	Iliamna Airport	Iliamna, Alaska, United States
+ILL	KILL	Willmar Municipal Airport (John L. Rice Field) (closed 2006)	Willmar, Minnesota, United States
+ILM	KILM	Wilmington International Airport	Wilmington, North Carolina, United States
+ILN	KILN	Airborne Airpark	Wilmington, Ohio, United States
+IML	KIML	Imperial Municipal Airport	Imperial, Nebraska, United States
+IMM	KIMM	Immokalee Airport	Immokalee, Florida, United States
+IMT	KIMT	Ford Airport (Iron Mountain)|Ford Airport	Iron Mountain, Michigan|Iron Mountain / Kingsford, Michigan, United States
+IND	KIND	Indianapolis International Airport	Indianapolis, Indiana, United States
+INK	KINK	Winkler County Airport	Wink, Texas, United States
+INL	KINL	Falls International Airport	International Falls, Minnesota, United States
+INR		Kincheloe Air Force Base (closed 1977)	Sault Ste. Marie, Michigan, United States
+INS	KINS	Creech Air Force Base	Indian Springs, Nevada, United States
+INT	KINT	Smith Reynolds Airport	Winston-Salem, North Carolina, United States
+INW	KINW	Winslow-Lindbergh Regional Airport	Winslow, Arizona, United States
+IOW	KIOW	Iowa City Municipal Airport	Iowa City, Iowa, United States
+IPL	KIPL	Imperial County Airport	Imperial, California, United States
+IPT	KIPT	Williamsport Regional Airport	Williamsport, Pennsylvania, United States
+IRB		Iraan Municipal Airport (FAA: 2F0)	Iraan, Texas, United States
+IRC	PACR	Circle City (New) Airport (FAA: CRC)	Circle, Alaska, United States
+IRK	KIRK	Kirksville Regional Airport	Kirksville, Missouri, United States
+IRS	KIRS	Kirsch Municipal Airport	Sturgis, Michigan, United States
+ISM	KISM	Kissimmee Gateway Airport	Orlando, Florida, United States
+ISN	KISN	Sloulin Field International Airport	Williston, North Dakota, United States
+ISO	KISO	Kinston Regional Jetport at Stallings Field	Kinston, North Carolina, United States
+ISP	KISP	Long Island MacArthur Airport	Islip (town), New York|Islip, New York, United States
+ISQ	KISQ	Schoolcraft County Airport	Manistique, Michigan, United States
+ISS	KIWI	Wiscasset Airport (FAA: IWI)	Wiscasset, Maine, United States
+ISW	KISW	South Wood County Airport (Alexander Field)	Wisconsin Rapids, Wisconsin, United States
+ITH	KITH	Ithaca Tompkins Regional Airport	Ithaca, New York, United States
+ITO	PHTO	Hilo International Airport	Hilo, Hawaii, United States
+IWD	KIWD	Gogebic-Iron County Airport	Ironwood, Michigan, United States
+IWS	KIWS	West Houston Airport	Houston, Texas, United States
+IYK	KIYK	Inyokern Airport	Inyokern, California, United States
+JAC	KJAC	Jackson Hole Airport	Jackson, Wyoming, United States
+JAN	KJAN	Jackson-Evers International Airport	Jackson, Mississippi, United States
+JAS	KJAS	Jasper County Airport (Texas)|Jasper County Airport (Bell Field)	Jasper, Texas, United States
+JAX	KJAX	Jacksonville International Airport	Jacksonville, Florida, United States
+JBP		Commerce Business Park Heliport (FAA: 2CL0)	Commerce, California, United States
+JBR	KJBR	Jonesboro Municipal Airport	Jonesboro, Arkansas, United States
+JBT		Bethel Seaplane Base (FAA: Z59)	Bethel, Alaska, United States
+JCE		Oakland Convention Center Heliport (FAA: CL41)	Oakland, California, United States
+JCI	KIXD	New Century AirCenter (FAA: IXD)	Olathe, Kansas, United States
+JCT	KJCT	Kimble County Airport	Junction, Texas, United States
+JCY		LBJ Ranch Airport (FAA: 0TE7)	Johnson City, Texas, United States
+JDA	KGCD	Grant County Regional Airport (Ogilvie Field) (FAA: GCD)	John Day, Oregon, United States
+JDB		Dallas CBD Vertiport (Dallas Downtown Heliport) (FAA: 49T)	Dallas, Texas, United States
+JDM		Miami Downtown Heliport (FAA: X48)	Miami, Florida, United States
+JDN	KJDN	Jordan Airport	Jordan, Montana, United States
+JDT		Minneapolis Downtown Heliport	Minneapolis, Minnesota, United States
+JDX		Houston Central Business District Heliport	Houston, Texas, United States
+JDY		Downey Heliport	Downey, California, United States
+JEF	KJEF	Jefferson City Memorial Airport	Jefferson City, Missouri, United States
+JEM		Emeryville Heliport	Emeryville, California, United States
+JFK	KJFK	John F. Kennedy International Airport	New York City, New York, United States
+JFN	KHZY	Ashtabula County Airport (FAA: HZY)	Ashtabula, Ohio, United States
+JGC		Grand Canyon Heliport	Grand Canyon, Arizona, United States
+JGL		Galleria Heliport (FAA: 16GA)	Marietta, Georgia, United States
+JGP		Greenway Plaza Heliport	Houston, Texas, United States
+JGQ		Transco Tower Garage Heliport (FAA: TS31)	Houston, Texas, United States
+JGX		Glendale Heliport	Glendale, California, United States
+JHC		Island Heliport	Garden City, New York, United States
+JHM	PHJH	Kapalua Airport	Lahaina, Hawaii, United States
+JHW	KJHW	Chautauqua County-Jamestown Airport	Jamestown, New York, United States
+JID		Recreation and Conference Center Heliport (FAA: 9CA3)	City of Industry, California, United States
+JIO		Ontario International Heliport	Ontario, California, United States
+JKV	KJSO	Cherokee County Airport (Texas)|Cherokee County Airport (FAA: JSO)	Jacksonville, Texas, United States
+JLA		Quartz Creek Airport	Cooper Landing, Alaska, United States
+JLB		Long Beach Heliport	Long Beach, California, United States
+JLN	KJLN	Joplin Regional Airport	Joplin, Missouri, United States
+JLX		Los Angeles Union Station Heliport (FAA: 54L)	Los Angeles, California, United States
+JMC	KJMC	Commodore Center Heliport	Sausalito, California, United States
+JMD		Market Centre Heliport	Dallas, Texas, United States
+JMN		Mankato Municipal Heliport	Mankato, Minnesota, United States
+JMS	KJMS	Jamestown Regional Airport	Jamestown, North Dakota, United States
+JNP		Newport Beach Heliport	Newport Beach, California, United States
+JNU	PAJN	Juneau International Airport	Juneau, Alaska, United States
+JOR		Choc Heliport (FAA: 4CA5)	Orange, California, United States
+JOT	KJOT	Joliet Regional Airport	Joliet, Illinois, United States
+JPD		Pasadena Heliport	Pasadena, California, United States
+JPN	KJPN	Pentagon Army Heliport	Washington, D.C., United States
+JRA	KJRA	West 30th Street Heliport	New York City, New York, United States
+JRB	KJRB	Downtown Manhattan Heliport (Wall St. Heliport)	New York City, New York, United States
+JRC		Rochester Municipal Heliport	Rochester, Minnesota, United States
+JRD		Riverside Metro Center Heliport (FAA: CA81)	Riverside, California, United States
+JRE		East 60th Street Heliport	New York City, New York, United States
+JSD	KJSD	Sikorsky Heliport	Stratford, Connecticut, United States
+JSG		San Rafael Heliport	San Rafael, California, United States
+JSK		St. Cloud Municipal Heliport	St. Cloud, Minnesota, United States
+JSL		Steel Pier Taj Mahal Heliport (FAA: 28NJ)	Atlantic City, New Jersey, United States
+JSN		Sherman Oaks Community Hospital Heliport (FAA: CL80)	Sherman Oaks, California, United States
+JST	KJST	John Murtha Johnstown-Cambria County Airport	Johnstown, Pennsylvania, United States
+JTO		Thousand Oaks Heliport	Thousand Oaks, California, United States
+JVI		Central Jersey Regional Airport (FAA: 47N)	Manville, New Jersey, United States
+JVL	KJVL	Southern Wisconsin Regional Airport	Janesville, Wisconsin, United States
+JWC		Warner Center Plaza One Heliport (FAA: 96CA)	Woodland Hills, California, United States
+JWH		Westchase Hilton Heliport (FAA: TS24)	Houston, Texas, United States
+JXN	KJXN	Jackson County Airport (Michigan)|Jackson County Airport (Reynolds Field)	Jackson, Michigan, United States
+JYO	KJYO	Leesburg Executive Airport	Leesburg, Virginia, United States
+KAE	PAFE	Kake Airport (FAA: AFE)	Kake, Alaska, United States
+KAL	PAKV	Kaltag Airport	Kaltag, Alaska, United States
+KBC		Birch Creek Airport (FAA: Z91)	Birch Creek, Alaska|Birch Creek, Alaska, United States
+KBE		Bell Island Hot Springs Seaplane Base	Bell Island, Alaska|Bell Island, Alaska, United States
+KBW		Chignik Bay Seaplane Base (FAA: Z78)	Chignik, Alaska, United States.
+KCC		Coffman Cove Seaplane Base	Coffman Cove, Alaska, United States
+KCG		Chignik Fisheries Airport (closed)	Chignik, Alaska, United States.
+KCK		Fairfax Airport (closed 1985)	Kansas City, Kansas, United States
+KCL		Chignik Lagoon Airport (Chignik Flats Airport)	Chignik Lagoon, Alaska, United States
+KCN		Chernofski Harbor Seaplane Base	Chernofski Harbor, Alaska, United States
+KCQ		Chignik Lake Airport (FAA: A79)	Chignik Lake, Alaska, United States
+KCR		Colorado Creek Airport	Colorado Creek, Alaska, United States
+KDK	PAKD	Kodiak Municipal Airport	Kodiak, Alaska, United States
+KEB		Nanwalek Airport (English Bay Airport)	Nanwalek, Alaska|Nanwalek (English Bay), Alaska, United States
+KEH		Kenmore Air Harbor (FAA: S60)	Kenmore, Washington, United States
+KEK		Ekwok Airport	Ekwok, Alaska, United States
+KFP	PAKF	False Pass Airport	False Pass, Alaska, United States
+KGK	PAJZ	Koliganek Airport (FAA: JZZ)	Koliganek, Alaska, United States
+KGX		Grayling Airport	Grayling, Alaska, United States
+KGX		Grayling Airport	Grayling, Alaska, United States
+KGZ		Glacier Creek Airport	Glacier Creek, Alaska, United States
+KIB		Ivanof Bay Seaplane Base	Ivanof Bay, Alaska, United States
+KIC	KKIC	Mesa Del Rey Airport	King City, California, United States
+KIP	KCWC	Kickapoo Downtown Airport (FAA: CWC)	Wichita Falls, Texas, United States
+KKA	PAKK	Koyuk Alfred Adams Airport	Koyuk, Alaska, United States
+KKB		Kitoi Bay Seaplane Base	Kitoi Bay, Alaska, United States
+KKH	PADY	Kongiganak Airport (FAA: DUY)	Kongiganak, Alaska, United States
+KKI		Akiachak Seaplane Base	Akiachak, Alaska, United States
+KKK		Kalakaket Creek Air Station (FAA: 1KC)	Kalakaket Creek, Alaska, United States
+KKL		Karluk Lake Seaplane Base	Karluk Lake, Alaska, United States
+KKT		Kentland Municipal Airport (FAA: 50I)	Kentland, Indiana, United States
+KKU		Ekuk Airport	Ekuk, Alaska, United States
+KLG	PALG	Kalskag Airport	Kalskag, Alaska, United States
+KLL		Levelock Airport (FAA: 9Z8)	Levelock, Alaska, United States
+KLN	PALB	Larsen Bay Airport (FAA: 2A3)	Larsen Bay, Alaska, United States
+KLS	KKLS	Southwest Washington Regional Airport (was Kelso-Longview)	Kelso, Washington, United States
+KLW	PAKW	Klawock Airport (FAA: AKW)	Klawock, Alaska, United States
+KMO	PAMB	Manokotak Airport (FAA: MBA)	Manokotak, Alaska, United States
+KMY		Moser Bay Seaplane Base	Moser Bay, Kodiak Island Borough, Alaska, United States
+KNB	KKNB	Kanab Municipal Airport	Kanab, Utah, United States
+KNK	PFKK	Kokhanok Airport (FAA: 9K2)	Kokhanok, Alaska, United States
+KNT	KTKX	Kennett Memorial Airport (FAA: TKX)	Kennett, Missouri, United States
+KNW	PANW	New Stuyahok Airport	New Stuyahok, Alaska, United States
+KOA	PHKO	Kona International Airport	Kailua, Hawaii County, Hawaii|Kailua / Kona, Hawaii, United States
+KOT	PFKO	Kotlik Airport (FAA: 2A9)	Kotlik, Alaska, United States
+KOY		Olga Bay Seaplane Base	Olga Bay, Kodiak Island Borough, Alaska, United States
+KOZ		Ouzinkie Airport (FAA: 4K5)	Ouzinkie, Alaska, United States
+KPB		Point Baker Seaplane Base	Point Baker, Alaska, United States
+KPC	PAPC	Port Clarence Coast Guard Station	Port Clarence, Alaska, United States
+KPH		Pauloff Harbor Seaplane Base	Sanak Island, Alaska, United States
+KPN	PAKI	Kipnuk Airport (FAA: IIK)	Kipnuk, Alaska, United States
+KPR		Port Williams Seaplane Base	Port Williams, Alaska|Port Williams, Kodiak Island Borough, Alaska, United States
+KPT		Jackpot Airport (Hayden Field) (FAA: 06U)	Jackpot, Nevada, United States
+KPV	PAPE	Perryville Airport (FAA: PEV)	Perryville, Alaska, United States
+KPY		Port Bailey Seaplane Base	Port Bailey, Kodiak Island Borough, Alaska, United States
+KQA		Akutan Seaplane Base	Akutan, Alaska, United States
+KSM	PASM	St. Mary's Airport (Alaska)|St. Mary's Airport	St. Mary's, Alaska, United States
+KTB		Thorne Bay Seaplane Base	Thorne Bay, Alaska, United States
+KTH		Tikchik Lodge Seaplane Base (FAA: AK56)	Tikchik, Alaska, United States
+KTN	PAKT	Ketchikan International Airport	Ketchikan, Alaska, United States
+KTS	PFKT	Brevig Mission Airport	Brevig Mission, Alaska, United States
+KUK	PFKA	Kasigluk Airport (FAA: Z09)	Kasigluk, Alaska, United States
+KVC	PAVC	King Cove Airport	King Cove, Alaska, United States
+KVL	PAVL	Kivalina Airport	Kivalina, Alaska, United States
+KWF		Waterfall Seaplane Base	Waterfall, Alaska, United States
+KWK		Kwigillingok Seaplane Base	Kwigillingok, Alaska, United States
+KWN	PAQH	Quinhagak Airport (FAA: AQH)	Quinhagak, Alaska, United States
+KWP		West Point Village Seaplane Base	West Point, Alaska|West Point, Kodiak Island Borough, Alaska, United States
+KWT	PFKW	Kwethluk Airport	Kwethluk, Alaska, United States
+KXA		Kasaan Seaplane Base	Kasaan, Alaska, United States
+KYK	PAKY	Karluk Airport	Karluk, Alaska, United States
+KYU	PFKU	Koyukuk Airport	Koyukuk, Alaska, United States
+KZB		Zachar Bay Seaplane Base	Zachar Bay, Alaska, United States
+LAA	KLAA	Lamar Municipal Airport (Colorado)|Lamar Municipal Airport	Lamar, Colorado, United States
+LAF	KLAF	Purdue University Airport	West Lafayette, Indiana, United States
+LAL	KLAL	Lakeland Linder Regional Airport	Lakeland, Florida, United States
+LAM	KLAM	Los Alamos Airport	Los Alamos, New Mexico, United States
+LAN	KLAN	Lansing Capital City Airport	Lansing, Michigan, United States
+LAR	KLAR	Laramie Regional Airport	Laramie, Wyoming, United States
+LAS	KLAS	McCarran International Airport	Paradise, Nevada|Las Vegas, Nevada, United States
+LAW	KLAW	Lawton-Fort Sill Regional Airport	Lawton, Oklahoma, United States
+LAX	KLAX	Los Angeles International Airport	Los Angeles, California, United States
+LBB	KLBB	Lubbock Preston Smith International Airport	Lubbock, Texas, United States
+LBE	KLBE	Arnold Palmer Regional Airport	Latrobe, Pennsylvania|Latrobe (near Pittsburgh, Pennsylvania|Pittsburgh), Pennsylvania, United States
+LBF	KLBF	North Platte Regional Airport (Lee Bird Field)	North Platte, Nebraska, United States
+LBL	KLBL	Liberal Municipal Airport	Liberal, Kansas, United States
+LBT	KLBT	Lumberton Municipal Airport	Lumberton, North Carolina, United States
+LCH	KLCH	Lake Charles Regional Airport	Lake Charles, Louisiana, United States
+LCI	KLCI	Laconia Municipal Airport	Laconia, New Hampshire, United States
+LCK	KLCK	Rickenbacker International Airport	Columbus, Ohio, United States
+LCQ	KLCQ	Lake City Municipal Airport (Florida)|Lake City Municipal Airport	Lake City, Florida, United States
+LDJ	KLDJ	Linden Airport	Linden, New Jersey, United States
+LDM	KLDM	Mason County Airport (Michigan)|Mason County Airport	Ludington, Michigan, United States
+LEB	KLEB	Lebanon Municipal Airport (New Hampshire)|Lebanon Municipal Airport	Lebanon, New Hampshire, United States
+LEE	KLEE	Leesburg International Airport	Leesburg, Florida, United States
+LEM	KLEM	Lemmon Municipal Airport	Lemmon, South Dakota, United States
+LEW	KLEW	Auburn/Lewiston Municipal Airport	Auburn, Maine|Auburn/Lewiston, Maine, United States
+LEX	KLEX	Blue Grass Airport	Lexington, Kentucky, United States
+LFI	KLFI	Langley Air Force Base	Hampton, Virginia, United States
+LFK	KLFK	Angelina County Airport	Lufkin, Texas, United States
+LFN	KLHZ	Triangle North Executive Airport (Franklin County Airport) (FAA: LHZ)	Louisburg, North Carolina, United States
+LFT	KLFT	Lafayette Regional Airport	Lafayette, Louisiana, United States
+LGA	KLGA	LaGuardia Airport	New York City, New York, United States
+LGB	KLGB	Long Beach Airport	Long Beach, California, United States
+LGC	KLGC	LaGrange-Callaway Airport	LaGrange, Georgia, United States
+LGD	KLGD	La Grande/Union County Airport	La Grande, Oregon, United States
+LGF	KLGF	Laguna Army Airfield	Yuma Proving Ground, Arizona, United States
+LGU	KLGU	Logan-Cache Airport	Logan, Utah, United States
+LHV	KLHV	William T. Piper Memorial Airport	Lock Haven, Pennsylvania, United States
+LIC	KLIC	Limon Municipal Airport	Limon, Colorado, United States
+LIH	PHLI	Lihue Airport	Lihue, Hawaii, United States
+LIT	KLIT	Little Rock National Airport (Adams Field)	Little Rock, Arkansas, United States
+LIV		Livengood Camp Airport (FAA: 4AK)	Livengood, Alaska, United States
+LIY	KLHW	MidCoast Regional Airport at Wright Army Airfield (FAA: LHW)	Fort Stewart, Hinesville, Georgia, United States
+LIZ		Loring International Airport (was Loring AFB) (FAA: ME16)	Limestone, Maine, United States
+LJN	KLBX	Brazoria County Airport (FAA: LBX)	Angleton, Texas|Angleton / Lake Jackson, Texas, United States
+LKE		Kenmore Air Harbor Seaplane Base (FAA: W55)	Seattle, Washington, United States
+LKK	PAKL	Kulik Lake Airport	Kulik Lake, Bristol Bay Borough, Alaska, United States
+LKP	KLKP	Lake Placid Airport	Lake Placid, New York, United States
+LKV	KLKV	Lake County Airport (Oregon)|Lake County Airport	Lakeview, Oregon, United States
+LLX	KCDA	Caledonia County Airport (FAA: CDA)	Lyndonville, Vermont, United States
+LLY	KVAY	South Jersey Regional Airport (FAA: VAY)	Mount Holly, New Jersey, United States
+LMA		Lake Minchumina Airport (FAA: MHM)	Lake Minchumina, Alaska, United States
+LMS	KLMS	Louisville Winston County Airport	Louisville, Mississippi, United States
+LMT	KLMT	Klamath Falls Airport	Klamath Falls, Oregon, United States
+LNA	KLNA	Palm Beach County Park Airport	West Palm Beach, Florida, United States
+LND	KLND	Hunt Field	Lander, Wyoming, United States
+LNI	PALN	Lonely Air Station (FAA: AK71)	Lonely, Alaska|Lonely, North Slope Borough, Alaska, United States
+LNK	KLNK	Lincoln Airport (Nebraska)|Lincoln Airport	Lincoln, Nebraska, United States
+LNN	KLNN	Willoughby Lost Nation Municipal Airport	Willoughby, Ohio, United States
+LNP	KLNP	Lonesome Pine Airport	Wise, Virginia, United States
+LNR	KLNR	Tri-County Regional Airport	Lone Rock, Wisconsin, United States
+LNS	KLNS	Lancaster Airport (Pennsylvania)|Lancaster Airport	Lancaster, Pennsylvania, United States
+LNY	PHNY	Lanai Airport	Lanai City, Hawaii, United States
+LOL	KLOL	Derby Field	Lovelock, Nevada, United States
+LOR	KLOR	Lowe Army Heliport (Fort Rucker)	Fort Rucker / Ozark, Alabama, United States
+LOT	KLOT	Lewis University Airport	Chicago / Romeoville, Illinois, United States
+LOU	KLOU	Bowman Field (airport)|Bowman Field	Louisville, Kentucky, United States
+LOW	KLKU	Louisa County Airport (Freeman Field) (FAA: LKU)	Louisa, Virginia, United States
+LOZ	KLOZ	London-Corbin Airport (Magee Field)	London, Kentucky, United States
+LPC	KLPC	Lompoc Airport	Lompoc, California, United States
+LPO	KPPO	La Porte Municipal Airport (Indiana)|La Porte Municipal Airport (FAA: PPO)	La Porte, Indiana, United States
+LPR	KLPR	Lorain County Regional Airport	Lorain, Ohio|Lorain / Elyria, Ohio, United States
+LPS		Fishermans Bay/LPS Seaplane Base	Lopez Island, Washington (U.S. state)|Washington, United States
+LQK	KLQK	Pickens County Airport (South Carolina)|Pickens County Airport	Pickens, South Carolina, United States
+LQR	KLQR	Larned-Pawnee County Airport	Larned, Kansas, United States
+LRD	KLRD	Laredo International Airport	Laredo, Texas, United States
+LRF	KLRF	Little Rock Air Force Base	Jacksonville, Arkansas, United States
+LRJ	KLRJ	Le Mars Municipal Airport	Le Mars, Iowa, United States
+LRU	KLRU	Las Cruces International Airport	Las Cruces, New Mexico, United States
+LSB	KLSB	Lordsburg Municipal Airport	Lordsburg, New Mexico, United States
+LSE	KLSE	La Crosse Municipal Airport	La Crosse, Wisconsin, United States
+LSF	KLSF	Lawson Army Airfield	Fort Benning, Columbus, Georgia, United States
+LSK	KLSK	Lusk Municipal Airport	Lusk, Wyoming, United States
+LSN	KLSN	Los Banos Municipal Airport	Los Banos, California, United States
+LSR		Lost River 1 Airport (closed 2009)	Lost River, Alaska|Lost River, Alaska, United States
+LSV	KLSV	Nellis Air Force Base	Las Vegas, Nevada, United States
+LTS	KLTS	Altus Air Force Base	Altus, Oklahoma, United States
+LTW		St. Mary's County Regional Airport (FAA: 2W6)	Leonardtown, Maryland, United States
+LUF	KLUF	Luke Air Force Base	Glendale, Arizona, United States
+LUK	KLUK	Cincinnati Municipal Airport (Lunken Field)	Cincinnati, Ohio, United States
+LUL	KLUL	Hesler-Noble Field	Laurel, Mississippi, United States
+LUP	PHLU	Kalaupapa Airport	Kalaupapa, Hawaii, United States
+LUR	PALU	Cape Lisburne LRRS Airport	Cape Lisburne, Alaska, United States
+LVD		Lime Village Airport (FAA: 2AK)	Lime Village, Alaska, United States
+LVK	KLVK	Livermore Municipal Airport	Livermore, California, United States
+LVL	KLVL	Lawrenceville/Brunswick Municipal Airport	Lawrenceville, Virginia, United States
+LVM	KLVM	Mission Field	Livingston, Montana, United States
+LVS	KLVS	Las Vegas Municipal Airport	Las Vegas, New Mexico, United States
+LWB	KLWB	Greenbrier Valley Airport	Lewisburg, West Virginia, United States
+LWC	KLWC	Lawrence Municipal Airport (Kansas)|Lawrence Municipal Airport	Lawrence, Kansas, United States
+LWL	KLWL	Wells Municipal Airport (Nevada)|Wells Municipal Airport (Harriet Field)	Wells, Nevada, United States
+LWM	KLWM	Lawrence Municipal Airport (Massachusetts)|Lawrence Municipal Airport	Lawrence, Massachusetts, United States
+LWS	KLWS	Lewiston-Nez Perce County Airport	Lewiston, Idaho, United States
+LWT	KLWT	Lewistown Municipal Airport	Lewistown, Montana, United States
+LWV	KLWV	Lawrenceville-Vincennes International Airport	Lawrenceville, Illinois, United States
+LXN	KLXN	Jim Kelly Field	Lexington, Nebraska, United States
+LXV	KLXV	Lake County Airport (Colorado)|Lake County Airport	Leadville, Colorado, United States
+LYH	KLYH	Lynchburg Regional Airport (Preston Glenn Field)	Lynchburg, Virginia, United States
+LYO	KLYO	Lyons-Rice County Municipal Airport	Lyons, Kansas, United States
+LYU	KELO	Ely Municipal Airport (FAA: ELO)	Ely, Minnesota, United States
+MAC	KMAC	Macon Downtown Airport	Macon, Georgia, United States
+MAE	KMAE	Madera Municipal Airport	Madera, California, United States
+MAF	KMAF	Midland International Airport	Midland, Texas, United States
+MAL	KMAL	Malone-Dufort Airport	Malone (town), New York|Malone, New York, United States
+MAW	KMAW	Malden Municipal Airport	Malden, Missouri, United States
+MBG	KMBG	Mobridge Municipal Airport	Mobridge, South Dakota, United States
+MBL	KMBL	Manistee County-Blacker Airport	Manistee, Michigan, United States
+MBS	KMBS	MBS International Airport	Midland, Michigan|Midland/Bay City, Michigan|Bay City/Saginaw, Michigan, United States
+MBY	KMBY	Omar N. Bradley Airport	Moberly, Missouri, United States
+MCB	KMCB	McComb-Pike County Airport (John E. Lewis Field)	McComb, Mississippi, United States
+MCC	KMCC	McClellan Airfield	Sacramento, California, United States
+MCD	KMCD	Mackinac Island Airport	Mackinac Island, Michigan, United States
+MCE	KMCE	Merced Municipal Airport (Macready Field)	Merced, California, United States
+MCF	KMCF	MacDill Air Force Base	Tampa, Florida, United States
+MCG	PAMC	McGrath Airport	McGrath, Alaska, United States
+MCI	KMCI	Kansas City International Airport	Kansas City, Missouri, United States
+MCK	KMCK	McCook Regional Airport	McCook, Nebraska, United States
+MCN	KMCN	Middle Georgia Regional Airport	Macon, Georgia, United States
+MCO	KMCO	Orlando International Airport	Orlando, Florida, United States
+MCW	KMCW	Mason City Municipal Airport	Mason City, Iowa, United States
+MDD	KMDD	Midland Airpark	Midland, Texas, United States
+MDF	KMDZ	Taylor County Airport	Medford, Wisconsin, United States
+MDH	KMDH	Southern Illinois Airport	Carbondale, Illinois|Carbondale/Murphysboro, Illinois, United States
+MDJ		Madras City-County Airport	Madras, Oregon, United States
+MDN	KIMS	Madison Municipal Airport (Indiana)|Madison Municipal Airport	Madison, Indiana, United States
+MDO	PAMD	Middleton Island Airport	Middleton Island, Alaska, United States
+MDT	KMDT	Harrisburg International Airport	Harrisburg, Pennsylvania, United States
+MDW	KMDW	Midway International Airport	Chicago, Illinois, United States
+MDY	PMDY	Henderson Field (Midway Atoll)|Henderson Field	Sand Island (Midway Atoll)|Sand Island, Midway Atoll, United States
+MEB	KMEB	Laurinburg-Maxton Airport	Maxton, North Carolina, United States
+MEI	KMEI	Key Field	Meridian, Mississippi, United States
+MEJ	KMEJ	Meade Municipal Airport	Meade, Kansas, United States
+MEM	KMEM	Memphis International Airport	Memphis, Tennessee, United States
+MEO	KMQI	Dare County Regional Airport	Manteo, North Carolina, United States
+MER	KMER	Castle Airport	Atwater, California, United States
+MEV	KMEV	Minden-Tahoe Airport	Minden, Nevada, United States
+MEZ	KMEZ	Mena Intermountain Municipal Airport	Mena, Arkansas, United States
+MFD	KMFD	Mansfield Lahm Regional Airport	Mansfield, Ohio, United States
+MFE	KMFE	McAllen-Miller International Airport	McAllen, Texas, United States
+MFI	KMFI	Marshfield Municipal Airport (Wisconsin)|Marshfield Municipal Airport	Marshfield, Wisconsin, United States
+MFR	KMFR	Rogue Valley International-Medford Airport	Medford, Oregon, United States
+MFV	KMFV	Accomack County Airport	Melfa, Virginia, United States
+MGC	KMGC	Michigan City Municipal Airport	Michigan City, Indiana, United States
+MGE	KMGE	Dobbins Air Reserve Base (Atlanta NAS)	Marietta, Georgia, United States
+MGJ	KMGJ	Orange County Airport (New York)|Orange County Airport	Montgomery (town), New York|Montgomery, New York, United States
+MGM	KMGM	Montgomery Regional Airport (Dannelly Field)	Montgomery, Alabama, United States
+MGN	KMGN	Harbor Springs Airport	Harbor Springs, Michigan, United States
+MGR	KMGR	Moultrie Municipal Airport	Moultrie, Georgia, United States
+MGW	KMGW	Morgantown Municipal Airport (Walter L. Bill Hart Field)	Morgantown, West Virginia, United States
+MGY	KMGY	Dayton-Wright Brothers Airport	Dayton, Ohio, United States
+MHE	KMHE	Mitchell Municipal Airport	Mitchell, South Dakota, United States
+MHK	KMHK	Manhattan Regional Airport	Manhattan, Kansas, United States
+MHL	KMHL	Marshall Memorial Municipal Airport	Marshall, Missouri, United States
+MHM	PAMH	Minchumina Airport	Minchumina, Alaska, United States
+MHN	KMHN	Hooker County Airport	Mullen, Nebraska, United States
+MHR	KMHR	Sacramento Mather Airport	Sacramento, California, United States
+MHT	KMHT	Manchester-Boston Regional Airport	Manchester, New Hampshire, United States
+MHV	KMHV	Mojave Airport	Mojave, California, United States
+MIA	KMIA	Miami International Airport	Miami, Florida, United States
+MIB	KMIB	Minot Air Force Base	Minot, North Dakota, United States
+MIC	KMIC	Crystal Airport (Minnesota)|Crystal Airport	Minneapolis, Minnesota, United States
+MIE	KMIE	Delaware County Airport (Johnson Field)	Muncie, Indiana, United States
+MIO	KMIO	Miami Municipal Airport	Miami, Oklahoma, United States
+MIQ	KMLE	Millard Airport (Nebraska)|Millard Airport (FAA: MLE)	Omaha, Nebraska, United States
+MIT	KMIT	Shafter Airport	Shafter, California, United States
+MIV	KMIV	Millville Municipal Airport	Millville, New Jersey, United States
+MIW	KMIW	Marshalltown Municipal Airport	Marshalltown, Iowa, United States
+MJD	KMJD	Picayune Municipal Airport	Picayune, Mississippi, United States
+MJQ	KMJQ	Jackson Municipal Airport (Minnesota)|Jackson Municipal Airport	Jackson, Minnesota, United States
+MJX	KMJX	Robert J. Miller Air Park	Toms River, New Jersey, United States
+MKC	KMKC	Kansas City Downtown Airport (Charles B. Wheeler Downtown Airport)	Kansas City, Missouri, United States
+MKE	KMKE	General Mitchell International Airport	Milwaukee, Wisconsin, United States
+MKG	KMKG	Muskegon County Airport	Muskegon, Michigan, United States
+MKJ	KMKJ	Mountain Empire Airport	Marion, Virginia|Marion/Wytheville, Virginia, United States
+MKK	PHMK	Molokai Airport	Kaunakakai, Hawaii, United States
+MKL	KMKL	McKellar-Sipes Regional Airport	Jackson, Tennessee, United States
+MKN	KMKN	Comanche County-City Airport	Comanche, Texas, United States
+MKO	KMKO	Davis Field (Oklahoma)|Davis Field	Muskogee, Oklahoma, United States
+MKT	KMKT	Mankato Regional Airport	Mankato, Minnesota, United States
+MKV	KMKV	Marksville Municipal Airport	Marksville, Louisiana, United States
+MLB	KMLB	Melbourne International Airport	Melbourne, Florida, United States
+MLC	KMLC	McAlester Regional Airport	McAlester, Oklahoma, United States
+MLD	KMLD	Malad City Airport	Malad City, Idaho, United States
+MLF	KMLF	Milford Municipal Airport (Ben and Judy Briscoe Field)	Milford, Utah, United States
+MLI	KMLI	Quad City International Airport	Moline, Illinois, United States
+MLJ	KMLJ	Baldwin County Airport	Milledgeville, Georgia, United States
+MLL	PADM	Marshall Don Hunter Sr. Airport (FAA: MDM)	Marshall, Alaska, United States
+MLS	KMLS	Miles City Municipal Airport (Frank Wiley Field)	Miles City, Montana, United States
+MLT	KMLT	Millinocket Municipal Airport	Millinocket, Maine, United States
+MLU	KMLU	Monroe Regional Airport (Louisiana)|Monroe Regional Airport	Monroe, Louisiana, United States
+MLY	PAML	Manley Hot Springs Airport	Manley Hot Springs, Alaska, United States
+MMH	KMMH	Mammoth Yosemite Airport	Mammoth Lakes, California, United States
+MMI	KMMI	McMinn County Airport	Athens, Tennessee, United States
+MMS	KMMS	Selfs Airport	Marks, Mississippi, United States
+MMT	KMMT	McEntire Air National Guard Station	Eastover, South Carolina, United States
+MMU	KMMU	Morristown Municipal Airport	Morristown, New Jersey, United States
+MMV	KMMV	McMinnville Municipal Airport	McMinnville, Oregon, United States
+MNF	KMNF	Mountain View Airport (Missouri)|Mountain View Airport	Mountain View, Missouri, United States
+MNM	KMNM	Menominee-Marinette Twin County Airport	Menominee, Michigan, United States
+MNN	KMNN	Marion Municipal Airport	Marion, Ohio, United States
+MNZ	KHEF	Manassas Regional Airport	Manassas, Virginia, United States
+MOB	KMOB	Mobile Regional Airport	Mobile, Alabama, United States
+MOD	KMOD	Modesto City-County Airport (Harry Sham Field)	Modesto, California, United States
+MOP	KMOP	Mount Pleasant Municipal Airport (Michigan)|Mount Pleasant Municipal Airport	Mount Pleasant, Michigan, United States
+MOR	KMOR	Moore-Murrell Airport	Morristown, Tennessee, United States
+MOT	KMOT	Minot International Airport	Minot, North Dakota, United States
+MOU	PAMO	Mountain Village Airport	Mountain Village, Alaska, United States
+MOX	KMOX	Morris Municipal Airport	Morris, Minnesota, United States
+MPB		Miami Seaplane Base	Watson Island, Miami-Dade County, Florida, United States
+MPI	KMPI	Mariposa-Yosemite Airport	Mariposa, California, United States
+MPJ	KMPJ	Petit Jean Park Airport	Morrilton, Arkansas, United States
+MPO	KMPO	Pocono Mountains Municipal Airport	Mount Pocono, Pennsylvania, United States
+MPR	KMPR	McPherson Airport	McPherson, Kansas, United States
+MPV	KMPV	Edward F. Knapp State Airport	Barre (city), Vermont|Barre/Montpelier, Vermont, United States
+MPZ	KMPZ	Mount Pleasant Municipal Airport (Iowa)|Mount Pleasant Municipal Airport	Mount Pleasant, Iowa, United States
+MQB	KMQB	Macomb Municipal Airport	Macomb, Illinois, United States
+MQJ	KMQJ	Mount Comfort Airport	Indianapolis, Indiana, United States
+MQT	KSAW	Sawyer International Airport	Marquette, Michigan, United States
+MQW	KMQW	Telfair-Wheeler Airport	McRae, Georgia, United States
+MQY	KMQY	Smyrna Airport (Tennessee)|Smyrna Airport	Smyrna, Tennessee, United States
+MRB	KMRB	Eastern WV Regional Airport (Shepherd Field)	Martinsburg, West Virginia, United States
+MRC	KMRC	Maury County Airport	Columbia, Tennessee|Columbia/Mount Pleasant, Tennessee, United States
+MRF	KMRF	Marfa Municipal Airport	Marfa, Texas, United States
+MRH	KMRH	Michael J. Smith Field	Beaufort, North Carolina, United States
+MRI	PAMR	Merrill Field	Anchorage, Alaska, United States
+MRJ	KMRJ	Iowa County Airport	Mineral Point, Wisconsin, United States
+MRK	KMKY	Marco Island Airport	Marco Island, Florida, United States
+MRN	KMRN	Morganton-Lenoir Airport	Morganton, North Carolina, United States
+MRY	KMRY	Monterey Peninsula Airport	Monterey, California, United States
+MSL	KMSL	Northwest Alabama Regional Airport	Muscle Shoals, Alabama, United States
+MSN	KMSN	Dane County Regional Airport (Truax Field)	Madison, Wisconsin, United States
+MSO	KMSO	Missoula International Airport	Missoula, Montana, United States
+MSP	KMSP	Minneapolis-Saint Paul International Airport (Wold-Chamberlain Field)	Bloomington, Minnesota, United States
+MSS	KMSS	Massena International Airport (Richards Field)	Massena (town), New York|Massena, New York, United States
+MSV	KMSV	Sullivan County International Airport	Monticello, New York, United States
+MSY	KMSY	Louis Armstrong New Orleans International Airport (formerly Moisant Field)	New Orleans, Louisiana, United States
+MTC	KMTC	Selfridge Air National Guard Base	Mount Clemens, Michigan, United States
+MTH	KMTH	Florida Keys Marathon Airport	Marathon, Florida, United States
+MTJ	KMTJ	Montrose Regional Airport	Montrose, Colorado, United States
+MTM	PAMM	Metlakatla Seaplane Base	Metlakatla, Alaska|Metlakatla, Annette Island, Alaska, United States
+MTN	KMTN	Martin State Airport	Baltimore, Maryland, United States
+MTO	KMTO	Coles County Memorial Airport	Mattoon, Illinois|Mattoon/Charleston, Illinois, United States
+MTP	KMTP	Montauk Airport	Montauk, New York, United States
+MTW	KMTW	Manitowoc County Airport	Manitowoc, Wisconsin, United States
+MTX		Metro Field (FAA: MTF)	Fairbanks, Alaska, United States
+MUE	PHMU	Waimea-Kohala Airport	Kamuela, Hawaii, United States
+MUI	KMUI	Muir Army Airfield	Fort Indiantown Gap, Pennsylvania, United States
+MUL	KMUL	Spence Airport	Moultrie, Georgia, United States
+MUO	KMUO	Mountain Home Air Force Base	Mountain Home, Idaho, United States
+MUT	KMUT	Muscatine Municipal Airport	Muscatine, Iowa, United States
+MVC	KMVC	Monroe County Airport (Alabama)|Monroe County Airport	Monroeville, Alabama, United States
+MVE	KMVE	Montevideo-Chippewa County Airport	Montevideo, Minnesota, United States
+MVL	KMVL	Morrisville-Stowe State Airport	Morrisville, Vermont, United States
+MVM	KMVM	Machias Valley Airport	Machias, Maine, United States
+MVN	KMVN	Mount Vernon Airport	Mount Vernon, Illinois, United States
+MVY	KMVY	Martha's Vineyard Airport	Vineyard Haven, Massachusetts, United States
+MWA	KMWA	Williamson County Regional Airport	Marion, Illinois, United States
+MWC	KMWC	Lawrence J. Timmerman Airport	Milwaukee, Wisconsin, United States
+MWH	KMWH	Grant County International Airport	Moses Lake, Washington, United States
+MWL	KMWL	Mineral Wells Airport	Mineral Wells, Texas, United States
+MWM	KMWM	Windom Municipal Airport	Windom, Minnesota, United States
+MWO	KMWO	Hook Field Municipal Airport	Middletown, Ohio, United States
+MXA	KMXA	Manila Municipal Airport	Manila, Arkansas, United States
+MXE	KMEB	Laurinburg-Maxton Airport	Maxton, North Carolina, United States
+MXF	KMXF	Maxwell Air Force Base	Montgomery, Alabama, United States
+MXO	KMXO	Monticello Regional Airport	Monticello, Iowa, United States
+MYF	KMYF	Montgomery Field	San Diego, California, United States
+MYK		May Creek Airport	May Creek, Alaska|May Creek, Alaska, United States
+MYL	KMYL	McCall Municipal Airport	McCall, Idaho, United States
+MYR	KMYR	Myrtle Beach International Airport	Myrtle Beach, South Carolina, United States
+MYU	PAMY	Mekoryuk Airport	Mekoryuk, Alaska, United States
+MYV	KMYV	Yuba County Airport	Marysville, California, United States
+MYZ	KMYZ	Marysville Municipal Airport	Marysville, Kansas, United States
+MZJ	KMZJ	Pinal Airpark	Marana, Arizona, United States
+MZZ	KMZZ	Marion Municipal Airport	Marion, Indiana, United States
+NAX	PHJR	Kalaeloa Airport (NAS Barbers Point) (John Rodgers Field) (FAA: JRF)	Kapolei, Hawaii, United States
+NBG	KNBG	Naval Air Station Joint Reserve Base New Orleans|NAS JRB New Orleans (Alvin Callender Field)	New Orleans, Louisiana, United States
+NCN	PFCB	Chenega Bay Airport (FAA: C05)	Chenega, Alaska, United States
+NEL	KNEL	Naval Air Engineering Station Lakehurst|NAES Lakehurst (Maxfield Field)	Lakehurst, New Jersey, United States
+NEN	KNEN	Naval Outlying Field Whitehouse|NOLF Whitehouse	Jacksonville, Florida, United States
+NEW	KNEW	New Orleans Lakefront Airport	New Orleans, Louisiana, United States
+NFL	KNFL	Naval Air Station Fallon|NAS Fallon (Van Voorhis Field)	Fallon, Nevada, United States
+NGP	KNGP	Naval Air Station Corpus Christi|NAS Corpus Christi (Truax Field)	Corpus Christi, Texas, United States
+NGU	KNGU	Naval Station Norfolk|NS Norfolk (Chambers Field)	Norfolk, Virginia, United States
+NGW	KNGW	Naval Outlying Field Cabaniss|NOLF Cabaniss	Corpus Christi, Texas, United States
+NHK	KNHK	Naval Air Station Patuxent River|NAS Patuxent River (Trapnell Field)	Patuxent River, Maryland, United States
+NHX	KNBJ	Naval Outlying Field Barin|NOLF Barin (FAA: NBJ)	Foley, Alabama, United States
+NHZ	KNHZ	Naval Air Station Brunswick|NAS Brunswick	Brunswick, Maine, United States
+NIB	PAFS	Nikolai Airport (FAA: FSP)	Nikolai, Alaska, United States
+NIN		Ninilchik Airport	Ninilchik, Alaska, United States
+NIP	KNIP	Naval Air Station Jacksonville|NAS Jacksonville (Towers Field)	Jacksonville, Florida, United States
+NJK	KNJK	Naval Air Facility El Centro|NAF El Centro	El Centro, California, United States
+NKT	KNKT	Marine Corps Air Station Cherry Point|MCAS Cherry Point (Cunningham Field)	Cherry Point, North Carolina, United States
+NKX	KNKX	Marine Corps Air Station Miramar|MCAS Miramar	San Diego, California, United States
+NLC	KNLC	Naval Air Station Lemoore|NAS Lemoore (Reeves Field)	Lemoore, California, United States
+NLE		Jerry Tyler Memorial Airport (FAA: 3TR)	Niles, Michigan, United States
+NLG	PAOU	Nelson Lagoon Airport (FAA: OUL)	Nelson Lagoon, Alaska, United States
+NME	PAGT	Nightmute Airport (FAA: IGT)	Nightmute, Alaska, United States
+NNK		Naknek Airport (FAA: 5NK)	Naknek, Alaska, United States
+NNL	PANO	Nondalton Airport (FAA: 5NN)	Nondalton, Alaska, United States
+NOT	KDVO	Gnoss Field (FAA: DVO)	Novato, California, United States
+NOW	KNOW	Coast Guard Air Station Port Angeles|CGAS Port Angeles	Port Angeles, Washington, United States
+NPA	KNPA	Naval Air Station Pensacola|NAS Pensacola (Forrest Sherman Field)	Pensacola, Florida, United States
+NPH		Nephi Municipal Airport (FAA: U14)	Nephi, Utah, United States
+NPT	KUUU	Newport State Airport (Rhode Island)|Newport State Airport (FAA: UUU)	Newport, Rhode Island, United States
+NQA	KNQA	Millington Regional Jetport	Millington, Tennessee, United States
+NQI	KNQI	Naval Air Station Kingsville|NAS Kingsville	Kingsville, Texas, United States
+NQX	KNQX	Naval Air Station Key West|NAS Key West (Boca Chica Field)	Boca Chica Key, Florida, United States
+NRB	KNRB	Naval Station Mayport|NS Mayport (Adm. David L. McDonald Field)	Mayport, Florida, United States
+NRC	KNRC	NASA Crows Landing Airport (formerly NALF Crows Landing)	Crows Landing, California, United States
+NRS	KNRS	Naval Outlying Field Imperial Beach|NOLF Imperial Beach (Ream Field)	Imperial Beach, California, United States
+NSE	KNSE	NAS Whiting Field - North	Milton, Florida, United States
+NTD	KNTD	Naval Air Station Point Mugu|NAS Point Mugu (Naval Base Ventura County)	Point Mugu, California, United States
+NTJ		Manti-Ephraim Airport (FAA: 41U)	Manti, Utah, United States
+NTU	KNTU	Naval Air Station Oceana|NAS Oceana (Apollo Soucek Field)	Virginia Beach, Virginia, United States
+NUI	PAQT	Nuiqsut Airport (FAA: AQT)	Nuiqsut, Alaska, United States
+NUL	PANU	Nulato Airport	Nulato, Alaska, United States
+NUN	KNUN	Naval Outlying Field Saufley|NOLF Saufley	Pensacola, Florida, United States
+NUP		Nunapitchuk Airport (FAA: 16A)	Nunapitchuk, Alaska, United States
+NUQ	KNUQ	Moffett Federal Airfield	Mountain View, California, United States
+NUW	KNUW	Naval Air Station Whidbey Island|NAS Whidbey Island (Ault Field)	Oak Harbor, Washington, United States
+NVD	KNVD	Nevada Municipal Airport	Nevada, Missouri, United States
+NWH		Parlin Field (FAA: 2B3)	Newport, New Hampshire, United States
+NXX	KNXX	Naval Air Station Joint Reserve Base Willow Grove|NAS JRB Willow Grove	Willow Grove, Pennsylvania, United States
+NYC		List of airports in the New York City area|All Airports	New York City, New York, United States
+NYG	KNYG	Marine Corps Airfield Quantico|MCAF Quantico (Turner Field)	Quantico, Virginia, United States
+NZC	KVQQ	Cecil Field (FAA: VQQ)	Jacksonville, Florida, United States
+NZJ	KNZJ	Marine Corps Air Station El Toro|MCAS El Toro	Santa Ana, California, United States
+NZY	KNZY	Naval Air Station North Island|NAS North Island (Halsey Field)	San Diego, California, United States
+OAJ	KOAJ	Albert J. Ellis Airport	Jacksonville, North Carolina, United States
+OAK	KOAK	Oakland International Airport	Oakland, California|Oakland (near San Francisco), California, United States
+OBE	KOBE	Okeechobee County Airport	Okeechobee, Florida, United States
+OBU		Kobuk Airport	Kobuk, Alaska, United States
+OCA		Ocean Reef Club Airport (FAA: 07FA)	Key Largo, Florida|Key Largo, Florida, United States
+OCE	KOXB	Ocean City Municipal Airport (Maryland)|Ocean City Municipal Airport (FAA: OXB)	Ocean City, Maryland, United States
+OCF	KOCF	Ocala International Airport (Jim Taylor Field)	Ocala, Florida, United States
+OCH	KOCH	A. L. Mangham Jr. Regional Airport	Nacogdoches, Texas, United States
+OCN	KOKB	Oceanside Municipal Airport (FAA: OKB)	Oceanside, California, United States
+OCW	KOCW	Warren Field	Washington, North Carolina, United States
+ODW	KOKH	A.J. Eisenberg Airport (FAA: OKH)	Oak Harbor, Washington, United States
+OEA	KOEA	O'Neal Airport	Vincennes, Indiana, United States
+OEL	KOEL	Oakley Municipal Airport	Oakley, Kansas, United States
+OEO	KOEO	L. O. Simenstad Municipal Airport	Osceola, Wisconsin, United States
+OFF	KOFF	Offutt Air Force Base	Omaha, Nebraska, United States
+OFK	KOFK	Karl Stefan Memorial Airport	Norfolk, Nebraska, United States
+OGA	KOGA	Searle Field	Ogallala, Nebraska, United States
+OGB	KOGB	Orangeburg Municipal Airport	Orangeburg, South Carolina, United States
+OGD	KOGD	Ogden-Hinckley Airport	Ogden, Utah, United States
+OGG	PHOG	Kahului Airport	Kahului, Hawaii, United States
+OGS	KOGS	Ogdensburg International Airport	Ogdensburg, New York, United States
+OIC	KOIC	Norwich Lt. Warren Eaton Airport	Norwich, New York, United States
+OJC	KOJC	Johnson County Executive Airport	Olathe, Kansas, United States
+OKC	KOKC	Will Rogers World Airport	Oklahoma City, Oklahoma, United States
+OKK	KOKK	Kokomo Municipal Airport	Kokomo, Indiana, United States
+OKM	KOKM	Okmulgee Regional Airport	Okmulgee, Oklahoma, United States
+OKS	KOKS	Garden County Airport	Oshkosh, Nebraska, United States
+OLD	KOLD	Old Town Municipal Airport and Seaplane Base (DeWitt Field)	Old Town, Maine, United States
+OLE	KOLE	Cattaraugus County-Olean Airport	Olean, New York, United States
+OLF	KOLF	L. M. Clayton Airport	Wolf Point, Montana, United States
+OLH		Old Harbor Airport (FAA: 6R7)	Old Harbor, Alaska, United States
+OLM	KOLM	Olympia Airport	Olympia, Washington, United States
+OLS	KOLS	Nogales International Airport	Nogales, Arizona, United States
+OLU	KOLU	Columbus Municipal Airport (Nebraska)	Columbus, Nebraska, United States
+OLV	KOLV	Olive Branch Airport	Olive Branch, Mississippi, United States
+OLY	KOLY	Olney-Noble Airport	Olney, Illinois|Olney-Noble, Illinois, United States
+OMA	KOMA	Eppley Airfield	Omaha, Nebraska, United States
+OME	PAOM	Nome Airport	Nome, Alaska, United States
+OMH	OITR	Orange County Airport (Virginia)|Orange County Airport	Orange, Virginia, United States
+OMK	KOMK	Omak Airport	Omak, Washington, United States
+ONA	KONA	Winona Municipal Airport (Max Conrad Field)	Winona, Minnesota, United States
+ONH		Oneonta Municipal Airport (FAA: N66)	Oneonta, New York, United States
+ONL	KONL	The O'Neill Municipal Airport (John L. Baker Field)	O'Neill, Nebraska, United States
+ONM	KONM	Socorro Municipal Airport	Socorro, New Mexico, United States
+ONO	KONO	Ontario Municipal Airport	Ontario, Oregon, United States
+ONP	KONP	Newport Municipal Airport (Oregon)|Newport Municipal Airport	Newport, Oregon, United States
+ONT	KONT	Ontario International Airport	Ontario, California|Ontario (near Los Angeles, California|Los Angeles), California, United States
+ONY	KONY	Olney Municipal Airport	Olney, Texas, United States
+OOA	KOOA	Oskaloosa Municipal Airport	Oskaloosa, Iowa, United States
+OOK	PAOO	Toksook Bay Airport	Toksook Bay, Alaska, United States
+OPF	KOPF	Opa-locka Airport	Miami, Florida, United States
+OPL	KOPL	St. Landry Parish Airport (Ahart Field)	Opelousas, Louisiana, United States
+OQN	KOQN	Brandywine Airport	West Chester, Pennsylvania, United States
+ORC	KORC	Orange City Municipal Airport	Orange City, Iowa, United States
+ORD	KORD	O'Hare International Airport (formerly Orchard Depot Field)	Chicago, Illinois, United States
+ORF	KORF	Norfolk International Airport	Norfolk, Virginia (near Virginia Beach, Virginia|Virginia Beach and Williamsburg, Virginia|Williamsburg), United States
+ORH	KORH	Worcester Regional Airport	Worcester, Massachusetts, United States
+ORI	KORI	Port Lions Airport	Port Lions, Alaska, United States
+ORL	KORL	Orlando Executive Airport	Orlando, Florida, United States
+ORT	PAOR	Northway Airport	Northway, Alaska, United States
+ORV	PFNO	Robert (Bob) Curtis Memorial Airport (FAA: D76)	Noorvik, Alaska, United States
+OSB		Grand Glaize-Osage Beach Airport (FAA: K15)	Osage Beach, Missouri, United States
+OSC	KOSC	Oscoda-Wurtsmith Airport	Oscoda, Michigan, United States
+OSH	KOSH	Wittman Regional Airport	Oshkosh, Wisconsin, United States
+OSU	KOSU	Ohio State University Airport	Columbus, Ohio, United States
+OSX	KOSX	Kosciusko-Attala County Airport	Kosciusko, Mississippi, United States
+OTG	KOTG	Worthington Municipal Airport	Worthington, Minnesota, United States
+OTH	KOTH	North Bend Municipal Airport	North Bend, Oregon, United States
+OTM	KOTM	Ottumwa Industrial Airport	Ottumwa, Iowa, United States
+OTN		Ed-Air Airport (FAA: 2IG4)	Oaktown, Indiana, United States
+OTS		Anacortes Airport (FAA: 74S)	Anacortes, Washington, United States
+OTZ	PAOT	Ralph Wien Memorial Airport	Kotzebue, Alaska, United States
+OUN	KOUN	University of Oklahoma Westheimer Airport	Norman, Oklahoma, United States
+OVE	KOVE	Oroville Municipal Airport	Oroville, California, United States
+OVL	KOVL	Olivia Regional Airport	Olivia, Minnesota, United States
+OWA	KOWA	Owatonna Degner Regional Airport	Owatonna, Minnesota, United States
+OWB	KOWB	Owensboro-Daviess County Airport	Owensboro, Kentucky, United States
+OWD	KOWD	Norwood Memorial Airport	Norwood, Massachusetts, United States
+OWK	KOWK	Central Maine Airport of Norridgewock	Norridgewock, Maine, United States
+OXC	KOXC	Waterbury-Oxford Airport	Oxford, Connecticut, United States
+OXD	KOXD	Miami University Airport	Oxford, Ohio, United States
+OXR	KOXR	Oxnard Airport	Oxnard, California, United States
+OZA	KOZA	Ozona Municipal Airport	Ozona, Texas, United States
+OZR	KOZR	Cairns Army Airfield (Fort Rucker)	Fort Rucker, Alabama|Fort Rucker/Ozark, Alabama, United States
+PAE	KPAE	Snohomish County Airport (Paine Field)	Everett, Washington, United States
+PAH	KPAH	Barkley Regional Airport	Paducah, Kentucky, United States
+PAK		Port Allen Airport	Hanapepe, Hawaii, United States
+PAM	KPAM	Tyndall Air Force Base	Panama City, Florida, United States
+PAO	KPAO	Palo Alto Airport	Palo Alto, California, United States
+PAQ	PAAQ	Palmer Municipal Airport	Palmer, Alaska, United States
+PBF	KPBF	Grider Field	Pine Bluff, Arkansas, United States
+PBG	KPBG	Plattsburgh International Airport	Plattsburgh, New York, United States
+PBI	KPBI	Palm Beach International Airport	West Palm Beach, Florida, United States
+PCA	PAOC	Portage Creek Airport (FAA: A14)	Portage Creek, Alaska, United States
+PCD	KPDC	Prairie du Chien Municipal Airport (FAA: PDC)	Prairie du Chien, Wisconsin, United States
+PCK		Porcupine Creek Airport	Porcupine Creek, Alaska, United States
+PCT		Princeton Airport (New Jersey)|Princeton Airport (FAA: 39N)	Princeton, New Jersey|Princeton/Rocky Hill, New Jersey, United States
+PDB		Pedro Bay Airport (FAA: 4K0)	Pedro Bay, Alaska, United States
+PDK	KPDK	DeKalb-Peachtree Airport	Atlanta, Georgia, United States
+PDT	KPDT	Eastern Oregon Regional Airport	Pendleton, Oregon, United States
+PDX	KPDX	Portland International Airport	Portland, Oregon, United States
+PEQ	KPEQ	Pecos Municipal Airport	Pecos, Texas, United States
+PFC	KPFC	Pacific City State Airport	Pacific City, Oregon, United States
+PFN	KPFN	Panama City-Bay County International Airport	Panama City, Florida, United States
+PGA	KPGA	Page Municipal Airport	Page, Arizona, United States
+PGC		Grant County Airport (FAA: W99)	Petersburg, West Virginia, United States
+PGD	KPGD	Charlotte County Airport	Punta Gorda, Florida, United States
+PGL	KPQL	Trent Lott International Airport (FAA: PQL)	Pascagoula, Mississippi, United States
+PGM		Port Graham Airport	Port Graham, Alaska, United States
+PGO	KPSO	Stevens Field (FAA: PSO)	Pagosa Springs, Colorado, United States
+PGR	KPGR	Kirk Field	Paragould, Arkansas, United States
+PGS		Grand Canyon Caverns Airport (FAA: L37)	Peach Springs, Arizona, United States
+PGV	KPGV	Pitt-Greenville Airport	Greenville, North Carolina, United States
+PHD	KPHD	Harry Clever Field	New Philadelphia, Ohio, United States
+PHF	KPHF	Newport News/Williamsburg International Airport	Newport News, Virginia, United States
+PHK	KPHK	Palm Beach County Glades Airport	Pahokee, Florida, United States
+PHL	KPHL	Philadelphia International Airport	Philadelphia, Pennsylvania, United States
+PHN	KPHN	St. Clair County International Airport	Port Huron, Michigan, United States
+PHO	PAPO	Point Hope Airport	Point Hope, Alaska, United States
+PHP	KPHP	Philip Airport	Philip, South Dakota, United States
+PHT	KPHT	Henry County Airport (Tennessee)|Henry County Airport	Paris, Tennessee, United States
+PHX	KPHX	Sky Harbor International Airport	Phoenix, Arizona, United States
+PIA	KPIA	Greater Peoria Regional Airport	Peoria, Illinois, United States
+PIB	KPIB	Hattiesburg-Laurel Regional Airport	Hattiesburg, Mississippi|Hattiesburg/Laurel, Mississippi, United States
+PIE	KPIE	St. Petersburg-Clearwater International Airport	Pinellas County, Florida (near St. Petersburg, Florida|St. Petersburg and Clearwater, Florida|Clearwater), United States
+PIH	KPIH	Pocatello Regional Airport	Pocatello, Idaho, United States
+PIM	KPIM	Callaway Gardens-Harris County Airport	Pine Mountain, Harris County, Georgia|Pine Mountain, Georgia, United States
+PIP	PAPN	Pilot Point Airport (FAA: PNP)	Pilot Point, Alaska, United States
+PIR	KPIR	Pierre Regional Airport	Pierre, South Dakota, United States
+PIT	KPIT	Pittsburgh International Airport	Findlay Township, Pennsylvania|Findlay (near Pittsburgh, Pennsylvania|Pittsburgh), Pennsylvania, United States
+PIZ	PPIZ	Point Lay LRRS Airport	Point Lay, Alaska, United States
+PJB	KPAN	Payson Airport (FAA: PAN)	Payson, Arizona, United States
+PKA	PAPK	Napaskiak Airport	Napaskiak, Alaska, United States
+PKB	KPKB	Mid-Ohio Valley Regional Airport	Parkersburg, West Virginia, United States
+PKD	KPKD	Park Rapids Municipal Airport (Konshok Field)	Park Rapids, Minnesota, United States
+PKF	KPKF	Park Falls Municipal Airport	Park Falls, Wisconsin, United States
+PLB	KPLB	Clinton County Airport	Plattsburgh, New York, United States
+PLK	KPLK	M. Graham Clark - Taney County Airport	Point Lookout, Missouri, United States
+PLN	KPLN	Pellston Regional Airport	Pellston, Michigan, United States
+PLR	KPLR	St. Clair County Airport	Pell City, Alabama, United States
+PLY		Plymouth Municipal Airport (FAA: C65)	Plymouth, Indiana, United States
+PMB	KPMB	Pembina Municipal Airport	Pembina, North Dakota, United States
+PMD	KPMD	Palmdale Regional Airport	Palmdale, California, United States
+PMH	KPMH	Greater Portsmouth Regional Airport	Portsmouth, Ohio, United States
+PML	PAAL	Port Moller Airport (FAA: 1AK3)	Cold Bay, Alaska, United States
+PNC	KPNC	Ponca City Regional Airport	Ponca City, Oklahoma, United States
+PNE	KPNE	Northeast Philadelphia Airport	Philadelphia, Pennsylvania, United States
+PNN	KPNN	Princeton Municipal Airport (Maine)|Princeton Municipal Airport	Princeton, Maine, United States
+PNS	KPNS	Pensacola Regional Airport	Pensacola, Florida, United States
+PNU		Panguitch Municipal Airport (FAA: U55)	Panguitch, Utah, United States
+PNX	KGYI	North Texas Regional Airport (FAA: GYI)	Sherman, Texas|Sherman/Denison, Texas, United States
+POB	KPOB	Pope Air Force Base	Fayetteville, North Carolina, United States
+POC	KPOC	Brackett Field	La Verne, California, United States
+POE	KPOE	Polk Army Airfield	Fort Polk, Louisiana, United States
+POF	KPOF	Poplar Bluff Municipal Airport	Poplar Bluff, Missouri, United States
+POH	KPOH	Pocahontas Municipal Airport	Pocahontas, Iowa, United States
+POU	KPOU	Dutchess County Airport	Poughkeepsie (city), New York|Poughkeepsie, New York, United States
+POY	KPOY	Powell Municipal Airport	Powell, Wyoming, United States
+PPA	KPPA	Perry Lefors Field	Pampa, Texas, United States
+PPC	PAPR	Prospect Creek Airport	Prospect Creek, Alaska, United States
+PPF	KPPF	Tri-City Airport (Kansas)|Tri-City Airport	Parsons, Kansas, United States
+PPM	KPMP	Pompano Beach Airpark (FAA: PMP)	Pompano Beach, Florida, United States
+PPO	KPPO	La Porte Municipal Airport (Indiana)|La Porte Municipal Airport	La Porte, Indiana, United States
+PPV		Port Protection Seaplane Base (FAA: 19P)	Port Protection, Alaska, United States
+PQI	KPQI	Northern Maine Regional Airport at Presque Isle	Presque Isle, Maine, United States
+PQS		Pilot Station Airport (FAA: 0AK)	Pilot Station, Alaska, United States
+PRB	KPRB	Paso Robles Municipal Airport	Paso Robles, California, United States
+PRC	KPRC	Ernest A. Love Field	Prescott, Arizona, United States
+PRO	KPRO	Perry Municipal Airport (Iowa)|Perry Municipal Airport	Perry, Iowa, United States
+PRW		Prentice Airport (FAA: 5N2)	Prentice, Wisconsin, United States
+PRX	KPRX	Cox Field	Paris, Texas, United States
+PRZ		Prineville Airport (FAA: S39)	Prineville, Oregon, United States
+PSB	KPSB	Mid-State Airport	Philipsburg, Pennsylvania, United States
+PSC	KPSC	Tri-Cities Airport (Washington)|Tri-Cities Airport	Pasco, Washington, United States
+PSF	KPSF	Pittsfield Municipal Airport	Pittsfield, Massachusetts, United States
+PSG	PAPG	Petersburg James A. Johnson Airport	Petersburg, Alaska, United States
+PSK	KPSK	New River Valley Airport	Dublin, Virginia, United States
+PSM	KPSM	Pease International Tradeport	Portsmouth, New Hampshire, United States
+PSN	KPSN	Palestine Municipal Airport	Palestine, Texas, United States
+PSP	KPSP	Palm Springs International Airport	Palm Springs, California, United States
+PSQ		Philadelphia Seaplane Base (FAA: 9N2)	Essington, Pennsylvania|Essington, Pennsylvania United States
+PSX	KPSX	Palacios Municipal Airport	Palacios, Texas, United States
+PTA	PALJ	Port Alsworth Airport (FAA: TPO)	Port Alsworth, Alaska, United States
+PTB	KPTB	Dinwiddie County Airport	Petersburg, Virginia, United States
+PTC		Port Alice Seaplane Base (FAA: 16K)	Port Alice, Alaska|Port Alice, Alaska, United States
+PTD	PAAP	Port Alexander Seaplane Base (FAA: AHP)	Port Alexander, Alaska, United States
+PTH	PAPH	Port Heiden Airport	Port Heiden, Alaska, United States
+PTI		Piedmont Triad International Airport	Greensboro, North Carolina, United States
+PTK	KPTK	Oakland County International Airport	Pontiac, Michigan, United States
+PTN	KPTN	Harry P. Williams Memorial Airport	Patterson, Louisiana, United States
+PTS	KPTS	Atkinson Municipal Airport	Pittsburg, Kansas, United States
+PTT	KPTT	Pratt Industrial Airport	Pratt, Kansas, United States
+PTU	PAPM	Platinum Airport	Platinum, Alaska, United States
+PTV	KPTV	Porterville Municipal Airport	Porterville, California, United States
+PTW	KPTW	Pottstown Limerick Airport	Pottstown, Pennsylvania, United States
+PUB	KPUB	Pueblo Memorial Airport	Pueblo, Colorado, United States
+PUC	KPUC	Carbon County Airport	Price, Utah, United States
+PUL		Port of Poulsbo Marina Moorage Seaplane Base (FAA: 83Q)	Poulsbo, Washington, United States
+PUO		Northstar Heliport (FAA: 90AK)	Prudhoe Bay/Deadhorse, Alaska, United States
+PUW	KPUW	Pullman-Moscow Regional Airport	Pullman, Washington (near Moscow, Idaho), United States
+PVC	KPVC	Provincetown Municipal Airport	Provincetown, Massachusetts, United States
+PVD	KPVD	T. F. Green Airport|Theodore Francis Green State Airport	Providence, Rhode Island, United States
+PVF	KPVF	Placerville Airport	Placerville, California, United States
+PVU	KPVU	Provo Municipal Airport	Provo, Utah, United States
+PVW	KPVW	Hale County Airport	Plainview, Texas, United States
+PWA	KPWA	Wiley Post Airport	Oklahoma City, Oklahoma, United States
+PWD	KPWD	Sher-Wood Airport	Plentywood, Montana, United States
+PWK	KPWK	Palwaukee Municipal Airport	Chicago, Illinois|Chicago/Prospect Heights, Illinois|Prospect Heights/Wheeling, Illinois, United States
+PWM	KPWM	Portland International Jetport	Portland, Maine, United States
+PWT	KPWT	Bremerton National Airport	Bremerton, Washington, United States
+PXL		Polacca Airport (FAA: P10)	Polacca, Arizona|Polacca, Arizona, United States
+PYM	KPYM	Plymouth Municipal Airport (Massachusetts)|Plymouth Municipal Airport	Plymouth, Massachusetts, United States
+QNY		New York Skyports Inc. Seaplane Base (FAA: 6N7)	New York City, New York, United States
+QWG		Wilgrove Air Park (FAA: 8A6)	Charlotte, North Carolina, United States
+RAC	KRAC	John H. Batten Airport	Racine, Wisconsin, United States
+RAL	KRAL	Riverside Municipal Airport	Riverside, California, United States
+RAP	KRAP	Rapid City Regional Airport	Rapid City, South Dakota, United States
+RBD	KRBD	Dallas Executive Airport	Dallas, Texas, United States
+RBG	KRBG	Roseburg Regional Airport	Roseburg, Oregon, United States
+RBL	KRBL	Red Bluff Municipal Airport	Red Bluff, California, United States
+RBW	KRBW	Lowcountry Regional Airport	Walterboro, South Carolina, United States
+RBY	PARY	Ruby Airport	Ruby, Alaska, United States
+RCA	KRCA	Ellsworth Air Force Base	Rapid City, South Dakota, United States
+RCE		Roche Harbor Seaplane Base	San Juan Island, Washington (U.S. State)|Washington, United States
+RCK	KRCK	H. H. Coffield Regional Airport	Rockdale, Texas, United States
+RCR	KRCR	Fulton County Airport (Indiana)|Fulton County Airport	Rochester, Indiana, United States
+RCT	KRCT	Nartron Field	Reed City, Michigan, United States
+RDD	KRDD	Redding Municipal Airport	Redding, California, United States
+RDG	KRDG	Reading Regional Airport (Carl A. Spaatz Field)	Reading, Pennsylvania, United States
+RDM	KRDM	Roberts Field	Redmond, Oregon, United States
+RDR	KRDR	Grand Forks Air Force Base	Grand Forks, North Dakota, United States
+RDU	KRDU	Raleigh-Durham International Airport	Raleigh, North Carolina|Raleigh / Durham, North Carolina, United States
+RDV		Red Devil Airport	Red Devil, Alaska, United States
+RED	KRVL	Mifflin County Airport (FAA: RVL)	Reedsville, Pennsylvania, United States
+REO	KREO	Rome State Airport	Rome, Oregon, United States
+RFD	KRFD	Chicago Rockford International Airport (Greater Rockford Airport)	Rockford, Illinois, United States
+RFG	KRFG	Rooke Field	Refugio, Texas, United States
+RHI	KRHI	Rhinelander-Oneida County Airport	Rhinelander, Wisconsin, United States
+RHV	KRHV	Reid-Hillview Airport of Santa Clara County	San Jose, California, United States
+RIC	KRIC	Richmond International Airport	Richmond, Virginia, United States
+RID	KRID	Richmond Municipal Airport	Richmond, Indiana, United States
+RIE	KRPD	Rice Lake Regional Airport (Carl's Field) (FAA: RPD)	Rice Lake, Wisconsin, United States
+RIF	KRIF	Richfield Municipal Airport	Richfield, Utah, United States
+RIL	KRIL	Garfield County Regional Airport	Rifle, Colorado, United States
+RIR	KRIR	Flabob Airport	Riverside, California|Riverside/Rubidoux, California, United States
+RIV	KRIV	March ARB	Riverside, California, United States
+RIW	KRIW	Riverton Regional Airport	Riverton, Wyoming, United States
+RKC		Montague Airport (California)|Montague Airport (Yreka Rohrer Field) (FAA: 1O5)	Montague, California, United States
+RKD	KRKD	Knox County Regional Airport	Rockland, Maine, United States
+RKP	KRKP	Aransas County Airport	Rockport, Texas, United States
+RKR	KRKR	Robert S. Kerr Airport	Poteau, Oklahoma, United States
+RKS	KRKS	Rock Springs-Sweetwater County Airport	Rock Springs, Wyoming, United States
+RKW	KRKW	Rockwood Municipal Airport	Rockwood, Tennessee, United States
+RLA		Rolla Downtown Airport (FAA: K07)	Rolla, Missouri, United States
+RLD	KRLD	Richland Airport (Washington)|Richland Airport	Richland, Washington, United States
+RME	KRME	Griffiss Airpark	Rome, New York, United States
+RMG	KRMG	Richard B. Russell Airport	Rome, Georgia, United States
+RMP		Rampart Airport	Rampart, Alaska, United States
+RNC	KRNC	Warren County Memorial Airport	McMinnville, Tennessee, United States
+RND	KRND	Randolph Air Force Base	Universal City, Texas, United States
+RNH	KRNH	New Richmond Regional Airport	New Richmond, Wisconsin, United States
+RNO	KRNO	Reno-Tahoe International Airport	Reno, Nevada, United States
+RNT	KRNT	Renton Municipal Airport	Renton, Washington, United States
+RNZ	KRZL	Jasper County Airport (Indiana)|Jasper County Airport (FAA: RZL)	Rensselaer, Indiana, United States
+ROA	KROA	Roanoke Regional Airport (Woodrum Field)	Roanoke, Virginia, United States
+ROC	KROC	Greater Rochester International Airport	Rochester, Monroe County, New York|Rochester, New York, United States
+ROG	KROG	Rogers Municipal Airport (Carter Field)	Rogers, Arkansas, United States
+ROW	KROW	Roswell International Air Center	Roswell, New Mexico, United States
+ROX	KROX	Roseau Municipal Airport (Rudy Billberg Field)	Roseau, Minnesota, United States
+RPX	KRPX	Roundup Airport	Roundup, Montana, United States
+RRL	KRRL	Merrill Municipal Airport	Merrill, Wisconsin, United States
+RRT	KRRT	Warroad International Airport (Swede Carlson Field)	Warroad, Minnesota, United States
+RSH	PARS	Russian Mission Airport	Russian Mission, Alaska, United States
+RSJ		Rosario Seaplane Base	Orcas Island, Washington (U.S. State)|Washington, United States
+RSL	KRSL	Russell Municipal Airport	Russell, Kansas, United States
+RSN	KRSN	Ruston Regional Airport	Ruston, Louisiana, United States
+RST	KRST	Rochester International Airport	Rochester, Minnesota, United States
+RSW	KRSW	Southwest Florida International Airport	Fort Myers, Florida, United States
+RTN	KRTN	Raton Municipal Airport (Crews Field)	Raton, New Mexico, United States
+RUT	KRUT	Rutland State Airport	Rutland (city), Vermont|Rutland, Vermont, United States
+RVS	KRVS	Richard Lloyd Jones Jr. Airport	Tulsa, Oklahoma, United States
+RWF	KRWF	Redwood Falls Municipal Airport	Redwood Falls, Minnesota, United States
+RWI	KRWI	Rocky Mount-Wilson Regional Airport	Rocky Mount, North Carolina, United States
+RWL	KRWL	Rawlins Municipal Airport (Harvey Field)	Rawlins, Wyoming, United States
+RZZ	KRZZ	Halifax County Airport	Roanoke Rapids, North Carolina, United States
+SAA	KSAA	Shively Field	Saratoga, Wyoming, United States
+SAC	KSAC	Sacramento Executive Airport	Sacramento, California, United States
+SAD	KSAD	Safford Regional Airport	Safford, Arizona, United States
+SAF	KSAF	Santa Fe Municipal Airport	Santa Fe, New Mexico, United States
+SAG		Sagwon Airport	Sagwon, Alaska, United States
+SAN	KSAN	San Diego International Airport	San Diego, California, United States
+SAR	KSAR	Sparta Community Airport (Hunter Field)	Sparta, Illinois, United States
+SAS	KSAS	Salton Sea Airport	Salton City, California, United States
+SAT	KSAT	San Antonio International Airport	San Antonio, Texas, United States
+SAV	KSAV	Savannah/Hilton Head International Airport	Savannah, Georgia (near Hilton Head, South Carolina), United States
+SBA	KSBA	Santa Barbara Airport|Santa Barbara Municipal Airport	Santa Barbara, California, United States
+SBD	KSBD	San Bernardino International Airport	San Bernardino, California, United States
+SBM	KSBM	Sheboygan County Memorial Airport	Sheboygan, Wisconsin, United States
+SBN	KSBN	South Bend Regional Airport	South Bend, Indiana, United States
+SBO		Salina-Gunnison Airport (FAA: 44U)	Salina, Utah, United States
+SBP	KSBP	San Luis Obispo County Regional Airport	San Luis Obispo, California, United States
+SBS	KSBS	Steamboat Springs Airport (Bob Adams Field)	Steamboat Springs, Colorado, United States
+SBX	KSBX	Shelby Airport	Shelby, Montana, United States
+SBY	KSBY	Salisbury-Ocean City Wicomico Regional Airport	Salisbury, Maryland, United States
+SCB	KSCB	Scribner State Airport	Scribner, Nebraska, United States
+SCC	PASC	Deadhorse Airport	Deadhorse, Alaska, United States
+SCE	KUNV	University Park Airport (FAA: UNV)	State College, Pennsylvania, United States
+SCF	KSDL	Scottsdale Airport (FAA: SDL)	Scottsdale, Arizona, United States
+SCH	KSCH	Schenectady County Airport	Schenectady, New York, United States
+SCK	KSCK	Stockton Metropolitan Airport	Stockton, California, United States
+SCM		Scammon Bay Airport	Scammon Bay, Alaska, United States
+SDF	KSDF	Louisville International Airport (Standiford Field)	Louisville, Kentucky, United States
+SDM	KSDM	Brown Field Municipal Airport	San Diego, California, United States
+SDP	PASD	Sand Point Airport	Sand Point, Alaska, United States
+SDX	KSEZ	Sedona Airport (FAA: SEZ)	Sedona, Arizona, United States
+SDY	KSDY	Sidney-Richland Municipal Airport	Sidney, Montana, United States
+SEA	KSEA	Seattle-Tacoma International Airport	SeaTac, Washington|SeaTac (near Seattle, Washington|Seattle and Tacoma, Washington|Tacoma), Washington (U.S. state)|Washington, United States
+SEE	KSEE	Gillespie Field	San Diego, California|San Diego / El Cajon, California, United States
+SEF	KSEF	Sebring Regional Airport	Sebring, Florida, United States
+SEG	KSEG	Penn Valley Airport	Selinsgrove, Pennsylvania, United States
+SEM	KSEM	Craig Field (Alabama)|Craig Field	Selma, Alabama, United States
+SEP	KSEP	Clark Field Municipal Airport	Stephenville, Texas, United States
+SER	KSER	Freeman Municipal Airport	Seymour, Indiana, United States
+SFB	KSFB	Orlando Sanford International Airport	Sanford, Florida (near Orlando, Florida|Orlando), United States
+SFF	KSFF	Felts Field	Spokane, Washington, United States
+SFM	KSFM	Sanford Regional Airport	Sanford, Maine, United States
+SFO	KSFO	San Francisco International Airport	San Francisco, California, United States
+SFZ	KSFZ	North Central State Airport	Pawtucket, Rhode Island, United States
+SGF	KSGF	Springfield-Branson National Airport	Springfield, Missouri, United States
+SGH	KSGH	Springfield-Beckley Municipal Airport	Springfield, Ohio, United States
+SGR	KSGR	Sugar Land Regional Airport	Sugar Land, Texas (near Houston, Texas|Houston), United States
+SGT	KSGT	Stuttgart Municipal Airport	Stuttgart, Arkansas, United States
+SGU	KSGU	St. George Municipal Airport	St. George, Utah, United States
+SGY	PAGY	Skagway Airport	Skagway, Alaska, United States
+SHD	KSHD	Shenandoah Valley Regional Airport	Staunton, Virginia|Staunton / Waynesboro, Virginia|Waynesboro / Harrisonburg, Virginia, United States
+SHG	PAHG	Shungnak Airport	Shungnak, Alaska, United States
+SHH	PASH	Shishmaref Airport	Shishmaref, Alaska, United States
+SHN	KSHN	Sanderson Field	Shelton, Washington, United States
+SHR	KSHR	Sheridan County Airport	Sheridan, Wyoming, United States
+SHV	KSHV	Shreveport Regional Airport	Shreveport, Louisiana, United States
+SHX	PAHX	Shageluk Airport	Shageluk, Alaska, United States
+SIK	KSIK	Sikeston Memorial Municipal Airport	Sikeston, Missouri, United States
+SIT	PASI	Sitka Rocky Gutierrez Airport	Sitka, Alaska, United States
+SIV	KSIV	Sullivan County Airport	Sullivan, Indiana, United States
+SIY	KSIY	Siskiyou County Airport	Montague, California, United States
+SJC	KSJC	Norman Y. Mineta San José International Airport	San Jose, California, United States
+SJN	KSJN	St. Johns Industrial Air Park	St. Johns, Arizona, United States
+SJT	KSJT	San Angelo Regional Airport (Mathis Field)	San Angelo, Texas, United States
+SKA	KSKA	Fairchild Air Force Base	Spokane, Washington, United States
+SKF	KSKF	Lackland Air Force Base / Kelly Field Annex	San Antonio, Texas, United States
+SKK	PFSH	Shaktoolik Airport (FAA: 2C7)	Shaktoolik, Alaska, United States
+SKW	PASW	Skwentna Airport	Skwentna, Alaska, United States
+SKY	KSKY	Griffing Sandusky Airport	Sandusky, Ohio, United States
+SLB	KSLB	Storm Lake Municipal Airport	Storm Lake, Iowa, United States
+SLC	KSLC	Salt Lake City International Airport	Salt Lake City, Utah, United States
+SLE	KSLE	McNary Field	Salem, Oregon, United States
+SLG	KSLG	Smith Field (Arkansas)|Smith Field	Siloam Springs, Arkansas, United States
+SLJ		Stellar Airpark (FAA: P19)	Chandler, Arizona, United States
+SLK	KSLK	Adirondack Regional Airport	Saranac Lake, New York, United States
+SLN	KSLN	Salina Municipal Airport	Salina, Kansas, United States
+SLO	KSLO	Salem-Leckrone Airport	Salem, Illinois, United States
+SLQ	PASL	Sleetmute Airport	Sleetmute, Alaska, United States
+SLR	KSLR	Sulphur Springs Municipal Airport	Sulphur Springs, Texas, United States
+SLT	KANK	Harriet Alexander Field (FAA: ANK)	Salida, Colorado, United States
+SMD	KSMD	Smith Field (Indiana)|Smith Field	Fort Wayne, Indiana, United States
+SME	KSME	Lake Cumberland Regional Airport (J.T. Wilson Field)	Somerset, Kentucky, United States
+SMF	KSMF	Sacramento International Airport	Sacramento, California, United States
+SMK	PAMK	St. Michael Airport	St. Michael, Alaska, United States
+SMN	KSMN	Lemhi County Airport	Salmon, Idaho, United States
+SMO	KSMO	Santa Monica Municipal Airport	Santa Monica, California, United States
+SMU	PASP	Sheep Mountain Airport	Sheep Mountain, Alaska|Sheep Mountain, Alaska, United States
+SMX	KSMX	Santa Maria Public Airport (Capt. G. Allan Hancock Field)	Santa Maria, California, United States
+SNA	KSNA	John Wayne Airport (Orange County Airport)	Santa Ana, California, United States
+SNK	KSNK	Winston Field	Snyder, Texas, United States
+SNL	KSNL	Shawnee Regional Airport	Shawnee, Oklahoma, United States
+SNP	PASN	St. Paul Island Airport	St. Paul Island, Alaska, United States
+SNS	KSNS	Salinas Municipal Airport	Salinas, California, United States
+SNY	KSNY	Sidney Municipal Airport (Nebraska)|Sidney Municipal Airport (Lloyd W. Carr Field)	Sidney, Nebraska, United States
+SOP	KSOP	Moore County Airport (North Carolina)|Moore County Airport	Pinehurst, North Carolina|Pinehurst / Southern Pines, North Carolina, United States
+SOV	PASO	Seldovia Airport	Seldovia, Alaska, United States
+SOW	KSOW	Show Low Regional Airport	Show Low, Arizona, United States
+SPA	KSPA	Spartanburg Downtown Memorial Airport	Spartanburg, South Carolina, United States
+SPB		Charlotte Amalie Harbor Seaplane Base (St. Thomas Seaplane Base) (FAA: VI22)	Charlotte Amalie, United States Virgin Islands|Charlotte Amalie, St. Thomas, U.S. Virgin Islands|Saint Thomas, U.S. Virgin Islands
+SPF	KSPF	Black Hills Airport (Clyde Ice Field)	Spearfish, South Dakota, United States
+SPG	KSPG	Albert Whitted Airport	St. Petersburg, Florida, United States
+SPI	KSPI	Abraham Lincoln Capital Airport	Springfield, Illinois, United States
+SPS	KSPS	Sheppard AFB / Wichita Falls Municipal Airport	Wichita Falls, Texas, United States
+SPW	KSPW	Spencer Municipal Airport	Spencer, Iowa, United States
+SPZ	KASG	Springdale Municipal Airport (FAA: ASG)	Springdale, Arkansas, United States
+SQA	KIZA	Santa Ynez Airport (FAA: IZA)	Santa Ynez, California, United States
+SQI	KSQI	Whiteside County Airport (Jos. H. Bittorf Field)	Sterling, Illinois|Sterling / Rock Falls, Illinois, United States
+SQL	KSQL	San Carlos Airport	San Carlos, California, United States
+SQV		Sequim Valley Airport (FAA: W28)	Sequim, Washington, United States
+SRC	KSRC	Searcy Municipal Airport	Searcy, Arkansas, United States
+SRQ	KSRQ	Sarasota-Bradenton International Airport	Sarasota, Florida (near Bradenton, Florida|Bradenton), United States
+SRV		Stony River 2 Airport	Stony River, Alaska, United States
+SRW	KRUQ	Rowan County Airport (FAA: RUQ)	Salisbury, North Carolina, United States
+SSC	KSSC	Shaw Air Force Base	Sumter, South Carolina, United States
+SSF	KSSF	Stinson Municipal Airport	San Antonio, Texas, United States
+SSI	KSSI	Malcolm McKinnon Airport	Brunswick, Georgia, United States
+STC	KSTC	St. Cloud Regional Airport	St. Cloud, Minnesota, United States
+STE	KSTE	Stevens Point Municipal Airport	Stevens Point, Wisconsin, United States
+STG	PAPB	St. George Airport (Alaska)|St. George Airport (FAA: PBV)	St. George, Alaska, United States
+STJ	KSTJ	Rosecrans Memorial Airport	St. Joseph, Missouri, United States
+STK	KSTK	Sterling Municipal Airport	Sterling, Colorado, United States
+STL	KSTL	Lambert-Saint Louis International Airport	St. Louis, Missouri, United States
+STP	KSTP	St. Paul Downtown Airport (Holman Field)	St. Paul, Minnesota, United States
+STQ	KOYM	St. Marys Municipal Airport (FAA: OYM)	St. Marys, Pennsylvania, United States
+STS	KSTS	Charles M. Schulz Sonoma County Airport	Santa Rosa, California, United States
+STT	TIST	Cyril E. King Airport	Charlotte Amalie, U.S. Virgin Islands|Charlotte Amalie, Saint Thomas, United States Virgin Islands|Saint Thomas, United States Virgin Islands
+STX	TISX	Henry E. Rohlsen Airport	Christiansted, U.S. Virgin Islands|Christiansted, Saint Croix, United States Virgin Islands
+SUA	KSUA	Witham Field	Stuart, Florida, United States
+SUD	KSUD	Stroud Municipal Airport	Stroud, Oklahoma, United States
+SUE	KSUE	Door County Cherryland Airport	Sturgeon Bay, Wisconsin, United States
+SUM	KSMS	Sumter Airport (FAA: SMS)	Sumter, South Carolina, United States
+SUN	KSUN	Friedman Memorial Airport	Hailey, Idaho, United States
+SUO		Sunriver Airport (FAA: S21)	Sunriver, Oregon, United States
+SUS	KSUS	Spirit of St. Louis Airport	Chesterfield, Missouri, United States
+SUU	KSUU	Travis Air Force Base	Fairfield, California, United States
+SUW	KSUW	Richard I. Bong Airport	Superior, Wisconsin, United States
+SUX	KSUX	Sioux Gateway Airport (Colonel Bud Day Field)	Sioux City, Iowa, United States
+SVA	PASA	Savoonga Airport	Savoonga, Alaska, United States
+SVC	KSVC	Grant County Airport (New Mexico)|Grant County Airport	Silver City, New Mexico, United States
+SVE	KSVE	Susanville Municipal Airport	Susanville, California, United States
+SVH	KSVH	Statesville Regional Airport	Statesville, North Carolina, United States
+SVN	KSVN	Hunter Army Airfield	Savannah, Georgia, United States
+SVS		Stevens Village Airport	Stevens Village, Alaska, United States
+SVW	PASV	Sparrevohn LRRS Airport	Sparrevohn, Alaska|Sparrevohn, Alaska, United States
+SWD	PAWD	Seward Airport	Seward, Alaska, United States
+SWF	KSWF	Stewart International Airport	Newburgh, New York, United States
+SWO	KSWO	Stillwater Regional Airport	Stillwater, Oklahoma, United States
+SWW	KSWW	Avenger Field	Sweetwater, Texas, United States
+SXP		Sheldon Point Airport	Sheldon Point, Alaska, United States
+SXQ	PASX	Soldotna Airport	Soldotna, Alaska, United States
+SXY		Sidney Municipal Airport (FAA: N23)	Sidney, New York, United States
+SYA	PASY	Eareckson Air Station	Shemya, Alaska, United States
+SYI	KSYI	Shelbyville Municipal Airport (Tennessee)|Shelbyville Municipal Airport (Bomar Field)	Shelbyville, Tennessee, United States
+SYL	KSYL	Roberts Army Heliport	Camp Roberts, San Luis Obispo County, California, United States
+SYN	KSYN	Stanton Airfield	Stanton, Minnesota, United States
+SYR	KSYR	Syracuse Hancock International Airport	Mattydale, New York|Mattydale (near Syracuse, New York|Syracuse), New York, United States
+SYV	KSYV	Sylvester Airport	Sylvester, Georgia, United States
+SZL	KSZL	Whiteman Air Force Base	Knob Noster, Missouri, United States
+SZN	KSZN	Santa Cruz Island Airport	Santa Barbara, California, United States
+SZP	KSZP	Santa Paula Airport	Santa Paula, California, United States
+TAD	KTAD	Perry Stokes Airport	Trinidad, Colorado, United States
+TAL	PATA	Ralph M. Calhoun Memorial Airport	Tanana, Alaska, United States
+TBN	KTBN	Waynesville-St. Robert Regional Airport (Forney Field)	Fort Leonard Wood, Missouri, United States
+TBR	KTBR	Statesboro-Bulloch County Airport	Statesboro, Georgia, United States
+TCC	KTCC	Tucumcari Municipal Airport	Tucumcari, New Mexico, United States
+TCL	KTCL	Tuscaloosa Regional Airport	Tuscaloosa, Alabama, United States
+TCM	KTCM	McChord Air Force Base	Tacoma, Washington, United States
+TCS	KTCS	Truth or Consequences Municipal Airport	Truth or Consequences, New Mexico, United States
+TCT		Takotna Airport	Takotna, Alaska, United States
+TDO	KTDO	South Lewis County Airport (Ed Carlson Memorial Field)	Toledo, Washington, United States
+TDW	KTDW	Tradewind Airport	Amarillo, Texas, United States
+TDZ	KTDZ	Metcalf Field	Toledo, Ohio, United States
+TEB	KTEB	Teterboro Airport	Teterboro, New Jersey, United States
+TEK		Tatitlek Airport (FAA: 7KA)	Tatitlek, Alaska, United States
+TEX	KTEX	Telluride Regional Airport	Telluride, Colorado, United States
+TGE		Sharpe Field (FAA: AL73)	Tuskegee, Alabama, United States
+THA	KTHA	Tullahoma Regional Airport (William Northern Field)	Tullahoma, Tennessee, United States
+THP	KTHP	Hot Springs County-Thermopolis Municipal Airport	Thermopolis, Wyoming, United States
+THV	KTHV	York Airport (Pennsylvania)|York Airport	York, Pennsylvania, United States
+TIK	KTIK	Tinker Air Force Base	Oklahoma City, Oklahoma, United States
+TIW	KTIW	Tacoma Narrows Airport	Tacoma, Washington, United States
+TIX	KTIX	Space Coast Regional Airport	Titusville, Florida, United States
+TKA	PATK	Talkeetna Airport	Talkeetna, Alaska, United States
+TKF	KTRK	Truckee-Tahoe Airport (FAA: TRK)	Truckee, California, United States
+TKI		Tokeen Seaplane Base (FAA: 57A)	Tokeen, Alaska, United States
+TKJ	PATJ	Tok Airport	Tok, Alaska, United States
+TLA	PATE	Teller Airport (FAA: TER)	Teller, Alaska, United States
+TLF		Telida Airport (FAA: 2K5)	Telida, Alaska, United States
+TLH	KTLH	Tallahassee Regional Airport	Tallahassee, Florida, United States
+TLJ	PATL	Tatalina LRRS Airport	Takotna, Alaska, United States
+TLR	KTLR	Mefford Field	Tulare, California, United States
+TLT		Tuluksak Airport	Tuluksak, Alaska, United States
+TMA	KTMA	Henry Tift Myers Airport	Tifton, Georgia, United States
+TMB	KTMB	Kendall-Tamiami Executive Airport	Miami, Florida, United States
+TNC	PATC	Tin City LRRS Airport	Tin City, Alaska, United States
+TNI	PGWT	Tinian International Airport	Tinian Island, Northern Mariana Islands, United States
+TNK		Tununak Airport (FAA: 4KA)	Tununak, Alaska, United States
+TNP	KTNP	Twentynine Palms Airport	Twentynine Palms, California, United States
+TNT	KTNT	Dade-Collier Training and Transition Airport	Miami, Florida, United States
+TNU	KTNU	Newton Municipal Airport (Iowa)|Newton Municipal Airport	Newton, Iowa, United States
+TOA	KTOA	Zamperini Field	Torrance, California, United States
+TOC	KTOC	Toccoa Airport (R.G. LeTourneau Field)	Toccoa, Georgia, United States
+TOG	PATG	Togiak Airport	Togiak Village, Alaska, United States
+TOI	KTOI	Troy Municipal Airport	Troy, Alabama, United States
+TOL	KTOL	Toledo Express Airport	Toledo, Ohio, United States
+TOP	KTOP	Philip Billard Municipal Airport	Topeka, Kansas, United States
+TOR	KTOR	Torrington Municipal Airport	Torrington, Wyoming, United States
+TPA	KTPA	Tampa International Airport	Tampa, Florida, United States
+TPF	KTPF	Peter O. Knight Airport	Tampa, Florida, United States
+TPH	KTPH	Tonopah Airport	Tonopah, Nevada, United States
+TPL	KTPL	Draughon-Miller Central Texas Regional Airport	Temple, Texas, United States
+TRH		Trona Airport (FAA: L72)	Trona, California, United States
+TRI	KTRI	Tri-Cities Regional Airport	Blountville, Tennessee (Tri-Cities, Tennessee|Tri-Cities area), United States
+TRL	KTRL	Terrell Municipal Airport	Terrell, Texas, United States
+TRM	KTRM	Jacqueline Cochran Regional Airport	Palm Springs, California, United States
+TRX	KTRX	Trenton Municipal Airport (Missouri)|Trenton Municipal Airport	Trenton, Missouri, United States
+TSG		Tanacross Airport	Tanacross, Alaska, United States
+TSM	KSKX	Taos Regional Airport (FAA: SKX)	Taos, New Mexico, United States
+TSP	KTSP	Tehachapi Municipal Airport	Tehachapi, California, United States
+TSS		East 34th Street Heliport (FAA: 6N5)	New York City, United States
+TTD	KTTD	Portland-Troutdale Airport	Portland, Oregon, United States
+TTN	KTTN	Trenton-Mercer Airport	Trenton, New Jersey, United States
+TTO	KBTN	Britton Municipal Airport (FAA: BTN)	Britton, South Dakota, United States
+TUL	KTUL	Tulsa International Airport	Tulsa, Oklahoma, United States
+TUP	KTUP	Tupelo Regional Airport	Tupelo, Mississippi, United States
+TUS	KTUS	Tucson International Airport	Tucson, Arizona, United States
+TVC	KTVC	Cherry Capital Airport	Traverse City, Michigan, United States
+TVF	KTVF	Thief River Falls Regional Airport	Thief River Falls, Minnesota, United States
+TVI	KTVI	Thomasville Regional Airport	Thomasville, Georgia, United States
+TVL	KTVL	Lake Tahoe Airport	South Lake Tahoe, California, United States
+TWA		Twin Hills Airport (FAA: A63)	Twin Hills, Alaska, United States
+TWD		Jefferson County International Airport (FAA: 0S9)	Port Townsend, Washington, United States
+TWE		Taylor Airport (Alaska)|Taylor Airport (FAA: AK49)	Taylor, Alaska, United States
+TWF	KTWF	Magic Valley Regional Airport (Joslin Field)	Twin Falls, Idaho, United States
+TXK	KTXK	Texarkana Regional Airport (Webb Field)	Texarkana, Arkansas, United States
+TYE		Tyonek Airport	Tyonek, Alaska, United States
+TYR	KTYR	Tyler Pounds Regional Airport	Tyler, Texas, United States
+TYS	KTYS	McGhee Tyson Airport	Knoxville, Tennessee, United States
+TYZ	KTYL	Taylor Airport (Arizona)|Taylor Airport (FAA: TYL)	Taylor, Arizona, United States
+UBS	KUBS	Columbus-Lowndes County Airport	Columbus, Mississippi, United States
+UCA	KUCA	Oneida County Airport	Utica, New York, United States
+UCC	KUCC	Yucca Airstrip (FAA: NV11)	Mercury, Nevada, United States
+UCE		Eunice Airport (FAA: 4R7)	Eunice, Louisiana, United States
+UCY	KUCY	Everett-Stewart Airport	Union City, Tennessee, United States
+UDD	KUDD	Bermuda Dunes Airport	Palm Springs, California, United States
+UES	KUES	Waukesha County Airport	Waukesha, Wisconsin, United States
+UGB		Ugashik Bay Airport	Pilot Point, Alaska, United States
+UGN	KUGN	Waukegan Regional Airport	Chicago, Illinois|Chicago / Waukegan, Illinois, United States
+UGS		Ugashik Airport (FAA: 9A8)	Ugashik, Alaska, United States
+UIL	KUIL	Quillayute Airport	Forks, Washington, United States
+UIN	KUIN	Quincy Regional Airport (Baldwin Field)	Quincy, Illinois, United States
+UKI	KUKI	Ukiah Municipal Airport	Ukiah, California, United States
+UKN		Waukon Municipal Airport (FAA: Y01)	Waukon, Iowa, United States
+UKT	KUKT	Quakertown Airport	Quakertown, Pennsylvania, United States
+ULM	KULM	New Ulm Municipal Airport	New Ulm, Minnesota, United States
+UMM	PAST	Summit Airport (Alaska)|Summit Airport	Summit, Alaska|Summit, Alaska, United States
+UMT	PAUM	Umiat Airport	Umiat, Alaska, United States
+UNK	PAUN	Unalakleet Airport	Unalakleet, Alaska, United States
+UNU	KUNU	Dodge County Airport	Juneau, Wisconsin, United States
+UOS	KUOS	Franklin County Airport (Tennessee)|Franklin County Airport	Sewanee, Tennessee, United States
+UOX	KUOX	University-Oxford Airport	Oxford, Mississippi, United States
+UPP	PHUP	Upolu Airport	Hawi, Hawaii, United States
+USC		Union County Airport (South Carolina)|Union County Airport (Troy Shelton Field) (FAA: 35A)	Union, South Carolina, United States
+UST	KSGJ	St. Augustine Airport (FAA: SGJ)	St. Augustine, Florida, United States
+UTM	KUTA	Tunica Municipal Airport (FAA: UTA)	Tunica, Mississippi, United States
+UTO	PAIM	Indian Mountain LRRS Airport	Utopia Creek, Alaska|Utopia Creek, Alaska, United States
+UUK	PAKU	Ugnu-Kuparuk Airport (FAA: UBW)	Kuparuk, Alaska|Kuparuk, Alaska, United States
+UVA	KUVA	Garner Field	Uvalde, Texas, United States
+UWA		Ware Airport (FAA: MA53)	Ware, Massachusetts, United States
+VAD	KVAD	Moody Air Force Base	Valdosta, Georgia, United States
+VAK	PAVA	Chevak Airport	Chevak, Alaska, United States
+VBG	KVBG	Vandenberg Air Force Base	Lompoc, California, United States
+VCB	KVCB	Nut Tree Airport	Vacaville, California, United States
+VCT	KVCT	Victoria Regional Airport	Victoria, Texas, United States
+VCV	KVCV	Southern California Logistics Airport	Victorville, California, United States
+VDI	KVDI	Vidalia Regional Airport	Vidalia, Georgia, United States
+VDZ	PAVD	Valdez Airport (Pioneer Field)	Valdez, Alaska, United States
+VEE	PAVE	Venetie Airport	Venetie, Alaska, United States
+VEL	KVEL	Vernal Airport	Vernal, Utah, United States
+VEX		Tioga Municipal Airport (FAA: D60)	Tioga, North Dakota, United States
+VGT	KVGT	North Las Vegas Airport	North Las Vegas, Nevada, United States
+VHN	KVHN	Culberson County Airport	Van Horn, Texas, United States
+VIH	KVIH	Rolla National Airport	Rolla, Missouri, United States
+VIS	KVIS	Visalia Municipal Airport	Visalia, California, United States
+VJI	KVJI	Virginia Highlands Airport	Abingdon, Virginia, United States
+VKS	KVKS	Vicksburg Municipal Airport	Vicksburg, Mississippi, United States
+VLA	KVLA	Vandalia Municipal Airport	Vandalia, Illinois, United States
+VLD	KVLD	Valdosta Regional Airport	Valdosta, Georgia, United States
+VLE		Valle Airport (FAA: 40G)	Grand Canyon, Arizona, United States
+VNC	KVNC	Venice Municipal Airport	Venice, Florida, United States
+VNY	KVNY	Van Nuys Airport	Van Nuys, California, United States
+VOK	KVOK	Volk Field	Camp Douglas, Wisconsin, United States
+VPS	KVPS	Northwest Florida Regional Airport / Eglin Air Force Base	Valparaiso, Florida|Valaparaiso (near Fort Walton Beach, Florida|Fort Walton Beach), Florida, United States
+VPZ	KVPZ	Porter County Municipal Airport	Valparaiso, Indiana, United States
+VQS	TJVQ	Antonio Rivera Rodriguez Airport	Vieques, Puerto Rico, United States
+VRB	KVRB	Vero Beach Municipal Airport	Vero Beach, Florida, United States
+VRS		Roy Otten Memorial Airfield (FAA: 3VS)	Versailles, Missouri, United States
+VSF	KVSF	Hartness State Airport	Springfield, Vermont, United States
+VTN	KVTN	Miller Field (airport)|Miller Field	Valentine, Nebraska, United States
+VYS	KVYS	Illinois Valley Regional Airport (Walter A. Duncan Field)	Peru, Illinois, United States
+WAA	PAIW	Wales Airport (Alaska)|Wales Airport (FAA: IWK)	Wales, Alaska, United States
+WAH	KBWP	Harry Stern Airport (FAA: BWP)	Wahpeton, North Dakota, United States
+WAL	KWAL	Wallops Flight Facility Airport	Wallops Island, Virginia, United States
+WAS		All Airports	Washington, D.C., United States
+WAY	KWAY	Greene County Airport (Pennsylvania)|Greene County Airport	Waynesburg, Pennsylvania, United States
+WBB		Stebbins Airport	Stebbins, Alaska, United States
+WBQ	PAWB	Beaver Airport	Beaver, Alaska, United States
+WBR	KRQB	Roben-Hood Airport (FAA: RQB)	Big Rapids, Michigan, United States
+WBU	KBDU	Boulder Municipal Airport (FAA: BDU)	Boulder, Colorado, United States
+WBW	KWBW	Wilkes-Barre Wyoming Valley Airport	Wilkes-Barre, Pennsylvania, United States
+WCR	PALR	Chandalar Lake Airport	Chandalar Lake, Alaska, United States
+WDG	KWDG	Enid Woodring Regional Airport	Enid, Oklahoma, United States
+WDR	KWDR	Barrow County Airport	Winder, Georgia, United States
+WEA	KWEA	Parker County Airport	Weatherford, Texas, United States
+WFB		Ketchikan Harbor Seaplane Base (FAA: 5KE)	Ketchikan, Alaska, United States
+WFK	KFVE	Northern Aroostook Regional Airport (FAA: FVE)	Frenchville, Maine, United States
+WGO	KOKV	Winchester Regional Airport (FAA: OKV)	Winchester, Virginia, United States
+WHD		Hyder Seaplane Base (FAA: 4Z7)	Hyder, Alaska, United States
+WHP	KWHP	Whiteman Airport	Los Angeles, California, United States
+WHT	KARM	Wharton Regional Airport (FAA: ARM)	Wharton, Texas, United States
+WJF	KWJF	General William J. Fox Airfield	Lancaster, California, United States
+WKK		Aleknagik Airport (FAA: 5A8)	Aleknagik, Alaska, United States
+WKL		Waikoloa Heliport (FAA: HI07)	Waikoloa Village, Hawaii, United States
+WLD	KWLD	Strother Field	Winfield, Kansas|Winfield/Arkansas City, Kansas, United States
+WLK	PASK	Selawik Airport	Selawik, Alaska, United States
+WLM		Prospect Hill Heliport (FAA: MA92)	Waltham, Massachusetts, United States
+WLR		Loring Seaplane Base (FAA: 13Z)	Loring, Alaska|Loring, Alaska, United States
+WLW	KWLW	Willows-Glenn County Airport	Willows, California, United States
+WMC	KWMC	Winnemucca Municipal Airport	Winnemucca, Nevada, United States
+WMH	KBPK	Ozark Regional Airport (FAA: BPK)	Mountain Home, Arkansas, United States
+WMK		Meyers Chuck Seaplane Base (FAA: 84K)	Meyers Chuck, Alaska, United States
+WMO	PAWM	White Mountain Airport	White Mountain, Alaska, United States
+WNA	PANA	Napakiak Airport	Napakiak, Alaska, United States
+WNC		Naukati Bay Seaplane Base (FAA: AK62)	Tuxekan Island, Alaska, United States
+WOW	PAUO	Willow Airport (FAA: UUO)	Willow, Alaska, United States
+WPO		North Fork Valley Airport (FAA: 7V2)	Paonia, Colorado, United States
+WRB	KWRB	Robins Air Force Base	Warner Robins, Georgia, United States
+WRG	PAWG	Wrangell Airport	Wrangell, Alaska, United States
+WRI	KWRI	McGuire Air Force Base	Wrightstown, New Jersey, United States
+WRL	KWRL	Worland Municipal Airport	Worland, Wyoming, United States
+WSD	KWSD	Condron Army Airfield	White Sands, New Mexico, United States
+WSG	KAFJ	Washington County Airport (Pennsylvania)|Washington County Airport (FAA: AFJ)	Washington, Pennsylvania, United States
+WSH	KHWV	Brookhaven Airport (FAA: HWV)	Shirley, New York, United States
+WSM		Wiseman Airport	Wiseman, Alaska, United States
+WSN	PFWS	South Naknek Nr 2 Airport	South Naknek, Alaska, United States
+WST	KWST	Westerly State Airport	Westerly, Rhode Island, United States
+WSX		Westsound/WSX Seaplane Base (FAA: WA83)	Westsound, Washington|Westsound, Orcas Island, Washington (U.S. state)|Washington, United States
+WTK	PAWN	Noatak Airport	Noatak, Alaska, United States
+WTL		Tuntutuliak Airport (FAA: A61)	Tuntutuliak, Alaska, United States
+WTR		Whiteriver Airport (FAA: E24)	Whiteriver, Arizona, United States
+WVI	KWVI	Watsonville Municipal Airport	Watsonville, California, United States
+WVL	KWVL	Waterville Robert LaFleur Airport	Waterville, Maine, United States
+WWA	PAWS	Wasilla Airport (FAA: IYS)	Wasilla, Alaska, United States
+WWD	KWWD	Cape May Airport	Wildwood, New Jersey, United States
+WWP		North Whale Seaplane Base (FAA: 96Z)	North Whale Pass, Alaska, United States
+WWR	KWWR	West Woodward Airport	Woodward, Oklahoma, United States
+WWT	PAEW	Newtok Airport (FAA: EWU)	Newtok, Alaska, United States
+WYB		Yes Bay Lodge Seaplane Base (FAA: 78K)	Yes Bay, Alaska, United States
+WYS	KWYS	Yellowstone Airport	West Yellowstone, Montana, United States
+XES		Grand Geneva Resort Airport (FAA: C02)	Lake Geneva, Wisconsin, United States
+XMD	KMDS	Madison Municipal Airport (South Dakota)|Madison Municipal Airport (FAA: MDS)	Madison, South Dakota, United States
+XNA	KXNA	Northwest Arkansas Regional Airport	Fayetteville, Arkansas|Fayetteville/Springdale, Arkansas, United States
+XPR	KIEN	Pine Ridge Airport (FAA: IEN)	Pine Ridge, South Dakota, United States
+XSD	KTNX	Tonopah Test Range Airport (FAA: TNX)	Tonopah, Nevada, United States
+YAK	PAYA	Yakutat Airport	Yakutat, Alaska, United States
+YIP	KYIP	Willow Run Airport	Detroit, Michigan, United States
+YKM	KYKM	Yakima Air Terminal (McAllister Field)	Yakima, Washington, United States
+YKN	KYKN	Chan Gurney Municipal Airport	Yankton, South Dakota, United States
+YNG	KYNG	Youngstown-Warren Regional Airport	Youngstown, Ohio|Youngstown/Warren, Ohio, United States
+YUM	KNYL	Yuma International Airport / Marine Corps Air Station Yuma|MCAS Yuma (FAA: NYL)	Yuma, Arizona, United States
+ZNC		Nyac Airport	Nyac, Alaska|Nyac, Alaska, United States
+ZPH	KZPH	Zephyrhills Municipal Airport	Zephyrhills, Florida, United States
+ZZV	KZZV	Zanesville Municipal Airport	Zanesville, Ohio, United States

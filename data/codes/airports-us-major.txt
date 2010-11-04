@@ -1,0 +1,52 @@
+ANC	PANC	Ted Stevens Anchorage International Airport	Anchorage, Alaska, United States
+ATL	KATL	Hartsfield-Jackson Atlanta International Airport	Atlanta, Georgia, United States
+AUS	KAUS	Austin-Bergstrom International Airport	Austin, Texas, United States
+BDL	KBDL	Bradley International Airport	Windsor Locks (near Hartford, Connecticut|Hartford), Connecticut, United States
+BNA	KBNA	Nashville International Airport	Nashville, Tennessee, United States
+BOS	KBOS	Logan International Airport	Boston, Massachusetts, United States
+BWI	KBWI	Baltimore-Washington International Thurgood Marshall Airport	between Baltimore, Maryland and Washington, DC, United States
+CLE	KCLE	Cleveland Hopkins International Airport	Cleveland, Ohio, United States
+CLT	KCLT	Charlotte/Douglas International Airport	Charlotte, North Carolina, United States
+CMH	KCMH	Port Columbus International Airport	Columbus, Ohio, United States
+CVG	KCVG	Cincinnati/Northern Kentucky International Airport	Hebron, Kentucky (near Cincinnati, Ohio), United States
+DCA	KDCA	Ronald Reagan Washington National Airport	Arlington County, Virginia (near Washington, D.C.), United States
+DEN	KDEN	Denver International Airport (succeeded Stapleton Airport)	Denver, Colorado, United States
+DFW	KDFW	Dallas-Fort Worth International Airport	Dallas, Texas|Dallas and Fort Worth, Texas, United States
+DTW	KDTW	Detroit Metropolitan Wayne County Airport	Romulus, Michigan|Romulus (near Detroit), Michigan, United States
+EWR	KEWR	Newark Liberty International Airport	Newark, New Jersey|Newark/Elizabeth, New Jersey|Elizabeth, New Jersey, United States
+FLL	KFLL	Fort Lauderdale-Hollywood International Airport	Fort Lauderdale, Florida|Fort Lauderdale / Hollywood, Florida|Hollywood, Florida, United States
+HNL	PHNL	Honolulu International Airport	Honolulu, Hawaii, United States
+HOU	KHOU	William P. Hobby Airport	Houston, Texas, United States
+IAD	KIAD	Washington Dulles International Airport	Washington, D.C. / Virginia, United States
+IAH	KIAH	George Bush Intercontinental Airport	Houston, Texas, United States
+IND	KIND	Indianapolis International Airport	Indianapolis, Indiana, United States
+JFK	KJFK	John F. Kennedy International Airport	New York City, New York, United States
+LAS	KLAS	McCarran International Airport	Paradise, Nevada|Las Vegas, Nevada, United States
+LAX	KLAX	Los Angeles International Airport	Los Angeles, California, United States
+LGA	KLGA	LaGuardia Airport	New York City, New York, United States
+MCI	KMCI	Kansas City International Airport	Kansas City, Missouri, United States
+MCO	KMCO	Orlando International Airport	Orlando, Florida, United States
+MDW	KMDW	Midway International Airport	Chicago, Illinois, United States
+MEM	KMEM	Memphis International Airport	Memphis, Tennessee, United States
+MIA	KMIA	Miami International Airport	Miami, Florida, United States
+MSP	KMSP	Minneapolis-Saint Paul International Airport (Wold-Chamberlain Field)	Bloomington, Minnesota, United States
+MSY	KMSY	Louis Armstrong New Orleans International Airport (formerly Moisant Field)	New Orleans, Louisiana, United States
+OAK	KOAK	Oakland International Airport	Oakland, California|Oakland (near San Francisco), California, United States
+ONT	KONT	Ontario International Airport	Ontario, California|Ontario (near Los Angeles, California|Los Angeles), California, United States
+ORD	KORD	O'Hare International Airport (formerly Orchard Depot Field)	Chicago, Illinois, United States
+PDX	KPDX	Portland International Airport	Portland, Oregon, United States
+PHL	KPHL	Philadelphia International Airport	Philadelphia, Pennsylvania, United States
+PHX	KPHX	Sky Harbor International Airport	Phoenix, Arizona, United States
+PIT	KPIT	Pittsburgh International Airport	Findlay Township, Pennsylvania|Findlay (near Pittsburgh, Pennsylvania|Pittsburgh), Pennsylvania, United States
+RDU	KRDU	Raleigh-Durham International Airport	Raleigh, North Carolina|Raleigh / Durham, North Carolina, United States
+RSW	KRSW	Southwest Florida International Airport	Fort Myers, Florida, United States
+SAN	KSAN	San Diego International Airport	San Diego, California, United States
+SAT	KSAT	San Antonio International Airport	San Antonio, Texas, United States
+SEA	KSEA	Seattle-Tacoma International Airport	SeaTac, Washington|SeaTac (near Seattle, Washington|Seattle and Tacoma, Washington|Tacoma), Washington (U.S. state)|Washington, United States
+SFO	KSFO	San Francisco International Airport	San Francisco, California, United States
+SJC	KSJC	Norman Y. Mineta San José International Airport	San Jose, California, United States
+SLC	KSLC	Salt Lake City International Airport	Salt Lake City, Utah, United States
+SMF	KSMF	Sacramento International Airport	Sacramento, California, United States
+SNA	KSNA	John Wayne Airport (Orange County Airport)	Santa Ana, California, United States
+STL	KSTL	Lambert-Saint Louis International Airport	St. Louis, Missouri, United States
+TPA	KTPA	Tampa International Airport	Tampa, Florida, United States
