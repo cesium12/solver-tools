@@ -11,6 +11,15 @@ REVERSE_CATEGORIES = {}
 for key, value in CATEGORIES.items():
     REVERSE_CATEGORIES[str(value)] = key
 
+def regex_sequence(strings):
+    pattern = []
+    if any(is_regex(s) for s in strings):
+        for s in strings:
+            pattern.extend(parse(strip_slashes(s)))
+        return u'/'+unparse(pattern)+u'/'
+    else:
+        return u''.join(strings)
+
 def is_regex(text):
     """
     In solvertools, regex inputs are represented as strings that begin and end

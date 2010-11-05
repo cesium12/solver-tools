@@ -1,8 +1,8 @@
-from values import alphanumeric_filter, Header, FlagValue, \
-                   ChoiceValue, UNKNOWN, INVALID, to_regex
-
+from regex import is_regex, regex_index, regex_sequence, UNKNOWN, INVALID
 from solvertools.lib.print_grid import array_to_string
+from solvertools.wordlist import alphanumeric_only
 import numpy as np
+import string
 
 class PuzzleArray(np.ndarray):
     """
@@ -63,11 +63,10 @@ class PuzzleArray(np.ndarray):
         sort_order = np.argsort(col)
         return self[sort_order]
     
-    def to_regex(self):
+    def to_string(self):
         assert self.ndim == 1
-        return u''.join(to_regex(item) for item in self
-                        if not isinstance(item, Header))
-
+        return regex_sequence([unicode(item) for item in self
+                               if not isinstance(item, Header)])
 
     def index_everything_into_everything(self):
         from solvertools.model.language_model import get_english_model
@@ -80,7 +79,7 @@ class PuzzleArray(np.ndarray):
 
         def evaluate(indexed, description):
             if INVALID not in indexed:
-                text = indexed.to_regex()
+                text = indexed.to_string()
                 goodness = model.text_goodness(unicode(text))
                 results.append((description, text, goodness))
         
@@ -139,6 +138,62 @@ class PuzzleArray(np.ndarray):
             return array_to_string(self[:,np.newaxis], height=25)
         else: return repr(self)
 
+class FlagValue(object):
+    """
+    The parent class of entries that aren't supposed to be literal
+    values, but are supposed to flag that something else is going on.
+    """
+    def __str__(self):
+        return unicode(self).encode('utf-8')
+
+    def __unicode__(self):
+        raise NotImplementedError
+
+    def __hash__(self):
+        return hash(unicode(self))
+
+    def __cmp__(self, other):
+        return cmp((str(type(self)), unicode(self)),
+                   (str(type(other)), unicode(other)))
+    
+    def __getitem__(self, index):
+        return INVALID
+
+class Header(FlagValue):
+    """
+    An object to designate that a table entry is a header, and not puzzle data
+    to be operated on.
+    """
+    def __init__(self, text):
+        if isinstance(text, Header):
+            text = text.text
+        self.text = text
+
+    def __repr__(self):
+        return 'Header(%r)' % (self.text,)
+
+    def __str__(self):
+        return unicode(self).encode('utf-8')
+    
+    def __unicode__(self):
+        return u'__%s__' % (self.text,)
+    
+    def __getitem__(self, other):
+        if isinstance(other, Header):
+            other = other.text
+        return Header(u'%s[%s]' % (self.text, other))
+
+def regex_or_convert(seq, converter=alphanumeric_only):
+    """
+    Apply a text conversion to a given string, unless it's actually a
+    FlagValue or a regex, in which case leave it alone.
+    """
+    if isinstance(seq, FlagValue):
+        return seq
+    elif is_regex(seq):
+        return seq
+    else:
+        return converter(seq)
 
 def index_into(text, index):
     """
@@ -159,12 +214,12 @@ def index_into(text, index):
                 return text[index]
             else:
                 try:
-                    text = alphanumeric_filter(text)
+                    text = regex_or_convert(text, alphanumeric_only)
                     index = int(index)
                     if index < 1:
                         return INVALID
                     else:
-                        return text[index-1]
+                        return regex_index(text, index-1)
                 except (TypeError, IndexError, ValueError):
                     return INVALID
     else:
