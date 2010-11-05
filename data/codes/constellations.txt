@@ -1,0 +1,89 @@
+__constellation__	__3-letter__	__4-letter__	__genitive__
+Andromeda	And	Andr	Andromedae
+Antlia	Ant	Antl	Antliae
+Apus	Aps	Apus	Apodis
+Aquarius	Aqr	Aqar	Aquarii
+Aquila	Aql	Aqil	Aquilae
+Ara	Ara	Arae	Arae
+Aries	Ari	Arie	Arietis
+Auriga	Aur	Auri	Aurigae
+Boötes	Boo	Boot	Boötis
+Caelum	Cae	Cael	Caeli
+Camelopardalis	Cam	Caml	Camelopardalis
+Cancer	Cnc	Canc	Cancri
+Canes Venatici	CVn	CVen	Canum Venaticorum
+Canis Major	CMa	CMaj	Canis Majoris
+Canis Minor	CMi	CMin	Canis Minoris
+Capricornus	Cap	Capr	Capricorni
+Carina	Car	Cari	Carinae
+Cassiopeia	Cas	Cass	Cassiopeiae
+Centaurus	Cen	Cent	Centauri
+Cepheus	Cep	Ceph	Cephei
+Cetus	Cet	Ceti	Ceti
+Chamaeleon	Cha	Cham	Chamaeleontis
+Circinus	Cir	Circ	Circini
+Columba	Col	Colm	Columbae
+Coma Berenices	Com	Coma	Comae Berenices
+Corona Australis	CrA	CorA	Coronae Australis
+Corona Borealis	CrB	CorB	Coronae Borealis
+Corvus	Crv	Corv	Corvi
+Crater	Crt	Crat	Crateris
+Crux	Cru	Cruc	Crucis
+Cygnus	Cyg	Cygn	Cygni
+Delphinus	Del	Dlph	Delphini
+Dorado	Dor	Dora	Doradus
+Draco	Dra	Drac	Draconis
+Equuleus	Equ	Equl	Equulei
+Eridanus	Eri	Erid	Eridani
+Fornax	For	Forn	Fornacis
+Gemini	Gem	Gemi	Geminorum
+Grus	Gru	Grus	Gruis
+Hercules	Her	Herc	Herculis
+Horologium	Hor	Horo	Horologii
+Hydra	Hya	Hyda	Hydrae
+Hydrus	Hyi	Hydi	Hydri
+Indus	Ind	Indi	Indi
+Lacerta	Lac	Lacr	Lacertae
+Leo	Leo	Leon	Leonis
+Leo Minor	LMi	LMin	Leonis Minoris
+Lepus	Lep	Leps	Leporis
+Libra	Lib	Libr	Librae
+Lupus	Lup	Lupi	Lupi
+Lynx	Lyn	Lync	Lyncis
+Lyra	Lyr	Lyra	Lyrae
+Mensa	Men	Mens	Mensae
+Microscopium	Mic	Micr	Microscopii
+Monoceros	Mon	Mono	Monocerotis
+Musca	Mus	Musc	Muscae
+Norma	Nor	Norm	Normae
+Octans	Oct	Octn	Octantis
+Ophiuchus	Oph	Ophi	Ophiuchi
+Orion	Ori	Orio	Orionis
+Pavo	Pav	Pavo	Pavonis
+Pegasus	Peg	Pegs	Pegasi
+Perseus	Per	Pers	Persei
+Phoenix	Phe	Phoe	Phoenicis
+Pictor	Pic	Pict	Pictoris
+Pisces	Psc	Pisc	Piscium
+Piscis Austrinus	PsA	PscA	Piscis Austrini
+Puppis	Pup	Pupp	Puppis
+Pyxis	Pyx	Pyxi	Pyxidis
+Reticulum	Ret	Reti	Reticuli
+Sagitta	Sge	Sgte	Sagittae
+Sagittarius	Sgr	Sgtr	Sagittarii
+Scorpius	Sco	Scor	Scorpii
+Sculptor	Scl	Scul	Sculptoris
+Scutum	Sct	Scut	Scuti
+Serpens	Ser	Serp	Serpentis
+Sextans	Sex	Sext	Sextantis
+Taurus	Tau	Taur	Tauri
+Telescopium	Tel	Tele	Telescopii
+Triangulum	Tri	Tria	Trianguli
+Triangulum Australe	TrA	TrAu	Trianguli Australis
+Tucana	Tuc	Tucn	Tucanae
+Ursa Major	UMa	UMaj	Ursae Majoris
+Ursa Minor	UMi	UMin	Ursae Minoris
+Vela	Vel	Velr	Velorum
+Virgo	Vir	Virg	Virginis
+Volans	Vol	Voln	Volantis
+Vulpecula	Vul	Vulp	Vulpeculae
