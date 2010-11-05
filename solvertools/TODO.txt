@@ -2,9 +2,6 @@ Things to be done
 -----------------
 (from David's e-mail in Jan 2010)
 
-- simultaneous sorting and indexing
-- diagonalizing
-- word grid class
 - interfaces to: imdb, wordnet, decrypto, tineye, etc...
 - lists of things
 - rhyming word list
@@ -24,7 +21,6 @@ Things to be done
 - substrings of words that you can remove to make other words
 - scrabble operations and then some.
 - morse code, braille, semaphore, 
-- indexing functions should have options: spaces count or not, etc.
 
 Things that need further explanation
 ------------------------------------
@@ -34,6 +30,10 @@ Things that need further explanation
 
 Things that are done or essentially done now
 --------------------------------------------
+- simultaneous sorting and indexing
+- diagonalizing
+- word grid class
+- indexing functions should have options: spaces count or not, etc.
 - LetterNumber class (alphabet.py implements this idea)
 - indexing by letters (alphabet.py)
 - word lists (with frequency)
