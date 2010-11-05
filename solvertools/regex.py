@@ -57,6 +57,8 @@ def _regex_len_pattern(pattern):
             sub_lo, sub_hi = _regex_len_branch(data[1])
         elif op == 'max_repeat':
             sub_lo, sub_hi = _regex_len_repeat(data)
+        elif op == 'at':
+            sub_lo = sub_hi = 0
         else:
             raise ValueError("I don't know what to do with this regex: "
                              + str(struct))
@@ -231,4 +233,12 @@ def _unparse_max_repeat(data):
     else:
         symbol = u'{%d,%d}' % (lo, hi)
     return unparse(value) + symbol
+
+def _unparse_at(data):
+    if data == 'at_beginning':
+        return u'^'
+    elif data == 'at_end':
+        return u'$'
+    else:
+        raise ValueError
 
