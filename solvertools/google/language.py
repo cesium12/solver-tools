@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
+u"""
 This module lets you interact with Google's astoundingly useful (and sometimes
 hilarious) Language API. It can translate, transliterate, and detect the
 language of arbitrary text.
