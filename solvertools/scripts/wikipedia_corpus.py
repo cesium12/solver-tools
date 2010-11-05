@@ -3,7 +3,8 @@ from xml.sax.handler import ContentHandler
 from xml.sax import make_parser
 from solvertools.lib.tokenize import tokenize_list
 from solvertools.util import get_datafile
-from solvertools.wordlist import letters_only
+from solvertools.wordlist import letters_only, letters_only_unicode, case_insensitive, alphabet_filter
+from solvertools.alphabet import ALPHABETS
 import re
 import codecs
 
@@ -57,10 +58,10 @@ def write_wordlist(filename, items, cutoff):
             print >> output, "%s,%s" % (key,value)
     output.close()
 
-def make_wordlist(data_in, data_out, cutoff):
-    items = read_wikipedia(get_datafile(data_in), converter=letters_only)
+def make_wordlist(data_in, data_out, cutoff, converter):
+    items = read_wikipedia(get_datafile(data_in), converter=converter)
     write_wordlist(get_datafile(data_out), items, cutoff=cutoff)
 
-#make_wordlist('corpora/wikidumps/lawiki-20101031-pages-articles.xml', 'dict/wikipedia_la.txt', cutoff=4)
-make_wordlist('corpora/texts/chaotic.xml', 'dict/chaotic.txt', cutoff=1)
+make_wordlist('corpora/wikidumps/eswiki-20101023-pages-articles.xml', 'dict/wikipedia_es.txt', cutoff=10, converter=letters_only_unicode)
+#make_wordlist('corpora/texts/chaotic.xml', 'dict/chaotic.txt', cutoff=1)
 

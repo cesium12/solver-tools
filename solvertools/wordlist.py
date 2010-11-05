@@ -66,8 +66,25 @@ def alphanumeric_only(text):
     return re.sub("[^A-Z0-9]", "", case_insensitive_ascii(text))
 
 def letters_only(text):
-    "Convert everything to uppercase and discard everything but letters."
+    """
+    Convert everything to uppercase ASCII, and discard everything but the
+    letters A-Z.
+    """
     return re.sub("[^A-Z]", "", case_insensitive_ascii(text))
+
+def letters_only_unicode(text):
+    """
+    Convert everything to uppercase, and discard everything that doesn't act
+    like a letter (that is, which doesn't have a separate lowercase version).
+    Preserve accents and stuff.
+    """
+    return ''.join(ch for ch in case_insensitive(text)
+                   if ch != ch.lower())
+
+def alphabet_filter(alphabet):
+    def alphabet_filter_inner(text):
+        return ''.join(c for c in case_insensitive(text) if c in alphabet)
+    return alphabet_filter_inner
 
 def classical_latin_letters(text):
     "Enforce I=J and U=V as some Latin-themed puzzles do."
