@@ -231,14 +231,14 @@ def index_lists(list1, list2):
 
 if __name__ == '__main__':
     puz = PuzzleArray([
-        [Header('order'), Header('length'), Header('day'), Header('element')],
-        [1, 6, 'Sunday', 'sun'],
-        [2, 6, 'Monday', 'moon'],
-        [3, 7, 'Tuesday', 'fire'],
-        [4, 9, 'Wednesday', 'water'],
-        [5, 8, 'Thursday', 'wood'],
-        [6, 6, 'Friday', 'metal'],
-        [7, 8, 'Saturday', 'earth']
+        [Header('order'), Header('length'), Header('day'), Header('element'), Header('god')],
+        [1, 6, 'Sunday', 'sun', 'sun'],
+        [2, 6, 'Monday', 'moon', 'moon'],
+        [3, 7, 'Tuesday', 'fire', 'Tiu'],
+        [4, 9, 'Wednesday', 'water', 'Woden'],
+        [5, 8, 'Thursday', 'wood', 'Thor'],
+        [6, 6, 'Friday', 'metal', 'Freya'],
+        [7, 8, 'Saturday', 'earth', 'Saturn']
     ])
     print puz
     print puz.index_everything_into_everything()
