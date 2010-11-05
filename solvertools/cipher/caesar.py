@@ -3,7 +3,7 @@ from solvertools import alphabet
 from solvertools.model.language_model import get_english_model
 
 def caesar_shift(text, offset, alph=alphabet.ENGLISH):
-    """
+    u"""
     Performs a Caesar shift by the given offset.
 
     If the offset is a letter, it will look it up in the alphabet to convert
@@ -52,10 +52,10 @@ def detect_caesar_shift(text, alph=alphabet.ENGLISH):
     English text. Returns the resulting text, the distance shifted
     (from 0 to 25), and the goodness of the result.
 
-        >>> print detect_caesar_shift('DBFTBS TIJGU')
-        (u'CAESAR SHIFT', 25, -2.7035009155418437)
-        >>> print detect_caesar_shift('HAL')
-        (u'IBM', 1, -4.6171190236825206)
+        >>> print detect_caesar_shift('DBFTBS TIJGU')[:2]
+        (u'CAESAR SHIFT', 25)
+        >>> print detect_caesar_shift('HAL')[:2]
+        (u'IBM', 1)
 
     """
     theModel = get_english_model()
