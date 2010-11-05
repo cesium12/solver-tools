@@ -1,0 +1,299 @@
+.AC	country-code	Ascension Island
+.AD	country-code	Andorra
+.AE	country-code	United Arab Emirates
+.AERO	sponsored	Reserved for members of the air-transport industry
+.AF	country-code	Afghanistan
+.AG	country-code	Antigua and Barbuda
+.AI	country-code	Anguilla
+.AL	country-code	Albania
+.AM	country-code	Armenia
+.AN	country-code	Netherlands Antilles
+.AO	country-code	Angola
+.AQ	country-code	Antarctica
+.AR	country-code	Argentina
+.ARPA	infrastructure	Reserved exclusively to support operationally-critical infrastructural identifier spaces as advised by the Internet Architecture Board
+.AS	country-code	American Samoa
+.ASIA	sponsored	Restricted to the Pan-Asia and Asia Pacific community
+.AT	country-code	Austria
+.AU	country-code	Australia
+.AW	country-code	Aruba
+.AX	country-code	Aland Islands
+.AZ	country-code	Azerbaijan
+.BA	country-code	Bosnia and Herzegovina
+.BB	country-code	Barbados
+.BD	country-code	Bangladesh
+.BE	country-code	Belgium
+.BF	country-code	Burkina Faso
+.BG	country-code	Bulgaria
+.BH	country-code	Bahrain
+.BI	country-code	Burundi
+.BIZ	generic-restricted	Restricted for Business
+.BJ	country-code	Benin
+.BL	country-code	Saint Barthelemy
+.BM	country-code	Bermuda
+.BN	country-code	Brunei Darussalam
+.BO	country-code	Bolivia
+.BR	country-code	Brazil
+.BS	country-code	Bahamas
+.BT	country-code	Bhutan
+.BV	country-code	Bouvet Island
+.BW	country-code	Botswana
+.BY	country-code	Belarus
+.BZ	country-code	Belize
+.CA	country-code	Canada
+.CAT	sponsored	Reserved for the Catalan linguistic and cultural community
+.CC	country-code	Cocos (Keeling) Islands
+.CD	country-code	Congo, The Democratic Republic of the
+.CF	country-code	Central African Republic
+.CG	country-code	Congo
+.CH	country-code	Switzerland
+.CI	country-code	Cote d'Ivoire
+.CK	country-code	Cook Islands
+.CL	country-code	Chile
+.CM	country-code	Cameroon
+.CN	country-code	China
+.CO	country-code	Colombia
+.CO Internet S.A.S.
+.COM	generic	Generic top-level domain
+.COOP	sponsored	Reserved for cooperative associations
+.CR	country-code	Costa Rica
+.CU	country-code	Cuba
+.CV	country-code	Cape Verde
+.CX	country-code	Christmas Island
+.CY	country-code	Cyprus
+.CZ	country-code	Czech Republic
+.DE	country-code	Germany
+.DJ	country-code	Djibouti
+.DK	country-code	Denmark
+.DM	country-code	Dominica
+.DO	country-code	Dominican Republic
+.DZ	country-code	Algeria
+.EC	country-code	Ecuador
+.EDU	sponsored	Reserved for post-secondary institutions accredited by an agency on the U.S. Department of Education's list of Nationally Recognized Accrediting Agencies 
+.EE	country-code	Estonia
+.EG	country-code	Egypt
+.EH	country-code	Western Sahara
+.ER	country-code	Eritrea
+.ES	country-code	Spain
+.ET	country-code	Ethiopia
+.EU	country-code	European Union
+.FI	country-code	Finland
+.FJ	country-code	Fiji
+.FK	country-code	Falkland Islands (Malvinas)
+.FM	country-code	Micronesia, Federated States of
+.FO	country-code	Faroe Islands
+.FR	country-code	France
+.GA	country-code	Gabon
+.GB	country-code	United Kingdom
+.GD	country-code	Grenada
+.GE	country-code	Georgia
+.GF	country-code	French Guiana
+.GG	country-code	Guernsey
+.GH	country-code	Ghana
+.GI	country-code	Gibraltar
+.GL	country-code	Greenland
+.GM	country-code	Gambia
+.GN	country-code	Guinea
+.GOV	sponsored	Reserved exclusively for the United States Government
+.GP	country-code	Guadeloupe
+.GQ	country-code	Equatorial Guinea
+.GR	country-code	Greece
+.GS	country-code	South Georgia and the South Sandwich Islands
+.GT	country-code	Guatemala
+.GU	country-code	Guam
+.GW	country-code	Guinea-Bissau
+.GY	country-code	Guyana
+.HK	country-code	Hong Kong
+.HM	country-code	Heard Island and McDonald Islands
+.HN	country-code	Honduras
+.HR	country-code	Croatia
+.HT	country-code	Haiti
+.HU	country-code	Hungary
+.ID	country-code	Indonesia
+.IE	country-code	Ireland
+.IL	country-code	Israel
+.IM	country-code	Isle of Man
+.IN	country-code	India
+.INFO	generic	Generic top-level domain
+.INT	sponsored	Used only for registering organizations established by international treaties between governments
+.IO	country-code	British Indian Ocean Territory
+.IQ	country-code	Iraq
+.IR	country-code	Iran, Islamic Republic of
+.IS	country-code	Iceland
+.IT	country-code	Italy
+.JE	country-code	Jersey
+.JM	country-code	Jamaica
+.JO	country-code	Jordan
+.JOBS	sponsored	Reserved for human resource managers
+.JP	country-code	Japan
+.KE	country-code	Kenya
+.KG	country-code	Kyrgyzstan
+.KH	country-code	Cambodia
+.KI	country-code	Kiribati
+.KM	country-code	Comoros
+.KN	country-code	Saint Kitts and Nevis
+.KP	country-code	Korea, Democratic People's Republic of
+.KR	country-code	Korea, Republic of
+.KW	country-code	Kuwait
+.KY	country-code	Cayman Islands
+.KZ	country-code	Kazakhstan
+.LA	country-code	Lao People's Democratic Republic
+.LB	country-code	Lebanon
+.LC	country-code	Saint Lucia
+.LI	country-code	Liechtenstein
+.LK	country-code	Sri Lanka
+.LR	country-code	Liberia
+.LS	country-code	Lesotho
+.LT	country-code	Lithuania
+.LU	country-code	Luxembourg
+.LV	country-code	Latvia
+.LY	country-code	Libyan Arab Jamahiriya
+.MA	country-code	Morocco
+.MC	country-code	Monaco
+.MD	country-code	Moldova, Republic of
+.ME	country-code	Montenegro
+.MF	country-code	Saint Martin
+.MG	country-code	Madagascar
+.MH	country-code	Marshall Islands
+.MIL	sponsored	Reserved exclusively for the United States Military
+.MK	country-code	Macedonia, The Former Yugoslav Republic of
+.ML	country-code	Mali
+.MM	country-code	Myanmar
+.MN	country-code	Mongolia
+.MO	country-code	Macao
+.MOBI	sponsored	Reserved for consumers and providers of mobile products and services
+.MP	country-code	Northern Mariana Islands
+.MQ	country-code	Martinique
+.MR	country-code	Mauritania
+.MS	country-code	Montserrat
+.MT	country-code	Malta
+.MU	country-code	Mauritius
+.MUSEUM	sponsored	Reserved for museums
+.MV	country-code	Maldives
+.MW	country-code	Malawi
+.MX	country-code	Mexico
+.MY	country-code	Malaysia
+.MZ	country-code	Mozambique
+.NA	country-code	Namibia
+.NAME	generic-restricted	Reserved for individuals
+.NC	country-code	New Caledonia
+.NE	country-code	Niger
+.NET	generic	Generic top-level domain
+.NF	country-code	Norfolk Island
+.NG	country-code	Nigeria
+.NI	country-code	Nicaragua
+.NL	country-code	Netherlands
+.NO	country-code	Norway
+.NP	country-code	Nepal
+.NR	country-code	Nauru
+.NU	country-code	Niue
+.NZ	country-code	New Zealand
+.OM	country-code	Oman
+.ORG	generic	Generic top-level domain
+.PA	country-code	Panama
+.PE	country-code	Peru
+.PF	country-code	French Polynesia
+.PG	country-code	Papua New Guinea
+.PH	country-code	Philippines
+.PK	country-code	Pakistan
+.PL	country-code	Poland
+.PM	country-code	Saint Pierre and Miquelon
+.PN	country-code	Pitcairn
+.PR	country-code	Puerto Rico
+.PRO	generic-restricted	Restricted to credentialed professionals and related entities
+.PS	country-code	Palestinian Territory, Occupied
+.PT	country-code	Portugal
+.PW	country-code	Palau
+.PY	country-code	Paraguay
+.QA	country-code	Qatar
+.RE	country-code	Reunion
+.RO	country-code	Romania
+.RS	country-code	Serbia
+.RU	country-code	Russian Federation
+.RW	country-code	Rwanda
+.SA	country-code	Saudi Arabia
+.SB	country-code	Solomon Islands
+.SC	country-code	Seychelles
+.SD	country-code	Sudan
+.SE	country-code	Sweden
+.SG	country-code	Singapore
+.SH	country-code	Saint Helena, Ascension and Tristan da Cunha
+.SI	country-code	Slovenia
+.SJ	country-code	Svalbard and Jan Mayen
+.SK	country-code	Slovakia
+.SL	country-code	Sierra Leone
+.SM	country-code	San Marino
+.SN	country-code	Senegal
+.SO	country-code	Somalia
+.SR	country-code	Suriname
+.ST	country-code	Sao Tome and Principe
+.SU	country-code	Soviet Union (being phased out)
+.SV	country-code	El Salvador
+.SY	country-code	Syrian Arab Republic
+.SZ	country-code	Swaziland
+.TC	country-code	Turks and Caicos Islands
+.TD	country-code	Chad
+.TEL	sponsored	Reserved for businesses and individuals to publish their contact data
+.TF	country-code	French Southern Territories
+.TG	country-code	Togo
+.TH	country-code	Thailand
+.TJ	country-code	Tajikistan
+.TK	country-code	Tokelau
+.TL	country-code	Timor-Leste
+.TM	country-code	Turkmenistan
+.TN	country-code	Tunisia
+.TO	country-code	Tonga
+.TP	country-code	Portuguese Timor (being phased out)
+.TR	country-code	Turkey
+.TRAVEL	sponsored	Reserved for entities whose primary area of activity is in the travel industry
+.TT	country-code	Trinidad and Tobago
+.TV	country-code	Tuvalu
+.TW	country-code	Taiwan
+.TZ	country-code	Tanzania, United Republic of
+.UA	country-code	Ukraine
+.UG	country-code	Uganda
+.UK	country-code	United Kingdom
+.UM	country-code	United States Minor Outlying Islands
+.US	country-code	United States
+.UY	country-code	Uruguay
+.UZ	country-code	Uzbekistan
+.VA	country-code	Holy See (Vatican City State)
+.VC	country-code	Saint Vincent and the Grenadines
+.VE	country-code	Venezuela, Bolivarian Republic of
+.VG	country-code	Virgin Islands, British
+.VI	country-code	Virgin Islands, U.S.
+.VN	country-code	Viet Nam
+.VU	country-code	Vanuatu
+.WF	country-code	Wallis and Futuna
+.WS	country-code	Samoa
+.测试	test	Reserved for testing internationalised domain names
+.परीक्षा	test	Reserved for testing internationalised domain names
+.испытание	test	Reserved for testing internationalised domain names
+.테스트	test	Reserved for testing internationalised domain names
+.טעסט	test	Reserved for testing internationalised domain names
+.中国	country-code	China
+.中國	country-code	China
+.ලංකා	country-code	Sri Lanka
+.測試	test	Reserved for testing internationalised domain names
+.آزمایشی	test	Reserved for testing internationalised domain names
+.பரிட்சை	test	Reserved for testing internationalised domain names
+.香港	country-code	Hong Kong
+.δοκιμή	test	Reserved for testing internationalised domain names
+.إختبار	test	Reserved for testing internationalised domain names
+.台湾	country-code	Taiwan, Province of China
+.台灣	country-code	Taiwan, Province of China
+.امارات	country-code	United Arab Emirates
+.الاردن	country-code	Jordan
+.السعودية	country-code	Saudi Arabia
+.ไทย	country-code	Thailand
+.рф	country-code	Russian Federation
+.تونس	country-code	Tunisia
+.مصر	country-code	Egypt
+.இலங்கை	country-code	Sri Lanka
+.فلسطين	country-code	Palestinian Territory, Occupied
+.テスト	test	Reserved for testing internationalised domain names
+.YE	country-code	Yemen
+.YT	country-code	Mayotte
+.ZA	country-code	South Africa
+.ZM	country-code	Zambia
+.ZW	country-code	Zimbabwe
