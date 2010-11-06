@@ -281,3 +281,4 @@ PHONETIC = Wordlist('phonetic', letters_only, with_values)
 COMBINED = Wordlist('sages_combined', alphanumeric_only, with_frequency)
 LATIN = Wordlist('wikipedia_la', classical_latin_letters, with_frequency)
 CHAOTIC = Wordlist('chaotic', letters_only, with_frequency)
+#TODO: spanish

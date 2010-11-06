@@ -46,6 +46,7 @@ def caesar_unshift(text, offset, alph=alphabet.ENGLISH):
                              "letter of the alphabet.")
     return caesar_shift(text, -offset, alph)
 
+# TODO: make the model be English
 def detect_caesar_shift(text, alph=alphabet.ENGLISH):
     """
     Detects the Caesar shift that turns this text into the most reasonable

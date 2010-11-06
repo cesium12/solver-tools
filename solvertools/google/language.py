@@ -33,6 +33,9 @@ Examples::
 API. Google's rule is that every request has to be initiated by a user.
 """
 
+# TODO: enforce timing.
+# TODO: update to translation API version 2
+
 import urllib, urllib2, json
 from solvertools.lib.tokenize import tokenize_list, untokenize_list
 from solvertools.lib.iso639 import langs

@@ -80,8 +80,10 @@ class PuzzleArray(np.ndarray):
         def evaluate(indexed, description):
             if INVALID not in indexed:
                 text = indexed.to_string()
-                goodness = model.text_goodness(unicode(text))
-                results.append((description, text, goodness))
+                length = len(text)
+                spaced_text, prob = model.split_words(text)
+                goodness = prob/length
+                results.append((description, spaced_text, goodness))
         
         def try_sorted(sorted, sort_title):
             for text_col in xrange(ncol):
@@ -95,6 +97,13 @@ class PuzzleArray(np.ndarray):
                                           sorted[:,index_col])
                     evaluate(indexed, description)
 
+                # also try diagonalizing
+                description = u"%s%s[1]" %\
+                  (sort_title, text_title)
+                indexed = index_lists(sorted[:, text_col],
+                                      np.ones(len(sorted)))
+                evaluate(indexed, description)
+                
                 # also try diagonalizing
                 description = u"%s%s[diag]" %\
                   (sort_title, text_title)
@@ -195,7 +204,13 @@ def regex_or_convert(seq, converter=alphanumeric_only):
     else:
         return converter(seq)
 
-def index_into(text, index):
+def is_numeric(text):
+    try:
+        return (unicode(int(text)) == text)
+    except ValueError:
+        return False
+
+def index_into(text, index, numbers_are_okay=False):
     """
     Gets the letter at a certain position in a text. Makes assumptions that are
     reasonable for puzzles:
@@ -216,6 +231,8 @@ def index_into(text, index):
                 try:
                     text = regex_or_convert(text, alphanumeric_only)
                     index = int(index)
+                    if is_numeric(text) and not numbers_are_okay:
+                        return INVALID
                     if index < 1:
                         return INVALID
                     else:
@@ -240,5 +257,23 @@ if __name__ == '__main__':
         [6, 6, 'Friday', 'metal', 'Freya'],
         [7, 8, 'Saturday', 'earth', 'Saturn']
     ])
-    print puz
-    print puz.index_everything_into_everything()
+
+    puz2 = PuzzleArray([
+        [Header('Puzzle'), Header('Flavortext word'),
+         Header('Matching answer'), Header('Answer number'),
+         Header('Matching puzzle')],
+        "Meta, venerated, HOLY TRINITY, 3, Too Much Clue".split(', '),
+        "Too Much Clue, series, STRING QUARTET, 4, Left Out".split(', '),
+        "Left Out, stoned, HIGH PAIR, 2, \\varphi".split(', '),
+        "\\varphi, circadian, DAILY DOUBLE, 2, Lego My Ego".split(', '),
+        "Lego My Ego, tense, STRAINED QUAD, 4, Silly Hat Brigade".split(', '),
+        "Silly Hat Brigade, strike, HIT SINGLE, 1, TCNMAAWATT".split(', '),
+        "TCNMAAWATT, lessened, DIMINISHED TRIAD, 3, Piranhas in a Bathtub".split(', '),
+        "Piranhas in a Bathtub, leave, SPLIT SECOND, 2, IIF".split(', '),
+        "IIF, relish, LOVE TRIANGLE, 3, Lake Effect Snow".split(', '),
+        "Lake Effect Snow, brotherly, FRATERNAL TWINS, 2, Setec Astronomy"\
+        .split(', ')
+    ])
+    print [len(row) for row in puz2]
+    print puz2
+    print puz2.index_everything_into_everything()

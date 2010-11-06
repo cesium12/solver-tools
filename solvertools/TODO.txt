@@ -2,6 +2,9 @@ Things to be done
 -----------------
 (from David's e-mail in Jan 2010)
 
+- now that we can index everything into everything, make a bot that watches it
+  and says OMG GUYS THIS IS THE ANSWER
+  (but only when it's really good)
 - interfaces to: imdb, wordnet, decrypto, tineye, etc...
 - lists of things
 - rhyming word list
