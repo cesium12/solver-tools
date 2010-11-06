@@ -12,6 +12,31 @@ class PuzzleArray(np.ndarray):
     def __new__(cls, data, copy=False):
         arr = np.array(data, dtype=object, copy=copy).view(cls)
         return arr
+
+    # Example: test2="order\tlength\tday\telement\n1\t6\tSunday\tsun\tsun\n2\t6\tMonday\tmoon\tmoon\n3\t7\tTuesday\tfire\tTiu\n4\t9\tWednesday\twater\tWoden\n5\t8\tThursday\twood\tThor\n6\t6\tFriday\n7\t8\t\tearth\tSaturn", run tabsep_array_to_lists(test2)
+    # Expects text '\t' and '\n' delimited, pads the header column with '__Col <n>__' and missing data/short lines with '/.*/'
+    def tabsep_array_to_lists(text):
+        out_list=[]
+        header_line=text.split('\n')[0]
+        rest_lines=text.split('\n')[1:]
+
+        header_transform=[Header(elt) for elt in header_line.split('\t')]
+        out_list.append(header_transform)
+
+        for line in rest_lines:
+            line_transform=[elt if elt!='' else '/.*/' for elt in line.split('\t')]
+            out_list.append(line_transform)
+
+        max_cols=max(len(line) for line in out_list)
+
+        if len(out_list[0])<max_cols:
+            out_list[0].extend(['__Col '+str(i+1)+'__' for i in range(len(out_list[0]\
+),max_cols)])
+        for line in out_list[1:]:
+            if len(line)<max_cols:
+                line.extend(['/.*/']*(max_cols-len(line)))
+        return out_list
+
     
     def column(self, title):
         """
