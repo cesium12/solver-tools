@@ -14,20 +14,29 @@
 typedef LangModel::freq_t freq_t;
 
 namespace std {
-    %template(wordlist) vector<pair<string, freq_t> >;
+  %template(wordlist) vector<pair<string, freq_t> >;
+  %template(strlist) vector<string>;
+  %template(freqlist) vector<long long>;
 }
 
 struct WordFit {
   %immutable;
   const char *word;
   %mutable;
-  freq_t freq;
+  long long freq;
+
+  WordFit() :
+    word(NULL), freq(0) {;}
 
   WordFit(const char *w, freq_t f) :
     word(w), freq(f) {;}
 };
 
 typedef std::vector<WordFit> WordFitVec;
+
+namespace std {
+  %template(wordfitvec) vector<WordFit>;
+}
 
 WordFitVec regex_match_all(const LangModel &model, const char *regex_in);
 
@@ -52,7 +61,7 @@ private:
 
 public:
 
-  LangModel(const std::vector<std::pair<std::string, freq_t> > &words);
+  LangModel::LangModel(std::vector<std::string> words, std::vector<long long> freqs);
 
   /**
      Returns the dictionary.
@@ -96,4 +105,6 @@ inline LangModel::freq_t LangModel::id_to_freq(unsigned long i) const {
   return(freq_list[i]);
 }
 
+int foo(std::vector<std::string> s);
 
+int bar(std::vector<std::string> a, std::vector<long long> b);

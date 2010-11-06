@@ -37,14 +37,22 @@
 #include "langmodel.h"
 
 
-LangModel::LangModel(const std::vector<std::pair<std::string, freq_t> > &words) {
+LangModel::LangModel(std::vector<std::string> words, std::vector<long long> freqs) {
   word_list.push_back(std::string(""));
   freq_list.push_back(0);
   DynTrie dyn;
   for(size_t i = 0; i < words.size(); ++i) {
-    dyn.insert(words[i].first.c_str(), i+1);
-    word_list.push_back(words[i].first);
-    freq_list.push_back(words[i].second);
+    dyn.insert(words[i].c_str(), i+1);
+    word_list.push_back(words[i]);
+    freq_list.push_back(freqs[i]);
   }
   dict = AMTrie(dyn);
+}
+
+int foo(std::vector<std::string> s) {
+  return (s.size());
+}
+
+int bar(std::vector<std::string> a, std::vector<long long> b) {
+  return (a.size() + b.size());
 }

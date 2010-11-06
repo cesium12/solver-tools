@@ -60,7 +60,7 @@ private:
 
 public:
 
-  LangModel(const std::vector<std::pair<std::string, freq_t> > &words);
+  LangModel(std::vector<std::string> words, std::vector<long long> freqs);
 
   /**
      Returns the dictionary.
@@ -103,5 +103,9 @@ inline LangModel::freq_t LangModel::id_to_freq(unsigned long i) const {
     return 0;
   return(freq_list[i]);
 }
+
+int foo(std::vector<std::string> s);
+
+int bar(std::vector<std::string> a, std::vector<long long> b);
 
 #endif /*__LANGMODEL_DOT_H_INCLUDED__*/

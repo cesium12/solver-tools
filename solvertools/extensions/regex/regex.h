@@ -44,7 +44,10 @@ typedef LangModel::freq_t freq_t;
 
 struct WordFit {
   const char *word;
-  freq_t freq;
+  long long freq;
+
+  WordFit() :
+    word(NULL), freq(0) {;}
 
   WordFit(const char *w, freq_t f) :
     word(w), freq(f) {;}
