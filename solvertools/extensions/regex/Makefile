@@ -8,8 +8,6 @@ regex_test: $(objs) regex_test.o
 clean:
 	rm *.o
 
-
-
 amtrie.o: amtrie.cpp amtrie.h dyntrie.h
 automaton.o: automaton.cpp automaton.h lognum.h
 check.o: check.cpp check.h

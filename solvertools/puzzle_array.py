@@ -3,6 +3,7 @@ from solvertools.lib.print_grid import array_to_string
 from solvertools.wordlist import alphanumeric_only
 import numpy as np
 import string
+import codecs
 
 class PuzzleArray(np.ndarray):
     """
@@ -15,28 +16,48 @@ class PuzzleArray(np.ndarray):
 
     # Example: test2="order\tlength\tday\telement\n1\t6\tSunday\tsun\tsun\n2\t6\tMonday\tmoon\tmoon\n3\t7\tTuesday\tfire\tTiu\n4\t9\tWednesday\twater\tWoden\n5\t8\tThursday\twood\tThor\n6\t6\tFriday\n7\t8\t\tearth\tSaturn", run tabsep_array_to_lists(test2)
     # Expects text '\t' and '\n' delimited, pads the header column with '__Col <n>__' and missing data/short lines with '/.*/'
-    def tabsep_array_to_lists(text):
-        out_list=[]
-        header_line=text.split('\n')[0]
-        rest_lines=text.split('\n')[1:]
+    @staticmethod
+    def from_tabular(text):
+        """
+        Create a PuzzleArray from tabular data, provided as a string.
+        """
+        def element_transform(elt):
+            if elt == '':
+                return '/.*/'
+            elif len(elt) > 4 and elt.startswith('__') and elt.endswith('__'):
+                return Header(elt[2:-2])
+            else:
+                return elt
 
-        header_transform=[Header(elt) for elt in header_line.split('\t')]
-        out_list.append(header_transform)
+        out_list=[]
+        lines=text.split('\n')
 
         for line in rest_lines:
-            line_transform=[elt if elt!='' else '/.*/' for elt in line.split('\t')]
+            line_transform=[element_transform(elt) for elt in line.split('\t')]
             out_list.append(line_transform)
 
         max_cols=max(len(line) for line in out_list)
 
-        if len(out_list[0])<max_cols:
-            out_list[0].extend(['__Col '+str(i+1)+'__' for i in range(len(out_list[0]\
-),max_cols)])
-        for line in out_list[1:]:
+        for line in out_list:
             if len(line)<max_cols:
                 line.extend(['/.*/']*(max_cols-len(line)))
         return out_list
 
+    @staticmethod
+    def load(filename):
+        """
+        Loads tabular data from a file. The file should contain UTF-8
+        tab-separated values.
+        """
+        file = codecs.open(filename, encoding='utf-8', errors='replace')
+        table = PuzzleArray.from_tabular(file.read().strip())
+        file.close()
+        return table
+
+    def save(self, filename):
+        file = codecs.open(filename, 'w', encoding='utf-8', errors='replace')
+        table = PuzzleArray.from_tabular(file.read().strip())
+        file.close()
     
     def column(self, title):
         """
