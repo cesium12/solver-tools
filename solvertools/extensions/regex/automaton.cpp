@@ -327,7 +327,7 @@ Automaton Automaton::simplifyLoneEpsilonEdges() const {
   }
 
   size_t m = 0;
-  std::vector<int_fast32_t> mapsTo(n,-1);
+  std::vector<long> mapsTo(n,-1);
   for(size_t i = 0; i < n; ++i) {
     if(drainsTo[i] != i) continue;
     mapsTo[i] = m++;
