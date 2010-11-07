@@ -41,6 +41,7 @@ Dict::Dict(std::vector<DictEntry> entries) {
   sort(entries.begin(), entries.end());
   size_t p = 0;
   for(size_t i = 1; i < entries.size(); ++i) {
+    if(entries[i].freq <= 0) continue;
     if(entries[i].word == entries[p].word) {
       entries[p].freq += entries[i].freq;
     } else {

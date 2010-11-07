@@ -95,244 +95,92 @@ class SwigPyIterator(_object):
 SwigPyIterator_swigregister = _regex.SwigPyIterator_swigregister
 SwigPyIterator_swigregister(SwigPyIterator)
 
-class wordlist(_object):
+class dictvector(_object):
     __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, wordlist, name, value)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, dictvector, name, value)
     __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, wordlist, name)
+    __getattr__ = lambda self, name: _swig_getattr(self, dictvector, name)
     __repr__ = _swig_repr
-    def iterator(self): return _regex.wordlist_iterator(self)
+    def iterator(self): return _regex.dictvector_iterator(self)
     def __iter__(self): return self.iterator()
-    def __nonzero__(self): return _regex.wordlist___nonzero__(self)
-    def __bool__(self): return _regex.wordlist___bool__(self)
-    def __len__(self): return _regex.wordlist___len__(self)
-    def pop(self): return _regex.wordlist_pop(self)
-    def __getslice__(self, *args): return _regex.wordlist___getslice__(self, *args)
-    def __setslice__(self, *args): return _regex.wordlist___setslice__(self, *args)
-    def __delslice__(self, *args): return _regex.wordlist___delslice__(self, *args)
-    def __delitem__(self, *args): return _regex.wordlist___delitem__(self, *args)
-    def __getitem__(self, *args): return _regex.wordlist___getitem__(self, *args)
-    def __setitem__(self, *args): return _regex.wordlist___setitem__(self, *args)
-    def append(self, *args): return _regex.wordlist_append(self, *args)
-    def empty(self): return _regex.wordlist_empty(self)
-    def size(self): return _regex.wordlist_size(self)
-    def clear(self): return _regex.wordlist_clear(self)
-    def swap(self, *args): return _regex.wordlist_swap(self, *args)
-    def get_allocator(self): return _regex.wordlist_get_allocator(self)
-    def begin(self): return _regex.wordlist_begin(self)
-    def end(self): return _regex.wordlist_end(self)
-    def rbegin(self): return _regex.wordlist_rbegin(self)
-    def rend(self): return _regex.wordlist_rend(self)
-    def pop_back(self): return _regex.wordlist_pop_back(self)
-    def erase(self, *args): return _regex.wordlist_erase(self, *args)
+    def __nonzero__(self): return _regex.dictvector___nonzero__(self)
+    def __bool__(self): return _regex.dictvector___bool__(self)
+    def __len__(self): return _regex.dictvector___len__(self)
+    def pop(self): return _regex.dictvector_pop(self)
+    def __getslice__(self, *args): return _regex.dictvector___getslice__(self, *args)
+    def __setslice__(self, *args): return _regex.dictvector___setslice__(self, *args)
+    def __delslice__(self, *args): return _regex.dictvector___delslice__(self, *args)
+    def __delitem__(self, *args): return _regex.dictvector___delitem__(self, *args)
+    def __getitem__(self, *args): return _regex.dictvector___getitem__(self, *args)
+    def __setitem__(self, *args): return _regex.dictvector___setitem__(self, *args)
+    def append(self, *args): return _regex.dictvector_append(self, *args)
+    def empty(self): return _regex.dictvector_empty(self)
+    def size(self): return _regex.dictvector_size(self)
+    def clear(self): return _regex.dictvector_clear(self)
+    def swap(self, *args): return _regex.dictvector_swap(self, *args)
+    def get_allocator(self): return _regex.dictvector_get_allocator(self)
+    def begin(self): return _regex.dictvector_begin(self)
+    def end(self): return _regex.dictvector_end(self)
+    def rbegin(self): return _regex.dictvector_rbegin(self)
+    def rend(self): return _regex.dictvector_rend(self)
+    def pop_back(self): return _regex.dictvector_pop_back(self)
+    def erase(self, *args): return _regex.dictvector_erase(self, *args)
     def __init__(self, *args): 
-        this = _regex.new_wordlist(*args)
+        this = _regex.new_dictvector(*args)
         try: self.this.append(this)
         except: self.this = this
-    def push_back(self, *args): return _regex.wordlist_push_back(self, *args)
-    def front(self): return _regex.wordlist_front(self)
-    def back(self): return _regex.wordlist_back(self)
-    def assign(self, *args): return _regex.wordlist_assign(self, *args)
-    def resize(self, *args): return _regex.wordlist_resize(self, *args)
-    def insert(self, *args): return _regex.wordlist_insert(self, *args)
-    def reserve(self, *args): return _regex.wordlist_reserve(self, *args)
-    def capacity(self): return _regex.wordlist_capacity(self)
-    __swig_destroy__ = _regex.delete_wordlist
+    def push_back(self, *args): return _regex.dictvector_push_back(self, *args)
+    def front(self): return _regex.dictvector_front(self)
+    def back(self): return _regex.dictvector_back(self)
+    def assign(self, *args): return _regex.dictvector_assign(self, *args)
+    def resize(self, *args): return _regex.dictvector_resize(self, *args)
+    def insert(self, *args): return _regex.dictvector_insert(self, *args)
+    def reserve(self, *args): return _regex.dictvector_reserve(self, *args)
+    def capacity(self): return _regex.dictvector_capacity(self)
+    __swig_destroy__ = _regex.delete_dictvector
     __del__ = lambda self : None;
-wordlist_swigregister = _regex.wordlist_swigregister
-wordlist_swigregister(wordlist)
+dictvector_swigregister = _regex.dictvector_swigregister
+dictvector_swigregister(dictvector)
 
-class strlist(_object):
+class DictEntry(_object):
     __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, strlist, name, value)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, DictEntry, name, value)
     __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, strlist, name)
+    __getattr__ = lambda self, name: _swig_getattr(self, DictEntry, name)
     __repr__ = _swig_repr
-    def iterator(self): return _regex.strlist_iterator(self)
-    def __iter__(self): return self.iterator()
-    def __nonzero__(self): return _regex.strlist___nonzero__(self)
-    def __bool__(self): return _regex.strlist___bool__(self)
-    def __len__(self): return _regex.strlist___len__(self)
-    def pop(self): return _regex.strlist_pop(self)
-    def __getslice__(self, *args): return _regex.strlist___getslice__(self, *args)
-    def __setslice__(self, *args): return _regex.strlist___setslice__(self, *args)
-    def __delslice__(self, *args): return _regex.strlist___delslice__(self, *args)
-    def __delitem__(self, *args): return _regex.strlist___delitem__(self, *args)
-    def __getitem__(self, *args): return _regex.strlist___getitem__(self, *args)
-    def __setitem__(self, *args): return _regex.strlist___setitem__(self, *args)
-    def append(self, *args): return _regex.strlist_append(self, *args)
-    def empty(self): return _regex.strlist_empty(self)
-    def size(self): return _regex.strlist_size(self)
-    def clear(self): return _regex.strlist_clear(self)
-    def swap(self, *args): return _regex.strlist_swap(self, *args)
-    def get_allocator(self): return _regex.strlist_get_allocator(self)
-    def begin(self): return _regex.strlist_begin(self)
-    def end(self): return _regex.strlist_end(self)
-    def rbegin(self): return _regex.strlist_rbegin(self)
-    def rend(self): return _regex.strlist_rend(self)
-    def pop_back(self): return _regex.strlist_pop_back(self)
-    def erase(self, *args): return _regex.strlist_erase(self, *args)
+    __swig_setmethods__["word"] = _regex.DictEntry_word_set
+    __swig_getmethods__["word"] = _regex.DictEntry_word_get
+    if _newclass:word = _swig_property(_regex.DictEntry_word_get, _regex.DictEntry_word_set)
+    __swig_setmethods__["freq"] = _regex.DictEntry_freq_set
+    __swig_getmethods__["freq"] = _regex.DictEntry_freq_get
+    if _newclass:freq = _swig_property(_regex.DictEntry_freq_get, _regex.DictEntry_freq_set)
     def __init__(self, *args): 
-        this = _regex.new_strlist(*args)
+        this = _regex.new_DictEntry(*args)
         try: self.this.append(this)
         except: self.this = this
-    def push_back(self, *args): return _regex.strlist_push_back(self, *args)
-    def front(self): return _regex.strlist_front(self)
-    def back(self): return _regex.strlist_back(self)
-    def assign(self, *args): return _regex.strlist_assign(self, *args)
-    def resize(self, *args): return _regex.strlist_resize(self, *args)
-    def insert(self, *args): return _regex.strlist_insert(self, *args)
-    def reserve(self, *args): return _regex.strlist_reserve(self, *args)
-    def capacity(self): return _regex.strlist_capacity(self)
-    __swig_destroy__ = _regex.delete_strlist
+    __swig_destroy__ = _regex.delete_DictEntry
     __del__ = lambda self : None;
-strlist_swigregister = _regex.strlist_swigregister
-strlist_swigregister(strlist)
+DictEntry_swigregister = _regex.DictEntry_swigregister
+DictEntry_swigregister(DictEntry)
 
-class freqlist(_object):
+class Dict(_object):
     __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, freqlist, name, value)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Dict, name, value)
     __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, freqlist, name)
-    __repr__ = _swig_repr
-    def iterator(self): return _regex.freqlist_iterator(self)
-    def __iter__(self): return self.iterator()
-    def __nonzero__(self): return _regex.freqlist___nonzero__(self)
-    def __bool__(self): return _regex.freqlist___bool__(self)
-    def __len__(self): return _regex.freqlist___len__(self)
-    def pop(self): return _regex.freqlist_pop(self)
-    def __getslice__(self, *args): return _regex.freqlist___getslice__(self, *args)
-    def __setslice__(self, *args): return _regex.freqlist___setslice__(self, *args)
-    def __delslice__(self, *args): return _regex.freqlist___delslice__(self, *args)
-    def __delitem__(self, *args): return _regex.freqlist___delitem__(self, *args)
-    def __getitem__(self, *args): return _regex.freqlist___getitem__(self, *args)
-    def __setitem__(self, *args): return _regex.freqlist___setitem__(self, *args)
-    def append(self, *args): return _regex.freqlist_append(self, *args)
-    def empty(self): return _regex.freqlist_empty(self)
-    def size(self): return _regex.freqlist_size(self)
-    def clear(self): return _regex.freqlist_clear(self)
-    def swap(self, *args): return _regex.freqlist_swap(self, *args)
-    def get_allocator(self): return _regex.freqlist_get_allocator(self)
-    def begin(self): return _regex.freqlist_begin(self)
-    def end(self): return _regex.freqlist_end(self)
-    def rbegin(self): return _regex.freqlist_rbegin(self)
-    def rend(self): return _regex.freqlist_rend(self)
-    def pop_back(self): return _regex.freqlist_pop_back(self)
-    def erase(self, *args): return _regex.freqlist_erase(self, *args)
-    def __init__(self, *args): 
-        this = _regex.new_freqlist(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    def push_back(self, *args): return _regex.freqlist_push_back(self, *args)
-    def front(self): return _regex.freqlist_front(self)
-    def back(self): return _regex.freqlist_back(self)
-    def assign(self, *args): return _regex.freqlist_assign(self, *args)
-    def resize(self, *args): return _regex.freqlist_resize(self, *args)
-    def insert(self, *args): return _regex.freqlist_insert(self, *args)
-    def reserve(self, *args): return _regex.freqlist_reserve(self, *args)
-    def capacity(self): return _regex.freqlist_capacity(self)
-    __swig_destroy__ = _regex.delete_freqlist
-    __del__ = lambda self : None;
-freqlist_swigregister = _regex.freqlist_swigregister
-freqlist_swigregister(freqlist)
-
-class WordFit(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, WordFit, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, WordFit, name)
-    __repr__ = _swig_repr
-    __swig_getmethods__["word"] = _regex.WordFit_word_get
-    if _newclass:word = _swig_property(_regex.WordFit_word_get)
-    __swig_setmethods__["freq"] = _regex.WordFit_freq_set
-    __swig_getmethods__["freq"] = _regex.WordFit_freq_get
-    if _newclass:freq = _swig_property(_regex.WordFit_freq_get, _regex.WordFit_freq_set)
-    def __init__(self, *args): 
-        this = _regex.new_WordFit(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _regex.delete_WordFit
-    __del__ = lambda self : None;
-WordFit_swigregister = _regex.WordFit_swigregister
-WordFit_swigregister(WordFit)
-
-class wordfitvec(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, wordfitvec, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, wordfitvec, name)
-    __repr__ = _swig_repr
-    def iterator(self): return _regex.wordfitvec_iterator(self)
-    def __iter__(self): return self.iterator()
-    def __nonzero__(self): return _regex.wordfitvec___nonzero__(self)
-    def __bool__(self): return _regex.wordfitvec___bool__(self)
-    def __len__(self): return _regex.wordfitvec___len__(self)
-    def pop(self): return _regex.wordfitvec_pop(self)
-    def __getslice__(self, *args): return _regex.wordfitvec___getslice__(self, *args)
-    def __setslice__(self, *args): return _regex.wordfitvec___setslice__(self, *args)
-    def __delslice__(self, *args): return _regex.wordfitvec___delslice__(self, *args)
-    def __delitem__(self, *args): return _regex.wordfitvec___delitem__(self, *args)
-    def __getitem__(self, *args): return _regex.wordfitvec___getitem__(self, *args)
-    def __setitem__(self, *args): return _regex.wordfitvec___setitem__(self, *args)
-    def append(self, *args): return _regex.wordfitvec_append(self, *args)
-    def empty(self): return _regex.wordfitvec_empty(self)
-    def size(self): return _regex.wordfitvec_size(self)
-    def clear(self): return _regex.wordfitvec_clear(self)
-    def swap(self, *args): return _regex.wordfitvec_swap(self, *args)
-    def get_allocator(self): return _regex.wordfitvec_get_allocator(self)
-    def begin(self): return _regex.wordfitvec_begin(self)
-    def end(self): return _regex.wordfitvec_end(self)
-    def rbegin(self): return _regex.wordfitvec_rbegin(self)
-    def rend(self): return _regex.wordfitvec_rend(self)
-    def pop_back(self): return _regex.wordfitvec_pop_back(self)
-    def erase(self, *args): return _regex.wordfitvec_erase(self, *args)
-    def __init__(self, *args): 
-        this = _regex.new_wordfitvec(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    def push_back(self, *args): return _regex.wordfitvec_push_back(self, *args)
-    def front(self): return _regex.wordfitvec_front(self)
-    def back(self): return _regex.wordfitvec_back(self)
-    def assign(self, *args): return _regex.wordfitvec_assign(self, *args)
-    def resize(self, *args): return _regex.wordfitvec_resize(self, *args)
-    def insert(self, *args): return _regex.wordfitvec_insert(self, *args)
-    def reserve(self, *args): return _regex.wordfitvec_reserve(self, *args)
-    def capacity(self): return _regex.wordfitvec_capacity(self)
-    __swig_destroy__ = _regex.delete_wordfitvec
-    __del__ = lambda self : None;
-wordfitvec_swigregister = _regex.wordfitvec_swigregister
-wordfitvec_swigregister(wordfitvec)
-
-
-def regex_match_all(*args):
-  return _regex.regex_match_all(*args)
-regex_match_all = _regex.regex_match_all
-class LangModel(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, LangModel, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, LangModel, name)
+    __getattr__ = lambda self, name: _swig_getattr(self, Dict, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
-        this = _regex.new_LangModel(*args)
+        this = _regex.new_Dict(*args)
         try: self.this.append(this)
         except: self.this = this
-    def getDict(self): return _regex.LangModel_getDict(self)
-    def word_to_id(self, *args): return _regex.LangModel_word_to_id(self, *args)
-    def id_to_word(self, *args): return _regex.LangModel_id_to_word(self, *args)
-    def id_to_freq(self, *args): return _regex.LangModel_id_to_freq(self, *args)
-    __swig_destroy__ = _regex.delete_LangModel
+    def grep(self, *args): return _regex.Dict_grep(self, *args)
+    def grep_freq_sorted(self, *args): return _regex.Dict_grep_freq_sorted(self, *args)
+    def total_freq(self, *args): return _regex.Dict_total_freq(self, *args)
+    def best_match(self, *args): return _regex.Dict_best_match(self, *args)
+    __swig_destroy__ = _regex.delete_Dict
     __del__ = lambda self : None;
-LangModel_swigregister = _regex.LangModel_swigregister
-LangModel_swigregister(LangModel)
+Dict_swigregister = _regex.Dict_swigregister
+Dict_swigregister(Dict)
 
-
-def foo(*args):
-  return _regex.foo(*args)
-foo = _regex.foo
-
-def bar(*args):
-  return _regex.bar(*args)
-bar = _regex.bar
 
 
