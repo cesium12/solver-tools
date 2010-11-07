@@ -34,7 +34,6 @@
 #ifndef __AMTRIE_DOT_H_INCLUDED__
 #define __AMTRIE_DOT_H_INCLUDED__
 
-#include <boost/shared_array.hpp>
 #include <cstdio>
 #include <stdint.h>
 #include <stdlib.h>
@@ -61,7 +60,7 @@ private:
         specifying the index in the array of the target node of the
         edge. The edges are listed in alphabetical order.
    */
-  boost::shared_array<uint32_t> trie;
+  uint32_t* trie;
   size_t size; ///< The length of the \c trie array.
   uint32_t root; ///< The index in the \c trie array of the first word
 		 ///of the root node.
@@ -89,6 +88,11 @@ public:
 
   AMTrie();
   AMTrie(const DynTrie &that);
+  AMTrie(const AMTrie &that);
+
+  AMTrie &operator =(const AMTrie &that);
+
+  ~AMTrie();
 
   /**
      Finds the data associated with a given string.

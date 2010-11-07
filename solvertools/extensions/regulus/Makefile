@@ -1,7 +1,6 @@
 UNAME := $(shell uname)
 
-BOOST_PREFIX = /Users/rspeer/src/boost_1_44_0/
-CPPFLAGS = -Wall -O3 -fpic -ffast-math -pipe `python-config --cflags` -I$(BOOST_PREFIX)
+CPPFLAGS = -Wall -O3 -fpic -ffast-math -pipe `python-config --cflags`
 ifeq ($(UNAME), Linux)
 objs = amtrie.o automaton.o check.o dict.o dyntrie.o
 endif
@@ -22,6 +21,7 @@ clean:
 	rm -f *.o _regulus.so regulus_wrap.cpp
 
 Makefile.depends: *.cpp *.h
+	rm -f regulus_wrap.cpp
 	g++ *.cpp -MM > Makefile.depends
 
-include Makefile.depends
+-include Makefile.depends

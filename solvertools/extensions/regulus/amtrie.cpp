@@ -60,14 +60,36 @@ uint32_t AMTrie::AMTrie_helper(const DynTrie &that, uint32_t dpos, uint32_t* tri
 
 AMTrie::AMTrie() {
   size = 0;
-  trie = boost::shared_array<uint32_t>(new uint32_t [size]);
+  trie = new uint32_t [size];
   root = 0;
 }
 
 AMTrie::AMTrie(const DynTrie &that) {
   size = 3*that.nodes()-1;
-  trie = boost::shared_array<uint32_t>(new uint32_t [size]);
-  AMTrie_helper(that, 0, trie.get(), 0, root);
+  trie = new uint32_t [size];
+  AMTrie_helper(that, 0, trie, 0, root);
+}
+
+AMTrie::AMTrie(const AMTrie &that) {
+  size = that.size;
+  root = that.root;
+  trie = new uint32_t [size];
+  memcpy(trie, that.trie, size*sizeof(uint32_t));
+}
+
+AMTrie &AMTrie::operator =(const AMTrie &that) {
+  delete[] trie;
+
+  size = that.size;
+  root = that.root;
+  trie = new uint32_t [size];
+  memcpy(trie, that.trie, size*sizeof(uint32_t));
+
+  return(*this);
+}
+
+AMTrie::~AMTrie() {
+  delete[] trie;
 }
 
 uint32_t AMTrie::lookup(const char* s) const {
@@ -90,8 +112,9 @@ bool AMTrie::read(FILE* fin) {
   fread(&size, sizeof(size), 1, fin);
   fread(&root, sizeof(root), 1, fin);
   if(feof(fin) || ferror(fin)) return(false);
-  trie = boost::shared_array<uint32_t>(new uint32_t [size]);
-  fread(trie.get(), sizeof(uint32_t), size, fin);
+  delete[] trie;
+  trie = new uint32_t [size];
+  fread(trie, sizeof(uint32_t), size, fin);
   return(!ferror(fin) && !feof(fin));
 }
 
@@ -100,6 +123,6 @@ bool AMTrie::write(FILE* fout) const {
   fwrite(MAGIC_STR, 1, MAGIC_LEN, fout);
   fwrite(&size, sizeof(size), 1, fout);
   fwrite(&root, sizeof(root), 1, fout);
-  fwrite(trie.get(), sizeof(uint32_t), size, fout);
+  fwrite(trie, sizeof(uint32_t), size, fout);
   return(!ferror(fout));
 }
