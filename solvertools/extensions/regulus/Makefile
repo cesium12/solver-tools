@@ -20,8 +20,9 @@ regex_test: $(objs) regex_test.o
 clean:
 	rm -f *.o _regulus.so regulus_wrap.cpp
 
-Makefile.depends: *.cpp *.h
-	rm -f regulus_wrap.cpp
-	g++ *.cpp -MM > Makefile.depends
+SOURCES = $(filter-out regulus_wrap.cpp, $(wildcard *.cpp *.h))
+
+Makefile.depends: $(SOURCES)
+	g++ $(SOURCES) -MM > Makefile.depends
 
 -include Makefile.depends
