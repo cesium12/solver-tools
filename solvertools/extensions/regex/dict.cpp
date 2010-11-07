@@ -31,46 +31,58 @@
 # POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <iostream>
-#include <vector>
+#include <string>
 
-#include "automaton.h"
-#include "amtrie.h"
-#include "langmodel.h"
-#include "regex.h"
+#include "dict.h"
+#include "dyntrie.h"
 
 
-struct FitWordsState {
-  uint_fast32_t graphNode; //< The state of the automaton.
-  uint32_t trieNode;       //< The position in the dictionary trie.
+Dict::Dict(std::vector<DictEntry> entries) {
+  sort(entries.begin(), entries.end());
+  size_t p = 0;
+  for(size_t i = 1; i < entries.size(); ++i) {
+    if(entries[i].word == entries[p].word) {
+      entries[p].freq += entries[i].freq;
+    } else {
+      ++p;
+      entries[p] = entries[i];
+    }
+  }
+  if(entries.size() > 0) {
+    entries.resize(p+1);
+  }
 
-  inline FitWordsState() {}
-  inline FitWordsState(uint_fast32_t gn, uint32_t tn) :
-    graphNode(gn), trieNode(tn) {;}
-};
+  word_list.push_back(std::string(""));
+  freq_list.push_back(0);
+  DynTrie dyn;
+  for(size_t i = 0; i < entries.size(); ++i) {
+    dyn.insert(entries[i].word.c_str(), i+1);
+    word_list.push_back(entries[i].word);
+    freq_list.push_back(entries[i].freq);
+  }
+  trie = AMTrie(dyn);
+}
 
 
-WordFitVec fitWords(const LangModel &model, const Automaton &automaton) {
-
-  const AMTrie &dict = model.getDict();
+Dict::WordFitVec Dict::fit_words(const Automaton &automaton) const {
 
   WordFitVec fit;
 
   std::vector<FitWordsState> stack;
-  stack.push_back(FitWordsState(automaton.getStartState(), dict.getRoot()));
+  stack.push_back(FitWordsState(automaton.getStartState(), trie.getRoot()));
 
   while(!stack.empty()) {
     FitWordsState pos = stack.back();
     stack.pop_back();
     const Automaton::Node &s = automaton.getNode(pos.graphNode);
     uint32_t graphEdges = s.getFingerprint();
-    uint32_t trieEdges  = dict.getPos(pos.trieNode);
-    uint32_t wordID     = dict.getPos(pos.trieNode+1);
+    uint32_t trieEdges  = trie.getPos(pos.trieNode);
+    uint32_t wordID     = trie.getPos(pos.trieNode+1);
     uint32_t edges      = graphEdges & trieEdges;
 
     if(wordID && pos.graphNode == automaton.getAcceptState()) {
       // it's a word!
-      fit.push_back(WordFit(model.id_to_word(wordID).c_str(), model.id_to_freq(wordID)));
+      fit.push_back(wordID);
     }
 
     // handle letter edges
@@ -79,7 +91,7 @@ WordFitVec fitWords(const LangModel &model, const Automaton &automaton) {
       uint_fast32_t index = __builtin_ctz(edges);
       uint32_t dictPos2 = head + __builtin_popcount(trieEdges & (~((~0) << index)));
       stack.push_back(FitWordsState(s.getLetterDest(index),
-				    dict.getPos(dictPos2)));
+				    trie.getPos(dictPos2)));
       edges &= ~(1 << index);
     }
 
@@ -90,13 +102,64 @@ WordFitVec fitWords(const LangModel &model, const Automaton &automaton) {
     }
   }
 
+  if (fit.size() == 0) {
+    return fit;
+  }
+  sort(fit.begin(), fit.end());
+  size_t n = fit.size();
+  size_t k = 1;
+  for (size_t i = 1; i < n; ++i) {
+    if (fit[i] != fit[i-1]) {
+      fit[k] = fit[i];
+      ++k;
+    }
+  }
+  fit.resize(k);
+
   return(fit);  
 }
 
 
-WordFitVec regex_match_all(const LangModel &model, const char *regex) {
-  Automaton prob(regex);
-  WordFitVec result = fitWords(model, prob);
-  sort(result.begin(), result.end());
-  return result;
+std::vector<DictEntry> Dict::grep(std::string regex) const {
+  WordFitVec fit = fit_words(Automaton(regex));
+  std::vector<DictEntry> result;
+  result.reserve(fit.size());
+  for(size_t i = 0; i < fit.size(); ++i) {
+    result.push_back(DictEntry(word_list[fit[i]], freq_list[fit[i]]));
+  }
+  return(result);
+}
+
+
+std::vector<DictEntry> Dict::grep_freq_sorted(std::string regex) const {
+  WordFitVec fit = fit_words(Automaton(regex));
+  sort(fit.begin(), fit.end(), freq_cmp(this));
+  std::vector<DictEntry> result;
+  result.reserve(fit.size());
+  for(size_t i = 0; i < fit.size(); ++i) {
+    result.push_back(DictEntry(word_list[fit[i]], freq_list[fit[i]]));
+  }
+  return(result);  
+}
+
+
+freq_t Dict::total_freq(std::string regex) const {
+  WordFitVec fit = fit_words(Automaton(regex));
+  freq_t total = 0;
+  for(size_t i = 0; i < fit.size(); ++i) {
+    total += freq_list[i];
+  }
+  return(total);
+}
+
+
+DictEntry Dict::best_match(std::string regex) const {
+  WordFitVec fit = fit_words(Automaton(regex));
+  int best = 0;
+  for(size_t i = 0; i < fit.size(); ++i) {
+    if(freq_list[best] < freq_list[fit[i]]) {
+      best = fit[i];
+    }
+  }
+  return(DictEntry(word_list[best], freq_list[best]));
 }

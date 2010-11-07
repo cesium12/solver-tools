@@ -86,14 +86,6 @@ Automaton::Node Automaton::mapNode(const std::vector<long> &mapsTo, const Node &
 
 }
 
-Automaton::Automaton(Lognum c) {
-  startState = 0;
-  acceptState = 1;
-  nodes = std::vector<Node>(2);
-  nodes[0].epsilonEdges.push_back(Edge(1, c));
-  assert(checkRep());
-}
-
 Automaton::Automaton() throw () {
   startState = 0;
   acceptState = 0;
@@ -168,18 +160,6 @@ Automaton Automaton::automatonFromRegex(const char* regex) throw (SpecException)
       operand_stack  = parse_stack.back().first;
       operator_stack = parse_stack.back().second;
       parse_stack.pop_back();
-    } else if('0' <= c && c <= '9') {
-      double p = 0;
-      double d = 1;
-      while('0' <= *regex && *regex <= '9') {
-	d *= 0.1;
-	p += (*regex - '0') * d;
-	++regex;
-      }
-      --regex;
-      //std::clog << "got number " << p << std::endl;
-      op = Operator(0, &Automaton::concat);
-      v = Automaton(Lognum(log(p)));
     } else if(val_ittr != operators.end()) {
       op = val_ittr->second;
       v = Automaton();
@@ -310,7 +290,6 @@ Automaton Automaton::simplifyLoneEpsilonEdges() const {
       drainsTo[p] = p;
       if(v.fingerprint ||
 	 v.epsilonEdges.size() != 1 ||
-	 v.epsilonEdges[0].cost.logval ||
 	 p == acceptState) {
 	break;
       }
@@ -590,8 +569,7 @@ Automaton Automaton::tensorProduct(const Automaton &that) const {
       size_t p = i*m+j;
       bob.nodes[p].fingerprint = nodes[i].fingerprint & that.nodes[j].fingerprint;
       for(uint_fast8_t k = 0; k < 26; ++k) {
-	bob.nodes[p].letterEdge[k] = Edge(nodes[i].letterEdge[k].dest * m + that.nodes[j].letterEdge[k].dest,
-					  nodes[i].letterEdge[k].cost * that.nodes[j].letterEdge[k].cost);
+	bob.nodes[p].letterEdge[k] = Edge(nodes[i].letterEdge[k].dest * m + that.nodes[j].letterEdge[k].dest);
       }
       for(size_t k = 0; k < nodes[i].epsilonEdges.size(); ++k) {
 	Edge e = nodes[i].epsilonEdges[k];
@@ -679,7 +657,6 @@ std::string Automaton::dotGraph() const {
       if(!(v.fingerprint & (1 << j))) continue;
       if(r[j]) continue;
       size_t dest = v.letterEdge[j].dest;
-      Lognum cost = v.letterEdge[j].cost;
       std::string label;
       { // Aggregate edge label
 	label.push_back((char)('A'+j));
@@ -689,7 +666,6 @@ std::string Automaton::dotGraph() const {
 	  if(r[k]) continue;
 	  r[k] = true;
 	  label.push_back((char)('A'+k));
-	  cost += v.letterEdge[j].cost;
 	}
       }
       { // Compress edge label
@@ -715,24 +691,13 @@ std::string Automaton::dotGraph() const {
       }
       s << "\t" << i << " -> " << dest;
       s << " [" << "label=\"" << label << "\"";
-      s << "," << "weight=" << exp(cost.logval);
-      s << "," << "tooltip=\"cost=" << cost.logval << "\"";
       s << "];" << std::endl;
     }
     for(size_t j = 0; j < v.epsilonEdges.size(); ++j) {
       Edge e = v.epsilonEdges[j];
-      std::string label;
-      if(e.cost.logval == 0) {
-	label = "&#949;"; // \949 is Unicode epsilon
-      } else {
-	std::ostringstream s;
-	s << (int)(100*exp(e.cost.logval)+0.5) << "%";
-	label = s.str();
-      }
+      std::string label = "&#949;"; // \949 is Unicode epsilon
       s << "\t" << i << " -> " << e.dest;
       s << " [" << "label=\"" << label << "\"";
-      s << "," << "weight=" << exp(e.cost.logval);
-      s << "," << "tooltip=\"cost=" << e.cost.logval << "\"";
       s << "];" << std::endl;
     }
   }

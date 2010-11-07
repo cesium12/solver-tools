@@ -39,7 +39,6 @@
 #include <stdint.h>
 #include <string>
 #include <vector>
-#include "lognum.h"
 
 
 /**
@@ -65,10 +64,9 @@ private:
   struct Edge {
   public:
     uint_fast32_t dest;
-    Lognum cost;
 
-    Edge(uint_fast32_t dest_in=-1, Lognum cost_in=Lognum(0)) :
-      dest(dest_in), cost(cost_in) {;}
+    Edge(uint_fast32_t dest_in=-1) :
+      dest(dest_in) {;}
   };
 
   /**
@@ -95,17 +93,11 @@ public:
     inline uint_fast32_t getLetterDest(uint_fast32_t i) const {
       return letterEdge[i].dest;
     }
-    inline Lognum getLetterCost(uint_fast32_t i) const {
-      return letterEdge[i].cost;
-    }
     inline uint_fast32_t getNumEpsilonEdges() const {
       return epsilonEdges.size();
     }
     inline uint_fast32_t getEpsilonDest(uint_fast32_t i) const {
       return epsilonEdges[i].dest;
-    }
-    inline Lognum getEpsilonCost(uint_fast32_t i) const {
-      return epsilonEdges[i].cost;
     }
   };
 
@@ -125,11 +117,6 @@ private:
   uint_fast32_t startState;
   uint_fast32_t acceptState;
   std::vector<Node> nodes;
-
-  /**
-     Creates an Automaton which does nothing but offset the weight.
-   */
-  explicit Automaton(Lognum c);
 
   /**
      Returns a copy of a node \c v with each pointer \f$i\f$ mapped to
