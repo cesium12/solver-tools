@@ -8,18 +8,18 @@ endif
 ifeq ($(UNAME), Darwin)
 objs = amtrie.o automaton.o check.o dict.o dyntrie.o /System/Library/Frameworks/Python.framework/Versions/2.6/Python 
 endif
-_regex.so: $(objs) regex.o
-	g++ -shared -dynamiclib $(CPPFLAGS) $(objs) regex.o -o _regex.so
+_regulus.so: $(objs) regulus_wrap.o
+	g++ -shared -dynamiclib $(CPPFLAGS) $(objs) regulus_wrap.o -o _regulus.so
 
-regex.cpp:
-	swig -c++ -python -o regex.cpp regex.i
+regulus_wrap.cpp:
+	swig -c++ -python -o regulus_wrap.cpp regulus.i
 
 regex_test: $(objs) regex_test.o
 	g++  $(CPPFLAGS)  regex_test.o $(objs) -o regex_test
 
 .PHONY : clean
 clean:
-	rm -f *.o _regex.so regex_wrap.cpp
+	rm -f *.o _regulus.so regulus_wrap.cpp
 
 Makefile.depends: *.cpp *.h
 	g++ *.cpp -MM > Makefile.depends

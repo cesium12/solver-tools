@@ -1,4 +1,4 @@
-%module regex
+%module regulus
 %include "std_string.i"
 %include "std_vector.i"
 %include "std_pair.i"
