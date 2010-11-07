@@ -1,0 +1,3 @@
+Makefile.depends
+*.o
+_regex.so
