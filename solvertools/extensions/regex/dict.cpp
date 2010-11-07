@@ -155,12 +155,44 @@ freq_t Dict::total_freq(std::string regex) const {
 
 
 DictEntry Dict::best_match(std::string regex) const {
-  WordFitVec fit = fit_words(Automaton(regex));
-  int best = 0;
-  for(size_t i = 0; i < fit.size(); ++i) {
-    if(freq_list[best] < freq_list[fit[i]]) {
-      best = fit[i];
+
+  Automaton automaton(regex);
+  uint32_t best = 0;
+
+  std::vector<FitWordsState> stack;
+  stack.push_back(FitWordsState(automaton.getStartState(), trie.getRoot()));
+
+  while(!stack.empty()) {
+    FitWordsState pos = stack.back();
+    stack.pop_back();
+    const Automaton::Node &s = automaton.getNode(pos.graphNode);
+    uint32_t graphEdges = s.getFingerprint();
+    uint32_t trieEdges  = trie.getPos(pos.trieNode);
+    uint32_t wordID     = trie.getPos(pos.trieNode+1);
+    uint32_t edges      = graphEdges & trieEdges;
+
+    if(wordID && pos.graphNode == automaton.getAcceptState()) {
+      if(freq_list[best] < freq_list[wordID]) {
+	best = wordID;
+      }
+    }
+
+    // handle letter edges
+    uint32_t head = pos.trieNode + 2;
+    while(edges) {
+      uint_fast32_t index = __builtin_ctz(edges);
+      uint32_t dictPos2 = head + __builtin_popcount(trieEdges & (~((~0) << index)));
+      stack.push_back(FitWordsState(s.getLetterDest(index),
+				    trie.getPos(dictPos2)));
+      edges &= ~(1 << index);
+    }
+
+    // handle epsilon edges
+    for(uint_fast32_t i = 0; i < s.getNumEpsilonEdges(); ++i) {
+      stack.push_back(FitWordsState(s.getEpsilonDest(i),
+				    pos.trieNode));
     }
   }
+
   return(DictEntry(word_list[best], freq_list[best]));
 }
