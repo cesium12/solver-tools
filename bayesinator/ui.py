@@ -14,7 +14,12 @@ def show_solution(state):
     while state.last is not None:
         t = state.transform
         f = t.transformation
-        ss.append("   ^  %s.%s[%r] (%f)" % (f.__module__, f.__name__, t.transform_data, t.entropy))
+        ts = "   ^  %s.%s" % (f.__module__, f.__name__)
+        if t.transform_data is not None:
+            ts = ts + ("[%r]" % t.transform_data)
+        if t.entropy != 0:
+            ts = ts + (" (%f)" % t.entropy)
+        ss.append(ts)
         depth -= 1
         state = state.last
         ss.append("  (%d) %r (%f)" % (depth, state.state.data, state.state_entropy))
