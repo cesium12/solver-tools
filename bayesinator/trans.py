@@ -3,7 +3,6 @@ This module provides some general transformations on puzzles.
 """
 
 from bayesinator.core import *
-from bayesinator.language import superstring_entropy
 
 
 
