@@ -92,7 +92,7 @@ def country_code_entropy(s):
 
 
 
-tlds = set([tld.domain.strip('.').upper() for tld in read_csv(get_datafile("codes/tld.txt"))])
+tlds = set([tld.domain.strip('.').upper() for tld in read_csv(get_datafile("codes/tld.txt"), has_header=True)])
 tld_entropy = math.log(len(tlds), 2)
 
 @puzzle_property(basestring)
@@ -107,7 +107,7 @@ def tld_entropy(s):
 
 constellations = [c for c in read_csv(get_datafile("codes/constellations.txt"))]
 constellation_names = set([c.constellation.capitalize() for c in constellations])
-constellation_genitive = set([c.genitive.capitalize() for c in constellations])
+constellation_genitives = set([c.genitive.capitalize() for c in constellations])
 constellation_3ltr_abrs = set([c['3_letter'].capitalize() for c in constellations])
 constellation_4ltr_abrs = set([c['4_letter'].capitalize() for c in constellations])
 constellation_entropy = math.log(len(constellations), 2)
@@ -118,7 +118,7 @@ def constellation_name(s):
 
 @puzzle_property(basestring)
 def constellation_genitive(s):
-    return s.capitalize() in constellation_genitive
+    return s.capitalize() in constellation_genitives
 
 @puzzle_property(basestring)
 def constellation_3ltr_abr(s):

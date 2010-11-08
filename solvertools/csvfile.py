@@ -13,7 +13,7 @@ class CSVRow:
         self.__cols = cols
         self.__header = header
         if header is not None:
-            assert len(cols) == len(header), "CSV row length does not match CSV header"
+            assert len(cols) == len(header), "CSV row length %s does not match CSV header length %s\n\t%s" % (len(cols), len(header), repr(cols))
 
     def __len__(self):
         return len(self.__cols)
@@ -38,13 +38,14 @@ class CSVRow:
         else:
             raise AttributeError, "CSV file has no column named %s" % repr(name)
 
-def read_csv(path):
+def read_csv(path, has_header=None):
     fin = open(path, 'rb')
 
     # Try to guess the format of the CSV file
     sample = fin.read(1024)
     dialect = csv.Sniffer().sniff(sample)
-    has_header = csv.Sniffer().has_header(sample)
+    if has_header is None:
+        has_header = csv.Sniffer().has_header(sample)
     fin.seek(0)
 
     header = None

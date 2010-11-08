@@ -54,7 +54,6 @@ __Domain__	__Type__	__Use__
 .CM	country-code	Cameroon
 .CN	country-code	China
 .CO	country-code	Colombia
-.CO Internet S.A.S.
 .COM	generic	Generic top-level domain
 .COOP	sponsored	Reserved for cooperative associations
 .CR	country-code	Costa Rica
