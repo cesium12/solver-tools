@@ -4,6 +4,7 @@ formatted files) with convenient syntax.
 """
 
 import csv
+import string
 
 
 class CSVRow:
@@ -18,7 +19,10 @@ class CSVRow:
         return len(self.__cols)
 
     def __getitem__(self, idx):
-        return self.__cols[idx]
+        if isinstance(idx, basestring):
+            return self.__getattr__(idx)
+        else:
+            return self.__cols[idx]
 
     def __setitem__(self, idx, val):
         self.__cols[idx] = val
@@ -50,7 +54,9 @@ def read_csv(path):
     if has_header:
         xs = lines.next()
         header = {}
+        trans = string.maketrans(' -', '__')
         for i in range(len(xs)):
-            header[xs[i].strip('_').lower()] = i
+            name = xs[i].strip('_').lower().translate(trans)
+            header[name] = i
 
     return (CSVRow(cols, header) for cols in lines)
