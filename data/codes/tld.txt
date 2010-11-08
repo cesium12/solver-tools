@@ -1,3 +1,4 @@
+__Domain__	__Type__	__Use__
 .AC	country-code	Ascension Island
 .AD	country-code	Andorra
 .AE	country-code	United Arab Emirates

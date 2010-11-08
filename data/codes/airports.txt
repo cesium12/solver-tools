@@ -1,3 +1,4 @@
+__IATA__	__ICAO__	__airport name__	__place name__
 AAA	NTGA	Anaa Airport	Anaa, Tuamotus, French Polynesia
 AAB	YARY	Arrabury Airport	Arrabury, Queensland, Australia
 AAC	HEAR	El Arish International Airport	El Arish, Egypt

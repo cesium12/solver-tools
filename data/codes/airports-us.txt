@@ -1,3 +1,4 @@
+__IATA__	__ICAO__	__airport name__	__place name__
 AAF	KAAF	Apalachicola Municipal Airport	Apalachicola, Florida, United States
 ABE	KABE	Lehigh Valley International Airport	Allentown, Pennsylvania, United States
 ABI	KABI	Abilene Regional Airport	Abilene, Texas, United States

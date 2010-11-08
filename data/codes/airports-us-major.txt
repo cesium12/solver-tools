@@ -1,3 +1,4 @@
+__IATA__	__ICAO__	__airport name__	__place name__
 ANC	PANC	Ted Stevens Anchorage International Airport	Anchorage, Alaska, United States
 ATL	KATL	Hartsfield-Jackson Atlanta International Airport	Atlanta, Georgia, United States
 AUS	KAUS	Austin-Bergstrom International Airport	Austin, Texas, United States
