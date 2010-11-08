@@ -1,4 +1,4 @@
-__Z__	__symbol__	__element__
+__Z__	__symbol__	__name__
 1	H	Hydrogen
 2	He	Helium
 3	Li	Lithium
