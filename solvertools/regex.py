@@ -261,7 +261,6 @@ def _unparse_literal(data):
     else:
         return char
 
-
 def _unparse_any(data):
     return u'.'
 
