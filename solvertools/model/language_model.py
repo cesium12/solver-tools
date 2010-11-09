@@ -10,6 +10,7 @@ from solvertools.model.numbers import number_logprob, is_numeric
 from solvertools.model.answer_reader import answer_reader
 from solvertools.util import load_pickle, save_pickle, get_picklefile, \
                              file_exists
+from solvertools.regex import is_regex
 from solvertools import wordlist
 import random, string, logging
 import numpy as np
@@ -101,6 +102,11 @@ class WordListModel(LanguageModel):
         Get the relative probability of this word given its appearance in
         a wordlist.
         """
+        if is_regex(word):
+            word, freq = self.wordlist.best_match(word)
+            if word is None:
+                return MINIMUM_LOGPROB
+
         if is_numeric(word):
             return number_logprob(int(word))
         else:

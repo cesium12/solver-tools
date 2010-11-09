@@ -7,6 +7,7 @@ ensure you don't have to worry about things like capitalization and encoding.
 from __future__ import with_statement
 from solvertools.util import get_dictfile, get_picklefile, save_pickle, \
                              load_pickle, file_exists, asciify
+from solvertools.regex import is_regex, bare_regex
 import re, codecs, unicodedata, logging
 logger = logging.getLogger(__name__)
 
@@ -132,6 +133,7 @@ class Wordlist(object):
         self.convert = convert
         self.reader = reader
         self.pickle = pickle
+        self.regulus = None
 
     def variant(self, convert=None, reader=None):
         """
@@ -160,6 +162,41 @@ class Wordlist(object):
         else:
             raise IOError("Cannot find a dictionary named '%s'." %
             self.filename)
+
+    def load_regulus(self):
+        """
+        If we need to do fast regex operations on this wordlist, we need a
+        regulus object. This function ensures that such an object exists.
+        """
+        if self.words is None:
+            self.load()
+        logger.info("Loading Regulus for %s" % self.filename)
+        from solvertools.extensions.regulus import regulus
+        entries = [regulus.DictEntry(letters_only(word), freq)
+                   for word, freq in self.words.iteritems()]
+        self.regulus = regulus.Dict(entries)
+    
+    def grep(self, pattern):
+        """
+        Search the wordlist for results matching this pattern.
+        Requires the Regulus extension.
+        """
+        if self.regulus is None:
+            self.load_regulus()
+        results = self.regulus.grep(bare_regex(pattern))
+        return [(result.word, result.freq) for result in results]
+
+    def best_match(self, pattern):
+        """
+        Search the wordlist for the best result matching this pattern.
+        Requires the Regulus extension.
+        """
+        if not hasattr(self, 'regulus') or self.regulus is None:
+            self.load_regulus()
+        result = self.regulus.best_match(bare_regex(pattern))
+        if result.word is None:
+            return (None, 0)
+        return result.word, result.freq
 
     def _load_pickle(self):
         "Load this wordlist from a pickle."
@@ -278,7 +315,7 @@ NPL = Wordlist('npl_allwords2', case_insensitive)
 Google1M = Wordlist('google1M', letters_only, with_frequency)
 Google200K = Wordlist('google200K', letters_only, with_frequency)
 PHONETIC = Wordlist('phonetic', letters_only, with_values)
-COMBINED = Wordlist('sages_combined', alphanumeric_only, with_frequency)
+COMBINED = Wordlist('sages_combined', letters_only, with_frequency)
 LATIN = Wordlist('wikipedia_la', classical_latin_letters, with_frequency)
 CHAOTIC = Wordlist('chaotic', letters_only, with_frequency)
 #TODO: spanish

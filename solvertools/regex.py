@@ -1,7 +1,7 @@
 """
 Wacky tools for slicing and dicing regexes.
 """
-from sre_parse import parse, CATEGORIES, SubPattern
+from sre_parse import parse, CATEGORIES, SPECIAL_CHARS, SubPattern
 from sre_constants import MAXREPEAT
 
 UNKNOWN = u'/.*/'
@@ -15,7 +15,7 @@ def regex_sequence(strings):
     pattern = []
     if any(is_regex(s) for s in strings):
         for s in strings:
-            pattern.extend(parse(strip_slashes(s)))
+            pattern.extend(parse(bare_regex(s)))
         return u'/'+unparse(pattern)+u'/'
     else:
         return u''.join(strings)
@@ -27,13 +27,22 @@ def is_regex(text):
     """
     if not isinstance(text, basestring):
         return False
-    return text.startswith('/') and text.endswith('/')
+    return text.startswith(u'/') and text.endswith(u'/')
 
 def strip_slashes(text):
     """
     Remove the slashes that may surround a regex.
     """
-    return text.strip('/')
+    return text.strip(u'/')
+
+def bare_regex(text):
+    """
+    Removes the slash markers from a regex if it has them.
+    """
+    if is_regex(text):
+        return text[1:-1]
+    else:
+        return text
 
 def regex_len(regex):
     """
@@ -43,7 +52,7 @@ def regex_len(regex):
     """
     if not is_regex(regex):
         return len(regex), len(regex)
-    return _regex_len_pattern(parse(strip_slashes(regex)))
+    return _regex_len_pattern(parse(bare_regex(regex)))
 
 def _regex_len_pattern(pattern):
     "Returns the minimum and maximum length of a parsed regex pattern."
@@ -90,7 +99,7 @@ def _regex_len_repeat(data):
     return min_repeat * lo, min(MAXREPEAT, max_repeat * hi)
 
 def round_trip(regex):
-    return unparse(parse(strip_slashes(regex)))
+    return unparse(parse(bare_regex(regex)))
 
 def regex_index(regex, index):
     """
@@ -110,13 +119,16 @@ def regex_index(regex, index):
             return INVALID
     elif not is_regex(regex):
         return regex[index]
-    choices = _regex_index_pattern(parse(strip_slashes(regex)), index)
+    choices = _regex_index_pattern(parse(bare_regex(regex)), index)
     if len(choices) == 0:
         # not exactly sure how this would happen
         return INVALID
     elif len(choices) == 1:
         regex = unparse(choices[0])
-        if choices[0][0] == 'literal':
+        if choices[0][0][0] == 'literal':
+            # We know our choices are length-1 regexes. If we have one choice,
+            # and its one character has the op of 'literal', we can just return
+            # the bare literal.
             return regex
         else:
             return u'/%s/' % (regex,)
@@ -143,6 +155,41 @@ def _regex_index(struct, index):
         else:
             raise ValueError("I don't know what to do with this regex: "
                              + str(struct))
+
+def regex_slice(expr, start, end):
+    """
+    Get a slice of a string, which may be an uncertain regex, by calling
+    regex_index on each index.
+
+    Note that this can return expressions that are overly general: for example,
+    it can mix characters from both branches of a regex. Being more specific
+    than that would take more work.
+    """
+    if not is_regex(expr):
+        return expr[slice(start, end)]
+    if start < 0 or end < 0:
+        raise NotImplementedError("Can't take negative slices of a regex yet")
+    result = u''
+    nonliteral_found = False
+    for index in xrange(start, end):
+        choices = _regex_index_pattern(parse(bare_regex(expr)), index)
+        if choices == INVALID or len(choices) == 0:
+            return INVALID
+        elif len(choices) == 1:
+            regex = unparse(choices[0])
+            if choices[0][0][0] != 'literal':
+                nonliteral_found = True
+            result += regex
+        else:
+            regex = round_trip(unparse(('branch', (None, choices))))
+            if u'|' in regex:
+                result +=  u'(%s)' % (regex,)
+            else:
+                result += regex
+    if nonliteral_found:
+        return u'/%s/' % result
+    else:
+        return result
 
 def _regex_index_branch(branches, index):
     choices = []
@@ -181,6 +228,14 @@ def _regex_index_pattern(pattern, index):
                 if sub_index >= 0:
                     choices.extend(_regex_index(sub, sub_index))
         lo_counter, hi_counter = next_lo, next_hi
+    
+    # if any of the choices is 'any', it overrules everything else.
+    for choice in choices:
+        # make sure our choices are single characters
+        assert len(choice) == 1
+        op, data = choice[0]
+        if op == 'any':
+            return [choice]
     return choices
 
 def unparse(struct):
@@ -200,7 +255,12 @@ def unparse(struct):
         raise TypeError("%s doesn't belong in a regex structure" % struct)
 
 def _unparse_literal(data):
-    return unichr(data)
+    char = unichr(data)
+    if char in SPECIAL_CHARS:
+        return u'\\' + char
+    else:
+        return char
+
 
 def _unparse_any(data):
     return u'.'
