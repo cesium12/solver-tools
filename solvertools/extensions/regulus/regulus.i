@@ -42,9 +42,10 @@ struct DictEntry {
 class Dict {
 public:
 
-  explicit Dict(const char* filename) throw (std::ios_base::failure);
+  Dict() throw ();
   Dict(std::vector<DictEntry> entries);
 
+  bool read(const char* filename);
   bool write(const char* filename) const;
 
   std::vector<DictEntry> grep(std::string regex) const;
