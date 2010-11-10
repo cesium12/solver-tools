@@ -118,6 +118,14 @@ bool AMTrie::read(FILE* fin) {
   return(!ferror(fin) && !feof(fin));
 }
 
+bool AMTrie::read(const char* filename) {
+  FILE* fin = fopen(filename, "rb");
+  if(fin == NULL) return false;
+  bool result = read(fin);
+  fclose(fin);
+  return result;
+}
+
 bool AMTrie::write(FILE* fout) const {
   if(ferror(fout)) return(false);
   fwrite(MAGIC_STR, 1, MAGIC_LEN, fout);
@@ -125,4 +133,12 @@ bool AMTrie::write(FILE* fout) const {
   fwrite(&root, sizeof(root), 1, fout);
   fwrite(trie, sizeof(uint32_t), size, fout);
   return(!ferror(fout));
+}
+
+bool AMTrie::write(const char* filename) const {
+  FILE* fout = fopen(filename, "wb");
+  if(fout == NULL) return false;
+  bool result = write(fout);
+  fclose(fout);
+  return result;
 }

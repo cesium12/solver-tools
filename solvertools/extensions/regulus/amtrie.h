@@ -111,12 +111,14 @@ public:
      @returns \c true if the AMTrie was successfully read.
   */
   bool read(FILE* fin);
+  bool read(const char* filename);
 
   /**
      Writes an AMTrie to a file.
      @returns \c true if the AMTrie was successfully written.
   */
   bool write(FILE* fout) const;
+  bool write(const char* filename) const;
 
 private:
 
