@@ -34,6 +34,7 @@
 #ifndef __DICT_DOT_H_INCLUDED__
 #define __DICT_DOT_H_INCLUDED__
 
+#include <iostream>
 #include <stdint.h>
 #include <string>
 #include <vector>
@@ -67,8 +68,14 @@ class Dict {
 public:
 
   typedef std::string string;
-  typedef std::vector<string> WordList;
-  typedef std::vector<freq_t> FreqList;
+  typedef std::vector<DictEntry> WordList;
+
+
+protected:
+  static const char* MAGIC_STR; ///< The "magic string" to written to
+				///a file at the start of an AMTrie.
+  static const size_t MAGIC_LEN = 6; ///< The length of the "magic
+                                     ///string".
 
 
 private:
@@ -76,19 +83,27 @@ private:
   AMTrie trie; ///< A dictionary containing the known words. The data
 	       ///associated with each word is the word's unique
 	       ///identifier >= 1.
-  WordList word_list; ///< A vector mapping unique identifiers to
-		      ///words.
-  FreqList freq_list; ///< A vector mapping unique identifiers to word
-		      ///frequencies.
+  WordList words; ///< A vector mapping unique identifiers to words
+                  ///and their associated frequencies.
 
 
 public:
 
   /**
+     Constructs a new (empty) dictionary.
+   */
+  Dict() throw ();
+
+  /**
+     Constructs a new dictionary object based on a binary file.
+   */
+  explicit Dict(const char* filename) throw (std::ios_base::failure);
+
+  /**
      Constructs a new dictionary from the given word->frequency map.
      Assumes that each word is given at most once.
    */
-  Dict(std::vector<DictEntry> entries);
+  Dict(std::vector<DictEntry> entries) throw ();
 
   /**
      Returns a list of all words matching the given regular
@@ -117,6 +132,20 @@ public:
    */
   DictEntry best_match(std::string regex) const;
 
+  /**
+     Reads a binary representation of a dictionary from a file.
+     @returns \c true if the Dict was successfully read.
+  */
+  bool read(FILE* fin);
+  bool read(const char* filename);
+
+  /**
+     Writes a binary representation of a dictionary to a file.
+     @returns \c true if the Dict was successfully written.
+  */
+  bool write(FILE* fout) const;
+  bool write(const char* filename) const;
+
 
 private:
 
@@ -137,8 +166,8 @@ private:
     freq_cmp(const Dict *dict_ptr) :
       dict(dict_ptr) {;}
     inline bool operator ()(const WordFit &a, const WordFit &b) {
-      freq_t f1 = dict->freq_list[a];
-      freq_t f2 = dict->freq_list[b];
+      freq_t f1 = dict->words[a].freq;
+      freq_t f2 = dict->words[b].freq;
       if (f1 != f2) {
 	return f1 > f2;
       } else {

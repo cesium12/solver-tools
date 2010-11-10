@@ -1,6 +1,6 @@
 UNAME := $(shell uname)
 
-CPPFLAGS = -Wall -O3 -fpic -ffast-math -pipe `python-config --cflags`
+CPPFLAGS = -Wall -O3 -fpic -ffast-math -pipe `python-config --cflags` -Wno-unused-result
 ifeq ($(UNAME), Linux)
 objs = amtrie.o automaton.o check.o dict.o dyntrie.o
 endif
@@ -10,7 +10,7 @@ endif
 _regulus.so: $(objs) regulus_wrap.o
 	g++ -shared -dynamiclib $(CPPFLAGS) $(objs) regulus_wrap.o -o _regulus.so
 
-regulus_wrap.cpp:
+regulus_wrap.cpp: regulus.i
 	swig -c++ -python -o regulus_wrap.cpp regulus.i
 
 regex_test: $(objs) regex_test.o

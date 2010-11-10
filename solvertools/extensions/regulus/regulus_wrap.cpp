@@ -2698,17 +2698,18 @@ SWIG_Python_MustGetPtr(PyObject *obj, swig_type_info *ty, int argnum, int flags)
 #define SWIGTYPE_p_signed_char swig_types[9]
 #define SWIGTYPE_p_size_type swig_types[10]
 #define SWIGTYPE_p_std__invalid_argument swig_types[11]
-#define SWIGTYPE_p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t swig_types[12]
-#define SWIGTYPE_p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t__allocator_type swig_types[13]
-#define SWIGTYPE_p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t__value_type swig_types[14]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[15]
-#define SWIGTYPE_p_unsigned_char swig_types[16]
-#define SWIGTYPE_p_unsigned_int swig_types[17]
-#define SWIGTYPE_p_unsigned_long_long swig_types[18]
-#define SWIGTYPE_p_unsigned_short swig_types[19]
-#define SWIGTYPE_p_value_type swig_types[20]
-static swig_type_info *swig_types[22];
-static swig_module_info swig_module = {swig_types, 21, 0, 0, 0, 0};
+#define SWIGTYPE_p_std__ios_base__failure swig_types[12]
+#define SWIGTYPE_p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t swig_types[13]
+#define SWIGTYPE_p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t__allocator_type swig_types[14]
+#define SWIGTYPE_p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t__value_type swig_types[15]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[16]
+#define SWIGTYPE_p_unsigned_char swig_types[17]
+#define SWIGTYPE_p_unsigned_int swig_types[18]
+#define SWIGTYPE_p_unsigned_long_long swig_types[19]
+#define SWIGTYPE_p_unsigned_short swig_types[20]
+#define SWIGTYPE_p_value_type swig_types[21]
+static swig_type_info *swig_types[23];
+static swig_module_info swig_module = {swig_types, 22, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -7306,7 +7307,38 @@ SWIGINTERN PyObject *DictEntry_swigregister(PyObject *SWIGUNUSEDPARM(self), PyOb
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_new_Dict(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Dict__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Dict *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_Dict",&obj0)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Dict" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  try {
+    result = (Dict *)new Dict((char const *)arg1);
+  }
+  catch(std::ios_base::failure &_e) {
+    SWIG_Python_Raise(SWIG_NewPointerObj((new std::ios_base::failure(static_cast< const std::ios_base::failure& >(_e))),SWIGTYPE_p_std__ios_base__failure,SWIG_POINTER_OWN), "std::ios_base::failure", SWIGTYPE_p_std__ios_base__failure); SWIG_fail;
+  }
+  
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Dict, SWIG_POINTER_NEW |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Dict__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   std::vector< DictEntry,std::allocator< DictEntry > > arg1 ;
   PyObject * obj0 = 0 ;
@@ -7326,6 +7358,76 @@ SWIGINTERN PyObject *_wrap_new_Dict(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Dict, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Dict(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[2];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = (int)PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 1); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_AsCharPtrAndSize(argv[0], 0, NULL, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_Dict__SWIG_0(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector<DictEntry,std::allocator< DictEntry > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_Dict__SWIG_1(self, args);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_Dict'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Dict(char const *)\n"
+    "    Dict(std::vector< DictEntry,std::allocator< DictEntry > >)\n");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Dict_write(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Dict *arg1 = (Dict *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Dict_write",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Dict, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Dict_write" "', argument " "1"" of type '" "Dict const *""'"); 
+  }
+  arg1 = reinterpret_cast< Dict * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Dict_write" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  result = (bool)((Dict const *)arg1)->write((char const *)arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return NULL;
 }
 
@@ -7552,6 +7654,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_DictEntry", _wrap_delete_DictEntry, METH_VARARGS, NULL},
 	 { (char *)"DictEntry_swigregister", DictEntry_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_Dict", _wrap_new_Dict, METH_VARARGS, NULL},
+	 { (char *)"Dict_write", _wrap_Dict_write, METH_VARARGS, NULL},
 	 { (char *)"Dict_grep", _wrap_Dict_grep, METH_VARARGS, NULL},
 	 { (char *)"Dict_grep_freq_sorted", _wrap_Dict_grep_freq_sorted, METH_VARARGS, NULL},
 	 { (char *)"Dict_total_freq", _wrap_Dict_total_freq, METH_VARARGS, NULL},
@@ -7576,6 +7679,7 @@ static swig_type_info _swigt__p_short = {"_p_short", "short *|int_least16_t *|in
 static swig_type_info _swigt__p_signed_char = {"_p_signed_char", "signed char *|int_least8_t *|int_fast8_t *|int8_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_size_type = {"_p_size_type", "size_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__invalid_argument = {"_p_std__invalid_argument", "std::invalid_argument *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__ios_base__failure = {"_p_std__ios_base__failure", "std::ios_base::failure *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t = {"_p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t", "std::vector< DictEntry > *|std::vector< DictEntry,std::allocator< DictEntry > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t__allocator_type = {"_p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t__allocator_type", "std::allocator< DictEntry > *|std::vector< DictEntry >::allocator_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t__value_type = {"_p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t__value_type", "std::vector< DictEntry >::value_type *|DictEntry *", 0, 0, (void*)0, 0};
@@ -7599,6 +7703,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_signed_char,
   &_swigt__p_size_type,
   &_swigt__p_std__invalid_argument,
+  &_swigt__p_std__ios_base__failure,
   &_swigt__p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t,
   &_swigt__p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t__allocator_type,
   &_swigt__p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t__value_type,
@@ -7622,6 +7727,7 @@ static swig_cast_info _swigc__p_short[] = {  {&_swigt__p_short, 0, 0, 0},{0, 0, 
 static swig_cast_info _swigc__p_signed_char[] = {  {&_swigt__p_signed_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_size_type[] = {  {&_swigt__p_size_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__invalid_argument[] = {  {&_swigt__p_std__invalid_argument, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__ios_base__failure[] = {  {&_swigt__p_std__ios_base__failure, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t[] = {  {&_swigt__p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t__allocator_type[] = {  {&_swigt__p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t__allocator_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t__value_type[] = {  {&_swigt__p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t__value_type, 0, 0, 0},  {&_swigt__p_DictEntry, 0, 0, 0},{0, 0, 0, 0}};
@@ -7645,6 +7751,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_signed_char,
   _swigc__p_size_type,
   _swigc__p_std__invalid_argument,
+  _swigc__p_std__ios_base__failure,
   _swigc__p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t,
   _swigc__p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t__allocator_type,
   _swigc__p_std__vectorT_DictEntry_std__allocatorT_DictEntry_t_t__value_type,

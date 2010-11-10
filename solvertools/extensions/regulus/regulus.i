@@ -1,9 +1,11 @@
 %module regulus
+%include "exception.i"
 %include "std_string.i"
 %include "std_vector.i"
 %include "std_pair.i"
 %include "stdint.i"
 
+#include <iostream>
 #include <stdint.h>
 #include <string>
 #include <vector>
@@ -40,7 +42,11 @@ struct DictEntry {
 class Dict {
 public:
 
+  explicit Dict(const char* filename) throw (std::ios_base::failure);
   Dict(std::vector<DictEntry> entries);
+
+  bool write(const char* filename) const;
+
   std::vector<DictEntry> grep(std::string regex) const;
   std::vector<DictEntry> grep_freq_sorted(std::string regex) const;
   freq_t total_freq(std::string regex) const;

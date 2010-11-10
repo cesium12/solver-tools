@@ -69,7 +69,8 @@ protected:
   static const char* MAGIC_STR; ///< The "magic string" to written to
 				///a file at the start of an AMTrie.
   static const size_t MAGIC_LEN = 8; ///< The length of the "magic
-				     ///string".
+                                     ///string".
+
 
 public:
 

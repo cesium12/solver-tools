@@ -173,6 +173,7 @@ class Dict(_object):
         this = _regulus.new_Dict(*args)
         try: self.this.append(this)
         except: self.this = this
+    def write(self, *args): return _regulus.Dict_write(self, *args)
     def grep(self, *args): return _regulus.Dict_grep(self, *args)
     def grep_freq_sorted(self, *args): return _regulus.Dict_grep_freq_sorted(self, *args)
     def total_freq(self, *args): return _regulus.Dict_total_freq(self, *args)

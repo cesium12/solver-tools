@@ -32,13 +32,39 @@
 */
 
 #include <algorithm>
+#include <assert.h>
 #include <string>
+#include <string.h>
 
 #include "dict.h"
 #include "dyntrie.h"
 
 
-Dict::Dict(std::vector<DictEntry> entries) {
+
+const char* Dict::MAGIC_STR = "Dict1.";
+
+
+Dict::Dict() throw () {
+  ;
+}
+
+
+Dict::Dict(const char* filename) throw (std::ios_base::failure) {
+  bool success = read(filename);
+  if(!success) {
+    throw new std::ios_base::failure("Input failure while constructing Dict object from file.");
+  }
+}
+
+
+Dict::Dict(std::vector<DictEntry> entries) throw () {
+  for(size_t i = 0; i < entries.size(); ++i) {
+    for(size_t j = 0; j < entries[i].word.length(); ++j) {
+      if('a' <= entries[i].word[j] && entries[i].word[j] <= 'z') {
+	entries[i].word[j] += 'A' - 'a';
+      }
+    }
+  }
   sort(entries.begin(), entries.end());
   size_t p = 0;
   for(size_t i = 1; i < entries.size(); ++i) {
@@ -54,13 +80,11 @@ Dict::Dict(std::vector<DictEntry> entries) {
     entries.resize(p+1);
   }
 
-  word_list.push_back(std::string(""));
-  freq_list.push_back(0);
+  words.push_back(DictEntry());
   DynTrie dyn;
   for(size_t i = 0; i < entries.size(); ++i) {
     dyn.insert(entries[i].word.c_str(), i+1);
-    word_list.push_back(entries[i].word);
-    freq_list.push_back(entries[i].freq);
+    words.push_back(DictEntry(entries[i]));
   }
   trie = AMTrie(dyn);
 }
@@ -124,10 +148,10 @@ Dict::WordFitVec Dict::fit_words(const Automaton &automaton) const {
 
 std::vector<DictEntry> Dict::grep(std::string regex) const {
   WordFitVec fit = fit_words(Automaton(regex));
-  std::vector<DictEntry> result;
+  WordList result;
   result.reserve(fit.size());
   for(size_t i = 0; i < fit.size(); ++i) {
-    result.push_back(DictEntry(word_list[fit[i]], freq_list[fit[i]]));
+    result.push_back(words[fit[i]]);
   }
   return(result);
 }
@@ -136,10 +160,10 @@ std::vector<DictEntry> Dict::grep(std::string regex) const {
 std::vector<DictEntry> Dict::grep_freq_sorted(std::string regex) const {
   WordFitVec fit = fit_words(Automaton(regex));
   sort(fit.begin(), fit.end(), freq_cmp(this));
-  std::vector<DictEntry> result;
+  WordList result;
   result.reserve(fit.size());
   for(size_t i = 0; i < fit.size(); ++i) {
-    result.push_back(DictEntry(word_list[fit[i]], freq_list[fit[i]]));
+    result.push_back(words[fit[i]]);
   }
   return(result);  
 }
@@ -149,7 +173,7 @@ freq_t Dict::total_freq(std::string regex) const {
   WordFitVec fit = fit_words(Automaton(regex));
   freq_t total = 0;
   for(size_t i = 0; i < fit.size(); ++i) {
-    total += freq_list[i];
+    total += words[fit[i]].freq;
   }
   return(total);
 }
@@ -173,7 +197,7 @@ DictEntry Dict::best_match(std::string regex) const {
     uint32_t edges      = graphEdges & trieEdges;
 
     if(wordID && pos.graphNode == automaton.getAcceptState()) {
-      if(freq_list[best] < freq_list[wordID]) {
+      if(words[best].freq < words[wordID].freq) {
 	best = wordID;
       }
     }
@@ -195,5 +219,69 @@ DictEntry Dict::best_match(std::string regex) const {
     }
   }
 
-  return(DictEntry(word_list[best], freq_list[best]));
+  return(words[best]);
+}
+
+
+bool Dict::read(FILE* fin) {
+  if(feof(fin) || ferror(fin)) return(false);
+  char buf[MAGIC_LEN];
+  fread(buf, 1, MAGIC_LEN, fin);
+  if(feof(fin) || ferror(fin)) return(false);
+  if(memcmp(buf, MAGIC_STR, MAGIC_LEN) != 0) return(false);
+  size_t n;
+  fread(&n, sizeof(n), 1, fin);
+  if(feof(fin) || ferror(fin)) return(false);
+  words.clear();
+  words.reserve(n);
+  for(size_t i = 0; i < n; ++i) {
+    size_t len;
+    fread(&len, sizeof(len), 1, fin);
+    if(feof(fin) || ferror(fin)) return(false);
+    char* buf = new char [len+1];
+    fread(buf, sizeof(char), len, fin);
+    buf[len] = '\0';
+    std::string word(buf);
+    delete[] buf;
+    if(feof(fin) || ferror(fin)) return(false);
+    freq_t freq;
+    fread(&freq, sizeof(freq), 1, fin);
+    if(feof(fin) || ferror(fin)) return(false);
+    words.push_back(DictEntry(word, freq));
+  }
+  return(trie.read(fin));
+}
+
+
+bool Dict::read(const char* filename) {
+  FILE* fin = fopen(filename, "rb");
+  if(fin == NULL) return false;
+  bool result = read(fin);
+  fclose(fin);
+  return result;
+}
+
+
+bool Dict::write(FILE* fout) const {
+  if(ferror(fout)) return(false);
+  fwrite(MAGIC_STR, 1, MAGIC_LEN, fout);
+  size_t n = words.size();
+  fwrite(&n, sizeof(n), 1, fout);
+  for(size_t i = 0; i < n; ++i) {
+    size_t len = words[i].word.length();
+    fwrite(&len, sizeof(len), 1, fout);
+    fwrite(words[i].word.c_str(), sizeof(char), len, fout);
+    fwrite(&words[i].freq, sizeof(words[i].freq), 1, fout);
+  }
+
+  return(!ferror(fout) && trie.write(fout));
+}
+
+
+bool Dict::write(const char* filename) const {
+  FILE* fout = fopen(filename, "wb");
+  if(fout == NULL) return false;
+  bool result = write(fout);
+  fclose(fout);
+  return result;
 }
