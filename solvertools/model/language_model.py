@@ -10,7 +10,7 @@ from solvertools.model.numbers import number_logprob, is_numeric
 from solvertools.model.answer_reader import answer_reader
 from solvertools.util import load_pickle, save_pickle, get_picklefile, \
                              file_exists
-from solvertools.regex import is_regex
+from solvertools.regex import is_regex, regex_slice, regex_len
 from solvertools import wordlist
 import random, string, logging
 import numpy as np
@@ -115,31 +115,56 @@ class WordListModel(LanguageModel):
             elif word not in self.wordlist:
                 return MINIMUM_LOGPROB
 
+    def word_match_logprob(self, word):
+        """
+        Get the relative probability of this word given its appearance in
+        a wordlist.
+        """
+        if is_regex(word):
+            word, freq = self.wordlist.best_match(word)
+            word = unicode(word)
+            if word is None:
+                return (u'#', MINIMUM_LOGPROB)
+
+        if is_numeric(word):
+            return (word, number_logprob(int(word)))
+        else:
+            if word in self.wordlist:
+                return (word, self.word_dist.logprob(self.wordlist.convert(word)))
+            elif word not in self.wordlist:
+                return (u'#', MINIMUM_LOGPROB)
+
     def split_words(self, text):
         """
         Find the best English text to match the given string by inserting
-        spaces (and possibly filling blanks, once we have a model for this).
+        spaces and filling blanks.
+
+            >>> en.split_words('/.E..S....N..T...P..E/')
+            (u'PENNSYLVANIA TURNPIKE', -42.746031349313313)
         """
-        best_matches = ['???'] * (len(text) + 1)
+        # FIXME: only matches the minimum length for now. This should work
+        # in the cases puzzlearray needs.
+        textlen = regex_len(text)[0]
+        best_matches = ['???'] * (textlen + 1)
 
         # start with very negative log probabilities
-        best_logprobs = np.ones((len(text) + 1,)) * -10000
+        best_logprobs = np.ones((textlen + 1,)) * -10000
 
         best_matches[0] = ''
         best_logprobs[0] = 0.0
-        for right in xrange(1, len(text)+1):
+        for right in xrange(1, textlen+1):
             for left in xrange(right):
                 left_text = best_matches[left]
                 left_logprob = best_logprobs[left]
-                right_text = text[left:right]
-                right_logprob = self.word_logprob(right_text)
+                right_text = regex_slice(text, left, right)
+                right_match, right_logprob = self.word_match_logprob(right_text)
                 if left_text != '':
-                    combined_text = left_text + ' ' + right_text
+                    combined_text = left_text + ' ' + right_match
                     combined_logprob = (left_logprob + right_logprob
                                         + SPLIT_LOGPROB)
                 else:
                     combined_logprob = right_logprob
-                    combined_text = right_text
+                    combined_text = right_match
 
                 if combined_logprob > best_logprobs[right]:
                     best_logprobs[right] = combined_logprob

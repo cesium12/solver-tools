@@ -183,7 +183,7 @@ class Wordlist(object):
         """
         if self.regulus is None:
             self.load_regulus()
-        results = self.regulus.grep(bare_regex(pattern))
+        results = self.regulus.grep(str(bare_regex(pattern)))
         return [(result.word, result.freq) for result in results]
 
     def best_match(self, pattern):
@@ -193,7 +193,7 @@ class Wordlist(object):
         """
         if not hasattr(self, 'regulus') or self.regulus is None:
             self.load_regulus()
-        result = self.regulus.best_match(bare_regex(pattern))
+        result = self.regulus.best_match(str(bare_regex(pattern)))
         if result.word is None:
             return (None, 0)
         return result.word, result.freq
