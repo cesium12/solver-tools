@@ -125,6 +125,7 @@ class Wordlist(object):
     Finally, you can set `pickle=False` if you don't want the wordlist to be
     loaded from or saved to a pickle file.
     """
+    version = 1
     def __init__(self, filename, convert=case_insensitive, reader=identity,
                  pickle=True):
         self.filename = filename
@@ -170,11 +171,18 @@ class Wordlist(object):
         """
         if self.words is None:
             self.load()
-        logger.info("Loading Regulus for %s" % self.filename)
+        logger.info("Loading %s" % self.regulus_name())
         from solvertools.extensions.regulus import regulus
-        entries = [regulus.DictEntry(letters_only(word), freq)
-                   for word, freq in self.words.iteritems()]
-        self.regulus = regulus.Dict(entries)
+        self.regulus = regulus.Dict()
+        loaded_cache = self.regulus.read(self.regulus_name())
+        if not loaded_cache:
+            del self.regulus
+            logger.info("Building %s" % self.regulus_name())
+            entries = [regulus.DictEntry(letters_only(word), freq)
+                       for word, freq in self.words.iteritems()]
+            self.regulus = regulus.Dict(entries)
+            logger.info("Saving %s" % self.regulus_name())
+            self.regulus.write(self.regulus_name())
     
     def grep(self, pattern):
         """
@@ -299,6 +307,15 @@ class Wordlist(object):
         """
         return "%s.%s.%s.pickle" % (self.filename, self.convert.__name__,
         self.reader.__name__)
+
+    def regulus_name(self):
+        """
+        The filename that this wordlist will have when pickled. This is
+        determined from its base filename, the name of its convert function,
+        and a version number.
+        """
+        return "%s.%s.%s.regulus" % (self.filename, self.convert.__name__,
+                                     self.version)
 
     def __hash__(self):
         return hash((self.convert, self.filename))

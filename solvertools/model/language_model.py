@@ -45,9 +45,11 @@ class WordListModel(LanguageModel):
     Given appropriate wordlists, this could easily be extended to other
     languages besides English.
     """
+    version = 2
     def __init__(self, name, wordlist):
-        if file_exists(get_picklefile(name+'.model.pickle')):
-            self._load_from_pickle(name+'.model.pickle')
+        pickle_name = '%s.model.%s.pickle' % (name, self.version)
+        if file_exists(get_picklefile(pickle_name)):
+            self._load_from_pickle(pickle_name)
         else:
             self.wordlist = wordlist
             letter_freq = FreqDist()        # letter unigram frequencies
@@ -68,13 +70,13 @@ class WordListModel(LanguageModel):
             self.bigram_dist = LidstoneProbDist(bigram_freq, 1000)
             self.word_dist = LaplaceProbDist(word_freq)
             
-
-            self._save_pickle(name+'.model.pickle')
-
+            self._save_pickle(pickle_name)
+        
     def _load_from_pickle(self, filename):
         logger.info('Loading %s' % filename)
         (self.wordlist, self.letter_dist, self.bigram_dist,
         self.word_dist) = load_pickle(filename)
+
     def _save_pickle(self, filename):
         logger.info('Saving %s' % filename)
         stuff = (self.wordlist, self.letter_dist, self.bigram_dist,
@@ -124,7 +126,7 @@ class WordListModel(LanguageModel):
         if is_regex(word):
             word, freq = self.wordlist.best_match(word)
             word = unicode(word)
-            if word is None:
+            if not word:
                 return (u'#', MINIMUM_LOGPROB)
 
         if is_numeric(word):
@@ -151,7 +153,7 @@ class WordListModel(LanguageModel):
         # FIXME: only matches the minimum length for now. This should work
         # in the cases puzzlearray needs.
         textlen = regex_len(text)[0]
-        best_matches = [u'???'] * (textlen + 1)
+        best_matches = [u'#'] * (textlen + 1)
 
         # start with very negative log probabilities
         best_logprobs = np.ones((textlen + 1,)) * -10000
@@ -175,6 +177,7 @@ class WordListModel(LanguageModel):
                 if combined_logprob > best_logprobs[right]:
                     best_logprobs[right] = combined_logprob
                     best_matches[right] = combined_text
+                    assert combined_text != u''
         return best_matches[-1], best_logprobs[-1]
 
     def text_logprob(self, text):
