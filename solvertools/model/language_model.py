@@ -117,8 +117,9 @@ class WordListModel(LanguageModel):
 
     def word_match_logprob(self, word):
         """
-        Get the relative probability of this word given its appearance in
-        a wordlist.
+        Get the relative probability of this word, or non-deterministic regex,
+        given its appearance in a wordlist. Returns the matched word and its
+        log probability as a tuple.
         """
         if is_regex(word):
             word, freq = self.wordlist.best_match(word)
@@ -139,8 +140,13 @@ class WordListModel(LanguageModel):
         Find the best English text to match the given string by inserting
         spaces and filling blanks.
 
-            >>> en.split_words('/.E..S....N..T...P..E/')
-            (u'PENNSYLVANIA TURNPIKE', -42.746031349313313)
+        Returns 
+
+            >>> en = get_model('en')
+            >>> en.split_words('RGBOFRELIQUARY')[0]
+            u'RGB OF RELIQUARY'
+            >>> en.split_words('/.E..S....N..T...P..E/')[0]
+            u'PENNSYLVANIA TURNPIKE'
         """
         # FIXME: only matches the minimum length for now. This should work
         # in the cases puzzlearray needs.
