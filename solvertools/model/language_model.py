@@ -151,12 +151,12 @@ class WordListModel(LanguageModel):
         # FIXME: only matches the minimum length for now. This should work
         # in the cases puzzlearray needs.
         textlen = regex_len(text)[0]
-        best_matches = ['???'] * (textlen + 1)
+        best_matches = [u'???'] * (textlen + 1)
 
         # start with very negative log probabilities
         best_logprobs = np.ones((textlen + 1,)) * -10000
 
-        best_matches[0] = ''
+        best_matches[0] = u''
         best_logprobs[0] = 0.0
         for right in xrange(1, textlen+1):
             for left in xrange(right):
@@ -164,8 +164,8 @@ class WordListModel(LanguageModel):
                 left_logprob = best_logprobs[left]
                 right_text = regex_slice(text, left, right)
                 right_match, right_logprob = self.word_match_logprob(right_text)
-                if left_text != '':
-                    combined_text = left_text + ' ' + right_match
+                if left_text != u'':
+                    combined_text = left_text + u' ' + right_match
                     combined_logprob = (left_logprob + right_logprob
                                         + SPLIT_LOGPROB)
                 else:
