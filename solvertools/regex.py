@@ -11,44 +11,90 @@ REVERSE_CATEGORIES = {}
 for key, value in CATEGORIES.items():
     REVERSE_CATEGORIES[str(value)] = key
 
-def regex_sequence(strings):
-    pattern = []
-    if any(is_regex(s) for s in strings):
-        for s in strings:
-            pattern.extend(parse(bare_regex(s)))
-        return u'/'+unparse(pattern)+u'/'
-    else:
-        return u''.join(strings)
-
 def is_regex(text):
     """
     In solvertools, regex inputs are represented as strings that begin and end
     with slashes.
+
+        >>> is_regex(u'/.../')
+        True
+        >>> is_regex(u'...')
+        False
+        >>> is_regex(u'//')
+        True
+        >>> is_regex(u'/')
+        False
     """
     if not isinstance(text, basestring):
         return False
-    return text.startswith(u'/') and text.endswith(u'/')
-
-def strip_slashes(text):
-    """
-    Remove the slashes that may surround a regex.
-    """
-    return text.strip(u'/')
+    return len(text) >= 2 and text.startswith(u'/') and text.endswith(u'/')
 
 def bare_regex(text):
     """
-    Removes the slash markers from a regex if it has them.
+    Removes the slash markers from a regex if it has them. The result will
+    work with standard regex functions but will not pass `is_regex`.
+
+        >>> bare_regex(u'/test/')
+        u'test'
+        >>> bare_regex(u'word')
+        u'word'
+        >>> bare_regex(u'http://')
+        u'http://'
     """
     if is_regex(text):
         return text[1:-1]
     else:
         return text
 
+def regex_sequence(strings):
+    """
+    Combine regexes or plain strings together in a sequence.
+
+        >>> regex_sequence(['/foo|bar/', 'baz'])
+        u'/(foo|bar)baz/'
+        >>> regex_sequence(['a', 'b'])
+        u'ab'
+    """
+    pattern = []
+    if any(is_regex(s) for s in strings):
+        for s in strings:
+            parsed = parse(bare_regex(s))
+            pattern.extend(_wrap_branches(parsed))
+        return u'/'+unparse(pattern)+u'/'
+    else:
+        return u''.join(strings)
+
+def _wrap_branches(struct):
+    result = []
+    for op, data in struct:
+        if op == 'branch':
+            result.append( ('subpattern', (1, [(op, data)])) )
+        else:
+            result.append( (op, data) )
+    return result
+
 def regex_len(regex):
     """
     Returns a tuple of the minimum and maximum possible length string that
     a regex will match. Returns MAXREPEAT (65535) if a match can be
     very or infinitely long.
+
+        >>> regex_len(u'test')
+        (4, 4)
+        >>> regex_len(u'/t.st/')
+        (4, 4)
+        >>> regex_len(u'/.*/')
+        (0, 65535)
+        >>> regex_len(u'.*')                      # not treated as a regex
+        (2, 2)
+        >>> regex_len(u'/fo?o/')
+        (2, 3)
+        >>> regex_len(u'/mo{2,7}/')
+        (3, 8)
+        >>> regex_len(u'/(foo)+/')
+        (3, 65535)
+        >>> regex_len(u'/s?e?q?u?e?n?c?e?/')
+        (0, 8)
     """
     if not is_regex(regex):
         return len(regex), len(regex)
@@ -99,6 +145,9 @@ def _regex_len_repeat(data):
     return min_repeat * lo, min(MAXREPEAT, max_repeat * hi)
 
 def round_trip(regex):
+    """
+    Send a regex through the parser and unparser, possibly simplifying it.
+    """
     return unparse(parse(bare_regex(regex)))
 
 def regex_index(regex, index):
