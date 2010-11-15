@@ -149,6 +149,11 @@ private:
   Automaton simplifyLoneEpsilonEdges() const;
   Automaton simplifyDeadEnds() const;
 
+  /**
+     A helper method that parses a bracket expression.
+   */
+  static Automaton automatonFromBracketExpression(const char* regex) throw (SpecException);
+
   /*
     Here's a complicated bunch of stuff to handle extensible
     operations in Automaton specification strings.

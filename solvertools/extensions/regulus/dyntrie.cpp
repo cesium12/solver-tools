@@ -54,6 +54,10 @@ void DynTrie::insert(const char* suffix, uint32_t data_in) {
   uint32_t p = 0;
   while(*suffix != '\0') {
     CHECK(p < slab.size());
+    if(*suffix == ' ') {
+      ++suffix;
+      continue;
+    }
     CHECK('A' <= *suffix && *suffix <= 'Z');
     if(slab[p].next[*suffix - 'A'] == 0) {
       slab[p].next[*suffix - 'A'] = slab.size();

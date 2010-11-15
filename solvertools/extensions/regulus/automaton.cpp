@@ -35,6 +35,7 @@
 #include <iostream>
 #include <math.h>
 #include <sstream>
+#include <string.h>
 #include "automaton.h"
 
 
@@ -133,7 +134,15 @@ Automaton Automaton::automatonFromRegex(const char* regex) throw (SpecException)
     Operator op;
     Automaton v;
     OpMap::const_iterator val_ittr = operators.find(c);
-    if(c == '(') {
+    if(c == '[') {
+      const char *right = strchr(regex, ']');
+      if(right == NULL) {
+	throw SpecException("Invalid bracket expression: no matching \']\'");
+      }
+      op = Operator(0, &Automaton::concat);
+      v = automatonFromBracketExpression(regex+1);
+      regex = right;
+    } else if(c == '(') {
       parse_stack.push_back(make_pair<OperandStack, OperatorStack>(operand_stack, operator_stack));
       operand_stack = OperandStack();
       operator_stack = OperatorStack();
@@ -208,6 +217,50 @@ Automaton Automaton::automatonFromRegex(const char* regex) throw (SpecException)
 
 Automaton Automaton::automatonFromRegex(const std::string &regex) throw (SpecException) {
   return(automatonFromRegex(regex.c_str()));
+}
+
+Automaton Automaton::automatonFromBracketExpression(const char* regex) throw (SpecException) {
+  Automaton v;
+  v.startState = 0;
+  v.acceptState = 1;
+  v.nodes = std::vector<Node>(2);
+  char last = 'A';
+  bool dash = false;
+  for(; *regex && *regex != ']'; ++regex) {
+    char c = *regex;
+    if('a' <= c && c <= 'z') {
+      c += 'A' - 'a';
+    }
+    if('A' <= c && c <= 'Z') {
+      if(dash) {
+	for(; last < c; ++last) {
+	  assert('A' <= last && last <= 'Z');
+	  v.nodes[0].fingerprint |= 1 << (last - 'A');
+	  v.nodes[0].letterEdge[last - 'A'] = Edge(v.acceptState);
+	}
+	dash = false;
+      }
+      v.nodes[0].fingerprint |= 1 << (c - 'A');
+      v.nodes[0].letterEdge[c - 'A'] = Edge(v.acceptState);
+      last = c;
+    } else if(c == '-') {
+      dash = true;
+    } else {
+      std::ostringstream s;
+      s << "Invalid bracket character \'";
+      s << c;
+      s << "\'.";
+      throw SpecException(s.str());
+    }
+  }
+  if(dash) {
+    for(; last <= 'Z'; ++last) {
+      assert('A' <= last && last <= 'Z');
+      v.nodes[0].fingerprint |= 1 << (last - 'A');
+      v.nodes[0].letterEdge[last - 'A'] = Edge(v.acceptState);
+    }
+  }
+  return(v);
 }
 
 Automaton::Automaton(char c) throw (SpecException) {
