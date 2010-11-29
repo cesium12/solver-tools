@@ -4,6 +4,7 @@ from solvertools.wordlist import alphanumeric_only
 import numpy as np
 import string
 import codecs
+import csv
 
 class PuzzleArray(np.ndarray):
     """
@@ -42,6 +43,35 @@ class PuzzleArray(np.ndarray):
             if len(line)<max_cols:
                 line.extend(['/.*/']*(max_cols-len(line)))
         return out_list
+
+    @staticmethod
+    def from_csv(filename, has_header=None):
+        """
+        Creates a PuzzleArray from any .csv file that Python's csv module
+        can handle. If it detects a header row (or is told to use one),
+        the first row will be converted to PuzzleArray headers.
+        """
+        fin = codecs.open(filename, 'rb')
+
+        # Try to guess the format of the CSV file
+        sample = fin.read(1024)
+        dialect = csv.Sniffer().sniff(sample)
+        if has_header is None:
+            has_header = csv.Sniffer().has_header(sample)
+        fin.seek(0)
+
+        header = None
+
+        reader = csv.reader(fin, dialect)
+        lines = iter(reader)
+        rows = []
+        if has_header:
+            header_row = lines.next()
+            rows.append([Header(unicode(text, 'utf-8')) for text in header_row])
+        for row in lines:
+            rows.append([unicode(text, 'utf-8') for text in row])
+        fin.close()
+        return PuzzleArray(rows)
 
     @staticmethod
     def load(filename):
