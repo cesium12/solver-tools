@@ -1,4 +1,4 @@
-from regex import is_regex, regex_index, regex_sequence, UNKNOWN, INVALID
+from regex import is_regex, regex_index, regex_sequence, INVALID
 from solvertools.lib.print_grid import array_to_string
 from solvertools.wordlist import alphanumeric_only
 import numpy as np
@@ -6,43 +6,93 @@ import string
 import codecs
 import csv
 
+def numeric_sort_key(s):
+    try:
+        return float(s)
+    except ValueError:
+        return s
+
 class PuzzleArray(np.ndarray):
     """
-    A class designed to hold a grid of stuff, particularly strings,
-    and FlagValues.
+    A class designed to hold a grid of stuff, particularly strings. Very
+    useful for storing a partially-completed puzzle.
+
+    Here's an example of using it on the 2009 puzzle "Soylent Partners":
+
+        >>> from solvertools.util import get_datafile
+        >>> puz = PuzzleArray.load(get_datafile('test/soylent_partners.csv'))
+        >>> print puz
+        __order__ __color__ __colorna __clue_a_ __person_ __clue_b_ __person_ ...
+        1         800000    Maroon    Tony who  Soprano   Tony who' Romo     
+        2         00FFFF    Cyan      Travis of McCoy     Ted who o Danson   
+        3         272974    Navy      Eva who s Mendes    singer bo Vanity   
+        4         FF7F00    Orange    Rod who h Serling   Daniel, p Ortega   
+        5         DC143C    Crimson   Robert wh MacNeil   Johnny wh Storm    
+        6         FF7F50    Coral     Stephen o Colbert   Bobby, a  Seale    
+        7         FF00FF    Magenta   George wh eastman   Rufus who King     
+        8         D2B48C    Tan       Dean know Cain      Tony, a d baretta  
+        9         FFBF00    Amber     Andy, the samberg   Hunt or T sales    
+        10        0000FF    Blue      Stephan o Lebeau    Sonny who liston   
+        11        FDE910    Lemon     Eric, a f Clapton   Rosalind  miles    
+        12        FF2400    Scarlet   Jacques w cartier   Mort, a s sahl     
+        13        FFFF00    Yellow    Derek who Lowe      Anne who  Boleyn   
+        14        B57EDC    Lavender  James, a  Carville  Anthony,  Eden     
+        15        DE3163    Cerise    Maurits,  Escher    Bret who  ellis    
+        
+        >>> print puz.index_everything_into_everything()[:8]
+        __operation__      __text__         __best answer__    __goodness__ 
+        column_order:color RAINBOWCACTUSES  RAINBOW CACTUSES   -3.42672     
+        -result:clue_b[ord ATHONONSPINEEAT  ATHON ON SPINE EAT -6.48827     
+        -color:colorname[i WBCASNOSITECURA  WB CASNO SITE CURA -6.71249     
+        -order:clue_b[orde OSEPOANTHANINET  OSEP OAN THAN INET -6.88735     
+        -clue_b[order]     OSEPOANTHANINET  OSEP OAN THAN INET -6.88735     
+        -inspector:clue_b[ SEOHONANTINPATE  SEO HON ANTIN PATE -6.91403     
+        inspector:clue_b[o ETAPNITNANOHOES  ETAP NIT NANO HOES -7.02639     
+        
+        >>> puz.try_indexing(1)
+        Best answer
+        ===========
+        Operation: column_order:colorname[inspector]
+        Extracted text: RAINBOWCACTUSES
+        Suggested answer: RAINBOW CACTUSES
+        Goodness: -3.427
+        u'RAINBOW CACTUSES'
+
+    PuzzleArrays are also great at working with unknown or partially known
+    strings:
+    
+        >>> from solvertools.util import get_datafile
+        >>> puz = PuzzleArray.from_csv(get_datafile('test/soylent_incomplete.csv'))
+        >>> print puz
+        __order__ __color__ __colorna __clue_a_ __person_ __clue_b_ __person_ ...
+        1         800000    /.*/      Tony who  Soprano   Tony who' Romo     
+        2         00FFFF    Cyan      Travis of McCoy     Ted who o Danson   
+        3         272974    /.*/      Eva who s Mendes    singer bo Vanity   
+        4         FF7F00    Orange    Rod who h Serling   Daniel, p Ortega   
+        5         DC143C    /.*/      Robert wh MacNeil   Johnny wh Storm    
+        6         FF7F50    Coral     Stephen o Colbert   Bobby, a  Seale    
+        7         FF00FF    Magenta   George wh eastman   Rufus who King     
+        8         D2B48C    /.*/      Dean know Cain      Tony, a d baretta  
+        9         FFBF00    Amber     Andy, the samberg   Hunt or T sales    
+        10        0000FF    Blue      Stephan o Lebeau    Sonny who liston   
+        11        FDE910    Lemon     Eric, a f Clapton   Rosalind  miles    
+        12        FF2400    /S.+/     Jacques w cartier   Mort, a s sahl     
+        13        FFFF00    /Yello./  Derek who Lowe      Anne who  Boleyn   
+        14        B57EDC    /.*/      James, a  Carville  Anthony,  Eden     
+        15        DE3163    /.*/      Maurits,  Escher    Bret who  ellis    
+       
+        >>> puz.try_indexing(1)
+        Best answer
+        ===========
+        Operation: column_order:colorname[inspector]
+        Extracted text: /...NBO.CAC.US../
+        Suggested answer: RAINBOW CACTUSES
+        Goodness: -3.024
+        u'RAINBOW CACTUSES'
     """
     def __new__(cls, data, copy=False):
         arr = np.array(data, dtype=object, copy=copy).view(cls)
         return arr
-
-    # Example: test2="order\tlength\tday\telement\n1\t6\tSunday\tsun\tsun\n2\t6\tMonday\tmoon\tmoon\n3\t7\tTuesday\tfire\tTiu\n4\t9\tWednesday\twater\tWoden\n5\t8\tThursday\twood\tThor\n6\t6\tFriday\n7\t8\t\tearth\tSaturn", run tabsep_array_to_lists(test2)
-    # Expects text '\t' and '\n' delimited, pads the header column with '__Col <n>__' and missing data/short lines with '/.*/'
-    @staticmethod
-    def from_tabular(text):
-        """
-        Create a PuzzleArray from tabular data, provided as a string.
-        """
-        def element_transform(elt):
-            if elt == '':
-                return '/.*/'
-            elif len(elt) > 4 and elt.startswith('__') and elt.endswith('__'):
-                return Header(elt[2:-2])
-            else:
-                return elt
-
-        out_list=[]
-        lines=text.split('\n')
-
-        for line in rest_lines:
-            line_transform=[element_transform(elt) for elt in line.split('\t')]
-            out_list.append(line_transform)
-
-        max_cols=max(len(line) for line in out_list)
-
-        for line in out_list:
-            if len(line)<max_cols:
-                line.extend(['/.*/']*(max_cols-len(line)))
-        return out_list
 
     @staticmethod
     def from_csv(filename, has_header=None):
@@ -60,8 +110,6 @@ class PuzzleArray(np.ndarray):
             has_header = csv.Sniffer().has_header(sample)
         fin.seek(0)
 
-        header = None
-
         reader = csv.reader(fin, dialect)
         lines = iter(reader)
         rows = []
@@ -69,24 +117,17 @@ class PuzzleArray(np.ndarray):
             header_row = lines.next()
             rows.append([Header(unicode(text, 'utf-8')) for text in header_row])
         for row in lines:
-            rows.append([unicode(text, 'utf-8') for text in row])
+            rows.append([unicode(text, 'utf-8') if text else "/.*/"
+                         for text in row])
         fin.close()
         return PuzzleArray(rows)
-
-    @staticmethod
-    def load(filename):
-        """
-        Loads tabular data from a file. The file should contain UTF-8
-        tab-separated values.
-        """
-        file = codecs.open(filename, encoding='utf-8', errors='replace')
-        table = PuzzleArray.from_tabular(file.read().strip())
-        file.close()
-        return table
+    
+    load = from_csv
 
     def save(self, filename):
         file = codecs.open(filename, 'w', encoding='utf-8', errors='replace')
-        table = PuzzleArray.from_tabular(file.read().strip())
+        
+        raise NotImplementedError # TODO
         file.close()
     
     def column(self, title):
@@ -136,6 +177,8 @@ class PuzzleArray(np.ndarray):
         for i, item in enumerate(col):
             if isinstance(item, Header):
                 col[i] = None
+            else:
+                col[i] = numeric_sort_key(item)
         sort_order = np.argsort(col)
         return self[sort_order]
     
@@ -145,6 +188,18 @@ class PuzzleArray(np.ndarray):
                                if not isinstance(item, Header)])
 
     def index_everything_into_everything(self):
+        """
+        Try indexing every column into every other column that's possible,
+        sorting the resulting letters by every column as well. This method
+        is sometimes all you need to get a puzzle from stuck to unstuck.
+
+        Returns a new PuzzleArray with four columns:
+
+        - operation: a concise representation of what you need to do to get
+          this result. If the result is "sortby:text[indexby]", that means
+          to sort by the 'sortby' column, and index the 'text' column by the
+          'indexby' column.
+        """
         from solvertools.model.language_model import get_english_model
         model = get_english_model()
 
@@ -159,7 +214,7 @@ class PuzzleArray(np.ndarray):
                 length = len(text)
                 spaced_text, prob = model.split_words(text)
                 goodness = prob/length
-                results.append((description, spaced_text, goodness))
+                results.append((description, text, spaced_text, goodness))
         
         def try_sorted(sorted, sort_title):
             for text_col in xrange(ncol):
@@ -194,11 +249,34 @@ class PuzzleArray(np.ndarray):
         try_sorted(self, '')
         try_sorted(self[::-1], '-')
 
-        results.sort(key=lambda item: -item[2])
+        results.sort(key=lambda item: -item[3])
         result_headers = (Header('operation'), Header('text'),
-                          Header('goodness'))
+                          Header('best answer'), Header('goodness'))
         return PuzzleArray([result_headers] + results)
-    
+
+    def try_indexing(self, n=3):
+        """
+        Print the results of :meth:`index_everything_into_everything` in
+        a human-readable form.
+        """
+        indexed = self.index_everything_into_everything()
+        for i in xrange(1, n+1):
+            op, text, answer, goodness = indexed[i]
+            if i == 1:
+                print "Best answer"
+                print "==========="
+            else:
+                print
+                print "Answer #%d" % i
+                print "========="
+            print "Operation:", op
+            print "Extracted text:", text
+            print "Suggested answer:", answer
+            print "Goodness: %3.3f" % (goodness,)
+        # return the best answer
+        return indexed[1, 2]
+
+
     def diagonalize(self):
         assert self.ndim == 1
         values = [item for item in self if not isinstance(item, Header)]
@@ -296,7 +374,7 @@ def index_into(text, index, numbers_are_okay=False):
     - Indexing off the end of a text means you probably shouldn't be doing it.
     """
     if hasattr(text, '__getitem__'):
-        if (not text) or text == ' ':
+        if text is None or text == '' or text == ' ':
             # Empty values might indicate spaces.
             return ' '
         else:
@@ -320,20 +398,10 @@ def index_into(text, index, numbers_are_okay=False):
 
 def index_lists(list1, list2):
     return PuzzleArray([index_into(text, index)
-                        for text, index in zip(list1, list2)])
+                        for text, index in zip(list1, list2)
+                        if not isinstance(text, Header)])
 
 if __name__ == '__main__':
-    puz = PuzzleArray([
-        [Header('order'), Header('length'), Header('day'), Header('element'), Header('god')],
-        [1, 6, 'Sunday', 'sun', 'sun'],
-        [2, 6, 'Monday', 'moon', 'moon'],
-        [3, 7, 'Tuesday', 'fire', 'Tiu'],
-        [4, 9, 'Wednesday', 'water', 'Woden'],
-        [5, 8, 'Thursday', 'wood', 'Thor'],
-        [6, 6, 'Friday', 'metal', 'Freya'],
-        [7, 8, 'Saturday', 'earth', 'Saturn']
-    ])
-
     puz2 = PuzzleArray([
         [Header('Puzzle'), Header('Flavortext word'),
          Header('Matching answer'), Header('Answer number'),

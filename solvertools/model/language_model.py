@@ -253,6 +253,30 @@ def get_english_model():
     """
     return get_model('en')
 
+def humanize_goodness(val):
+    """
+    Given a goodness value, return a string explaining how actually 'good' it
+    is.
+    """
+    if val >= 0:
+        raise ValueError("This requires a log probability, and something is "
+                         "wrong if your log probability is positive.")
+    elif val > -3.5:
+        return "Meaningful!"
+    elif val > -4.5:
+        return "Almost certainly meaningful!"
+    elif val > -5.5:
+        return "Probably meaningful"
+    elif val > -6.5:
+        return "Might be meaningful"
+    elif val > -8:
+        return "Worth a try?"
+    elif val > -10:
+        return "Probably nonsense"
+    else:
+        return "Nonsense"
+
+
 def demo(omit_spaces=True):
     """
     Demonstrate this module's ability to distinguish real Mystery Hunt answers
