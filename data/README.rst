@@ -35,3 +35,8 @@ Subdirectories:
 
 .. toctree::
    :maxdepth: 2
+
+   dict/wordlists
+   codes/README
+   corpora/README
+

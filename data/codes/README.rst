@@ -21,6 +21,10 @@ alphabetic codes.
 `airports-us-major.txt`
     A list of major US airports.
 
+`amino.txt`
+    Amino acids -- even the obscure ones -- and their 3-letter and 1-letter
+    codes.
+
 `country.txt`
     A list of ISO 3166-1 country names and corresponding two-letter
     country codes.  Note that the Vatican is listed twice, once under
@@ -28,5 +32,9 @@ alphabetic codes.
     country code).  Source:
     http://www.iso.org/iso/english_country_names_and_code_elements
 
+`elements.txt`
+    Atomic elements.
+
 `tld.txt`
     A list of the top-level domain names.  Source: http://www.iana.org/domains/
+
