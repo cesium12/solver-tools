@@ -1,5 +1,9 @@
 *.pickle
 *.pyc
 .*.swp
+*.so
 *.egg-info
 *~
+docs/html
+docs/_build
+data/corpora/wikidumps

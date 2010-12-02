@@ -2,8 +2,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Manic Sages solver-tools's documentation!
-====================================================
+Manic Sages solver-tools
+========================
 
 Contents:
 
@@ -12,9 +12,10 @@ Contents:
 
    INSTALL
    coding
+   solvertools/README
    docs/README
    data/README
-   data/answers/README
+   data/corpora/answers/README
    data/dict/wordlists
 
 Indices and tables
