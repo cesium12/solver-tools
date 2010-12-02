@@ -67,7 +67,7 @@ release = '2011'
 exclude_patterns = ['_build']
 
 # The reST default role (used for this markup: `text`) to use for all documents.
-#default_role = None
+default_role = 'samp'
 
 # If true, '()' will be appended to :func: etc. cross-reference text.
 #add_function_parentheses = True
@@ -103,7 +103,7 @@ html_theme = 'default'
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-#html_title = None
+html_title = "solver-tools documentation"
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None

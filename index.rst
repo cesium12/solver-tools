@@ -8,15 +8,15 @@ Manic Sages solver-tools
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
 
    INSTALL
    coding
-   solvertools/README
    docs/README
+   solvertools/README
    data/README
-   data/corpora/answers/README
-   data/dict/wordlists
+..   data/corpora/answers/README
+..   data/dict/wordlists
 
 Indices and tables
 ==================

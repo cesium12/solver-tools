@@ -1,9 +1,7 @@
 .. _answers:
 
-:mod:`data.answers` -- The MH 2004-2008 answer corpus
-=====================================================
-
-.. module:: data.answers
+`data/corpora/answers` -- The MH 2004-2008 answer corpus
+==============---=======================================
 
 The files in this directory contain the answer phrases from Mystery
 Hunts 2004 through 2008. They comprise 597 answers, of which 56 are
@@ -20,17 +18,16 @@ example::
         ("BOYES", Puzzle)
         ("RGB OF RELIQUARY", Meta)
 
-The answer
-strings are almost all uppercase letters and spaces, but there are a
-few hyphens, periods, apostrophes, and lowercase letters. No answer
-string contains a line break or a double quote. ``TYPE`` is one of
-{``Puzzle``, ``Meta``, ``Ante``}. Puzzle denotes a regular, non-meta puzzle. Meta
-denotes a meta-puzzle, meta-meta-puzzle, or any puzzle which uses the
-*answers* of other puzzles as inputs. Less conventional combinations
-may be marked as Puzzle, or may be omitted. Ante is only used for 2006
-(SPIES) and denotes the "ante" (or "agent") puzzle of each
-round. These do not use other answers as inputs and could have been
-marked as Puzzle.
+The answer strings are almost all uppercase letters and spaces, but
+there are a few hyphens, periods, apostrophes, and lowercase letters.
+No answer string contains a line break or a double quote. ``TYPE`` is
+one of {``Puzzle``, ``Meta``, ``Ante``}. Puzzle denotes a regular,
+non-meta puzzle. Meta denotes a meta-puzzle, meta-meta-puzzle, or any
+puzzle which uses the *answers* of other puzzles as inputs. Less
+conventional combinations may be marked as Puzzle, or may be omitted.
+Ante is only used for 2006 (SPIES) and denotes the "ante" (or "agent")
+puzzle of each round. These do not use other answers as inputs and
+could have been marked as Puzzle.
 
 Examples of puzzles not found in the data are the puzzles from 2005
 with physical objects as answers. (Approximate strings could have been

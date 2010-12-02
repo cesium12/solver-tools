@@ -65,12 +65,13 @@ you can convert between Unicode strings and strings of raw bytes like this::
     someBytes = someString.encode('utf-8')
     someString = someBytes.decode('utf-8')
 
-Character numbers
------------------
+Numbers for characters
+----------------------
 You may end up writing code that represents text characters as numbers.
 
-If the text is ASCII text, the valid numbers are between 0 and 127. If the text
-is Unicode, a character number could be any 32-bit integer, although my system
+If the text is ASCII text, the valid numbers are between 32 and 127 (with
+possibly the occasional 9 and 10 for tabs and linebreaks). If the text is
+Unicode, a character number could be any 32-bit integer, although my system
 only has one printable character numbered higher than a million and I'm not
 sure why it's there.
 
