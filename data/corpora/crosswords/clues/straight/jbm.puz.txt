@@ -1,0 +1,4 @@
+SUMP	Pumps your basement
+SUPER	I'm ___, thanks for asking\!
+ERE	Until
+PIE	One step short of a pier

@@ -1,0 +1,78 @@
+ASKED	"You __ for it!"
+AWAY	"Begone!"
+SALE	Shopper's lure
+KILL	"__ the ump!"
+EVIL	Up to no good
+DENOTE	Stand for
+PALS	People to hang with
+PELTS	Trapper's haul
+ALIAS	Name on a "wanted" poster, maybe
+LILI	Caron title role
+SEALAB	Aquanaut's workplace
+SWIG	Gulp from a flask
+SMOKINGGUN	Piece of indisputable evidence
+WIRED	Jittery from caffeine
+INANE	Lacking sense
+GENTS	Rest room sign
+WAIVE	Give up, as a right
+ELIE	Nobelist Wiesel
+MINE	Outfielder's call
+ALLIN	"It's __ the Game"
+LILA	Oscar winner Kedrova
+ORAN	Algerian port
+YELLOWTAIL	California game fish
+WADES	Slogs along the surf
+KENT	Smallville family name
+TASS	Itar-__ (news agency)
+ASIDES	Stage whispers
+SOO	US/Canada's __ Canals
+SEEDED	Lawn sign
+SEEP	Trickle out
+ETNA	Sicilian spewer
+ETON	School founded by Henry VI
+DUSTBUSTER	Household picker-upper
+EBON	Black, to bards
+EYES	 Storm centers
+ETTU	Rebuke to Brutus
+EBAY	Popular auction site
+BAMA	The Crimson Tide, familiarly
+AXE	Firefighter's need
+OGLER	Leering sort
+LANA	Turner or Cantrell
+EMIT	Send out
+RATE	Give stars to
+ENOS	Slaughter in baseball
+SAXES	Big band horns
+SHORT	Electrical problem
+GAMA	Explorer Vasco da __
+PANTS	Suit part
+SAS	Airline to Stockholm
+MESH	Fly swatter material
+UNIT	Knot or watt
+BARA	Screen vamp Theda
+RESEAL	Close again
+ORNATE	Elaborately decorated
+ROSTER	Baseball yearbook listing
+REFUSE	Say nay to
+RAMIS	"Analyze This" director Harold
+ELUDE	Artfully dodge
+FELLA	Guy, informally
+TORO	Brand of mower
+TORSO	Bit of statuary
+ORLON	Synthetic fiber
+ALES	Publican's stock
+SPORTSCAST	Football on TV, say
+PALE	Far from ruddy
+COMA	Deep sleep
+ATOM	Proton's place
+SITE	Construction area
+TEEN	Many a new driver
+MULT	Prefix meaning "many"
+EARL	James __ Carter
+TOTIE	Comic Fields
+IDLE	Twiddling one's thumbs
+ALSO	"There's more ..."
+EMOTE	Overact
+SEAR	Burn slightly
+LEON	Former ring champ Spinks
+RAMEN	Japanese noodles

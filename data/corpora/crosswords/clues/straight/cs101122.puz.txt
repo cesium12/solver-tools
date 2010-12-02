@@ -1,0 +1,78 @@
+SAYHI	Greet casually, with "to"
+SIR	Respectful title
+ADO	Busyness
+YTD	Pay stub abbr.
+HAIL	Pellets in a tempest
+IGNOREME	Self-diminishing remark
+AMEN	Revival response
+ADMAN	Pro with a pitch
+MEAL	Breakfast, lunch, or dinner
+EMTS	Ambulance occupants, briefly
+NOSUGAR	Iced tea request
+BIDS	Contractors' offerings
+BENJI	Mutt in a 1974 movie
+ILIED	Deceiver's declaration
+DANCE	Hustle or shuffle
+SLATS	Trellis strips
+IDTAG	Label on a lab
+DEMO	Floor model
+ELAL	Airline since 1948
+RODIN	"The Thinker" sculptor
+MATS	Protective pads
+NINA	1492 ship of note
+LOYALSUBJECT	Emperor's minion
+YUMA	Colorado River city
+BUM	Mooch
+OVA	Fertility clinic donations
+ORGAN	Mass music maker
+VERGE	Brink
+ADARE	Acted on ___ (rose to the challenge)
+RUN	Try to get into office
+GUIDES	Safari escorts
+REDEEM	Convert to cash
+EYED	Peered at
+SLAM	Sound accompanying an enraged exit
+STEAD	Bed extension?
+LESS	Not as much
+GRAYMATTER	Brains
+TALE	Folksy account
+GAGA	Lady of pop
+GOON	Hoodlum for hire
+ALIAS	False handle
+GENTS	Mannerly chaps
+ASTER	Daisy look-alike
+AGREE	Avoid a strike
+AES	DDE opponent
+SOLES	Brogue bottoms
+SPROUTUP	Grow quickly
+NEED	Can't do without
+FLASHPOINT	Critical stage
+FLEADIP	Buggy beagle's bath
+HOPS	Beer ingredients
+SLED	Transport with runners
+STD	Part of PST (abbr.)
+ORNATE	Showy
+SVELTE	Willowy
+SHACK	Crude dwelling
+VOGUE	"In" things are in it
+ELITE	Select few
+LINEN	Napkin material
+IPO	Wall St. debut
+ISLET	Archipelago part
+SSR	Outdated geopolitical inits.
+HOLIDAYISSUE	Lands' End pre-Christmas offering
+YODA	Jedi guru
+ILLS	Troubles
+EURO	Lira's replacement
+AGIN	Feudin' with
+DOLL	American Girl purchase
+TUBER	Potato, for one
+BBS	Air gun ammo
+EAT	Have hash
+RNS	Hosp. employees
+CUTE	Pleasingly pretty
+IDLE	Not active
+URBAN	___ sprawl
+KEEN	Finely honed
+PAST	Bygone period
+POSTS	Blog comments

@@ -1,0 +1,78 @@
+CASES	Beer purchases
+CALL	Dial up
+ALAI	Jai __
+SERB	Belgrade native
+EUGENE	Playwright O'Neill
+STORER	Warehouse user
+LIMP	Like a Dali watch
+LOLLS	Lounges around
+IDEA	Creative spark
+MEIR	Israel's Golda
+PRATTLES	Babbles away
+RAPT	Wholly absorbed
+REO	Vintage automaker
+ARMOREDCAR	Brinks vehicle
+PIERS	Docking spots
+TENET	Basic principle
+ALEUT	Eskimo's cousin
+ODER	River to the Baltic
+ERIE	Cleveland's lake
+LARGO	"Key __" (1948 Bogart/Bacall film)
+LEIA	"Star Wars" princess
+OMEN	Sign of things to come
+LIBERALARTS	Philosophy, literature, etc.
+ATT	Lawyer: Abbr.
+SHO	HBO rival
+ORE	Mine yield
+NETS	Earns after taxes
+THIRST	Reason to drink
+IVES	Oscar winner Burl
+ROBERT	Elder Alda
+ROMA	"Arrivederci, __"
+OPAL	October gem
+BASSFIDDLE	Jazz combo instrument
+MYLOVE	1973 Paul McCartney and Wings hit
+MORAL	Aesopian ending
+YVES	The "Y" of YSL
+OPA	__-Locka, Fla.
+MOVE	Chess turn
+MALI	Timbuktu's country
+EDGE	Slight lead
+GARS	Long-snouted fishes
+ERTE	Art Deco master
+MASH	Sitcom set in Korea
+HOOD	Young tough
+PARES	Whittles down
+PASSOVER	Seder time
+SCAR	Surgery souvenir
+ALSO	In addition
+ALAS	Cry of woe
+ART	Singer Garfunkel
+FOSSIL	Paleontologist's find
+SAG	Hang loosely
+SPARSE	Thinly spread
+SON	Arlo, to Woody
+PAYOLA	Deejay's bribe
+ARENAS	Fields of action
+ADIDAS	Nike competitor
+ALOOF	Standoffish
+DODGE	Jump out of the way of
+BOAR	Sow's mate
+BELLY	"Button" site
+LOD	Ben-Gurion Airport city
+GOLDENYEARS	Time of retirement, perhaps
+LIMO	Prom wheels
+DAIS	Roast host's place
+ASIS	Tag sale caveat
+RENE	Tennis's Lacoste
+STET	"Keep it" notation
+ODDS	Bettor's stats
+SET	Matching pair
+VIAL	Perfume holder
+ONSET	Early stage
+OGLE	Give the eye to
+EMIL	Jannings or Gilels
+LAINE	"Mule Train" singer Frankie
+FEET	Yard divisions
+ROSY	Like Santa's cheeks
+ASSET	Strong point
