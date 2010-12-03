@@ -7,7 +7,8 @@ ensure you don't have to worry about things like capitalization and encoding.
 from __future__ import with_statement
 from solvertools.util import get_dictfile, get_picklefile, save_pickle, \
                              load_pickle, file_exists, asciify
-from solvertools.regex import is_regex, bare_regex
+from solvertools.regex import bare_regex
+from collections import defaultdict
 import re, codecs, unicodedata, logging
 logger = logging.getLogger(__name__)
 
@@ -50,10 +51,31 @@ def with_frequency(text):
     word, freq = text.split(',', 1)
     return (word, int(freq))
 
+def csv(text):
+    """
+    Use this when each word is associated with a value, possibly with
+    duplication -- for example, a phonetic dictionary or a translation
+    dictionary -- and the word and value are separated by a comma.
+    """
+    word, valstr = text.split(',', 1)
+    return (word, valstr)
+comma_separated = csv
+
+def csv_rev(text):
+    """
+    Use this to get the reverse mapping from a comma-separated list of words
+    and values.
+    """
+    word, valstr = text.split(',', 1)
+    return (valstr, word)
+comma_separated_rev = csv_rev
+
 def with_values(text):
     """
-    Use this when each word is associated with one or more values -- for
-    example, a phonetic dictionary or a translation dictionary.
+    Use this when each word is associated with one or more values.
+    
+    This is being deprecated in favor of a WordMapping with `comma_separated`
+    as the reader.
     """
     word, valstr = text.split(',', 1)
     values = valstr.split('|')
@@ -91,6 +113,7 @@ def classical_latin_letters(text):
     "Enforce I=J and U=V as some Latin-themed puzzles do."
     return letters_only(text).replace('U', 'V').replace('J', 'I')
 
+
 class Wordlist(object):
     """
     A lazily-loaded wordlist.
@@ -125,7 +148,7 @@ class Wordlist(object):
     Finally, you can set `pickle=False` if you don't want the wordlist to be
     loaded from or saved to a pickle file.
     """
-    version = 1
+    version = 2
     def __init__(self, filename, convert=case_insensitive, reader=identity,
                  pickle=True):
         self.filename = filename
@@ -174,7 +197,7 @@ class Wordlist(object):
         logger.info("Loading %s" % self.regulus_name())
         from solvertools.extensions.regulus import regulus
         self.regulus = regulus.Dict()
-        loaded_cache = self.regulus.read(self.regulus_name())
+        loaded_cache = self.regulus.read(get_picklefile(self.regulus_name()))
         if not loaded_cache:
             del self.regulus
             logger.info("Building %s" % self.regulus_name())
@@ -182,7 +205,7 @@ class Wordlist(object):
                        for word, freq in self.words.iteritems()]
             self.regulus = regulus.Dict(entries)
             logger.info("Saving %s" % self.regulus_name())
-            self.regulus.write(self.regulus_name())
+            self.regulus.write(get_picklefile(self.regulus_name()))
     
     def grep(self, pattern):
         """
@@ -224,7 +247,10 @@ class Wordlist(object):
                 if isinstance(entry, tuple) or isinstance(entry, list):
                     # this word has a value attached
                     word, val = entry
-                    self.words[self.convert(word)] = val
+                    self.words[self.convert(word)] = max(
+                        self.words.get(self.convert(word), 0),
+                        val
+                    )
                 else:
                     self.words[self.convert(entry)] = 1
 
@@ -305,8 +331,8 @@ class Wordlist(object):
         determined from its base filename and the names of the functions that
         transformed it.
         """
-        return "%s.%s.%s.pickle" % (self.filename, self.convert.__name__,
-        self.reader.__name__)
+        return "%s.%s.%s.%s.pickle" % (self.filename, self.convert.__name__,
+        self.reader.__name__, self.version)
 
     def regulus_name(self):
         """
@@ -326,13 +352,68 @@ class Wordlist(object):
         return cmp((self.filename, self.convert),
                    (other.filename, other.convert))
 
+class WordMapping(Wordlist):
+    """
+    A wordlist-like object that describes a many-to-many mapping from one set
+    to another. An example would be a phonetic wordlist.
+    """
+    def __init__(self, filename, convert=case_insensitive,
+                 convert_out=case_insensitive,
+                 reader=csv,
+                 pickle=True):
+        Wordlist.__init__(self, filename, convert, reader, pickle)
+        self.convert_out = convert_out
+
+    def reverse(self):
+        # same thing but with comma_separated_rev
+        return WordMapping(self.filename,
+                           self.convert_out, self.convert,
+                           reader=csv_rev,
+                           pickle=self.pickle)
+
+    def _load_txt(self):
+        "Load this wordlist from a plain text file."
+        # rewriting to be many-to-many
+        self.words = defaultdict(list)
+        filename = get_dictfile(self.filename+'.txt')
+        logger.info("Loading %s" % filename)
+        with codecs.open(filename, encoding='utf-8') as wordlist:
+            entries = [self.reader(line.strip()) for line in wordlist
+                       if line.strip()]
+            for entry in entries:
+                word, val = entry
+                self.words[self.convert(word)].append(self.convert_out(val))
+
+            # Sort the words by reverse frequency if possible,
+            # then alphabetically
+
+            self.sorted_words = sorted(self.words.keys())
+        picklename = self.pickle_name()
+        if self.pickle:
+            logger.info("Saving %s" % picklename)
+            save_pickle((self.words, self.sorted_words), picklename)
+    
+    def pickle_name(self):
+        """
+        The filename that this wordlist will have when pickled. This is
+        determined from its base filename and the names of the functions that
+        transformed it.
+        """
+        return "%s.%s-%s.%s.%s.pickle" % (self.filename, self.convert.__name__,
+        self.convert_out.__name__, self.reader.__name__, self.version)
+    
+    def load_regulus(self):
+        raise NotImplementedError
+
 # Define useful wordlists
 ENABLE = Wordlist('enable', case_insensitive)
 NPL = Wordlist('npl_allwords2', case_insensitive)
 Google1M = Wordlist('google1M', letters_only, with_frequency)
 Google200K = Wordlist('google200K', letters_only, with_frequency)
-PHONETIC = Wordlist('phonetic', letters_only, with_values)
 COMBINED = Wordlist('sages_combined', letters_only, with_frequency)
 LATIN = Wordlist('wikipedia_la', classical_latin_letters, with_frequency)
 CHAOTIC = Wordlist('chaotic', letters_only, with_frequency)
+
+PHONETIC = WordMapping('phonetic', case_insensitive, ensure_unicode, csv)
 #TODO: spanish
+

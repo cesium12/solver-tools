@@ -14,6 +14,9 @@ def translate_cmu_entry(entry):
     text = text.replace('-', '')
     return text, phonetic
 
+# This transformation is ultimately unnecessary, now that I changed the
+# wordlist format. Oh well.
+
 def read_cmu_dict(infile):
     phondict = defaultdict(list)
     for line in infile:
@@ -39,10 +42,11 @@ def make_dict():
     keys = phondict.keys()
     keys.sort()
     for word in keys:
-        phon = u'|'.join(phondict[word])
-        print >> outfile, u"%s,%s" % (word, phon)
-        print u"%s,%s" % (word, phon)
+        for phon in phondict[word]:
+            print >> outfile, u"%s,%s" % (word, phon)
+            print u"%s,%s" % (word, phon)
     outfile.close()
 
 if __name__ == '__main__':
     make_dict()
+
