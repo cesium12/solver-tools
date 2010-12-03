@@ -45,7 +45,7 @@ class WordListModel(LanguageModel):
     Given appropriate wordlists, this could easily be extended to other
     languages besides English.
     """
-    version = 2
+    version = 3
     def __init__(self, name, wordlist):
         pickle_name = '%s.model.%s.pickle' % (name, self.version)
         if file_exists(get_picklefile(pickle_name)):
@@ -224,8 +224,8 @@ def unigram_replace(char, model):
 LANGUAGE_DEFS = {
     # add definitions here of the form:
     # key: (language_name, wordlist)
-    'en': ('english', wordlist.COMBINED),
-    'english': ('english', wordlist.COMBINED),
+    'en': ('english', wordlist.COMBINED_WORDY),
+    'english': ('english', wordlist.COMBINED_WORDY),
     'la': ('latin', wordlist.LATIN),
     'latin': ('latin', wordlist.LATIN),
     'chaos': ('chaotic', wordlist.CHAOTIC),

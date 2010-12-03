@@ -27,16 +27,25 @@ for word in extras:
         used_words.add(word)
         out.write(u"%s,10000\n" % word)
 
+for word in PHONETIC:
+    word = alphanumeric_and_spaces(word)
+    if word not in used_words:
+        print word
+        used_words.add(word)
+        out.write(u"%s,10000\n" % word)
+
+for word in WORDNET:
+    word = alphanumeric_and_spaces(word)
+    if word not in used_words:
+        print word
+        used_words.add(word)
+        out.write("%s,10000\n" % word)
+
 for word in NPL:
-    if ' ' in word: continue
-    word = alphanumeric_only(word)
+    word = alphanumeric_and_spaces(word)
     if word not in used_words:
         print word
         used_words.add(word)
         out.write(u"%s,1000\n" % word)
-
-for word in PHONETIC:
-    if word not in used_words:
-        print word
-        out.write(u"%s,10000\n" % word)
 out.close()
+

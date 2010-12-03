@@ -88,12 +88,27 @@ def alphanumeric_only(text):
     """
     return re.sub("[^A-Z0-9]", "", case_insensitive_ascii(text))
 
+def alphanumeric_with_spaces(text):
+    """
+    Convert everything to uppercase and discard everything but letters, digits,
+    and spaces.
+    """
+    return re.sub("[^A-Z0-9 ]", "", case_insensitive_ascii(text))
+alphanumeric_and_spaces = alphanumeric_with_spaces
+
 def letters_only(text):
     """
     Convert everything to uppercase ASCII, and discard everything but the
     letters A-Z.
     """
     return re.sub("[^A-Z]", "", case_insensitive_ascii(text))
+
+def letters_and_spaces(text):
+    """
+    Convert everything to uppercase ASCII, and discard everything but the
+    letters A-Z and spaces. This format is safe for Regulus.
+    """
+    return re.sub("[^A-Z ]", "", case_insensitive_ascii(text))
 
 def letters_only_unicode(text):
     """
@@ -201,7 +216,7 @@ class Wordlist(object):
         if not loaded_cache:
             del self.regulus
             logger.info("Building %s" % self.regulus_name())
-            entries = [regulus.DictEntry(letters_only(word), freq)
+            entries = [regulus.DictEntry(letters_and_spaces(word), freq)
                        for word, freq in self.words.iteritems()]
             self.regulus = regulus.Dict(entries)
             logger.info("Saving %s" % self.regulus_name())
@@ -411,9 +426,10 @@ NPL = Wordlist('npl_allwords2', case_insensitive)
 Google1M = Wordlist('google1M', letters_only, with_frequency)
 Google200K = Wordlist('google200K', letters_only, with_frequency)
 COMBINED = Wordlist('sages_combined', letters_only, with_frequency)
+COMBINED_WORDY = Wordlist('sages_combined', alphanumeric_with_spaces, with_frequency)
 LATIN = Wordlist('wikipedia_la', classical_latin_letters, with_frequency)
 CHAOTIC = Wordlist('chaotic', letters_only, with_frequency)
-
+WORDNET = Wordlist('wordnet', case_insensitive)
 PHONETIC = WordMapping('phonetic', case_insensitive, ensure_unicode, csv)
 #TODO: spanish
 
