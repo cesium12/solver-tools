@@ -12,12 +12,11 @@ Contents:
 
    INSTALL
    coding
+   solvertools/TODO
    docs/README
    solvertools/README
    data/README
    docs/changelog
-..   data/corpora/answers/README
-..   data/dict/wordlists
 
 Indices and tables
 ==================

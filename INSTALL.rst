@@ -3,10 +3,16 @@
 Installing solvertools
 ======================
 
+If you don't already have the code, you should:
+
+- Install Git, if necessary
+- Get access to git.manicsages.org from Jason Alonso (jalonso), if necessary
+- `git clone git@git.manicsages.org:solver-tools.git`
+
 The short answer on how to install this:
 
-* ``sudo python setup.py develop``
-* Or, set your ``PYTHONPATH`` to this directory
+- ``sudo python setup.py develop``
+- Or, set your ``PYTHONPATH`` to this directory
 
 Longer answer:
 
@@ -17,7 +23,8 @@ solvertools to the global Python namespace.
 Doing this requires python-distribute, or at least python-setuptools.
 
 If you don't believe in packaging, that's fine, just set your
-PYTHONPATH to the directory setup.py is in instead.
+PYTHONPATH to the directory setup.py is in instead. You might have to compile
+C extensions, like Regulus, yourself in this case.
 
 I aim to keep packaging bullshit to a minimum, because it is the least
 fun part of Python. To that end, we should not use pkg_resources or

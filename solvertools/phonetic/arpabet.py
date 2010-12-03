@@ -22,6 +22,8 @@ The nine monophthong vowels in this representation are (following a sort of cont
 When the input contains stress notation, primary stress is indicated with an
 apostrophe before the vowel.
 """
+import string
+
 IPA_VOWELS = u'uʊoaæəeɪi'
 
 ARPA_TO_IPA = {
@@ -69,13 +71,13 @@ ARPA_TO_IPA = {
 
 def arpa_symbol_to_ipa(s):
     if s[-1] in string.digits:
-        phon = CMU_PHONEMES[s[:-1]]
+        phon = ARPA_TO_IPA[s[:-1]]
         if s[-1] == '1':
             return u"'" + phon
         else:
             return phon
     else:
-        return CMU_PHONEMES[s]
+        return ARPA_TO_IPA[s]
 
 def arpa_to_ipa(s):
     phonemes = s.split()

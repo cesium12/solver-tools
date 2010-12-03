@@ -1,7 +1,7 @@
 .. _answers:
 
 `data/corpora/answers` -- The MH 2004-2008 answer corpus
-==============---=======================================
+========================================================
 
 The files in this directory contain the answer phrases from Mystery
 Hunts 2004 through 2008. They comprise 597 answers, of which 56 are

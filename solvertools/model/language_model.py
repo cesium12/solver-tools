@@ -142,8 +142,6 @@ class WordListModel(LanguageModel):
         Find the best English text to match the given string by inserting
         spaces and filling blanks.
 
-        Returns 
-
             >>> en = get_model('en')
             >>> en.split_words('RGBOFRELIQUARY')[0]
             u'RGB OF RELIQUARY'

@@ -1,7 +1,13 @@
+The TODO list
+=============
+
 Things to be done
 -----------------
 (from David's e-mail in Jan 2010)
 
+- substrings of words that you can remove to make other words
+- scrabble operations and then some.
+- morse code, braille, semaphore, 
 - now that we can index everything into everything, make a bot that watches it
   and says OMG GUYS THIS IS THE ANSWER
   (but only when it's really good)
@@ -19,11 +25,8 @@ Things to be done
 - human hooks (ask human for input)
 - conversely, a suggestion system
 - boundary detection on images
-- importing files in general
 - look for things that associate numbers with text
-- substrings of words that you can remove to make other words
-- scrabble operations and then some.
-- morse code, braille, semaphore, 
+- statistical detection of normal english vs. weird
 
 Things that need further explanation
 ------------------------------------
@@ -34,8 +37,8 @@ Things that need further explanation
 Things that are done or essentially done now
 --------------------------------------------
 - simultaneous sorting and indexing
-- diagonalizing
-- word grid class
+- word grid class (solvertools.puzzle_array)
+- diagonalizing (solvertools.puzzle_array)
 - indexing functions should have options: spaces count or not, etc.
 - LetterNumber class (alphabet.py implements this idea)
 - indexing by letters (alphabet.py)
@@ -43,8 +46,7 @@ Things that are done or essentially done now
 - library for dealing with wordlists
 - language recognizer (solvertools.google.language)
 - transliteration and translation (solvertools.google.language)
-- statistical detection of normal english vs. weird
 - handles unicode okay (utf-8).
 - deaccenting characters (at the wordlist library level)
 - Caesar Shift operations (solvertools.cipher.caesar)
-
+- importing files in general (PuzzleArray.load_csv)
