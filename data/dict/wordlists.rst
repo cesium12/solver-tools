@@ -17,14 +17,14 @@ words anyway. You can access this list as `solvertools.wordlist.ENABLE`.
 `npl_allwords2.txt`
 -------------------
 This is a file distributed by the National Puzzlers' League, a combination of
-all the wordlists_ they have collected. Unlike a Scrabble wordlist, it contains
-proper nouns, multi-word phrases, and crossword clue answers.
+all the `word lists`_ they have collected. Unlike a Scrabble wordlist, it
+contains proper nouns, multi-word phrases, and crossword clue answers.
+
+.. _`word lists`: http://www.puzzlers.org/dokuwiki/doku.php?id=solving:wordlists:about:start
 
 The list contains phrases with spaces in them, as well as accented characters.
 I have converted it from Latin-1 (ew!) to UTF-8. You can access this list as
 `solvertools.wordlists.NPL`.
-
-_wordlists: http://www.puzzlers.org/dokuwiki/doku.php?id=solving:wordlists:about:start
 
 `google1M.txt` and `google200K.txt`
 -----------------------------------

@@ -65,10 +65,7 @@ you can convert between Unicode strings and strings of raw bytes like this::
     someBytes = someString.encode('utf-8')
     someString = someBytes.decode('utf-8')
 
-Numbers for characters
-----------------------
 You may end up writing code that represents text characters as numbers.
-
 If the text is ASCII text, the valid numbers are between 32 and 127 (with
 possibly the occasional 9 and 10 for tabs and linebreaks). If the text is
 Unicode, a character number could be any 32-bit integer, although my system
@@ -97,5 +94,5 @@ it's empty).
 functions in `util.py` for working with these data files no matter where they
 are in the repository.
 
-We don't have any C extensions yet, but if we do, someone should figure out
-where to put them and how to make them build.
+We need a better way of dealing with C extensions, especially once we have more
+than one of them (Regulus).
