@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 This module is meant for dealing with "Arpabet" phonetic spelling, particularly
-converting it to approximate IPA so you don't have to understand its
+converting it to approximate IPA so you don't have to understand the Arpabet's
 frustratingly misleading vowels.
 
 This uses only a subset of the IPA vowels that appear in English, and in doing
@@ -13,7 +13,8 @@ the vowels (sorry, Brits) and written right-side-up (sorry, linguists). A few
 different central vowels are all represented as "ə" (even though only the
 unaccented ones can actually be schwas).
 
-This actually does not lose much information given Arpabet input. Most similar vowels are already smashed together anyway. On top of that, if you're using the CMU dictionary, their words have what seems to be a Pittsburgh accent.
+This actually does not lose much information given Arpabet input. Most similar
+vowels are already smashed together anyway.
 
 The nine monophthong vowels in this representation are (following a sort of continuum):
 
@@ -70,6 +71,9 @@ ARPA_TO_IPA = {
 }
 
 def arpa_symbol_to_ipa(s):
+    """
+    Convert an individual phonetic symbol from ARPA to IPA.
+    """
     if s[-1] in string.digits:
         phon = ARPA_TO_IPA[s[:-1]]
         if s[-1] == '1':
@@ -80,6 +84,13 @@ def arpa_symbol_to_ipa(s):
         return ARPA_TO_IPA[s]
 
 def arpa_to_ipa(s):
+    """
+    Given a word spelled phonetically in the Arpabet, convert it to approximate
+    IPA.
+
+        >>> print arpa_to_ipa('S EY1 JH IH0 Z')
+        s'eɪdʒɪz
+    """
     phonemes = s.split()
     return u''.join(arpa_symbol_to_ipa(phon) for phon in phonemes)
 
