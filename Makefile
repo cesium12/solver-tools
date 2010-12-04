@@ -27,6 +27,8 @@ clean:
 
 html:
 	mkdir -p docs/_build/html docs/_build/doctrees
+	echo "Changelog\n=========" > docs/changelog.rst
+	git log e594c14e.. --format="%cd%n      %s (%an)%n" >> docs/changelog.rst
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) docs/_build/html
 	@echo
 	@echo "Build finished. The HTML pages are in docs/_build/html."

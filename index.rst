@@ -16,6 +16,7 @@ Contents:
    docs/README
    solvertools/README
    data/README
+   docs/changelog
 
 Indices and tables
 ==================
