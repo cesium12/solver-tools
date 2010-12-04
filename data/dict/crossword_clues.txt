@@ -2116,7 +2116,7 @@ ANTS	Sugar bowl raiders
 ANTS	They make pantry raids
 ANTS	Tiny colonists
 ANTSY	Prone to fidgeting
-ANUT	"Sometimes you feel like __ "
+ANUT	"Sometimes you feel like ..."
 ANVIL	Smithy's block
 ANY	"__ day now ..."
 ANY	"__ takers?"
@@ -10267,7 +10267,7 @@ FIREEXIT	Means of escape
 FIRERS	Layoff heavies
 FIRES	Shows the door to
 FIRM	Business
-FIRST	"To begin with "
+FIRST	"To begin with ..."
 FIRST	In front
 FIRST	Who's position, in a comedy routine
 FIRSTAIDKIT	Glove compartment item
@@ -28347,7 +28347,7 @@ THORN	Rose sticker
 THORNS	Crown's makeup, in the bible
 THORPE	Athletic legend Jim
 THOS	Pres. Jefferson
-THOSE	"__ in favor "
+THOSE	"__ in favor ..."
 THOSE	"__ were the days!"
 THOU	Holier-than-__
 THOU	Ten C-notes

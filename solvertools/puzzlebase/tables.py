@@ -1,31 +1,30 @@
-from solvertools.wordlist import COMBINED_WORDY, alphanumeric_only
+from solvertools.wordlist import alphanumeric_only, Google1M
 from solvertools.util import get_db
-from elixir import metadata, session, Entity, Field, String, Integer, Float,\
-                   ManyToOne, using_options
-import elixir
-from sqlalchemy import UniqueConstraint
+import elixir, sqlalchemy
 from sqlalchemy.orm.exc import NoResultFound
 import logging
 logger = logging.getLogger(__name__)
-metadata.bind = "sqlite:///"+get_db('puzzlebase.db')
-#metadata.bind.echo = True
+elixir.metadata.bind = "sqlite:///"+get_db('puzzlebase.db')
+#elixir.metadata.bind.echo = True
 
 def make_alphagram(letters):
     return ''.join(sorted(list(letters)))
 
-class Word(Entity):
-    using_options(tablename='words')
-    key = Field(String, primary_key=True)
-    fulltext = Field(String)
-    alphagram = Field(String, index=True)
-    freq = Field(Integer, index=True)
+class Word(elixir.Entity):
+    elixir.using_options(tablename='words')
+    key = elixir.Field(elixir.String, primary_key=True)
+    fulltext = elixir.Field(elixir.Unicode)
+    alphagram = elixir.Field(elixir.String, index=True)
+    freq = elixir.Field(elixir.Integer, index=True)
+    scrabble = elixir.Field(elixir.Boolean, index=True)
     
     @staticmethod
-    def make(text, freq):
+    def make(text, freq, scrabble=False):
         key = alphanumeric_only(text)
         alphagram = make_alphagram(key)
-        obj = Word(key=key, fulltext=text, freq=freq, alphagram=alphagram)
-        session.add(obj)
+        obj = Word(key=key, fulltext=text, freq=freq, alphagram=alphagram,
+                   scrabble=scrabble)
+        elixir.session.add(obj)
         return obj
 
     @staticmethod
@@ -36,26 +35,46 @@ class Word(Entity):
             return None
 
     @staticmethod
-    def build_table():
-        for word in COMBINED_WORDY:
-            freq = COMBINED_WORDY[word]
+    def add_from_wordlist(wordlist, minimum_freq=1000, scrabble=False):
+        """
+        Add all the words in a wordlist to the database.
+        
+        The word frequencies come from Google (in the Google1M wordlist).
+        `minimum_freq` will increase the frequencies of rarely-Googled words
+        that you know are legitimate from another wordlist.
+
+        If `scrabble=True`, it marks this word as being valid for Scrabble
+        and similar word games.
+        """
+        for word in wordlist:
+            freq = Google1M.get(word, 0)
+            if freq < minimum_freq:
+                freq = minimum_freq
             key = alphanumeric_only(word)
-            if not Word.get(key):
+            existing = Word.get(key)
+            if existing:
+                if scrabble:
+                    existing.scrabble = True
+                    logger.info("Upgrading %s" % word)
+                if freq > existing.freq:
+                    existing.freq = freq
+                    logger.info("Upgrading %s" % word)
+            else:
                 logger.info("Adding %s" % word)
-                Word.make(word, freq)
-        session.commit()
+                Word.make(word, freq, scrabble=scrabble)
+        elixir.session.commit()
 
     def __repr__(self):
         return "%s (%s)" % (self.fulltext, self.freq)
 
-class Relation(Entity):
-    using_options(tablename='relations')
-    id = Field(Integer, primary_key=True)
-    rel = Field(String)
-    word1 = ManyToOne('Word', colname='word1_id')
-    word2 = ManyToOne('Word', colname='word2_id')
-    interestingness = Field(Float, default=0.0)
-    UniqueConstraint('rel', 'word1', 'word2')
+class Relation(elixir.Entity):
+    elixir.using_options(tablename='relations')
+    id = elixir.Field(elixir.Integer, primary_key=True)
+    rel = elixir.Field(elixir.String)
+    word1 = elixir.ManyToOne('Word', colname='word1_id')
+    word2 = elixir.ManyToOne('Word', colname='word2_id')
+    interestingness = elixir.Field(elixir.Float, default=0.0)
+    sqlalchemy.UniqueConstraint('rel', 'word1', 'word2')
     
     @staticmethod
     def make(rel, word1, word2):
@@ -64,7 +83,7 @@ class Relation(Entity):
         if not isinstance(word2, Word):
             word2 = Word.get(word2)
         obj = Relation(rel=rel, word1=word1, word2=word2)
-        session.add(obj)
+        elixir.session.add(obj)
         return obj
 
     @staticmethod
@@ -75,7 +94,14 @@ class Relation(Entity):
     @staticmethod
     def make_symmetric(rel, word1, word2):
         Relation.make(rel, word1, word2)
-        Relation.make(rev, word2, word1)
+        Relation.make(rel, word2, word1)
+
+def commit():
+    """
+    Commit changes made to the database. External code should remember
+    to call this.
+    """
+    elixir.session.commit()
 
 elixir.setup_all()
 

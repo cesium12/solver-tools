@@ -61,6 +61,16 @@ def csv(text):
     return (word, valstr)
 comma_separated = csv
 
+def tsv(text):
+    """
+    Use this when each word is associated with a value, possibly with
+    duplication -- for example, a phonetic dictionary or a translation
+    dictionary -- and the word and value are separated by a comma.
+    """
+    word, valstr = text.split('\t', 1)
+    return (word, valstr)
+tab_separated = tsv
+
 def csv_rev(text):
     """
     Use this to get the reverse mapping from a comma-separated list of words
@@ -392,21 +402,22 @@ class WordMapping(Wordlist):
         self.words = defaultdict(list)
         filename = get_dictfile(self.filename+'.txt')
         logger.info("Loading %s" % filename)
-        with codecs.open(filename, encoding='utf-8') as wordlist:
-            entries = [self.reader(line.strip()) for line in wordlist
-                       if line.strip()]
-            for entry in entries:
-                word, val = entry
-                self.words[self.convert(word)].append(self.convert_out(val))
+        wordlist = codecs.open(filename, encoding='utf-8')
+        entries = [self.reader(line.strip()) for line in wordlist
+                   if line.strip()]
+        for entry in entries:
+            word, val = entry
+            self.words[self.convert(word)].append(self.convert_out(val))
+        
+        # Sort the words by reverse frequency if possible,
+        # then alphabetically
 
-            # Sort the words by reverse frequency if possible,
-            # then alphabetically
-
-            self.sorted_words = sorted(self.words.keys())
+        self.sorted_words = sorted(self.words.keys())
         picklename = self.pickle_name()
         if self.pickle:
             logger.info("Saving %s" % picklename)
             save_pickle((self.words, self.sorted_words), picklename)
+        wordlist.close()
     
     def pickle_name(self):
         """
@@ -431,5 +442,6 @@ LATIN = Wordlist('wikipedia_la', classical_latin_letters, with_frequency)
 CHAOTIC = Wordlist('chaotic', letters_only, with_frequency)
 WORDNET = Wordlist('wordnet', case_insensitive)
 PHONETIC = WordMapping('phonetic', case_insensitive, ensure_unicode, csv)
+CROSSWORD = WordMapping('crossword_clues', letters_only, ensure_unicode, tsv)
 #TODO: spanish
 
