@@ -39,6 +39,10 @@ def get_dictfile(path):
     "Get a complete path for a file in the data/dict directory."
     return _build_path([PACKAGE_DIR, 'data', 'dict', path])
 
+def get_db(path):
+    "Get a path for a SQLite database in the data/db directory."
+    return _build_path([PACKAGE_DIR, 'data', 'db', path])
+
 # Simple functions for working with pickles.
 # For more awesome pickling, see the pickledir below and lib/persist.py.
 
