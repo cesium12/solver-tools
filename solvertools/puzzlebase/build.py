@@ -51,7 +51,7 @@ def add_clues(mapping):
     for word in mapping:
         word1 = Word.get(word)
         if not word1: continue
-        for clue in CROSSWORD[word]:
+        for clue in mapping[word]:
             clue_words = get_words(clue)
             for clue_word in clue_words:
                 possibilities = [clue_word] + list(morphy_roots(clue_word))
