@@ -82,9 +82,13 @@ class Relation(elixir.Entity):
             word1 = Word.get(word1)
         if not isinstance(word2, Word):
             word2 = Word.get(word2)
-        obj = Relation(rel=rel, word1=word1, word2=word2)
-        elixir.session.add(obj)
-        return obj
+        try:
+            obj = Relation.get_by(rel=rel, word1=word1, word2=word2)
+            return obj
+        except NoResultFound:
+            obj = Relation(rel=rel, word1=word1, word2=word2)
+            elixir.session.add(obj)
+            return obj
 
     @staticmethod
     def make_2way(rel, rev, word1, word2):
