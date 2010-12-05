@@ -443,5 +443,6 @@ CHAOTIC = Wordlist('chaotic', letters_only, with_frequency)
 WORDNET = Wordlist('wordnet', case_insensitive)
 PHONETIC = WordMapping('phonetic', case_insensitive, ensure_unicode, csv)
 CROSSWORD = WordMapping('crossword_clues', letters_only, ensure_unicode, tsv)
+WORDNET_DEFS = WordMapping('wordnet_definitions', alphanumeric_only, ensure_unicode, tsv)
 #TODO: spanish
 
