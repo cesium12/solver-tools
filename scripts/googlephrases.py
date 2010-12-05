@@ -7,13 +7,13 @@ thedict = {}
 for line in codecs.open(get_datafile('inputs/2grams.txt'), encoding='utf-8'):
     if line.strip():
         listything, freq = eval(line.strip())
-        expected_freq = 1e-10
+        expected_freq = 1e-13
         for word in listything:
-            expected_freq *= (Google200K.get(word, 0))
+            expected_freq *= (10000 + Google200K.get(word, 0))
         phrase = ' '.join(listything)
-        print phrase, freq/expected_freq
-        if freq > expected_freq:
-            thedict[phrase] = freq/expected_freq
+        if freq > expected_freq*1000:
+            thedict[phrase] = int(freq/expected_freq)
+            print phrase, int(freq/expected_freq)
 
 words = sorted(thedict.keys())
 
