@@ -35,11 +35,13 @@ class Word(elixir.Entity):
             return None
 
     @staticmethod
-    def add_from_wordlist(wordlist, minimum_freq=1000, scrabble=False):
+    def add_from_wordlist(wordlist, minimum_freq=1000, scrabble=False,
+                          freqlist=Google1M):
         """
         Add all the words in a wordlist to the database.
         
-        The word frequencies come from Google (in the Google1M wordlist).
+        The word frequencies come by default from Google
+        (in the Google1M wordlist).
         `minimum_freq` will increase the frequencies of rarely-Googled words
         that you know are legitimate from another wordlist.
 
@@ -47,7 +49,7 @@ class Word(elixir.Entity):
         and similar word games.
         """
         for word in wordlist:
-            freq = Google1M.get(word, 0)
+            freq = freqlist.get(word, 0)
             if freq < minimum_freq:
                 freq = minimum_freq
             key = alphanumeric_only(word)
