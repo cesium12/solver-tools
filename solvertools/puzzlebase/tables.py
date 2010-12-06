@@ -82,10 +82,11 @@ class Relation(elixir.Entity):
             word1 = Word.get(word1)
         if not isinstance(word2, Word):
             word2 = Word.get(word2)
-        try:
-            obj = Relation.get_by(rel=rel, word1=word1, word2=word2)
+        obj = Relation.get_by(rel=rel, word1=word1, word2=word2)
+        if obj is not None:
+            logger.info('duplicate %s(%s, %s)' % (rel, word1, word2))
             return obj
-        except NoResultFound:
+        else:
             obj = Relation(rel=rel, word1=word1, word2=word2)
             elixir.session.add(obj)
             return obj
