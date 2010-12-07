@@ -1,26 +1,20 @@
-# A quick hacky script to generate google_phrases.txt from Alex's format.
+# Try to find interesting 2-word phrases.
 from solvertools.util import get_datafile, get_dictfile
-from solvertools.wordlist import Google200K
+from solvertools.wordlist import Google1M
+from solvertools.wordnet import morphy_roots
 import codecs
 
-thedict = {}
-for line in codecs.open(get_datafile('inputs/2grams.txt'), encoding='utf-8'):
+for line in codecs.open(get_datafile('inputs/2grams-common.txt'), encoding='utf-8'):
     if line.strip():
-        listything, freq = eval(line.strip())
-        expected_freq = 1e-13
+        listything, occurrences = eval(line.strip())
+        expected_freq = 1.0
         for word in listything:
-            expected_freq *= (10000 + Google200K.get(word, 0))
-        phrase = ' '.join(listything)
-        if freq > expected_freq*1000:
-            thedict[phrase] = int(freq/expected_freq)
-            print phrase, int(freq/expected_freq)
-
-words = sorted(thedict.keys())
-
-outfile = codecs.open(get_dictfile('google_phrases.txt'), 'w', encoding='utf-8')
-print "Writing:", outfile
-for word in words:
-    outfile.write("%s,%d\n" % (word, thedict[word]))
-    print("%s,%d" % (word, thedict[word]))
-outfile.close()
-
+            themax = 0
+            for root in morphy_roots(word, include_self=True):
+                themax = max(themax, Google1M.get(root))
+            expected_freq *= themax/1e10
+        if expected_freq > 0:
+            freq = occurrences/1e10
+            phrase = ' '.join(listything)
+            if freq > expected_freq*0.4:
+                print "%s,%s" % (phrase, occurrences)

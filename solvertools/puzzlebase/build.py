@@ -21,8 +21,8 @@ def initial_setup():
     Word.add_from_wordlist(CROSSWORD, minimum_freq=1000)
     commit()
 
-def add_roots():
-    for word in COMBINED_WORDY:
+def add_roots(wordlist):
+    for word in wordlist:
         for lemma in morphy_roots(word):
             if not Word.get(word):
                 Word.make(word, 1000)
@@ -30,8 +30,8 @@ def add_roots():
             logger.info('has_root(%s, %s)' % (word, lemma))
     commit()
 
-def add_anagrams():
-    for word in COMBINED_WORDY:
+def add_anagrams(wordlist):
+    for word in wordlist:
         word1 = Word.get(word)
         if not word1: continue
         if len(word1.key) < 5: continue
@@ -61,4 +61,14 @@ def add_clues(mapping):
                     if word2.key != word1.key and word2.freq < STOPWORD_CUTOFF:
                         Relation.make_symmetric('has_clue', word1, word2)
                         logger.info('has_clue(%s, %s)' % (word1, word2))
+    commit()
+
+def add_bigrams(wordlist):
+    for phrase in wordlist:
+        words = phrase.split(' ')
+        if len(words) == 2:
+            rel1, rel2 = Relation.make_2way('precedes', 'follows', words[0], words[1])
+            rel1.freq = wordlist[phrase]
+            rel2.freq = wordlist[phrase]
+            logger.info('precedes(%s, %s)' % (words[0], words[1]))
     commit()

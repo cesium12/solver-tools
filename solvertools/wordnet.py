@@ -27,6 +27,8 @@ def morphy_roots(word, include_self=False):
         set(['RAINBOW CACTUS'])
         >>> morphy_roots('burninated')
         set([])
+        >>> morphy_roots('was')
+        set(['BE'])
     """
     wnword = word.lower().replace(' ', '_')
     lemmas = set()
@@ -34,6 +36,11 @@ def morphy_roots(word, include_self=False):
         lemma = wn.morphy(wnword, pos)
         if lemma is not None and (include_self or lemma != wnword):
             lemmas.add(lemma.replace('_', ' ').upper())
+    
+    # special cases
+    if wnword == 'was':
+        lemmas.remove('WA')
+    elif wnword == 'has':
+        lemmas.remove('HA')
     return lemmas
-
 
