@@ -2,10 +2,12 @@ from solvertools.wordlist import alphanumeric_only, Google1M
 from solvertools.util import get_db
 import elixir, sqlalchemy
 from sqlalchemy.orm.exc import NoResultFound
+from solvertools.config import DB_URL
 import logging
 logger = logging.getLogger(__name__)
-elixir.metadata.bind = "sqlite:///"+get_db('puzzlebase.db')
-#elixir.metadata.bind.echo = True
+
+elixir.metadata.bind = DB_URL
+FREQUENCY_LIST = Google1M.variant(convert=alphanumeric_only)
 
 def make_alphagram(letters):
     return ''.join(sorted(list(letters)))
@@ -15,7 +17,7 @@ class Word(elixir.Entity):
     key = elixir.Field(elixir.String, primary_key=True)
     fulltext = elixir.Field(elixir.Unicode)
     alphagram = elixir.Field(elixir.String, index=True)
-    freq = elixir.Field(elixir.Integer, index=True)
+    freq = elixir.Field(elixir.BigInteger, index=True)
     scrabble = elixir.Field(elixir.Boolean, index=True)
     
     @staticmethod
@@ -35,8 +37,12 @@ class Word(elixir.Entity):
             return None
 
     @staticmethod
+    def all():
+        return Word.query.yield_per(1000)
+
+    @staticmethod
     def add_from_wordlist(wordlist, minimum_freq=1000, scrabble=False,
-                          freqlist=Google1M):
+                          freqlist=FREQUENCY_LIST):
         """
         Add all the words in a wordlist to the database.
         
@@ -95,8 +101,9 @@ class Relation(elixir.Entity):
 
     @staticmethod
     def make_2way(rel, rev, word1, word2):
-        Relation.make(rel, word1, word2)
-        Relation.make(rev, word2, word1)
+        rel1 = Relation.make(rel, word1, word2)
+        rel2 = Relation.make(rev, word2, word1)
+        return rel1, rel2
 
     @staticmethod
     def make_symmetric(rel, word1, word2):

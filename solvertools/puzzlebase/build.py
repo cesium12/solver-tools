@@ -30,8 +30,8 @@ def add_roots(wordlist):
             logger.info('has_root(%s, %s)' % (word, lemma))
     commit()
 
-def add_anagrams():
-    for word in COMBINED_WORDY:
+def add_anagrams(wordlist):
+    for word in wordlist:
         word1 = Word.get(word)
         if not word1: continue
         if len(word1.key) < 5: continue
@@ -67,7 +67,8 @@ def add_bigrams(wordlist):
     for phrase in wordlist:
         words = phrase.split(' ')
         if len(words) == 2:
-            rel = Relation.make_2way('precedes', 'follows', words[0], words[1])
-            rel.freq = wordlist[phrase]
+            rel1, rel2 = Relation.make_2way('precedes', 'follows', words[0], words[1])
+            rel1.freq = wordlist[phrase]
+            rel2.freq = wordlist[phrase]
             logger.info('precedes(%s, %s)' % (words[0], words[1]))
     commit()
