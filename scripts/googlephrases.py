@@ -16,5 +16,7 @@ for line in codecs.open(get_datafile('inputs/2grams-common.txt'), encoding='utf-
         if expected_freq > 0:
             freq = occurrences/1e10
             phrase = ' '.join(listything)
-            if freq > expected_freq*0.4:
+            if freq > expected_freq*0.05:
                 print "%s,%s" % (phrase, occurrences)
+            elif freq > expected_freq*0.04:
+                print "*\t%s,%s" % (phrase, occurrences)
