@@ -55,6 +55,9 @@ class Word(elixir.Entity):
         and similar word games.
         """
         for word in wordlist:
+            if len(word) > 40:
+                # that's just excessive
+                continue
             freq = freqlist.get(word, 0)
             if freq < minimum_freq:
                 freq = minimum_freq

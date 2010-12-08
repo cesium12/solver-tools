@@ -43,6 +43,53 @@ def case_insensitive_ascii(text):
     "Convert everything to uppercase and discard non-ASCII stuff."
     return asciify(ensure_unicode(text).upper())
 
+def alphanumeric_only(text):
+    """
+    Convert everything to uppercase and discard everything but letters and
+    digits.
+    """
+    return re.sub("[^A-Z0-9]", "", case_insensitive_ascii(text))
+
+def alphanumeric_with_spaces(text):
+    """
+    Convert everything to uppercase and discard everything but letters, digits,
+    and spaces.
+    """
+    return re.sub("[^A-Z0-9 ]", "", case_insensitive_ascii(text))
+alphanumeric_and_spaces = alphanumeric_with_spaces
+
+def letters_only(text):
+    """
+    Convert everything to uppercase ASCII, and discard everything but the
+    letters A-Z.
+    """
+    return re.sub("[^A-Z]", "", case_insensitive_ascii(text))
+
+def letters_and_spaces(text):
+    """
+    Convert everything to uppercase ASCII, and discard everything but the
+    letters A-Z and spaces. This format is safe for Regulus.
+    """
+    return re.sub("[^A-Z ]", "", case_insensitive_ascii(text))
+
+def letters_only_unicode(text):
+    """
+    Convert everything to uppercase, and discard everything that doesn't act
+    like a letter (that is, which doesn't have a separate lowercase version).
+    Preserve accents and stuff.
+    """
+    return ''.join(ch for ch in case_insensitive(text)
+                   if ch != ch.lower())
+
+def alphabet_filter(alphabet):
+    def alphabet_filter_inner(text):
+        return ''.join(c for c in case_insensitive(text) if c in alphabet)
+    return alphabet_filter_inner
+
+def classical_latin_letters(text):
+    "Enforce I=J and U=V as some Latin-themed puzzles do."
+    return letters_only(text).replace('U', 'V').replace('J', 'I')
+
 def with_frequency(text):
     """
     Use this as a reader when the wordlist has comma-separated entries of the
@@ -91,53 +138,16 @@ def with_values(text):
     values = valstr.split('|')
     return (word, values)
 
-def alphanumeric_only(text):
+WIKI_PARENTHESES = re.compile(r" \([^)]+\)")
+SPACES = re.compile(" +")
+def wiki_title_cleanup(text):
     """
-    Convert everything to uppercase and discard everything but letters and
-    digits.
+    Given a Wikipedia article title, strip out the parenthesized parts of it,
+    which are usually disambiguators that we won't try to handle.
     """
-    return re.sub("[^A-Z0-9]", "", case_insensitive_ascii(text))
-
-def alphanumeric_with_spaces(text):
-    """
-    Convert everything to uppercase and discard everything but letters, digits,
-    and spaces.
-    """
-    return re.sub("[^A-Z0-9 ]", "", case_insensitive_ascii(text))
-alphanumeric_and_spaces = alphanumeric_with_spaces
-
-def letters_only(text):
-    """
-    Convert everything to uppercase ASCII, and discard everything but the
-    letters A-Z.
-    """
-    return re.sub("[^A-Z]", "", case_insensitive_ascii(text))
-
-def letters_and_spaces(text):
-    """
-    Convert everything to uppercase ASCII, and discard everything but the
-    letters A-Z and spaces. This format is safe for Regulus.
-    """
-    return re.sub("[^A-Z ]", "", case_insensitive_ascii(text))
-
-def letters_only_unicode(text):
-    """
-    Convert everything to uppercase, and discard everything that doesn't act
-    like a letter (that is, which doesn't have a separate lowercase version).
-    Preserve accents and stuff.
-    """
-    return ''.join(ch for ch in case_insensitive(text)
-                   if ch != ch.lower())
-
-def alphabet_filter(alphabet):
-    def alphabet_filter_inner(text):
-        return ''.join(c for c in case_insensitive(text) if c in alphabet)
-    return alphabet_filter_inner
-
-def classical_latin_letters(text):
-    "Enforce I=J and U=V as some Latin-themed puzzles do."
-    return letters_only(text).replace('U', 'V').replace('J', 'I')
-
+    result = SPACES.sub(" ", WIKI_PARENTHESES.sub("", text.replace('_', ' ')))
+    assert result.find('  ') == -1
+    return result
 
 class Wordlist(object):
     """
@@ -442,6 +452,7 @@ PHRASES = Wordlist('google_phrases', alphanumeric_with_spaces, with_frequency)
 LATIN = Wordlist('wikipedia_la', classical_latin_letters, with_frequency)
 CHAOTIC = Wordlist('chaotic', letters_only, with_frequency)
 WORDNET = Wordlist('wordnet', case_insensitive)
+WIKIPEDIA = Wordlist('wikipedia_en_titles', alphanumeric_with_spaces, wiki_title_cleanup)
 PHONETIC = WordMapping('phonetic', case_insensitive, ensure_unicode, csv)
 CROSSWORD = WordMapping('crossword_clues', letters_only, ensure_unicode, tsv)
 WORDNET_DEFS = WordMapping('wordnet_definitions', alphanumeric_only, ensure_unicode, tsv)
