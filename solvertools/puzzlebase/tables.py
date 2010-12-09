@@ -18,14 +18,15 @@ class Word(elixir.Entity):
     fulltext = elixir.Field(elixir.Unicode)
     alphagram = elixir.Field(elixir.String, index=True)
     freq = elixir.Field(elixir.BigInteger, index=True)
-    scrabble = elixir.Field(elixir.Boolean, index=True)
+    scrabble = elixir.Field(elixir.Boolean, default=False, index=True)
+    lexical = elixir.Field(elixir.Boolean, default=True, index=True)
     
     @staticmethod
-    def make(text, freq, scrabble=False):
+    def make(text, freq, scrabble=False, lexical=True):
         key = alphanumeric_only(text)
         alphagram = make_alphagram(key)
         obj = Word(key=key, fulltext=text, freq=freq, alphagram=alphagram,
-                   scrabble=scrabble)
+                   scrabble=scrabble, lexical=lexical)
         elixir.session.add(obj)
         return obj
 
@@ -42,6 +43,7 @@ class Word(elixir.Entity):
 
     @staticmethod
     def add_from_wordlist(wordlist, minimum_freq=1000, scrabble=False,
+                          lexical=True,
                           freqlist=FREQUENCY_LIST):
         """
         Add all the words in a wordlist to the database.
@@ -52,7 +54,9 @@ class Word(elixir.Entity):
         that you know are legitimate from another wordlist.
 
         If `scrabble=True`, it marks this word as being valid for Scrabble
-        and similar word games.
+        and similar word games. If `lexical=True`, it means someone has
+        identified this as a meaningful lexical unit (whereas phrases from
+        Google can simply be coincidental juxtapositions of words).
         """
         for word in wordlist:
             if len(word) > 40:
@@ -72,7 +76,7 @@ class Word(elixir.Entity):
                     logger.info("Upgrading %s" % word)
             else:
                 logger.info("Adding %s" % word)
-                Word.make(word, freq, scrabble=scrabble)
+                Word.make(word, freq, lexical=lexical, scrabble=scrabble)
         elixir.session.commit()
 
     def __repr__(self):

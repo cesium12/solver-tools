@@ -1,5 +1,5 @@
 from solvertools.puzzlebase.tables import Word, Relation, make_alphagram, commit
-from solvertools.wordlist import NPL, ENABLE, WORDNET, PHONETIC, COMBINED_WORDY, CROSSWORD
+from solvertools.wordlist import NPL, ENABLE, WORDNET, PHONETIC, COMBINED_WORDY, CROSSWORD, PHRASES
 from solvertools.wordnet import morphy_roots
 from solvertools.model.tokenize import get_words
 from nltk.corpus import wordnet as wn
@@ -20,6 +20,10 @@ def initial_setup():
     Word.add_from_wordlist(PHONETIC, minimum_freq=10000)
     Word.add_from_wordlist(CROSSWORD, minimum_freq=1000)
     commit()
+
+def advanced_setup():
+    Word.add_from_wordlist(WIKIPEDIA, minimum_freq=10000)
+    Word.add_from_wordlist(PHRASES, minimum_freq=1000, lexical=False)
 
 def add_roots(wordlist):
     for word in wordlist:
