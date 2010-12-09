@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
+u"""
 This module implements a one-to-one mapping between approximate IPA and the
 Roman alphabet plus six characters.
 

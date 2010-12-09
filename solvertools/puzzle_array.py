@@ -39,23 +39,13 @@ class PuzzleArray(np.ndarray):
         14        B57EDC    Lavender  James, a  Carville  Anthony,  Eden     
         15        DE3163    Cerise    Maurits,  Escher    Bret who  ellis    
         
-        >>> print puz.index_everything_into_everything()[:8]
-        __operation__      __text__         __best answer__    __goodness__ 
-        column_order:color RAINBOWCACTUSES  RAINBOW CACTUSES   -3.42672     
-        -result:clue_b[ord ATHONONSPINEEAT  ATHON ON SPINE EAT -6.48827     
-        -color:colorname[i WBCASNOSITECURA  WB CASNO SITE CURA -6.71249     
-        -order:clue_b[orde OSEPOANTHANINET  OSEP OAN THAN INET -6.88735     
-        -clue_b[order]     OSEPOANTHANINET  OSEP OAN THAN INET -6.88735     
-        -inspector:clue_b[ SEOHONANTINPATE  SEO HON ANTIN PATE -6.91403     
-        inspector:clue_b[o ETAPNITNANOHOES  ETAP NIT NANO HOES -7.02639     
-        
         >>> puz.try_indexing(1)
         Best answer
         ===========
         Operation: column_order:colorname[inspector]
         Extracted text: RAINBOWCACTUSES
         Suggested answer: RAINBOW CACTUSES
-        Goodness: -3.427
+        Goodness: -3.479
         u'RAINBOW CACTUSES'
 
     PuzzleArrays are also great at working with unknown or partially known
@@ -86,9 +76,9 @@ class PuzzleArray(np.ndarray):
         ===========
         Operation: column_order:colorname[inspector]
         Extracted text: /...NBO.CAC.US../
-        Suggested answer: RAINBOW CACTUSES
-        Goodness: -3.024
-        u'RAINBOW CACTUSES'
+        Suggested answer: RAINBOW CACTUS OF
+        Goodness: -2.649
+        u'RAINBOW CACTUS OF'
     """
     def __new__(cls, data, copy=False):
         arr = np.array(data, dtype=object, copy=copy).view(cls)

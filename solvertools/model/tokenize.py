@@ -14,19 +14,19 @@ def tokenize(text):
     punctuation from words, splits up contractions, and generally does what
     a lot of natural language tools (especially parsers) expect their
     input to do.
-
-        >>> en_nl.tokenize("Time is an illusion. Lunchtime, doubly so.")
+        
+        >>> tokenize("Time is an illusion. Lunchtime, doubly so.")
         'Time is an illusion . Lunchtime , doubly so .'
         >>> untok = '''
         ... "Very deep," said Arthur, "you should send that in to the
         ... Reader's Digest. They've got a page for people like you."
         ... '''
-        >>> tok = en_nl.tokenize(untok)
+        >>> tok = tokenize(untok)
         >>> tok
         "`` Very deep , '' said Arthur , `` you should send that in to the Reader 's Digest . They 've got a page for people like you . ''"
-        >>> en_nl.untokenize(tok)
+        >>> untokenize(tok)
         '"Very deep," said Arthur, "you should send that in to the Reader\'s Digest. They\'ve got a page for people like you."'
-        >>> en_nl.untokenize(tok) == untok.replace('\n', ' ').strip()
+        >>> untokenize(tok) == untok.replace('\n', ' ').strip()
         True
 
     """

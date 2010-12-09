@@ -20,7 +20,7 @@ def asciify(text):
 
 def _build_path(parts):
     "Make a path out of the given path fragments."
-    return os.path.sep.join(p for p in parts if p)
+    return unicode(os.path.sep.join(p for p in parts if p)).encode('utf-8')
 
 def module_path():
     """Figures out the full path of the directory containing this file.

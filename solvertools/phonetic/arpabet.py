@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
+u"""
 This module is meant for dealing with "Arpabet" phonetic spelling, particularly
 converting it to approximate IPA so you don't have to understand the Arpabet's
 frustratingly misleading vowels.
@@ -84,7 +84,7 @@ def arpa_symbol_to_ipa(s):
         return ARPA_TO_IPA[s]
 
 def arpa_to_ipa(s):
-    """
+    u"""
     Given a word spelled phonetically in the Arpabet, convert it to approximate
     IPA.
 

@@ -375,8 +375,10 @@ class Wordlist(object):
         determined from its base filename, the name of its convert function,
         and a version number.
         """
-        return "%s.%s.%s.regulus" % (self.filename, self.convert.__name__,
+        name = "%s.%s.%s.regulus" % (self.filename, self.convert.__name__,
                                      self.version)
+        # make sure it's a string so regulus doesn't panic
+        return str(name)
 
     def __hash__(self):
         return hash((self.convert, self.filename))
