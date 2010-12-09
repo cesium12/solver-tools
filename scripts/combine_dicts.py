@@ -14,6 +14,12 @@ for word, freq in Google200K.iteritems():
     out.write(u"%s,%d\n" % (word, freq))
 del Google200K
 
+for word, freq in PHRASES.iteritems():
+    print word, freq
+    used_words.add(word)
+    out.write(u"%s,%d\n" % (word, freq))
+del PHRASES
+
 for word in ENABLE:
     if word not in used_words:
         print word
