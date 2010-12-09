@@ -1,2 +1,2 @@
 import logging, sys
-logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+logging.basicConfig(stream=sys.stderr, level=logging.INFO)
