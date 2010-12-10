@@ -95,7 +95,7 @@ def with_frequency(text):
     Use this as a reader when the wordlist has comma-separated entries of the
     form `WORD,freq`.
     """
-    word, freq = text.split(',', 1)
+    word, freq = text.rsplit(',', 1)
     return (word, int(freq))
 
 def csv(text):
@@ -221,14 +221,6 @@ class Wordlist(object):
         else:
             raise IOError("Cannot find a dictionary named '%s'." %
             self.filename)
-
-    def get_regulus(self):
-        """
-        Return this word list's regulus object, loading it if necessary.
-        """
-        if self.regulus is None:
-            self.load_regulus()
-        return self.regulus
 
     def load_regulus(self):
         """
@@ -462,10 +454,11 @@ PHRASES = Wordlist('google_phrases', alphanumeric_with_spaces, with_frequency)
 LATIN = Wordlist('wikipedia_la', classical_latin_letters, with_frequency)
 CHAOTIC = Wordlist('chaotic', letters_only, with_frequency)
 WORDNET = Wordlist('wordnet', case_insensitive)
+PUZZLEBASE = Wordlist('puzzlebase_current', alphanumeric_with_spaces, with_frequency)
 WIKIPEDIA = Wordlist('wikipedia_en_titles', alphanumeric_with_spaces, wiki_title_cleanup)
 PHONETIC = WordMapping('phonetic', case_insensitive, ensure_unicode, csv)
 CROSSWORD = WordMapping('crossword_clues', letters_only, ensure_unicode, tsv)
 WORDNET_DEFS = WordMapping('wordnet_definitions', alphanumeric_only, ensure_unicode, tsv)
-SCRABBLE_RACK = Wordlist('scrabble_rack', case_insensitive)
+
 #TODO: spanish
 

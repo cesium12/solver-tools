@@ -1,5 +1,5 @@
 from solvertools.puzzlebase.tables import Word, Relation, make_alphagram, commit
-from solvertools.wordlist import NPL, ENABLE, WORDNET, PHONETIC, COMBINED_WORDY, CROSSWORD, PHRASES
+from solvertools.wordlist import NPL, ENABLE, WORDNET, PHONETIC, COMBINED_WORDY, CROSSWORD, PHRASES, PUZZLEBASE
 from solvertools.wordnet import morphy_roots
 from solvertools.model.tokenize import get_words
 from nltk.corpus import wordnet as wn
@@ -22,7 +22,7 @@ def initial_setup():
     commit()
 
 def advanced_setup():
-    Word.add_from_wordlist(WIKIPEDIA, minimum_freq=10000)
+    Word.add_from_wordlist(WIKIPEDIA, minimum_freq=11000)
     Word.add_from_wordlist(PHRASES, minimum_freq=1000, lexical=False)
 
 def add_roots(wordlist):
@@ -34,17 +34,17 @@ def add_roots(wordlist):
             logger.info('has_root(%s, %s)' % (word, lemma))
     commit()
 
-def add_anagrams(wordlist):
+def show_concatentations(wordlist):
     for word in wordlist:
-        word1 = Word.get(word)
-        if not word1: continue
-        if len(word1.key) < 5: continue
-        others = Word.query.filter_by(alphagram=word1.alphagram)
-        for word2 in others:
-            if word2.key != word1.key:
-                Relation.make('has_anagram', word1, word2)
-                logger.info('has_anagram(%s, %s)' % (word1.key, word2.key))
-    commit()
+        for prefixlen in xrange(1, len(word)-1):
+            prefix = word[:prefixlen]
+            if prefix in wordlist:
+                suffix = word[prefixlen:]
+                if suffix in wordlist:
+                    # to avoid degenerate cases, at least one word must be
+                    # valid for Scrabble.
+                    if prefix in ENABLE or suffix in ENABLE:
+                        print "%s = %s + %s" % (word, prefix, suffix)
 
 def add_clues(mapping):
     """
@@ -70,9 +70,30 @@ def add_clues(mapping):
 def add_bigrams(wordlist):
     for phrase in wordlist:
         words = phrase.split(' ')
-        if len(words) == 2:
-            rel1, rel2 = Relation.make_2way('precedes', 'follows', words[0], words[1])
+        for offset in xrange(len(words)-1):
+            word1 = Word.get(words[offset])
+            if word1 is None:
+                word1 = Word.make(words[offset], 500, lexical=False)
+            word2 = Word.get(words[offset+1])
+            if word2 is None:
+                word2 = Word.make(words[offset+1], 500, lexical=False)
+
+            rel1, rel2 = Relation.make_2way('precedes', 'follows', word1, word2)
             rel1.freq = wordlist[phrase]
             rel2.freq = wordlist[phrase]
             logger.info('precedes(%s, %s)' % (words[0], words[1]))
+    commit()
+
+def add_meta_bigrams(wordlist)
+    for phrase in wordlist:
+        words = phrase.split(' ')
+        if len(words) >= 3:
+            for split in xrange(1, len(words-1)):
+                part1 = Word.get(' '.join(words[:split]))
+                part2 = Word.get(' '.join(words[split:]))
+                if part1 and part2:
+                    rel1, rel2 = Relation.make_2way('precedes', 'follows', word1, word2)
+                    rel1.freq = wordlist[phrase]
+                    rel2.freq = wordlist[phrase]
+                    logger.info('precedes(%s, %s)' % (part1, part2))
     commit()
