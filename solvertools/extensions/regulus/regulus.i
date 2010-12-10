@@ -25,6 +25,15 @@ namespace std {
 };
 
 
+%exception {
+    try {
+        $action
+    } catch(Automaton::SpecException &e) {
+        PyErr_SetString(PyExc_ValueError,e.what());
+        return NULL;
+    }
+}
+
 struct DictEntry {
   std::string word;
   freq_t freq;
