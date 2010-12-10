@@ -4,7 +4,7 @@ CPPFLAGS = -Wall -O3 -fpic -ffast-math -pipe `python-config --cflags`
 
 ifeq ($(UNAME), Linux)
 objs = amtrie.o automaton.o check.o dict.o dyntrie.o
-CPPFLAGS = $(CPPFLAGS) -Wno-unused-result
+CPPFLAGS += -Wno-unused-result
 endif
 ifeq ($(UNAME), Darwin)
 objs = amtrie.o automaton.o check.o dict.o dyntrie.o /System/Library/Frameworks/Python.framework/Versions/2.6/Python 
