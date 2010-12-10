@@ -6,7 +6,7 @@ def dash_to_hyphen(s):
     """
     Replaces various kinds of dash characters with hyphens.
     """
-    return re.sub(u'[\u2010\u2012\u2013\u2014\u2015\u2043\u2212]','-',s)
+    return re.sub(u'[\u2010\u2011\u2012\u2013\u2014\u2015\u2043\u2212\uff0d]','-',s)
 
 to_morse = {
 	'A' : '.-',
@@ -58,6 +58,7 @@ to_morse = {
     '=' : '-...-',
     '+' : '.-.-.',
     '@' : '.--.-.',
+    u'\u00d7' : '-..-'
 }
 
 from_morse = lex_base.reverse(to_morse)

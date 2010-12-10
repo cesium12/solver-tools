@@ -195,6 +195,9 @@ ALPHABETS = {
 
   # Turkish is hard to do right, skipping it for now.
 
+  # English alphabet, in Braille
+  'braille' : TextAlphabet(u'⠁⠃⠉⠙⠑⠋⠛⠓⠊⠚⠅⠇⠍⠝⠕⠏⠟⠗⠎⠞⠥⠧⠺⠭⠽⠵'),
+
   ### Non-Latin alphabets ###
 
   # The 24-letter Greek alphabet, written in two ways:
