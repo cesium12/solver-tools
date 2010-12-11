@@ -219,6 +219,9 @@ ALPHABETS = {
   'hex': CaseAlphabet(string.digits + "ABCDEF"),
   'base64': TextAlphabet(string.uppercase + string.lowercase
                          + string.digits + "+/")
+
+  ### Miscellaneous 'alphabets' ###
+  'amino_acid' : CaseAlphabet(u'ACDEFGHIKLMNPQRSTVWY')
 }
 
 ENGLISH = ALPHABETS['english']
