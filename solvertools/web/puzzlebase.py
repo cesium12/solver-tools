@@ -1,14 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from solvertools.puzzlebase.tables import Word, Relation, make_alphagram, elixir
-from solvertools.wordlist import ENABLE, WORDNET, WORDNET_DEFS, CROSSWORD, WIKIPEDIA, PUZZLEBASE
+from solvertools.wordlist import ENABLE, WORDNET, WORDNET_DEFS, CROSSWORD, WIKIPEDIA
 import socket, urllib
 from sqlalchemy import desc, select
 from collections import defaultdict
 import logging
 logging.getLogger('sqlalchemy.engine').setLevel(logging.DEBUG)
 
-#PUZZLEBASE.load()
-#PUZZLEBASE.load_regulus()
 CROSSWORD.load()
 WORDNET.load()
 
