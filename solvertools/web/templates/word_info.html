@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}{{ key }}{% endblock %}
+{% block main %}
+<h1>{{ fulltext }} ({{ freq }})</h1>
+<h2>Crossword clues</h2>
+<ul>
+    {% for clue in crossword_clues %}
+    <li>{{ clue }}</li>
+    {% endfor %}
+</ul>
+<h2>Anagrams</h2>
+{% for word in anagrams %}
+<div class="wordlink">
+    <a href="/word/{{word.lower()}}">{{word}}</a>
+</div>
+{% endfor %}
+{% for rel in relations %}
+<div class="rel">
+    <h2>{{ rel }}</h2>
+    {% for word in relations[rel] %}
+    <div class="wordlink">
+        <a href="/word/{{word.lower()}}">{{word}}</a>
+    </div>
+    {% endfor %}
+</div>
+{% endfor %}
+<h2>WordNet definitions</h2>
+<ul>
+    {% for clue in wordnet_defs %}
+    <li>{{ clue }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
