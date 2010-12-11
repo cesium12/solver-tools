@@ -31,6 +31,9 @@ namespace std {
     } catch(Automaton::SpecException &e) {
         PyErr_SetString(PyExc_ValueError,e.what());
         return NULL;
+    } catch(std::bad_alloc &) {
+        PyErr_NoMemory();
+        return NULL;
     }
 }
 

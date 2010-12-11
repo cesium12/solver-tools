@@ -6455,6 +6455,9 @@ SWIGINTERN PyObject *_wrap_delete_dictvector(PyObject *SWIGUNUSEDPARM(self), PyO
     } catch(Automaton::SpecException &e) {
       PyErr_SetString(PyExc_ValueError,e.what());
       return NULL;
+    } catch(std::bad_alloc &) {
+      PyErr_NoMemory();
+      return NULL;
     }
   }
   resultobj = SWIG_Py_Void();
@@ -6596,6 +6599,9 @@ SWIGINTERN PyObject *_wrap_new_DictEntry__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
     } catch(Automaton::SpecException &e) {
       PyErr_SetString(PyExc_ValueError,e.what());
       return NULL;
+    } catch(std::bad_alloc &) {
+      PyErr_NoMemory();
+      return NULL;
     }
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_DictEntry, SWIG_POINTER_NEW |  0 );
@@ -6634,6 +6640,9 @@ SWIGINTERN PyObject *_wrap_new_DictEntry__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
       result = (DictEntry *)new DictEntry((char const *)arg1,arg2);
     } catch(Automaton::SpecException &e) {
       PyErr_SetString(PyExc_ValueError,e.what());
+      return NULL;
+    } catch(std::bad_alloc &) {
+      PyErr_NoMemory();
       return NULL;
     }
   }
@@ -6679,6 +6688,9 @@ SWIGINTERN PyObject *_wrap_new_DictEntry__SWIG_2(PyObject *SWIGUNUSEDPARM(self),
       result = (DictEntry *)new DictEntry((std::string const &)*arg1,arg2);
     } catch(Automaton::SpecException &e) {
       PyErr_SetString(PyExc_ValueError,e.what());
+      return NULL;
+    } catch(std::bad_alloc &) {
+      PyErr_NoMemory();
       return NULL;
     }
   }
@@ -6762,6 +6774,9 @@ SWIGINTERN PyObject *_wrap_delete_DictEntry(PyObject *SWIGUNUSEDPARM(self), PyOb
     } catch(Automaton::SpecException &e) {
       PyErr_SetString(PyExc_ValueError,e.what());
       return NULL;
+    } catch(std::bad_alloc &) {
+      PyErr_NoMemory();
+      return NULL;
     }
   }
   resultobj = SWIG_Py_Void();
@@ -6788,6 +6803,9 @@ SWIGINTERN PyObject *_wrap_new_Dict__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyOb
       result = (Dict *)new Dict();
     } catch(Automaton::SpecException &e) {
       PyErr_SetString(PyExc_ValueError,e.what());
+      return NULL;
+    } catch(std::bad_alloc &) {
+      PyErr_NoMemory();
       return NULL;
     }
   }
@@ -6819,6 +6837,9 @@ SWIGINTERN PyObject *_wrap_new_Dict__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyOb
       result = (Dict *)new Dict(arg1);
     } catch(Automaton::SpecException &e) {
       PyErr_SetString(PyExc_ValueError,e.what());
+      return NULL;
+    } catch(std::bad_alloc &) {
+      PyErr_NoMemory();
       return NULL;
     }
   }
@@ -6890,6 +6911,9 @@ SWIGINTERN PyObject *_wrap_Dict_read(PyObject *SWIGUNUSEDPARM(self), PyObject *a
     } catch(Automaton::SpecException &e) {
       PyErr_SetString(PyExc_ValueError,e.what());
       return NULL;
+    } catch(std::bad_alloc &) {
+      PyErr_NoMemory();
+      return NULL;
     }
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -6930,6 +6954,9 @@ SWIGINTERN PyObject *_wrap_Dict_write(PyObject *SWIGUNUSEDPARM(self), PyObject *
       result = (bool)((Dict const *)arg1)->write((char const *)arg2);
     } catch(Automaton::SpecException &e) {
       PyErr_SetString(PyExc_ValueError,e.what());
+      return NULL;
+    } catch(std::bad_alloc &) {
+      PyErr_NoMemory();
       return NULL;
     }
   }
@@ -6973,6 +7000,9 @@ SWIGINTERN PyObject *_wrap_Dict_grep(PyObject *SWIGUNUSEDPARM(self), PyObject *a
     } catch(Automaton::SpecException &e) {
       PyErr_SetString(PyExc_ValueError,e.what());
       return NULL;
+    } catch(std::bad_alloc &) {
+      PyErr_NoMemory();
+      return NULL;
     }
   }
   resultobj = swig::from(static_cast< std::vector<DictEntry,std::allocator< DictEntry > > >(result));
@@ -7012,6 +7042,9 @@ SWIGINTERN PyObject *_wrap_Dict_grep_freq_sorted(PyObject *SWIGUNUSEDPARM(self),
       result = ((Dict const *)arg1)->grep_freq_sorted(arg2);
     } catch(Automaton::SpecException &e) {
       PyErr_SetString(PyExc_ValueError,e.what());
+      return NULL;
+    } catch(std::bad_alloc &) {
+      PyErr_NoMemory();
       return NULL;
     }
   }
@@ -7053,6 +7086,9 @@ SWIGINTERN PyObject *_wrap_Dict_total_freq(PyObject *SWIGUNUSEDPARM(self), PyObj
     } catch(Automaton::SpecException &e) {
       PyErr_SetString(PyExc_ValueError,e.what());
       return NULL;
+    } catch(std::bad_alloc &) {
+      PyErr_NoMemory();
+      return NULL;
     }
   }
   resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< unsigned long long >(result));
@@ -7093,6 +7129,9 @@ SWIGINTERN PyObject *_wrap_Dict_best_match(PyObject *SWIGUNUSEDPARM(self), PyObj
     } catch(Automaton::SpecException &e) {
       PyErr_SetString(PyExc_ValueError,e.what());
       return NULL;
+    } catch(std::bad_alloc &) {
+      PyErr_NoMemory();
+      return NULL;
     }
   }
   resultobj = SWIG_NewPointerObj((new DictEntry(static_cast< const DictEntry& >(result))), SWIGTYPE_p_DictEntry, SWIG_POINTER_OWN |  0 );
@@ -7120,6 +7159,9 @@ SWIGINTERN PyObject *_wrap_delete_Dict(PyObject *SWIGUNUSEDPARM(self), PyObject 
       delete arg1;
     } catch(Automaton::SpecException &e) {
       PyErr_SetString(PyExc_ValueError,e.what());
+      return NULL;
+    } catch(std::bad_alloc &) {
+      PyErr_NoMemory();
       return NULL;
     }
   }
