@@ -54,9 +54,7 @@ def get_clues(filename)
 end
 
 def extract_clues(path)
-    dir, filename = File.split(path)
-    parentdir, dirname = File.split(dir)
-    outname = File.join(parentdir, "clues", filename+".txt")
+    outname = path.sub('puzzles', 'clues').sub('.puz', '.txt')
     outfile = File.open(outname, "w")
     clues = get_clues(path)
     clues.each do |entry|
@@ -66,6 +64,13 @@ def extract_clues(path)
     outfile.close
 end
 
-ARGV.each do |filename|
-    extract_clues(filename)
+def extract_clues_dir(dir)
+    Dir.entries(dir).each do |filename|
+        if filename =~ /\.puz$/
+            path = File.join(dir, filename)
+            extract_clues(path)
+        end
+    end
 end
+
+extract_clues_dir(ARGV[0])

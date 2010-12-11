@@ -1,0 +1,74 @@
+GAIT	Walk, trot or canter
+GAG	Joke
+ADO	Commotion
+ILL	State west of Ind.
+TIDBITS	Choice morsels
+BRIE	Cheese served with crackers
+BLOND	Flaxen-haired
+ROCK	Boulder
+ILK	Variety
+ELSINORE	Hamlet's home
+ROMP	Cavort
+ROSEBUD	Citizen Kane's last word
+OVERBEARING	Domineering
+MARIE	Nobelist Curie
+PLEAD	Beg
+ADLIB	Speak without notes
+BILLETS	Military lodgings
+LOLL	Loaf about
+OVAL	Race track
+GOLDILOCKS	Girl in a children's story
+LIED	Stretched the truth, so to speak
+SERE	Dried up
+BLINK	Go on and off, as a traffic light
+IBERIA	Spain and Portugal
+BOG	Peat locale
+DEFILED	Polluted
+DEFAT	Trim, as a roast
+EMILE	Author Zola
+FORBEARANCE	Restraint
+KNOBBED	Having round protuberances
+KRAFT	Velveeta maker
+EMOTED	Hammed it up
+BROGUE	Irish accent
+BEFIT	Comport with
+FIRST	Foremost's partner
+HEAR	Try, as a case
+HOMES	Development developments
+DATE	Go out with
+TINGE	Touch of color
+EDGER	Landscaping tool
+ALB	Liturgical vestment
+SCOFFED	Mocked
+COCKSURE	Overconfident
+DARNERS	Sock menders
+RID	Clear (of)
+TEES	Shirts for golfers?
+SVELTER	More slender and graceful
+OMIT	Opposite of include
+AGING	Mellowing, as cheese
+GUANACO	Wild llama
+AVOCET	Long-legged shorebird
+OAK	Acorn tree
+GRUNGE	90's music or fashion
+GALA	Joyous celebration
+STREAKS	These can be winning or losing
+SCROD	Seafood order
+THANE	Macbeth, for one
+TANAGER	Scarlet bird
+TRESS	Lady's keepsake to a soldier, once
+CHALKS	Readies, as a pool cue
+ARLEN	Harold who wrote "Stormy Weather"
+ABED	Not up yet
+RANT	Harangue
+UNBEARABLE	Worse than awful
+NUN	Convent dweller
+BIN	Storage container
+LOU	Costello or Grant
+ENS	Printer's widths
+ONCE	Fairy tale's opening word
+RUES	They crisscross Paris
+SCION	Grafting shoot
+DEER	Bambi and kin
+ENDS	They may be loose or split
+ONUS	Burden
