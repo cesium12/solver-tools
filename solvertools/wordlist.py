@@ -466,5 +466,6 @@ WIKIPEDIA = Wordlist('wikipedia_en_titles', alphanumeric_with_spaces, wiki_title
 PHONETIC = WordMapping('phonetic', case_insensitive, ensure_unicode, csv)
 CROSSWORD = WordMapping('crossword_clues', letters_only, ensure_unicode, tsv)
 WORDNET_DEFS = WordMapping('wordnet_definitions', alphanumeric_only, ensure_unicode, tsv)
+SCRABBLE_RACK = Wordlist('scrabble_rack', case_insensitive)
 #TODO: spanish
 
