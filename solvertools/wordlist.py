@@ -222,6 +222,14 @@ class Wordlist(object):
             raise IOError("Cannot find a dictionary named '%s'." %
             self.filename)
 
+    def get_regulus(self):
+        """
+        Return this word list's regulus object, loading it if necessary.
+        """
+        if self.regulus is None:
+            self.load_regulus()
+        return self.regulus
+
     def load_regulus(self):
         """
         If we need to do fast regex operations on this wordlist, we need a
