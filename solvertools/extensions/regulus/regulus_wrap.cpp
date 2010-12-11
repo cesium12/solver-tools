@@ -6986,13 +6986,10 @@ SWIGINTERN PyObject *_wrap_Dict_grep(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   }
   arg1 = reinterpret_cast< Dict * >(argp1);
   {
-    std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Dict_grep" "', argument " "2"" of type '" "std::string""'"); 
-    }
-    arg2 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    char * ch = PyString_AsString(obj1);
+    if(ch == NULL)
+    return NULL;
+    arg2 = std::string(ch);
   }
   {
     try {
@@ -7029,13 +7026,10 @@ SWIGINTERN PyObject *_wrap_Dict_grep_freq_sorted(PyObject *SWIGUNUSEDPARM(self),
   }
   arg1 = reinterpret_cast< Dict * >(argp1);
   {
-    std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Dict_grep_freq_sorted" "', argument " "2"" of type '" "std::string""'"); 
-    }
-    arg2 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    char * ch = PyString_AsString(obj1);
+    if(ch == NULL)
+    return NULL;
+    arg2 = std::string(ch);
   }
   {
     try {
@@ -7072,13 +7066,10 @@ SWIGINTERN PyObject *_wrap_Dict_total_freq(PyObject *SWIGUNUSEDPARM(self), PyObj
   }
   arg1 = reinterpret_cast< Dict * >(argp1);
   {
-    std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Dict_total_freq" "', argument " "2"" of type '" "std::string""'"); 
-    }
-    arg2 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    char * ch = PyString_AsString(obj1);
+    if(ch == NULL)
+    return NULL;
+    arg2 = std::string(ch);
   }
   {
     try {
@@ -7115,13 +7106,10 @@ SWIGINTERN PyObject *_wrap_Dict_best_match(PyObject *SWIGUNUSEDPARM(self), PyObj
   }
   arg1 = reinterpret_cast< Dict * >(argp1);
   {
-    std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Dict_best_match" "', argument " "2"" of type '" "std::string""'"); 
-    }
-    arg2 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
+    char * ch = PyString_AsString(obj1);
+    if(ch == NULL)
+    return NULL;
+    arg2 = std::string(ch);
   }
   {
     try {

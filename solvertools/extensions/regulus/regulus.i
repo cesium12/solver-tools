@@ -37,6 +37,14 @@ namespace std {
     }
 }
 
+/* automatically convert unicode to str */
+%typemap(in) std::string {
+    char * ch = PyString_AsString($input);
+    if(ch == NULL)
+        return NULL;
+    $1 = std::string(ch);
+}
+
 struct DictEntry {
   std::string word;
   freq_t freq;
