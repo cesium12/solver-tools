@@ -57,6 +57,14 @@ struct DictEntry {
 
   DictEntry(const std::string &w, freq_t f) :
     word(w), freq(f) {;}
+
+  %extend {
+    char * __repr__() {
+        static char temp[256];
+        snprintf(temp,256,"< %s (%ld) >",$self->word.c_str(),$self->freq);
+        return temp;
+    }
+  }
 };
 
 class Dict {

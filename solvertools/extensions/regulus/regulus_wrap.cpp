@@ -4209,6 +4209,18 @@ SWIG_From_unsigned_SS_long_SS_long  (unsigned long long value)
 
 
 
+SWIGINTERN char *DictEntry___repr__(DictEntry *self){
+        static char temp[256];
+        snprintf(temp,256,"< %s (%ld) >",self->word.c_str(),self->freq);
+        return temp;
+    }
+
+SWIGINTERNINLINE PyObject * 
+SWIG_FromCharPtr(const char *cptr)
+{ 
+  return SWIG_FromCharPtrAndSize(cptr, (cptr ? strlen(cptr) : 0));
+}
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -6755,6 +6767,38 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_DictEntry___repr__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DictEntry *arg1 = (DictEntry *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:DictEntry___repr__",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictEntry, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DictEntry___repr__" "', argument " "1"" of type '" "DictEntry *""'"); 
+  }
+  arg1 = reinterpret_cast< DictEntry * >(argp1);
+  {
+    try {
+      result = (char *)DictEntry___repr__(arg1);
+    } catch(Automaton::SpecException &e) {
+      PyErr_SetString(PyExc_ValueError,e.what());
+      return NULL;
+    } catch(std::bad_alloc &) {
+      PyErr_NoMemory();
+      return NULL;
+    }
+  }
+  resultobj = SWIG_FromCharPtr((const char *)result);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_DictEntry(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   DictEntry *arg1 = (DictEntry *) 0 ;
@@ -7223,6 +7267,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"DictEntry_freq_set", _wrap_DictEntry_freq_set, METH_VARARGS, NULL},
 	 { (char *)"DictEntry_freq_get", _wrap_DictEntry_freq_get, METH_VARARGS, NULL},
 	 { (char *)"new_DictEntry", _wrap_new_DictEntry, METH_VARARGS, NULL},
+	 { (char *)"DictEntry___repr__", _wrap_DictEntry___repr__, METH_VARARGS, NULL},
 	 { (char *)"delete_DictEntry", _wrap_delete_DictEntry, METH_VARARGS, NULL},
 	 { (char *)"DictEntry_swigregister", DictEntry_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_Dict", _wrap_new_Dict, METH_VARARGS, NULL},

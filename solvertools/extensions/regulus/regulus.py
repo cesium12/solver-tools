@@ -127,7 +127,6 @@ class DictEntry(_object):
     __setattr__ = lambda self, name, value: _swig_setattr(self, DictEntry, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, DictEntry, name)
-    __repr__ = _swig_repr
     __swig_setmethods__["word"] = _regulus.DictEntry_word_set
     __swig_getmethods__["word"] = _regulus.DictEntry_word_get
     if _newclass:word = _swig_property(_regulus.DictEntry_word_get, _regulus.DictEntry_word_set)
@@ -138,6 +137,7 @@ class DictEntry(_object):
         this = _regulus.new_DictEntry(*args)
         try: self.this.append(this)
         except: self.this = this
+    def __repr__(*args): return _regulus.DictEntry___repr__(*args)
     __swig_destroy__ = _regulus.delete_DictEntry
     __del__ = lambda self : None;
 DictEntry_swigregister = _regulus.DictEntry_swigregister
