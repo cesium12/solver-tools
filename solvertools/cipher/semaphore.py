@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Encoder and decoder for semaphore.  For ease of entry, directions
 are represented by the corresponding numeric keypad numbers i. e.
@@ -46,40 +47,31 @@ for (k,v) in from_sem.items():
 class InputMode(object):
 
     numpad_chars = '12346789'
-
-class NumpadInput(InputMode):
-
-    def to_numpad(self,x):
-        return x
-
-    def from_numpad(self,x):
-        return x
-
-class PhonepadInput(InputMode):
-
-    phonepad_chars = '78946123'
-    
-    to_trans = string.maketrans(phonepad_chars, InputMode.numpad_chars)
-    from_trans = string.maketrans(InputMode.numpad_chars, phonepad_chars)
+    numpad_ords = map(ord,numpad_chars)
 
     def to_numpad(self,x):
-        return x.translate(self.to_trans)
+        raise NotImplemented
 
     def from_numpad(self,x):
-        return x.translate(self.from_trans)
+        raise NotImplemented
 
-class ViInput(InputMode):
+class TranslateInput(InputMode):
 
-    vi_chars = 'bjnhlyku'
-
-    to_trans = string.maketrans(vi_chars, InputMode.numpad_chars)
-    from_trans = string.maketrans(InputMode.numpad_chars, vi_chars)
+    def __init__(self,chars):
+        ords = map(ord,chars)
+        self.to_trans = dict(zip(ords, InputMode.numpad_ords))
+        self.from_trans = dict(zip(InputMode.numpad_ords, ords))
 
     def to_numpad(self,x):
-        return x.translate(self.to_trans)
+        return unicode(x).translate(self.to_trans)
 
     def from_numpad(self,x):
-        return x.translate(self.from_trans)
+        return unicode(x).translate(self.from_trans)
+
+NUMPAD = TranslateInput(InputMode.numpad_chars)
+PHONEPAD = TranslateInput('78946123')
+VI = TranslateInput('bjnhlyku')
+ARROW = TranslateInput(u'↙↓↘←→↖↑↗')
 
 class SemaphoreEncoder(lex_base.Encoder):
 
@@ -94,7 +86,7 @@ class SemaphoreEncoder(lex_base.Encoder):
     )
    
     def __init__(self,**kwargs):
-        self.input_mode = kwargs.pop('input_mode',NumpadInput())
+        self.input_mode = kwargs.pop('input_mode',NUMPAD)
         super(SemaphoreEncoder,self).__init__(**kwargs)
 
     def __call__(self,s):
@@ -137,7 +129,7 @@ class SemaphoreDecoder(lex_base.Decoder):
     )
 
     def __init__(self,**kwargs):
-        self.input_mode = kwargs.pop('input_mode',NumpadInput())
+        self.input_mode = kwargs.pop('input_mode',NUMPAD)
         super(SemaphoreDecoder,self).__init__(**kwargs)
 
     def __call__(self,s):
