@@ -6,6 +6,7 @@ are represented by the corresponding numeric keypad numbers i. e.
 
 from solvertools.cipher import lex_base
 from ply import lex
+import string
 
 to_sem = {
     'A' : '12',
@@ -42,6 +43,44 @@ from_sem = lex_base.reverse(to_sem)
 for (k,v) in from_sem.items():
     from_sem[k[1]+k[0]]=v
 
+class InputMode(object):
+
+    numpad_chars = '12346789'
+
+class NumpadInput(InputMode):
+
+    def to_numpad(self,x):
+        return x
+
+    def from_numpad(self,x):
+        return x
+
+class PhonepadInput(InputMode):
+
+    phonepad_chars = '78946123'
+    
+    to_trans = string.maketrans(phonepad_chars, InputMode.numpad_chars)
+    from_trans = string.maketrans(InputMode.numpad_chars, phonepad_chars)
+
+    def to_numpad(self,x):
+        return x.translate(self.to_trans)
+
+    def from_numpad(self,x):
+        return x.translate(self.from_trans)
+
+class ViInput(InputMode):
+
+    vi_chars = 'bjnhlyku'
+
+    to_trans = string.maketrans(vi_chars, InputMode.numpad_chars)
+    from_trans = string.maketrans(InputMode.numpad_chars, vi_chars)
+
+    def to_numpad(self,x):
+        return x.translate(self.to_trans)
+
+    def from_numpad(self,x):
+        return x.translate(self.from_trans)
+
 class SemaphoreEncoder(lex_base.Encoder):
 
     states = (
@@ -53,7 +92,14 @@ class SemaphoreEncoder(lex_base.Encoder):
         'WHITESPACE',
         'CHANGEMODE',
     )
-    
+   
+    def __init__(self,**kwargs):
+        self.input_mode = kwargs.pop('input_mode',NumpadInput())
+        super(SemaphoreEncoder,self).__init__(**kwargs)
+
+    def __call__(self,s):
+        return self.input_mode.from_numpad(super(SemaphoreEncoder,self).__call__(s))
+
     def t_ALNUM(self,t):
         r'[A-Za-z]'
         t.value = to_sem[t.value.upper()]
@@ -89,6 +135,13 @@ class SemaphoreDecoder(lex_base.Decoder):
         'WORDSEP',
         'CHMODE',
     )
+
+    def __init__(self,**kwargs):
+        self.input_mode = kwargs.pop('input_mode',NumpadInput())
+        super(SemaphoreDecoder,self).__init__(**kwargs)
+
+    def __call__(self,s):
+        return super(SemaphoreDecoder,self).__call__(self.input_mode.to_numpad(s))
    
     def t_SEMAPHORE(self,t):
         r'[1-46-9]{2}'
