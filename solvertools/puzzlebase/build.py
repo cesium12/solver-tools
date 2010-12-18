@@ -1,5 +1,5 @@
 from solvertools.puzzlebase.tables import Word, Relation, make_alphagram, commit
-from solvertools.wordlist import NPL, ENABLE, WORDNET, PHONETIC, COMBINED_WORDY, CROSSWORD, PHRASES, PUZZLEBASE
+from solvertools.wordlist import NPL, ENABLE, WORDNET, PHONETIC, COMBINED_WORDY, CROSSWORD, PHRASES, Wordlist, alphanumeric_only, with_frequency
 from solvertools.wordnet import morphy_roots
 from solvertools.model.tokenize import get_words
 from nltk.corpus import wordnet as wn
@@ -34,17 +34,34 @@ def add_roots(wordlist):
             logger.info('has_root(%s, %s)' % (word, lemma))
     commit()
 
-def show_concatentations(wordlist):
+PUZZLEBASE = Wordlist('puzzlebase_current', alphanumeric_only, with_frequency)
+def add_concatenations(wordlist):
+    counter = 0
     for word in wordlist:
-        for prefixlen in xrange(1, len(word)-1):
+        freq = wordlist[word]
+        for prefixlen in xrange(1, len(word)):
             prefix = word[:prefixlen]
             if prefix in wordlist:
                 suffix = word[prefixlen:]
                 if suffix in wordlist:
                     # to avoid degenerate cases, at least one word must be
-                    # valid for Scrabble.
-                    if prefix in ENABLE or suffix in ENABLE:
-                        print "%s = %s + %s" % (word, prefix, suffix)
+                    # valid for Scrabble or a single letter. Or both if
+                    # they're really short.
+                    score = 0
+                    if prefix in ENABLE or len(prefix) == 1: score += 1
+                    if suffix in ENABLE or len(suffix) == 1: score += 1
+                    if len(prefix) >= 5 or len(suffix) >= 5: score += 1
+                    if score >= 2:
+                        logger.info("%s (%d) = %s + %s" % (word, wordlist[word], prefix, suffix))
+                        counter += 1
+                        rel1, rel2 = Relation.make_2way('can_append', 'can_prepend', prefix, suffix)
+                        rel1.interestingness = freq
+                        rel2.interestingness = freq
+        if counter > 1000:
+            logger.info("committing")
+            commit()
+            counter = 0
+    commit()
 
 def add_clues(mapping):
     """
@@ -68,7 +85,9 @@ def add_clues(mapping):
     commit()
 
 def add_bigrams(wordlist):
+    counter = 0
     for phrase in wordlist:
+        freq = wordlist[phrase]
         words = phrase.split(' ')
         for offset in xrange(len(words)-1):
             word1 = Word.get(words[offset])
@@ -79,21 +98,13 @@ def add_bigrams(wordlist):
                 word2 = Word.make(words[offset+1], 500, lexical=False)
 
             rel1, rel2 = Relation.make_2way('precedes', 'follows', word1, word2)
-            rel1.freq = wordlist[phrase]
-            rel2.freq = wordlist[phrase]
+            rel1.interestingness = max(rel1.interestingness, freq)
+            rel2.interestingness = max(rel2.interestingness, freq)
             logger.info('precedes(%s, %s)' % (words[0], words[1]))
+            counter += 1
+            if counter >= 1000:
+                logger.info('committing')
+                commit()
+                counter = 0
     commit()
 
-def add_meta_bigrams(wordlist)
-    for phrase in wordlist:
-        words = phrase.split(' ')
-        if len(words) >= 3:
-            for split in xrange(1, len(words-1)):
-                part1 = Word.get(' '.join(words[:split]))
-                part2 = Word.get(' '.join(words[split:]))
-                if part1 and part2:
-                    rel1, rel2 = Relation.make_2way('precedes', 'follows', word1, word2)
-                    rel1.freq = wordlist[phrase]
-                    rel2.freq = wordlist[phrase]
-                    logger.info('precedes(%s, %s)' % (part1, part2))
-    commit()

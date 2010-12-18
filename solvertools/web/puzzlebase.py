@@ -5,7 +5,7 @@ import socket, urllib
 from sqlalchemy import desc, select
 from collections import defaultdict
 import logging
-logging.getLogger('sqlalchemy.engine').setLevel(logging.DEBUG)
+#logging.getLogger('sqlalchemy.engine').setLevel(logging.DEBUG)
 
 CROSSWORD.load()
 WORDNET.load()
@@ -48,7 +48,7 @@ def word_info(key):
     data['freq'] = word.freq
     data['relations'] = defaultdict(list)
     data['anagrams'] = anagrams(word.key)
-    query = elixir.session.query(Relation).filter_by(word1_id=word.key).join(Relation.word2).order_by(desc(Word.freq)).values(Relation.rel, Word.fulltext)
+    query = elixir.session.query(Relation).filter_by(word1_id=word.key).join(Relation.word2).order_by(desc(Relation.interestingness), desc(Word.freq)).limit(500).values(Relation.rel, Word.fulltext)
     for rel, word2 in query:
         relname = rel.replace('_', ' ')
         data['relations'][relname].append(word2)
