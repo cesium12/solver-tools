@@ -1,5 +1,5 @@
 from solvertools.puzzlebase.mongo import add_from_wordlist, add_relation
-from solvertools.wordlist import NPL, ENABLE, WORDNET, PHONETIC, COMBINED_WORDY, CROSSWORD, PHRASES, PUZZLEBASE, WIKIPEDIA
+from solvertools.wordlist import NPL, ENABLE, WORDNET, PHONETIC, COMBINED_WORDY, CROSSWORD, PHRASES, WIKIPEDIA
 from solvertools.wordnet import morphy_roots
 from solvertools.model.tokenize import get_words
 import logging
