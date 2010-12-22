@@ -24,3 +24,26 @@ def add_relation(rel, words, value=None, freq=1):
         upsert=True
     )
 
+def add_from_wordlist(wordlist, multiplier=1, lexical=True):
+    for word, freq in wordlist.items():
+        add_relation('in_wordlist', [word], wordlist.filename, freq*multiplier)
+        if lexical:
+            add_relation('lexical', [word], freq=freq*multiplier)
+        logger.info((wordlist.filename, word, freq))
+
+def known_word(word):
+    return DB.relations.find_one(
+        {'rel': 'in_wordlist',
+         'words': word
+        }
+    )
+
+def valid_for_scrabble(word):
+    return DB.relations.find_one(
+        {'rel': 'in_wordlist',
+         'words': word,
+         'value': 'enable'
+        }
+    )
+
+
