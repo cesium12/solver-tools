@@ -31,6 +31,7 @@ DB_HOST='bach.manicsages.org'
 DB_PORT=5432
 DB_NAME='puzzlebase'
 
-DB_URL='postgresql://%s:%s@%s:%s/%s' % (DB_USERNAME, DB_PASSWORD, DB_HOST,
-                                        DB_PORT, DB_NAME)
-
+#DB_URL='postgresql://%s:%s@%s:%s/%s' % (DB_USERNAME, DB_PASSWORD, DB_HOST,
+#                                        DB_PORT, DB_NAME)
+from solvertools.util import get_db
+DB_URL='sqlite:///'+get_db('puzzlebase.db')
