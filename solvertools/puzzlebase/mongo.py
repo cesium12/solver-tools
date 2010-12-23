@@ -7,6 +7,7 @@ import logging
 logger = logging.getLogger(__name__)
 DB.authenticate(DB_USERNAME, DB_PASSWORD)
 
+DB.words.ensure_index('key')
 DB.relations.ensure_index([('words', ASCENDING),
                            ('interestingness', DESCENDING),
                            ('freq', DESCENDING)])
@@ -29,8 +30,9 @@ def add_relation(rel, words, value=None, freq=1):
 def add_word(fulltext, freq):
     key = alphanumeric_only(fulltext)
     return DB.words.update(
-        {'key': key, 'text': fulltext},
-        {'$inc': {'freq': freq}},
+        {'key': key},
+        {'$set': {'text': fulltext},
+         '$inc': {'freq': freq}},
         upsert=True
     )
 
