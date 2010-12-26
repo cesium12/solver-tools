@@ -1,7 +1,7 @@
 from pymongo import Connection, ASCENDING, DESCENDING
 from solvertools.wordlist import alphanumeric_only
 from solvertools.config import DB_USERNAME, DB_PASSWORD
-CONNECTION = Connection()
+CONNECTION = Connection('tortoise.csc.media.mit.edu')
 DB = CONNECTION.puzzlebase
 import logging
 logger = logging.getLogger(__name__)
@@ -39,6 +39,8 @@ def add_word(fulltext, freq):
 def add_from_wordlist(wordlist, multiplier=1, lexical=True):
     for word in wordlist:
         freq = wordlist[word]
+        if not isinstance(freq, (int, long, float)):
+            freq = 1
         add_word(word, freq)
         add_relation('in_wordlist', [word], wordlist.filename, freq*multiplier)
         if lexical:
