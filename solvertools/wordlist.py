@@ -470,5 +470,7 @@ SCRABBLE_RACK = Wordlist('scrabble_rack', case_insensitive)
 MUSICBRAINZ_ARTISTS = Wordlist('musicbrainz_artists', alphanumeric_with_spaces, with_frequency)
 MUSICBRAINZ_ALBUMS = Wordlist('musicbrainz_albums', alphanumeric_with_spaces, with_frequency)
 MUSICBRAINZ_TRACKS = Wordlist('musicbrainz_tracks', alphanumeric_with_spaces, with_frequency)
+IMDB_MOVIES = Wordlist('imdb_movies', alphanumeric_with_spaces, with_frequency)
+IMDB_ACTORS = Wordlist('imdb_actors', alphanumeric_with_spaces, with_frequency)
 #TODO: spanish
 
