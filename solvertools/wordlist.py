@@ -88,6 +88,11 @@ def alphagram(text):
 
     This will always strip spaces and smash case; if you want other
     equivalences in your text, do them first.
+
+        >>> alphagram('manic sages')
+        'ACEGIMNSS'
+        >>> alphagram('scan images')
+        'ACEGIMNSS'
     """
     sortedlist = sorted(text.upper().replace(' ', ''))
     return ''.join(sortedlist)
