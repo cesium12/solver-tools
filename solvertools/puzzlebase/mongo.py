@@ -1,5 +1,5 @@
 from pymongo import Connection, ASCENDING, DESCENDING
-from solvertools.wordlist import alphanumeric_only
+from solvertools.wordlist import alphanumeric_only, alphagram
 from solvertools.config import DB_USERNAME, DB_PASSWORD
 CONNECTION = Connection('tortoise.csc.media.mit.edu')
 DB = CONNECTION.puzzlebase
@@ -19,6 +19,8 @@ DB.relations.ensure_index([('words', ASCENDING),
 
 DB.alphagrams.ensure_index([('alphagram', ASCENDING),
                             ('freq', DESCENDING)])
+DB.alphagrams.ensure_index([('alphagram', ASCENDING),
+                            ('text', ASCENDING)])
 
 
 def add_relation(rel, words, value=None, freq=1):
@@ -58,27 +60,9 @@ def add_from_wordlist(wordlist, multiplier=1, lexical=True):
             add_relation('lexical', [word], freq=freq*multiplier)
         logger.info((wordlist.filename, word, freq*multiplier))
 
-def alphagram_from_wordlist(wordlist, multiplier=1):
-    for word in wordlist:
-        freq = wordlist[word]
-        if not isinstance(freq, (int, long, float)):
-            freq = 1
-        add_alphagram(word, freq*multiplier)
-        logger.info((wordlist.filename, word, freq*multiplier))
-
-def alphagram_from_ngrams(file, cutoff=10000):
-    if isinstance(file, basestring):
-        file = open(file)
-    for line in file:
-        words, freq = eval(line.strip())
-        if freq >= cutoff:
-            phrase = ' '.join(words)
-            add_alphagram(word, freq)
-            logger.info((word, freq))
-
 def add_alphagram(word, freq):
     key = alphanumeric_only(word)
-    return DB.words.update(
+    return DB.alphagrams.update(
         {'alphagram': alphagram(key),
          'text': word},
         {'$inc': {'freq': freq}},

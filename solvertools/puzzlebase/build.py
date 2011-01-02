@@ -1,5 +1,5 @@
-from solvertools.puzzlebase.mongo import add_from_wordlist, add_relation
-from solvertools.wordlist import NPL, ENABLE, WORDNET, PHONETIC, COMBINED_WORDY, CROSSWORD, PHRASES, WIKIPEDIA
+from solvertools.puzzlebase.mongo import add_from_wordlist, add_relation, add_alphagram
+from solvertools.wordlist import NPL, ENABLE, WORDNET, PHONETIC, COMBINED_WORDY, CROSSWORD, PHRASES, WIKIPEDIA, alphagram
 from solvertools.wordnet import morphy_roots
 from solvertools.model.tokenize import get_words
 import logging
@@ -59,4 +59,23 @@ def add_bigrams(wordlist):
         words = phrase.split(' ')
         add_relation('bigram', words, phrase, wordlist[phrase])
         logger.info(('bigram', words, phrase, wordlist[phrase]))
+
+def alphagrams_from_wordlist(wordlist, multiplier=1):
+    for word in wordlist:
+        freq = wordlist[word]
+        if not isinstance(freq, (int, long, float)):
+            freq = 1
+        add_alphagram(word, freq*multiplier)
+        logger.info((wordlist.filename, word, freq*multiplier))
+
+def alphagrams_from_ngrams(file, cutoff=10000):
+    if isinstance(file, basestring):
+        file = open(file)
+    for line in file:
+        words, freq = eval(line.strip())
+        if freq >= cutoff:
+            phrase = ' '.join(words)
+            add_alphagram(phrase, freq)
+            logger.info((phrase, freq))
+
 
