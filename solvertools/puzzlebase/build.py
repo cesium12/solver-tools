@@ -30,18 +30,13 @@ def add_concatenations(wordlist):
         freq = wordlist[word]
         for prefixlen in xrange(1, len(word)):
             prefix = word[:prefixlen]
-            if prefix in wordlist:
+            if prefix in wordlist or len(prefix) == 1:
                 suffix = word[prefixlen:]
-                if suffix in wordlist:
-                    score = 0
-                    if prefix in ENABLE or len(prefix) == 1: score += 1
-                    if suffix in ENABLE or len(suffix) == 1: score += 1
-                    if len(prefix) >= 5 or len(suffix) >= 5: score += 1
-                    if score >= 2:
-                        add_relation('concatenate', [prefix, suffix],
-                                     word, freq)
-                        logger.info(('concatenate', [prefix, suffix],
-                                    word, freq))
+                if suffix in wordlist or len(suffix) == 1:
+                    add_relation('can_adjoin', [prefix, suffix],
+                                 word, freq)
+                    logger.info(('can_adjoin', [prefix, suffix],
+                                word, freq))
 
 def add_clues(mapping):
     """

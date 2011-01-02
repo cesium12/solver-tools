@@ -23,7 +23,7 @@ def add_relation(rel, words, value=None, freq=1):
     words = [alphanumeric_only(word) for word in words]
     return DB.relations.update(
         {'rel': rel, 'words': words, 'value': value},
-        {'$inc': {'freq': freq}},
+        {'$set': {'freq': freq}},
         upsert=True
     )
 
@@ -35,6 +35,14 @@ def add_word(fulltext, freq):
          '$inc': {'freq': freq}},
         upsert=True
     )
+
+def get_word(text):
+    key = alphanumeric_only(text)
+    return DB.words.find({'key': key})
+
+def get_relations(text):
+    key = alphanumeric_only(text)
+    return DB.relations.findAll({'words': key})
 
 def add_from_wordlist(wordlist, multiplier=1, lexical=True):
     for word in wordlist:
