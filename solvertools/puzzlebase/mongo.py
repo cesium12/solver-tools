@@ -17,6 +17,9 @@ DB.relations.ensure_index([('words', ASCENDING),
                            ('interestingness', DESCENDING),
                            ('freq', DESCENDING)])
 
+DB.alphagrams.ensure_index([('alphagram', ASCENDING),
+                            ('freq', DESCENDING)])
+
 
 def add_relation(rel, words, value=None, freq=1):
     # do an upsert on rel, [word1, word2], setting the freq
@@ -54,6 +57,33 @@ def add_from_wordlist(wordlist, multiplier=1, lexical=True):
         if lexical:
             add_relation('lexical', [word], freq=freq*multiplier)
         logger.info((wordlist.filename, word, freq*multiplier))
+
+def alphagram_from_wordlist(wordlist, multiplier=1):
+    for word in wordlist:
+        freq = wordlist[word]
+        if not isinstance(freq, (int, long, float)):
+            freq = 1
+        add_alphagram(word, freq*multiplier)
+        logger.info((wordlist.filename, word, freq*multiplier))
+
+def alphagram_from_ngrams(file, cutoff=10000):
+    if isinstance(file, basestring):
+        file = open(file)
+    for line in file:
+        words, freq = eval(line.strip())
+        if freq >= cutoff:
+            phrase = ' '.join(words)
+            add_alphagram(word, freq)
+            logger.info((word, freq))
+
+def add_alphagram(word, freq):
+    key = alphanumeric_only(word)
+    return DB.words.update(
+        {'alphagram': alphagram(key),
+         'text': word},
+        {'$inc': {'freq': freq}},
+        upsert=True
+    )
 
 def known_word(word):
     return DB.relations.find_one(

@@ -81,6 +81,17 @@ def letters_only_unicode(text):
     return ''.join(ch for ch in case_insensitive(text)
                    if ch != ch.lower())
 
+def alphagram(text):
+    """
+    Get the alphagram of a text -- that is, its characters in alphabetical
+    order. Two texts with the same alphagram are anagrams of each other.
+
+    This will always strip spaces and smash case; if you want other
+    equivalences in your text, do them first.
+    """
+    sortedlist = sorted(text.upper().replace(' ', ''))
+    return ''.join(sortedlist)
+
 def alphabet_filter(alphabet):
     def alphabet_filter_inner(text):
         return ''.join(c for c in case_insensitive(text) if c in alphabet)
