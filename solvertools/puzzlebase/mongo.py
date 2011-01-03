@@ -16,12 +16,14 @@ DB.relations.ensure_index([('words', ASCENDING),
                            ('value', ASCENDING),
                            ('interestingness', DESCENDING),
                            ('freq', DESCENDING)])
+DB.relations.ensure_index([('words', ASCENDING),
+                           ('rel', ASCENDING),
+                           ('freq', DESCENDING)])
 
 DB.alphagrams.ensure_index([('alphagram', ASCENDING),
                             ('freq', DESCENDING)])
 DB.alphagrams.ensure_index([('alphagram', ASCENDING),
                             ('text', ASCENDING)])
-
 
 def add_relation(rel, words, value=None, freq=1):
     # do an upsert on rel, [word1, word2], setting the freq
