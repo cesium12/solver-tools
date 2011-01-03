@@ -45,18 +45,26 @@ def add_word(fulltext, freq):
 
 def get_word(text):
     key = alphanumeric_only(text)
-    return DB.words.find({'key': key})
+    return DB.words.find_one({'key': key})
 
 def get_relations(text):
     key = alphanumeric_only(text)
-    return DB.relations.findAll({'words': key})
+    return DB.relations.find({'words': key})
+
+def get_freq(text):
+    key = alphanumeric_only(text)
+    found = DB.words.find_one({'key': key})
+    if not found:
+        return 0
+    else:
+        return found['freq']
 
 def add_from_wordlist(wordlist, multiplier=1, lexical=True):
     for word in wordlist:
         freq = wordlist[word]
         if not isinstance(freq, (int, long, float)):
             freq = 1
-        add_word(word, freq)
+        add_word(word, freq*multiplier)
         add_relation('in_wordlist', [word], wordlist.filename, freq*multiplier)
         if lexical:
             add_relation('lexical', [word], freq=freq*multiplier)
