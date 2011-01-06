@@ -81,7 +81,7 @@ def add_alphagram(word, freq):
 
 def known_word(word):
     return DB.relations.find_one(
-        {'rel': 'in_wordlist', 'words': word}
+        {'rel': 'in_wordlist', 'words': alphanumeric_only(word)}
     )
 
 def valid_for_scrabble(word):
