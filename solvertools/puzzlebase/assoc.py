@@ -25,11 +25,10 @@ def associations(words, log_min=-25, beam=1000, logscale=True):
                         # relation, so guess
                         value = minimum/2
                     elif not logscale:
-                        assert exp(value) < 1
                         value = exp(value)
                     mapping[word2][word] = max(mapping[word2][word], value)
     results = {}
     for word2 in possibilities:
-        results[word2] = sum([mapping[word2][word]/log(word_freqs[word]) for word in words])
+        results[word2] = sum([mapping[word2][word]/(word_freqs[word]**.5) for word in words])
     best_results = sorted(results.items(), key=lambda x: -x[1])
     return best_results
