@@ -87,18 +87,19 @@ def fix_words():
     for rec in DB.alphagram.find():
         add_word(rec['text'], rec['freq'])
 
-def add_interestingness():
-    for entry in DB.relations.find():
-        rel = entry['rel']
-        rel_total = 0.0
-        words = entry['words']
-        if len(words) < 2: continue
-        for word in words:
-            key = rel+' '+word
-            rel_total += log(DB.totals.find_one({'_id': key})['value']['total'])
-        interestingness = log(entry['freq']+1) - rel_total/len(words)
-        DB.relations.update(
-            {'_id': entry['_id']},
-            {'$set': {'interestingness': interestingness}}
-        )
-        logger.info((rel, words, interestingness))
+def add_interestingness(query={}):
+    for entry in DB.relations.find(query):
+        if not 'interestingness' in entry:
+            rel = entry['rel']
+            rel_total = 0.0
+            words = entry['words']
+            if len(words) < 2: continue
+            for word in words:
+                key = rel+' '+word
+                rel_total += log(DB.totals.find_one({'_id': key})['value']['total'])
+            interestingness = log(entry['freq']+1) - rel_total/len(words)
+            DB.relations.update(
+                {'_id': entry['_id']},
+                {'$set': {'interestingness': interestingness}}
+            )
+            logger.info((rel, words, interestingness))
