@@ -39,13 +39,13 @@ class PuzzleArray(np.ndarray):
         14        B57EDC    Lavender  James, a  Carville  Anthony,  Eden     
         15        DE3163    Cerise    Maurits,  Escher    Bret who  ellis    
         
-        >>> puz.try_indexing(1)
+        >>> puz.try_indexing(1)              #doctest: +ELLIPSIS
         Best answer
         ===========
         Operation: column_order:colorname[inspector]
         Extracted text: RAINBOWCACTUSES
         Suggested answer: RAINBOW CACTUSES
-        Goodness: -3.479
+        Goodness: -...
         u'RAINBOW CACTUSES'
 
     PuzzleArrays are also great at working with unknown or partially known
@@ -71,13 +71,13 @@ class PuzzleArray(np.ndarray):
         14        B57EDC    /.*/      James, a  Carville  Anthony,  Eden     
         15        DE3163    /.*/      Maurits,  Escher    Bret who  ellis    
        
-        >>> puz.try_indexing(1)
+        >>> puz.try_indexing(1)              #doctest: +ELLIPSIS 
         Best answer
         ===========
         Operation: column_order:colorname[inspector]
         Extracted text: /...NBO.CAC.US../
         Suggested answer: RAINBOW CACTUS OF
-        Goodness: -2.649
+        Goodness: -...
         u'RAINBOW CACTUS OF'
     """
     def __new__(cls, data, copy=False):

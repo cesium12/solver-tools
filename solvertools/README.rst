@@ -8,6 +8,10 @@ that you can use when solving puzzles.
 
 It has the following contents:
     
+    :ref:`all.py`/
+        Imports everything in this documentation (and probably a lot more)
+        into the global namespace. Useful for interactive Python.
+
     :ref:`cipher <cipher>`/
         Functions for performing and undoing simple ciphers.
 
@@ -112,4 +116,12 @@ Sub-packages:
 --------------------------------------
 .. automodule:: solvertools.regex
    :members:
+
+.. _all.py:
+
+`all.py` -- import everything at once
+-------------------------------------
+.. automodule:: solvertools.all
+   :members:
+
 

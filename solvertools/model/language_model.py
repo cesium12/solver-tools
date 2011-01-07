@@ -221,6 +221,28 @@ def unigram_replace(char, model):
     if char == ' ': return char
     else: return unigram_sampler(model)
 
+def text_goodness(text):
+    """
+    As we're almost always expecting English text, this function makes sure
+    the English model is loaded and evaluates the goodness of text.
+    """
+    english = get_english_model()
+    return english.text_goodness(text)
+
+def split_words(text):
+    """
+    As we're almost always expecting English text, this function makes sure
+    the English model is loaded and finds the most likely multi-word split
+    and its goodness value.
+            
+        >>> split_words('RGBOFRELIQUARY')[0]
+        u'RGB OF RELIQUARY'
+        >>> split_words('/.E..S....N..T...P..E/')[0]
+        u'PENNSYLVANIA TURNPIKE'
+    """
+    english = get_english_model()
+    return english.split_words(text)
+
 LANGUAGE_DEFS = {
     # add definitions here of the form:
     # key: (language_name, wordlist)
@@ -250,30 +272,6 @@ def get_english_model():
     Load the cached English language model.
     """
     return get_model('en')
-
-def humanize_goodness(val):
-    """
-    Given a goodness value, return a string explaining how actually 'good' it
-    is.
-    """
-    if val >= 0:
-        raise ValueError("This requires a log probability, and something is "
-                         "wrong if your log probability is positive.")
-    elif val > -3.5:
-        return "Meaningful!"
-    elif val > -4.5:
-        return "Almost certainly meaningful!"
-    elif val > -5.5:
-        return "Probably meaningful"
-    elif val > -6.5:
-        return "Might be meaningful"
-    elif val > -8:
-        return "Worth a try?"
-    elif val > -10:
-        return "Probably nonsense"
-    else:
-        return "Nonsense"
-
 
 def demo(omit_spaces=True):
     """

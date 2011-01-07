@@ -90,9 +90,9 @@ def alphagram(text):
     equivalences in your text, do them first.
 
         >>> alphagram('manic sages')
-        'ACEGIMNSS'
+        'AACEGIMNSS'
         >>> alphagram('scan images')
-        'ACEGIMNSS'
+        'AACEGIMNSS'
     """
     sortedlist = sorted(text.upper().replace(' ', ''))
     return ''.join(sortedlist)
