@@ -9,3 +9,4 @@ docs/html
 docs/_build
 data/inputs
 docs/changelog.rst
+secrets.py

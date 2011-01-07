@@ -19,7 +19,7 @@ def prompt_for_password():
         print "Password stored."
 
 setup(name='solvertools',
-      version='2010.3', # When we "release", it will of course be 2011.0
+      version='2010.5', # When we "release", it will of course be 2011.0
       description='Manic Sages Solver Tools',
       packages=find_packages(),
       package_data={
@@ -28,7 +28,7 @@ setup(name='solvertools',
              'data/corpora/answers/*.dat',
              'data/test/*', 'data/codes/*.txt']
       },
-      install_requires=['ply'],
+      install_requires=['ply', 'pymongo', 'wikitools'],
       zip_safe=False,   # dear Setuptools, please don't fuck with my files
      )
 prompt_for_password()

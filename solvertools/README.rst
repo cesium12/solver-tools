@@ -8,16 +8,35 @@ that you can use when solving puzzles.
 
 It has the following contents:
     
+    :ref:`cipher <cipher>`/
+        Functions for performing and undoing simple ciphers.
+
     :ref:`google <google>`/
         Python interfaces to useful Google services, such as the Google
         Translate API.
 
-    lib/
-        External code that we found useful.
-
     :ref:`model <model>`/
         Back-end NLP code that can figure out what reasonable English text
         looks like.
+
+    :ref:`phonetic <phonetic>`/
+        Works with phonetic representations of English words, in all their
+        messiness.
+
+    :ref:`puzzlebase <puzzlebase>`/
+        An interface to a large database of information about words, which
+        can be used to solve crossword clues and find common threads between
+        words, among other things.
+
+    :ref:`wiki <wiki>`/
+        Tools for automatically reading and writing information on the
+        MysteryWiki.
+
+    :ref:`extensions <extensions>`/
+        C or C++ code that makes Solvertools run faster.
+    
+    lib/
+        External code that we found useful.
 
     :ref:`wordlist.py`
         Lazily-loaded wordlists that let you quickly determine whether a word
@@ -41,6 +60,10 @@ It has the following contents:
         Tools for interpreting regular expressions, and indexing into them
         as if they were non-deterministic strings.
 
+    `secrets.py`
+        You need to store a given Manic Sages password in this file, or else
+        you won't be able to use the online parts of Solvertools.
+
 Sub-packages:
 
 .. toctree::
@@ -49,6 +72,9 @@ Sub-packages:
    cipher/README
    google/README
    model/README
+   phonetic/README
+   puzzlebase/README
+   wiki/README
    phonetic/README
    extensions/README
 
