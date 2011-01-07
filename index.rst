@@ -11,12 +11,12 @@ Contents:
    :maxdepth: 4
 
    INSTALL
-   coding
-   solvertools/TODO
-   docs/README
    solvertools/README
    data/README
    docs/changelog
+   coding
+   solvertools/TODO
+   docs/README
 
 Indices and tables
 ==================
