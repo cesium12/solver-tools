@@ -1,7 +1,4 @@
 """
-`solvertools.all` -- import everything at once
-==============================================
-
 `solvertools.all` provides a quick way to import a lot of useful functions from
 the various parts of Solvertools, which is particularly useful at the command
 line:
