@@ -1,7 +1,8 @@
-from solvertools.puzzlebase.mongo import add_from_wordlist, add_relation, add_alphagram, DB
+from solvertools.puzzlebase.mongo import add_from_wordlist, add_relation, add_alphagram, add_word, DB
 from solvertools.wordlist import NPL, ENABLE, WORDNET, PHONETIC, COMBINED_WORDY, CROSSWORD, PHRASES, WIKIPEDIA, alphagram
 from solvertools.wordnet import morphy_roots
 from solvertools.model.tokenize import get_words
+from solvertools.util import get_dictfile
 from math import log
 import logging
 logger = logging.getLogger(__name__)
@@ -84,8 +85,13 @@ def fix_words():
     I did the alphagram frequencies better than the word frequencies. This
     will re-count the word frequencies based on the alphagram frequencies.
     """
-    for rec in DB.alphagram.find():
-        add_word(rec['text'], rec['freq'])
+    out = open(get_dictfile('puzzlebase_current.txt'), 'w')
+    for rec in DB.alphagrams.find():
+        text = rec['text']
+        freq = rec['freq']
+        add_word(text, freq)
+        print >> out, "%s,%s" % (text, freq)
+        logger.info((text, freq))
 
 def add_interestingness(query={}):
     for entry in DB.relations.find(query):
