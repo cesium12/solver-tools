@@ -1,13 +1,17 @@
 <!doctype html>
 <html>
     <head>
-        <title>Manic Sages PuzzleBase: {% block title %}Main{% endblock %}</title>
+        <title>Puzzlebase Clue Solver: {% block title %}Main{% endblock %}</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+        <link rel="stylesheet" href="../static/style.css"/>
     </head>
     <body>
         <form action="{{ url_for('search') }}" method="GET">
-            <input type="text" name="q"/>
-            <input type="submit" value="Look up"/>
+        <div class="searchform">
+            <label for="q">Clue:</label>
+            <input type="text" size="50" name="q"/>
+            <input class="button" type="submit" value="Solve"/>
+        </div>
         </form>
         
         {% block main %}

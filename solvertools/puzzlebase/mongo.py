@@ -131,8 +131,6 @@ def add_from_wordlist(wordlist, multiplier=1, lexical=True):
             freq = 1
         add_word(word, freq*multiplier)
         add_relation('in_wordlist', [word], wordlist.filename, freq*multiplier)
-        if lexical:
-            add_relation('lexical', [word], freq=freq*multiplier)
         logger.info((wordlist.filename, word, freq*multiplier))
 
 def add_alphagram(word, freq):
