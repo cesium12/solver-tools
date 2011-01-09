@@ -1,4 +1,5 @@
 from setuptools import find_packages, setup
+from distutils.extension import Extension
 import os
 
 def prompt_for_password():
@@ -18,6 +19,9 @@ def prompt_for_password():
         secrets.close()
         print "Password stored."
 
+def prefix_path(prefix, paths):
+    return [os.path.join(prefix, path) for path in paths.split()]
+
 setup(name='solvertools',
       version='2010.5', # When we "release", it will of course be 2011.0
       description='Manic Sages Solver Tools',
@@ -28,6 +32,8 @@ setup(name='solvertools',
              'data/corpora/answers/*.dat',
              'data/test/*', 'data/codes/*.txt']
       },
+      ext_modules=[Extension("solvertools.extensions.regulus._regulus",
+          prefix_path('solvertools/extensions/regulus',"regulus.i amtrie.cpp automaton.cpp check.cpp dict.cpp dyntrie.cpp"), swig_opts=['-c++', '-Wall', '-outdir', 'solvertools/extensions/regulus'])],
       install_requires=['ply', 'pymongo', 'wikitools'],
       zip_safe=False,   # dear Setuptools, please don't fuck with my files
      )
