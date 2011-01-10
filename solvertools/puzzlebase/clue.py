@@ -17,8 +17,8 @@ of the clue. It has to be a single integer; it can't be separated into
 different words, because the Puzzlebase is rather vague about word
 boundaries anyway.
 
-    >>> match_clue('Assertion of the falsity of a given proposition (8)', 1)
-    [u'DISPROOF']
+    >>> match_clue('Assertion of the falsity of a given proposition (8)', 3)
+    [u'ARGUMENT', u'DISPROOF', u'AVERMENT']
 
 Instead of a length, you can give a regex between slashes at the end of
 the clue. If the regex is the entire clue, then this module will
@@ -50,23 +50,19 @@ Here's a clue that doesn't work well, because it requires understanding
 grammar and context:
 
     >>> match_clue('Who shot Abraham Lincoln?', 1)
-    [u'2121809']
+    [u'18091865']
 
-Looking farther down the list gives "GUNNERS", which I suppose gets partial
-credit, and "CARLSANDBURG", which doesn't. The real culprit is nowhere to be
-found. But there's sometimes a way to ask:
+Looking farther down the list gives even sillier answers like "STEPHENADOUGLAS" and "SLAVES" before it finally identifies the real culprit. But sometimes
+there's a way to ask:
 
-    >>> match_clue('Lincoln; assassin', 1)
-    [u'JOHNWILKESBOOTH']
+    >>> match_clue('Lincoln assassin', 3)
+    [u'GUITEAU', u'ASSASSINATORS', u'JOHNWILKESBOOTH']
 
-The semicolon was useful there because it made sure the answer was relevant
-to both Lincoln and assassins. Without it you could get the wrong guy:
+Sure, it gets two wrong answers first, but the answer you want is there.
+Like I said, it's not going on Jeopardy anytime soon. Be sure not to just
+blindly take its word for things.
 
-    >>> match_clue('Lincoln assassin (15)', 1)
-    [u'LEEHARVEYOSWALD']
-
-Yeah. Like I said, it's not going on Jeopardy anytime soon. Let's conclude
-with a very silly example:
+Let's conclude with a very silly example:
 
     >>> match_clue('(50)', 1)
     [u'THERISEANDFALLOFZIGGYSTARDUSTANDTHESPIDERSFROMMARS']
@@ -111,14 +107,11 @@ def associations(words, log_min=-25, beam=1000, multiply=False):
                         # relation, so guess
                         value = minimum/2
                     elif not multiply:
-                        value = exp(value)
+                        value = exp(value) + 0.1
                     mapping[word2][word] = max(mapping[word2][word], value)
     results = {}
     for word2 in possibilities:
         results[word2] = sum([mapping[word2][word]/(word_freqs[word]**.5) for word in words])
-        if not multiply:
-            # get all results on the same scale
-            results[word2] = log(results[word2])
     best_results = sorted(results.items(), key=lambda x: -x[1])
     return best_results
 
