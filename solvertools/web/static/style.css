@@ -30,3 +30,7 @@ h1 {
     font-size: 36pt;
     font-family: Courier New, monospace;
 }
+
+a {
+    text-decoration: none;
+}

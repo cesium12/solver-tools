@@ -32,7 +32,7 @@ def search():
 @app.route('/clue/<clue>')
 def solve_clue(clue):
     DB.authenticate(DB_USERNAME, DB_PASSWORD)
-    answers = match_clue(clue)
+    answers = match_clue(clue, 96)
     if not answers:
         return no_info(key)
     return render_template('clue.html', clue=clue, answers=answers)

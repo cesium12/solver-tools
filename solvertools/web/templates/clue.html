@@ -4,9 +4,9 @@
 <h3>{{clue}}</h3>
 <ul>
 {% for answer in answers %}
-<li>
+<div class="wordlink">
     <a href="/word/{{answer.lower()}}">{{answer}}</a>
-</li>
+</div>
 {% endfor %}
 </ul>
 
