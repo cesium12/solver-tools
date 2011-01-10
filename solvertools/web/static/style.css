@@ -24,3 +24,9 @@ input.button {
     border: 1px outset #aaa;
     padding-bottom: 1px;
 }
+
+h1 {
+    text-align: center;
+    font-size: 36pt;
+    font-family: Courier New, monospace;
+}

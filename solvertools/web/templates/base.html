@@ -1,11 +1,12 @@
 <!doctype html>
 <html>
     <head>
-        <title>Puzzlebase: {% block title %}Main{% endblock %}</title>
+        <title>ClueBot: {% block title %}Main{% endblock %}</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
         <link rel="stylesheet" href="../static/style.css"/>
     </head>
     <body>
+	<h1>cluebot</h1>
         <form action="{{ url_for('search') }}" method="GET">
         <div class="searchform">
             <label for="q">Word or clue:</label>
