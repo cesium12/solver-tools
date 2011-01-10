@@ -1,5 +1,6 @@
 from solvertools.puzzlebase.mongo import *
 from solvertools.wordlist import *
+from solvertools.util import get_dictfile
 
 # Include words that do not appear in any wordlist but might very well appear
 # in a puzzle.
@@ -12,14 +13,12 @@ def is_reasonable(word):
             word in MUSICBRAINZ_ARTISTS or word in MUSICBRAINZ_ALBUMS or
             word in MUSICBRAINZ_TRACKS or word in extras)
 
+out = open(get_dictfile('sages_combined_new'), 'w')
 for rec in DB.words.find().sort([('freq', -1)]):
     text = rec['text']
     freq = rec['freq']
     if is_reasonable(text):
         print "%s,%s" % (text, freq)
+        print >> out, "%s,%s" % (text, freq)
+out.close()
 
-
-# TODO:
-    # add musicbrainz
-    # rerun 2-word phrases (to fix spacing) followed by google, wordnet,
-    # dictionary words
