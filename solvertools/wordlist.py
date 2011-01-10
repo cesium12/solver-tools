@@ -271,6 +271,7 @@ class Wordlist(object):
         Search the wordlist for results matching this pattern.
         Requires the Regulus extension.
         """
+        pattern = pattern.replace(' ', '')
         if self.regulus is None:
             self.load_regulus()
         results = self.regulus.grep(str(bare_regex(pattern)))

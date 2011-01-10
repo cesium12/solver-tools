@@ -1,7 +1,7 @@
 from solvertools.puzzlebase.mongo import DB, get_word, get_relations, get_anagrams
 from solvertools.puzzlebase.clue import match_clue
 from flask import Flask, render_template, request, redirect, url_for, flash
-from solvertools.wordlist import alphanumeric_only, CROSSWORD, WORDNET_DEFS
+from solvertools.wordlist import alphanumeric_only, CROSSWORD, WORDNET_DEFS, COMBINED
 import socket, urllib
 from collections import defaultdict
 import logging
@@ -9,6 +9,11 @@ from solvertools.config import DB_USERNAME, DB_PASSWORD
 
 app = Flask(__name__)
 app.secret_key='oONHah2hzDJ0CiGyqH3o8mRXijm/JbNg'
+
+# force things to be loaded
+COMBINED.load()
+CROSSWORD.load()
+WORDNET_DEFS.load()
 
 @app.route('/')
 def start():
@@ -19,7 +24,7 @@ def search():
     query = request.args.get('q')
     if not query:
         return redirect(url_for('start'))
-    if ' ' not in query:
+    if ' ' not in query and not query.startswith('/'):
         return word_info(query)
     else:
         return solve_clue(query)
