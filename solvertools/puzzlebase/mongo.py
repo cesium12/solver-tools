@@ -110,6 +110,21 @@ def get_relations(text):
     key = alphanumeric_only(text)
     return DB.relations.find({'words': key})
 
+def get_anagrams(text):
+    """
+    Get all the known words that anagram to `text`.
+    """
+    key = alphagram(alphanumeric_only(text))
+    found = set([alphanumeric_only(text)])
+    anagrams = []
+    for rec in DB.alphagrams.find({'alphagram': key}):
+        text = rec['text']
+        textkey = alphanumeric_only(text)
+        if textkey not in found:
+            anagrams.append((rec['text'], rec['freq']))
+            found.add(textkey)
+    return anagrams
+
 def get_freq(text):
     """
     Get the frequency of `text`, or 0 if it is not in the DB.words collection.

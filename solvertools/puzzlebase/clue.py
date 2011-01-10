@@ -99,7 +99,7 @@ def associations(words, log_min=-25, beam=1000, multiply=False):
     words = [alphanumeric_only(w) for w in words]
     word_freqs = {}
     for word in words:
-        word_freqs[word] = COMBINED.get(word, 1000)
+        word_freqs[word] = COMBINED.get(word, 100)
         query = DB.relations.find({'words': word})
         for match in query[:beam]:
             for word2 in match['words']:

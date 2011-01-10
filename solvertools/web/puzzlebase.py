@@ -1,9 +1,10 @@
+from solvertools.puzzlebase.mongo import DB, get_word, get_relations, get_anagrams
 from flask import Flask, render_template, request, redirect, url_for, flash
-from solvertools.wordlist import ENABLE, WORDNET, WORDNET_DEFS, CROSSWORD, WIKIPEDIA
+from solvertools.wordlist import alphanumeric_only, CROSSWORD, WORDNET_DEFS
 import socket, urllib
 from collections import defaultdict
 import logging
-#logging.getLogger('sqlalchemy.engine').setLevel(logging.DEBUG)
+from solvertools.config import DB_USERNAME, DB_PASSWORD
 
 app = Flask(__name__)
 app.secret_key='oONHah2hzDJ0CiGyqH3o8mRXijm/JbNg'
@@ -19,35 +20,33 @@ def search():
         return redirect(url_for('start'))
     return word_info(query)
 
-def anagrams(word):
-    alph = make_alphagram(word)
-    query = elixir.session.query(Word).filter_by(alphagram=alph).order_by(desc(Word.freq)).values(Word.key, Word.fulltext)
-    return [text for key, text in query if key != word]
-
 @app.route('/word/<key>')
 def word_info(key):
-    key = key.replace('_', ' ')
-    data = get_word(key)
-    if data is None:
+    DB.authenticate(DB_USERNAME, DB_PASSWORD)
+    key = alphanumeric_only(key.replace('_', ' '))
+    query = get_word(key)
+    if query is None:
         return no_info(key)
-
-    data['anagrams'] = anagrams(word.key)
+    data = {}
+    data['freq'] = query['freq']
+    data['text'] = query['text']
+    data['key'] = query['key']
+    data['anagrams'] = [word for word, freq in get_anagrams(key)]
     data['adjoins'] = []
     data['clues'] = []
     data['bigrams'] = []
-    for rel in get_relations(key):
+    for rel in get_relations(key)[:1000]:
         words = rel['words']
         words.remove(key)
         tagged = [(word, rel.get('interestingness', -10), rel['value']) for word in words]
-        if rel == 'can_adjoin':
+        if rel['rel'] == 'can_adjoin':
             data['adjoins'].extend(tagged)
-        elif rel == 'clued_by':
+        elif rel['rel'] == 'clued_by':
             data['clues'].extend(tagged)
-        elif rel == 'bigram':
+        elif rel['rel'] == 'bigram':
             data['bigrams'].extend(tagged)
-
-    data['crossword_clues'] = crossword_clues(word.key)
-    data['wordnet_defs'] = wordnet_defs(word.key)
+    data['crossword_clues'] = CROSSWORD[key]
+    data['wordnet_defs'] = WORDNET_DEFS[key]
     return render_template('word_info.html', **data)
 
 def no_info(key):

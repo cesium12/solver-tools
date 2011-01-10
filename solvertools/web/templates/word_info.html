@@ -1,33 +1,62 @@
 {% extends "base.html" %}
 {% block title %}{{ key }}{% endblock %}
 {% block main %}
-<h1>{{ fulltext }} ({{ freq }})</h1>
+<h1>{{ text }}</h1>
+<p class="freq">Frequency: {{freq}}</p>
+
+{% if crossword_clues %}
 <h2>Crossword clues</h2>
 <ul>
     {% for clue in crossword_clues %}
     <li>{{ clue }}</li>
     {% endfor %}
 </ul>
+{% endif %}
+
+{% if anagrams %}
 <h2>Anagrams</h2>
 {% for word in anagrams %}
 <div class="wordlink">
     <a href="/word/{{word.lower()}}">{{word}}</a>
 </div>
 {% endfor %}
-{% for rel in relations %}
-<div class="rel">
-    <h2>{{ rel }}</h2>
-    {% for word in relations[rel] %}
-    <div class="wordlink">
-        <a href="/word/{{word.lower()}}">{{word}}</a>
-    </div>
-    {% endfor %}
+{% endif %}
+
+{% if adjoins %}
+<h2>Concatenations</h2>
+{% for word, interesting, combined in adjoins %}
+<div class="wordlink">
+<a href="/word/{{word.lower()}}">{{word}}</a> &rarr;
+<a href="/word/{{combined.lower()}}">{{combined}}</a>
 </div>
 {% endfor %}
+{% endif %}
+
+{% if bigrams %}
+<h2>Phrases</h2>
+{% for word, interesting, combined in bigrams %}
+<div class="wordlink">
+<a href="/word/{{word.lower()}}">{{word}}</a> &rarr;
+<a href="/word/{{combined.lower()}}">{{combined}}</a>
+</div>
+{% endfor %}
+{% endif %}
+
+{% if clues %}
+<h2>Clue words</h2>
+{% for word, interesting, empty in clues %}
+<div class="wordlink">
+<a href="/word/{{word.lower()}}">{{word}}</a>
+</div>
+{% endfor %}
+{% endif %}
+
+{% if wordnet_defs %}
 <h2>WordNet definitions</h2>
 <ul>
     {% for clue in wordnet_defs %}
     <li>{{ clue }}</li>
     {% endfor %}
 </ul>
+{% endif %}
 {% endblock %}

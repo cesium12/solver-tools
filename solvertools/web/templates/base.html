@@ -1,14 +1,14 @@
 <!doctype html>
 <html>
     <head>
-        <title>Puzzlebase Clue Solver: {% block title %}Main{% endblock %}</title>
+        <title>Puzzlebase: {% block title %}Main{% endblock %}</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
         <link rel="stylesheet" href="../static/style.css"/>
     </head>
     <body>
         <form action="{{ url_for('search') }}" method="GET">
         <div class="searchform">
-            <label for="q">Clue:</label>
+            <label for="q">Word or clue:</label>
             <input type="text" size="50" name="q"/>
             <input class="button" type="submit" value="Solve"/>
         </div>
