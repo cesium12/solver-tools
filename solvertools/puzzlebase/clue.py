@@ -68,8 +68,8 @@ to both Lincoln and assassins. Without it you could get the wrong guy:
 Yeah. Like I said, it's not going on Jeopardy anytime soon. Let's conclude
 with a very silly example:
 
-    >>> match_clue('(50)')
-    [u'THEOPHRASTUSPHILIPPUSAUREOLUSBOMBASTUSVONHOHENHEIM', u'AGECANNOTWITHERHERNORCUSTOMSTALEHERINFINITEVARIETY', u'BYTHEPRICKINGOFMYTHUMBSSOMETHINGWICKEDTHISWAYCOMES']
+    >>> match_clue('(50)', 1)
+    [u'THERISEANDFALLOFZIGGYSTARDUSTANDTHESPIDERSFROMMARS']
 """
 
 from solvertools.regex import bare_regex
@@ -172,7 +172,27 @@ def extract_words_and_phrases(text, maxwords=4):
             phrase = ''.join(words[left:right])
             if len(phrase) > 5 and phrase in COMBINED:
                 phrases.append(phrase)
-    return words+phrases
+    return filter_too_common(words+phrases)
+
+def filter_too_common(words, threshold=1000000000):
+    """
+    Filter words that are so common that they cannot meaningfully change the
+    results. (These words would have their 'interestingness' multiplied by a
+    very small number anyway; this just rounds that number off to 0.) 
+    
+        >>> filter_too_common(['the', 'system', 'of', 'the', 'world'])
+        ['system', 'world']
+
+    This will return the original input instead of filtering out all words:
+        
+        >>> filter_too_common(['to', 'be', 'or', 'not', 'to', 'be'])
+        ['to', 'be', 'or', 'not', 'to', 'be']
+    """
+    result = [word for word in words if COMBINED.get(word, 100) <= threshold]
+    if result:
+        return result
+    else:
+        return words
 
 class ClueFormatError(ValueError):
     pass

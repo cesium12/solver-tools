@@ -1,4 +1,5 @@
 from solvertools.puzzlebase.mongo import DB, get_word, get_relations, get_anagrams
+from solvertools.puzzlebase.clue import match_clue
 from flask import Flask, render_template, request, redirect, url_for, flash
 from solvertools.wordlist import alphanumeric_only, CROSSWORD, WORDNET_DEFS
 import socket, urllib
@@ -18,7 +19,18 @@ def search():
     query = request.args.get('q')
     if not query:
         return redirect(url_for('start'))
-    return word_info(query)
+    if ' ' not in query:
+        return word_info(query)
+    else:
+        return solve_clue(query)
+
+@app.route('/clue/<clue>')
+def solve_clue(clue):
+    DB.authenticate(DB_USERNAME, DB_PASSWORD)
+    answers = match_clue(clue)
+    if not answers:
+        return no_info(key)
+    return render_template('clue.html', clue=clue, answers=answers)
 
 @app.route('/word/<key>')
 def word_info(key):

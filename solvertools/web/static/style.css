@@ -1,0 +1,26 @@
+body {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+div.wordlink {
+    display: inline-block;
+    margin-left: 1em;
+    margin-top: 0.5ex;
+    width: 25%;
+    vertical-align: top;
+}
+
+div.searchform {
+    padding: 0.25em;
+    text-align: center;
+}
+
+input, label {
+    font-size: 14pt;
+}
+
+input.button {
+    background-color: #eee;
+    border: 1px outset #aaa;
+    padding-bottom: 1px;
+}
