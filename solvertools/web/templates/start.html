@@ -5,8 +5,8 @@
 <p>This page takes in natural-looking clues, and outputs what it thinks are the
 best answers that fit your constraints.</p>
 <p>You can specify a length or a regular
-expression to match. Separating words by semicolons mean you want to match
-almost all of them, not just one.</p>
+expression to match. Separating words by semicolons means you want to find
+words that connect to <i>all</i> of those words.</p>
 <p><b>Examples:</b></p>
 <table class="examples">
 <tr class="example-row">
@@ -68,6 +68,17 @@ Lincoln assassin (15)
 <td class="answer">&rarr; JOHNWILKESBOOTH, ...</td>
 </tr>
 
+<tr class="example-row">
+<td class="clue">
+<a href="/search?q=Clue+professor+(4)">
+Clue professor (4)
+</a>
+</td>
+<td class="answer">&rarr; PLUM, ...</td>
+</tr>
+
 </table>
 </div>
+
+<p>This page is powered by <a href="http://manicsages.org/doc/">solvertools</a>.
 {% endblock %}

@@ -12,6 +12,7 @@ app.secret_key='oONHah2hzDJ0CiGyqH3o8mRXijm/JbNg'
 
 # force things to be loaded
 COMBINED.load()
+COMBINED.load_regulus()
 CROSSWORD.load()
 WORDNET_DEFS.load()
 
@@ -24,7 +25,7 @@ def search():
     query = request.args.get('q')
     if not query:
         return redirect(url_for('start'))
-    if ' ' not in query and not query.startswith('/'):
+    if ' ' not in query and ';' not in query and not query.startswith('/'):
         return word_info(query)
     else:
         return solve_clue(query)

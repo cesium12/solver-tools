@@ -2,12 +2,13 @@
 {% block title %}Clue solver{% endblock %}
 {% block main %}
 <h3>{{clue}}</h3>
-<ul>
+{% set count = 0 -%}
 {% for answer in answers %}
 <div class="wordlink">
+    {% set count = count + 1 -%}
+    <span class="counter">({{count}})</span>
     <a href="/word/{{answer.lower()}}">{{answer}}</a>
 </div>
 {% endfor %}
-</ul>
 
 {% endblock %}
