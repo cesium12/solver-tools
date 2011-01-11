@@ -22,6 +22,7 @@ site = Wiki('http://manicsages.org/mystery/api.php')
 site.login('Solvertools', DB_PASSWORD)
 
 EDITGRID_RE = re.compile(r'<editgrid\s*name="([^"]*)"\s*/?>')
+ETHERPAD_RE = re.compile(r'<etherpad\s*name="([^"]*)"\s*/?>')
 PROPERTY_RE = re.compile(r'\|\s*([^\n=]*)\s*=\s*([^\n]*)\n')
 
 PUZZLE_PAGE_INIT = u"""{{Puzzle2011
@@ -33,11 +34,10 @@ PUZZLE_PAGE_INIT = u"""{{Puzzle2011
 
 == Current progress ==
 <small>
-When you start working on this puzzle, tell the chat box above who and where you are. Even if nobody is here right now, people who come to the page later will see it.
+When you start working on this puzzle, tell the chat box above who and where you are. Even if nobody is here right now, people who come to the page later will see it. When you make significant progress, edit this section and describe it!
 </small>
 
-== EditGrid ==
-<editgrid name="%(title)s"/>
+<etherpad name="%(title)s"/>
 
 <!-- Page created by Solvertools -->
 """
