@@ -162,7 +162,10 @@ class WordListModel(LanguageModel):
             for left in xrange(right):
                 left_text = best_matches[left]
                 left_logprob = best_logprobs[left]
-                right_text = regex_slice(text, left, right)
+                if left == 0 and right == textlen:
+                    right_text = text
+                else:
+                    right_text = regex_slice(text, left, right)
                 right_match, right_logprob = self.word_match_logprob(right_text)
                 if left_text != u'':
                     combined_text = left_text + u' ' + right_match
