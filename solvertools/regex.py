@@ -48,7 +48,8 @@ def bare_regex(text):
 
 def regex_sequence(strings):
     """
-    Combine regexes or plain strings together in a sequence.
+    Combine regexes or plain strings together in a sequence. This operation
+    undoes :func:`regex_pieces`.
 
         >>> regex_sequence(['/foo|bar/', 'baz'])
         u'/(foo|bar)baz/'
@@ -99,6 +100,23 @@ def regex_len(regex):
     if not is_regex(regex):
         return len(regex), len(regex)
     return _regex_len_pattern(parse(bare_regex(regex)))
+
+def regex_pieces(regex):
+    """
+    Separates a regex into independent pieces.
+
+        >>> regex_pieces('/[abc]de+/')
+        [u'/[abc]/', u'd', u'/e+/']
+    """
+    if not is_regex(regex):
+        return list(regex)
+    result = []
+    for piece in parse(bare_regex(regex)):
+        if piece[0] == 'literal':
+            result.append(unparse([piece]))
+        else:
+            result.append('/'+unparse([piece])+'/')
+    return result
 
 def _regex_len_pattern(pattern):
     "Returns the minimum and maximum length of a parsed regex pattern."

@@ -10,7 +10,7 @@ from solvertools.model.numbers import number_logprob, is_numeric
 from solvertools.model.answer_reader import answer_reader
 from solvertools.util import load_pickle, save_pickle, get_picklefile, \
                              file_exists
-from solvertools.regex import is_regex, regex_slice, regex_len
+from solvertools.regex import is_regex, regex_pieces, regex_sequence
 from solvertools import wordlist
 import random, string, logging
 import numpy as np
@@ -148,9 +148,8 @@ class WordListModel(LanguageModel):
             >>> en.split_words('/.E..S....N..T...P..E/')[0]
             u'PENNSYLVANIA TURNPIKE'
         """
-        # FIXME: only matches the minimum length for now. This should work
-        # in the cases puzzlearray needs.
-        textlen = regex_len(text)[0]
+        pieces = regex_pieces(text)
+        textlen = len(pieces)
         best_matches = [u'#'] * (textlen + 1)
 
         # start with very negative log probabilities
@@ -162,10 +161,7 @@ class WordListModel(LanguageModel):
             for left in xrange(right):
                 left_text = best_matches[left]
                 left_logprob = best_logprobs[left]
-                if left == 0 and right == textlen:
-                    right_text = text
-                else:
-                    right_text = regex_slice(text, left, right)
+                right_text = regex_sequence(pieces[left:right])
                 right_match, right_logprob = self.word_match_logprob(right_text)
                 if left_text != u'':
                     combined_text = left_text + u' ' + right_match
