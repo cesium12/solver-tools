@@ -19,9 +19,9 @@ def split_words_cached(expr):
     return result
 
 def make_state(pieces):
-    scores = [split_words_cached(piece)[1]
+    scores = [split_words_cached(regex_sequence([piece, '/.*/']))[1]
               for piece in pieces]
-    return sum(scores)-len(pieces)*3, tuple(sorted(pieces))
+    return sum(scores)-len(pieces)*5, tuple(sorted(pieces))
 
 def arrange_pieces(pieces):
     # best-first search
@@ -30,6 +30,7 @@ def arrange_pieces(pieces):
     queue.append(make_state(pieces))
     while queue:
         value, state = queue.pop()
+        logger.info((value, state))
         if len(state) == 1:
             return state
         for i in xrange(len(state)):
@@ -38,12 +39,10 @@ def arrange_pieces(pieces):
                 val1, state1 = make_state(the_rest + (state[i]+state[j],))
                 val2, state2 = make_state(the_rest + (state[j]+state[i],))
                 if state1 not in enqueued:
-                    logger.info((val1, state1))
                     queue.append((val1, state1))
                     enqueued.add(state1)
                 if state2 not in enqueued:
-                    logger.info((val2, state2))
-                    queue.append((val1, state2))
+                    queue.append((val2, state2))
                     enqueued.add(state2)
         queue.sort()
 
