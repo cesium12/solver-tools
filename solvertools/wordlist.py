@@ -282,6 +282,7 @@ class Wordlist(object):
         Search the wordlist for the best result matching this pattern.
         Requires the Regulus extension.
         """
+        pattern = pattern.replace(' ', '')
         if not hasattr(self, 'regulus') or self.regulus is None:
             self.load_regulus()
         result = self.regulus.best_match(str(bare_regex(pattern)))
