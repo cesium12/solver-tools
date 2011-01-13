@@ -111,6 +111,9 @@ def wildcard_anagram(text, n=20):
     return best
 
 def anagram(text, num=20):
+    """
+    Finds the best anagrams for the text (with possible wildcards).
+    """
     if '?' in text:
         return wildcard_anagram(text, num)
     else:
