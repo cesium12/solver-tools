@@ -1,37 +1,84 @@
 from solvertools.alphabet import ALPHABETS as _ALPHABETS
-
 from cStringIO import StringIO
 
-BRAILLE = _ALPHABETS['braille']
-ENGLISH = _ALPHABETS['english']
+'''
+Utilities for working with Braille.
 
-def code_to_braille(code):
+This module can represent Braille in two different ways:
+either as Unicode characters, or in binary form.
+
+The eight dots of extended Braille are numbered as follows:
+``14``
+``25``
+``36``
+``78``
+Traditional Braille uses only the first six dots.
+The letter D, for example, is represented by the
+Braille pattern
+``**``
+``.*``
+``..``
+where stars represent raised dots.  Since dots
+1,4,5 are raised, the binary representation is
+011001, or 25 in base 10.
+
+See also ``solvertools.alphabet.ALPHABETS['braille']``.
+
+    >>> braille_binary_to_english(int('011001',2))
+    'D'
+    >>> braille_unicode_to_binary(u'\u2825')
+    25
+    >>> braille_english_to_binary('D')
+    25
+    >>> braille_grid_to_letters([[1,0,0,1],[0,0,1,0],[0,0,1,0]])
+    [[u'A', u'S']]
+    >> braille_grid_to_possible_letters([[1,0,None,1],[0,0,1,0],[0,0,1,0]])
+    [['A', 'PS']]
+'''
+
+_BRAILLE = _ALPHABETS['braille']
+_ENGLISH = _ALPHABETS['english']
+
+def braille_binary_to_unicode(code):
+    '''Given a binary representation of Braille dots, converts it to unicode.'''
     return unichr(0x2800+code)
 
-def code_to_english(code):
-    return braille_to_english(code_to_braille(code))
+def braille_binary_to_english(code):
+    '''Given a binary representation of Braille dots, converts it to an English letter.''' 
+    return braille_unicode_to_english(braille_binary_to_unicode(code))
 
-def braille_to_english(braille):
-    return ENGLISH[BRAILLE.index(braille)]
+def braille_unicode_to_english(braille):
+    '''Given a Braille unicode character, returns the corresponding English letter.'''
+    return _ENGLISH[_BRAILLE.index(braille)]
 
-def english_to_braille(ch):
-    return BRAILLE[ENGLISH.index(ch)]
+def braille_english_to_unicode(ch):
+    '''Given an English letter, converts it to a Braille unicode character.'''
+    return _BRAILLE[_ENGLISH.index(ch)]
 
-def braille_to_code(braille):
+def braille_unicode_to_binary(braille):
+    '''Given a Braille unicode character, converts it to binary representation.'''
     return ord(braille)-0x2800
 
-def possible_letters(code,mask):
+def braille_english_to_binary(ch):
+    '''Given an English letter, converts it to a binary Braille representation.'''
+    return braille_unicode_to_binary(braille_english_to_unicode(ch))
+
+def braille_possible_letters(code,mask):
     """
     Returns the possible letters for a Braille block for which we have partial
     knowledge.
+
+    Parameters:
+    code - the binary representation of the dots that are known to be raised
+    mask - the binary representation of the dots that are known
     """
     io = StringIO()
-    for ch in BRAILLE:
-        if (braille_to_code(ch))&mask==code&mask:
-            io.write(braille_to_english(ch))
+    for ch in _BRAILLE:
+        if (braille_unicode_to_binary(ch))&mask==code&mask:
+            io.write(braille_unicode_to_english(ch))
     return io.getvalue()
    
-def grid_code(*args):
+def _grid_code(*args):
     factor = 1
     code = 0
     for arg in args:
@@ -40,10 +87,10 @@ def grid_code(*args):
         factor *= 2
     return code
 
-def grid_letters(*args):
-    return code_to_english(grid_code(*args))
+def _grid_letters(*args):
+    return braille_binary_to_english(_grid_code(*args))
 
-def grid_code_uncertain(*args):
+def _grid_code_uncertain(*args):
     factor = 1
     code = 0
     mask = 0
@@ -55,31 +102,38 @@ def grid_code_uncertain(*args):
         factor *= 2
     return (code, mask)
 
-def grid_possible(*args):
-    return possible_letters(*grid_code_uncertain(*args))
+def _grid_possible(*args):
+    return braille_possible_letters(*_grid_code_uncertain(*args))
 
-def grid_to_codes(grid):
+def braille_grid_to_binary(grid):
     """
-    Convert Braille to English letters.  Takes a list of lists in column
-    major format.  Entries that evaluate to True are assumed to be dots.
-    Returns a list of lists of Braille codes offsets ( 0 = U+2800, 1 = U+2801, etc. ).
+    Parses a grid into 3x2 blocks.
+    The grid should be input as a list of lists in column
+    major format.  Entries that evaluate to True are assumed to be raised dots.
+    Returns a list of lists of Braille characters in binary format.
     """
-    return parse_grid(grid,grid_code)
+    return _parse_grid(grid,_grid_code)
 
-def grid_to_codes_uncertain(grid):
+def braille_grid_to_binary_uncertain(grid):
     """
-    Like grid_to_codes, but entries that are equal to None are assumed to be
-    unknown.  Returns a grid of tuples
+    Like ``braille_grid_to_binary``, but entries that are equal to None are assumed to be
+    unknown.  Returns a list of lists of (binary, mask) pairs.
     """
-    return parse_grid(grid,grid_code_uncertain)
+    return _parse_grid(grid,_grid_code_uncertain)
 
-def grid_to_letters(grid):  
-    return parse_grid(grid,grid_letters)
+def braille_grid_to_letters(grid): 
+    '''
+    Like ``braille_grid_to_binary``, but returns English letters.
+    '''
+    return _parse_grid(grid,_grid_letters)
 
-def grid_to_possible_letters(grid):
-    return parse_grid(grid,grid_possible)
+def braille_grid_to_possible_letters(grid):
+    '''
+    Like ``braille_grid_to_binary_uncertain``, but returns English letters.
+    '''
+    return _parse_grid(grid,_grid_possible)
 
-def parse_grid(grid,func):
+def _parse_grid(grid,func):
     if(len(grid)==0):
         return []
     width = len(grid[0])

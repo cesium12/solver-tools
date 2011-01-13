@@ -1,6 +1,10 @@
 import re
 
-def encode(s):
+'''
+Utilities for working with nucleotide and amino acid sequences.
+'''
+
+def amino_encode(s):
     '''
     Convenience function for converting a DNA string into an amino
     acid sequence.
@@ -8,6 +12,9 @@ def encode(s):
     return str(NucleotideSequence(s).to_amino())
 
 def base_pair(ch):
+    '''
+    Given a DNA base, returns the complementary base.
+    '''
     if(ch=='A'):
         return 'T'
     if(ch=='C'):
@@ -17,12 +24,19 @@ def base_pair(ch):
     if(ch=='T'):
         return 'A'
 
-def groups_of_three(x):
+def _groups_of_three(x):
     return (x[i:i+3] for i in xrange(0,len(x)-2,3))
 
 class NucleotideSequence(object):
-    
+    '''
+    Represents a sequence of DNA or RNA nucleotides.
+    '''
+
     def __init__(self, seq):
+        '''
+        Creates a new nucleotide sequence.  seq may be either a string
+        (both T's and U's are allowed) or another nucleotide sequence.
+        '''
         if isinstance(seq, basestring):
             self.nucleotides = seq.upper().replace('U','T')
         elif isinstance(seq, NucleotideSequence):
@@ -31,12 +45,22 @@ class NucleotideSequence(object):
             raise TypeError
 
     def conjugate(self):
+        '''
+        Returns the conjugate of this sequence.
+        '''
         return type(self)(''.join(map(base_pair,reversed(self.nucleotides))))
 
     def as_rna(self):
+        '''
+        Returns a copy of this nucleotide sequence as an RNA sequence.
+        (If this sequence is DNA, then all T's are converted to U's.)
+        '''
         return RNASequence(self)
 
     def as_dna(self):
+        '''
+        Returns a copy of this nucleotide sequence as a DNA sequence.
+        '''
         return DNASequence(self)
 
     def to_amino(self,start_behavior='keep'):
@@ -57,7 +81,7 @@ class NucleotideSequence(object):
                 code = code[offset+3:]
             else:
                 code = ''
-        sequence = ''.join(map(genetic_code.__getitem__,groups_of_three(code)))
+        sequence = ''.join(map(genetic_code.__getitem__,_groups_of_three(code)))
         if(start_behavior=='search'):
             sequence = re.sub('#.*','',sequence)
         elif(start_behavior=='chop'):
@@ -66,12 +90,30 @@ class NucleotideSequence(object):
         return AminoSequence(sequence)
 
     def __getitem__(self, index):
+        '''Returns a slice of this nucleotide sequence.'''
         if isinstance(index, slice):
-            return type(self)(self.nucleotides[slice])
+            return type(self)(self.nucleotides[index])
         else:
             raise TypeError('Only slicing is supported.  Use str() if you need individual characters.')
 
 class DNASequence(NucleotideSequence):
+    '''
+    A DNA sequence.
+
+        >>> n = DNASequence('GATATCGCA')
+        >>> n
+        < DNA sequence GAYATCGCA >
+        >>> n.as_rna()
+        < RNA sequence GAUAUGGCA >
+        >> n.conjugate()
+        < DNA sequence TGCGATATC >
+        >> n[2:8]
+        < DNA sequence TATCGC >
+        >> n.to_amino()
+        < Amino acid sequence DIA >
+        >> n.to_amino().long_form()
+        'ASPILEALA'
+    '''
 
     def __repr__(self):
         return '< DNA sequence %s >' % str(self) 
@@ -80,6 +122,9 @@ class DNASequence(NucleotideSequence):
         return self.nucleotides
 
 class RNASequence(NucleotideSequence):
+    '''
+    An RNA sequence.  See the documentation for ``DNASequence``.
+    '''
 
     def __repr__(self):
         return '< RNA sequence %s >' % str(self)
@@ -88,6 +133,17 @@ class RNASequence(NucleotideSequence):
         return self.nucleotides.replace('T','U')
 
 class AminoSequence(object):
+    '''
+    Represents a sequence of amino acids.
+
+        >> a = AminoSequence('ASDF')
+        >> a
+        < Amino acid sequence ASDF >
+        >> a.long_form()
+        'ALASERASPPHE'
+        >> AminoSequence.from_three('ALASERASPPHE')
+        < Amino acid sequence ASDF >
+    '''
 
     amino_acids = (
         # normal amino acids
@@ -127,6 +183,10 @@ class AminoSequence(object):
     three_to_one = dict(map(reversed,amino_acids))
 
     def __init__(self, seq):
+        '''
+        Constructs a new amino acid sequence.  seq can be either another amino
+        acid sequence, or a string of one-letter amino acid abbreviations.
+        '''
         if isinstance(seq, basestring):
             self.acids = seq.upper()
         elif isinstance(seq, AminoSequence):
@@ -135,9 +195,15 @@ class AminoSequence(object):
             raise TypeError
 
     def long_form(self):
+        '''
+        Returns the three letter abbreviations for the sequence of amino acids.
+        '''
         return ''.join(map(self.one_to_three.__getitem__,self.acids))
 
     def __str__(self):
+        '''
+        Returns the one letter abbreviations for the sequence of amino acids.
+        '''
         return self.acids
 
     def __repr__(self):
@@ -145,8 +211,11 @@ class AminoSequence(object):
 
     @staticmethod
     def from_three(seq):
+        '''
+        Converts a string of three-letter amino acid abbreviations into an AminoAcidSequence.
+        '''
         seq = seq.upper()
-        short_seq = map(three_to_one.__getitem__,groups_of_three(seq))
+        short_seq = ''.join(map(AminoSequence.three_to_one.__getitem__,_groups_of_three(seq)))
         return AminoSequence(short_seq)
 
 genetic_code_tmp = (

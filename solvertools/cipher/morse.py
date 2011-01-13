@@ -2,6 +2,10 @@ from ply import lex
 import re
 from solvertools.cipher import lex_base
 
+'''
+Encoder and decoder for Morse code.
+'''
+
 def dash_to_hyphen(s):
     """
     Replaces various kinds of dash characters with hyphens.
@@ -61,11 +65,26 @@ to_morse = {
     u'\u00d7' : '-..-'
 }
 
-from_morse = lex_base.reverse(to_morse)
+from_morse = lex_base.reverse_dict(to_morse)
 
 class MorseEncoder(lex_base.Encoder):
-    
+    '''
+    Converts text to Morse code.
+
+        >>> enc = MorseEncoder()
+        >>> print enc('hello')
+        .... . .-.. .-.. ---
+    '''
+
     def __init__(self,**kwargs):
+        '''
+        Keyword arguments:
+        ``sep`` - Character separator.  Default is ' '.
+        ``wsep`` - Word separator.  Default is '/'.
+        ``nonalnum`` - If ``True``, then non-alphanumeric characters are converted to Morse
+        code when possible.  Otherwise, all non-alphanumeric characters are ignored.
+        The default is ``False``.
+        '''
         self.nonalnum = kwargs.get('nonalnum',False)
         super(MorseEncoder,self).__init__(**kwargs)
     
@@ -90,6 +109,14 @@ class MorseEncoder(lex_base.Encoder):
     t_KNOWNSYMBOL.__doc__ = '[%s]'%re.escape(''.join(filter(lambda x : not x.isalnum(),to_morse.iterkeys())))
 
 class MorseDecoder(lex_base.Decoder):
+    '''
+    Converts Morse code to text.
+
+        >>> dec = MorseDecoder()
+        >>> print dec('-- .- -. .. -.-. / ... .- --. . ...')
+        MANIC SAGES
+    '''
+
     tokens = (
         'MORSE',
         'WORDSEP',
