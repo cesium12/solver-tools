@@ -23,12 +23,14 @@ def prefix_path(prefix, paths):
     return [os.path.join(prefix, path) for path in paths.split()]
 
 setup(name='solvertools',
-      version='2010.5', # When we "release", it will of course be 2011.0
+      version='2011.0', # When we "release", it will of course be 2011.0
       description='Manic Sages Solver Tools',
       packages=find_packages(),
       package_data={
         # Unfortunately, you have to update this if you add a new kind of data
         '': ['data/dict/*.txt', 'data/pickle/*.pickle',
+             'data/pickle/*.regulus',
+             'data/db/*.npy',
              'data/corpora/answers/*.dat',
              'data/test/*', 'data/codes/*.txt']
       },
