@@ -74,7 +74,7 @@ Sub-packages:
    :maxdepth: 2
 
    cipher/README
-   mixmaster/README
+   anagram/README
    google/README
    model/README
    phonetic/README
