@@ -5,7 +5,7 @@ from solvertools.anagram.letter_matrix import letters_to_vec, top_pairs, paralle
 from solvertools.wordlist import alphanumeric_only, alphanumeric_with_spaces
 from solvertools.anagram.permute import swap_distance
 from solvertools.util import get_datafile
-import heapq
+import heapq, string
 
 matrix = np.load(get_datafile('db/anagram_vectors.npy'))
 ranks = np.load(get_datafile('db/anagram_ranks.npy'))
@@ -96,7 +96,7 @@ def wildcard_anagram(text, n=20):
     for anastring in strings:
         simple = simple_anagram(anastring)
         if simple:
-            newtext, words, freq = simple
+            newtext, freq = simple[0]
             got.append((freq, newtext))
     got.sort()
     best = []
@@ -110,7 +110,7 @@ def wildcard_anagram(text, n=20):
             if len(used) >= n: break
     return best
 
-def anagram(text, num):
+def anagram(text, num=20):
     if '?' in text:
         return wildcard_anagram(text, num)
     else:
@@ -119,6 +119,4 @@ def anagram(text, num):
 def demo():
     print multi_anagram('being john malkovich')
     print multi_anagram('the empire strikes back')
-
-if __name__ == '__main__': demo()
 
