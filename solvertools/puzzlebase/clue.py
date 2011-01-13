@@ -165,20 +165,20 @@ def extract_words_and_phrases(text, maxwords=4):
             phrase = ''.join(words[left:right])
             if len(phrase) > 5 and phrase in COMBINED:
                 phrases.append(phrase)
-    return filter_too_common(words+phrases)
+    return _filter_too_common(words+phrases)
 
-def filter_too_common(words, threshold=1000000000):
+def _filter_too_common(words, threshold=1000000000):
     """
     Filter words that are so common that they cannot meaningfully change the
     results. (These words would have their 'interestingness' multiplied by a
     very small number anyway; this just rounds that number off to 0.) 
     
-        >>> filter_too_common(['the', 'system', 'of', 'the', 'world'])
+        >>> _filter_too_common(['the', 'system', 'of', 'the', 'world'])
         ['system', 'world']
 
     This will return the original input instead of filtering out all words:
         
-        >>> filter_too_common(['to', 'be', 'or', 'not', 'to', 'be'])
+        >>> _filter_too_common(['to', 'be', 'or', 'not', 'to', 'be'])
         ['to', 'be', 'or', 'not', 'to', 'be']
     """
     result = [word for word in words if COMBINED.get(word, 100) <= threshold]

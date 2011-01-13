@@ -156,7 +156,7 @@ def add_alphagram(word, freq):
     return DB.alphagrams.update(
         {'alphagram': alphagram(key),
          'text': word},
-        {'$inc': {'freq': freq}},
+        {'$set': {'freq': freq}},
         upsert=True
     )
 

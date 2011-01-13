@@ -16,13 +16,12 @@ the top level, as well as global variables (which can be wordlists such as
 You can type dir() afterwards to see a huge list of the names that are defined.
 In IPython, type a function name followed by two question marks (such as
 `split_words??`) to see its documentation.
-
-The undocumented modules in `solvertools.cipher` are imported as separate
-modules. So, for example, you can decode a grid of Braille with
-`braille.grid_to_letters(grid)`.
 """
 from solvertools.alphabet import *
-from solvertools.cipher import amino, braille, caesar, morse, semaphore, vigenere
+from solvertools.cipher.amino import *
+from solvertools.cipher.braille import *
+from solvertools.cipher.morse import *
+from solvertools.cipher.semaphore import *
 from solvertools.cipher.caesar import *
 from solvertools.cipher.vigenere import *
 from solvertools.google.language import *

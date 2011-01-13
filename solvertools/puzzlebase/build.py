@@ -82,8 +82,7 @@ def alphagrams_from_ngrams(file, cutoff=10000):
 
 def fix_words():
     """
-    I did the alphagram frequencies better than the word frequencies. This
-    will re-count the word frequencies based on the alphagram frequencies.
+    This will re-count the word frequencies based on the alphagram frequencies.
     """
     out = open(get_dictfile('puzzlebase_current.txt'), 'w')
     for rec in DB.alphagrams.find():
@@ -92,6 +91,19 @@ def fix_words():
         add_word(text, freq)
         print >> out, "%s,%s" % (text, freq)
         logger.info((text, freq))
+
+def fix_anagrams():
+    """
+    And this will recalculate the anagram frequencies based on the word
+    frequencies in the combined wordlist. With so many steps trying to fix
+    the errors in other steps, it's a wonder any of this works.
+    """
+    out = open(get_dictfile('puzzlebase_current.txt'), 'w')
+    for text in COMBINED_WORDY:
+        freq = COMBINED_WORDY[text]
+        add_alphagram(text, freq)
+        logger.info((text, freq))
+
 
 def add_interestingness(query={}):
     for entry in DB.relations.find(query):

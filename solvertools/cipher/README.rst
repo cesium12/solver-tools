@@ -22,3 +22,25 @@ This package contains:
 .. automodule:: solvertools.cipher.vigenere
    :members:
 
+.. _amino.py:
+
+`amino.py` -- alphabetic representations of biology
+---------------------------------------------------
+.. automodule:: solvertools.cipher.amino
+   :members:
+
+`braille.py` -- read grids as Braille
+-------------------------------------
+.. automodule:: solvertools.cipher.braille
+   :members:
+
+`morse.py` -- decode Morse code
+-------------------------------
+.. automodule:: solvertools.cipher.morse
+   :members:
+
+`semaphore.py` -- decode semaphore directions
+---------------------------------------------
+.. automodule:: solvertools.cipher.semaphore
+   :members:
+

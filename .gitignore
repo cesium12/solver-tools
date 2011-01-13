@@ -10,3 +10,5 @@ docs/_build
 data/inputs
 docs/changelog.rst
 secrets.py
+regulus.py
+regulus_wrap.cpp
