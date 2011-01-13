@@ -1,3 +1,6 @@
+`solvertools.anagram.mixmaster` -- the best anagrammer in existence
+===================================================================
+
 Mixmaster is an anagrammer. So far it doesn't use any particularly clever
 search algorithms, it just chugs through a *whole lot* of data.
 
@@ -17,8 +20,8 @@ The key ideas of Mixmaster:
 - Precompute everything possible.
 - Consume as much data as possible.
 
-So, given a reasonable-length text, Mixmaster searches for how to anagram it
-into one or two phrases in the Puzzlebase (whose anagrams are precomputed). Two
+Given a reasonable-length text, Mixmaster searches for how to anagram it into
+one or two phrases in the Puzzlebase (whose anagrams are precomputed). Two
 phrases doesn't sound like a lot, but you can make a whole lot out of two
 phrases in the Puzzlebase.
 
