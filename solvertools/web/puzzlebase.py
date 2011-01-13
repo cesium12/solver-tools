@@ -1,5 +1,6 @@
 from solvertools.puzzlebase.mongo import DB, get_word, get_relations, get_anagrams
 from solvertools.puzzlebase.clue import match_clue
+from solvertools.anagram.mixmaster import anagram
 from flask import Flask, render_template, request, redirect, url_for, flash
 from solvertools.wordlist import alphanumeric_only, CROSSWORD, WORDNET_DEFS, COMBINED
 import socket, urllib
@@ -19,6 +20,27 @@ WORDNET_DEFS.load()
 @app.route('/')
 def start():
     return render_template('start.html')
+
+@app.route('/mixmaster')
+def mixmaster_start():
+    return render_template('mixmaster_start.html')
+
+@app.route('/anagram')
+def mixmaster_start_alternate():
+    return render_template('mixmaster_start.html')
+
+@app.route('/mixmaster_query')
+def mixmaster_query():
+    query = request.args.get('q')
+    if not query:
+        return redirect(url_for('mixmaster_start'))
+    return find_anagrams(query)
+
+@app.route('/mixmaster/<text>')
+def find_anagrams(text):
+    DB.authenticate(DB_USERNAME, DB_PASSWORD)
+    anagrams = [result for result, freq in anagram(text, 20)]
+    return render_template('anagrams.html', text=text, anagrams=anagrams)
 
 @app.route('/search')
 def search():

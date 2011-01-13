@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Mixmaster: {% block title %}Main{% endblock %}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+        <link rel="stylesheet" href="../static/style.css"/>
+    </head>
+    <body>
+	<h1><a href="/mixmaster">mixmaster</a></h1>
+        <form action="{{ url_for('mixmaster_query') }}" method="GET">
+        <div class="searchform">
+            <label for="q">Phrase:</label>
+            <input type="text" size="50" name="q"/>
+            <input class="button" type="submit" value="Anagram"/>
+        </div>
+        </form>
+        
+        {% block main %}
+        {% endblock %}
+    </body>
+</html>

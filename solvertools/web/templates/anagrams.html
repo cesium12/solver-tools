@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}{{text}}{% endblock %}
+{% block main %}
+<h3>Anagrams of: {{text}}</h3>
+{% set count = 0 -%}
+{% for answer in anagrams %}
+<div class="wordlink">
+    {% set count = count + 1 -%}
+    <span class="counter">({{count}})</span>
+    {{answer}}
+</div>
+{% endfor %}
+
+{% endblock %}

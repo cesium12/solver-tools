@@ -36,7 +36,7 @@ def multi_anagram(text, num=30):
         if score > 0:
             heapq.heappush(heap, (score, first_text))
             used.add(first_text)
-    for value, alpha1, alpha2 in top_pairs(matrix, ranks, vec, num):
+    for value, alpha1, alpha2 in top_pairs(matrix, ranks, vec, num*2):
         for text1, rank1 in get_anagrams(alpha1):
             for text2, rank2 in get_anagrams(alpha2):
                 combined_text = text1+' '+text2
@@ -83,6 +83,38 @@ def swap_goodness(original, anagrammed):
     str3 = ''.join(words1)
     str4 = ''.join(words2)
     return min(swap_distance(str1, str2), swap_distance(str3, str4))
+
+def wildcard_anagram(text, n=20):
+    nblanks = text.count('?')
+    if nblanks > 4:
+        return [('That has too many blanks.', 0)]
+    strings = [text]
+    for i in range(nblanks):
+        new_strings = [st + c for st in strings for c in string.lowercase]
+        strings = new_strings
+    got = []
+    for anastring in strings:
+        simple = simple_anagram(anastring)
+        if simple:
+            newtext, words, freq = simple
+            got.append((freq, newtext))
+    got.sort()
+    best = []
+    used = set()
+    for i in range(1, len(got)+1):
+        text = got[-i][1]
+        ordered = ' '.join(sorted(text.split()))
+        if ordered not in used:
+            used.add(ordered)
+            best.append(got[-i])
+            if len(used) >= n: break
+    return best
+
+def anagram(text, num):
+    if '?' in text:
+        return wildcard_anagram(text, num)
+    else:
+        return multi_anagram(text, num)
 
 def demo():
     print multi_anagram('being john malkovich')
