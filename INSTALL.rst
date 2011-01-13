@@ -1,38 +1,44 @@
 .. _install:
 
-Installing solvertools
+Installing Solvertools
 ======================
 
-If you don't already have the code, you should:
+Prerequisites
+-------------
+Some pre-requisites to using Solvertools are:
 
-- Install Git, if necessary
-- Install Python (with development headers), NumPy, GCC, and SWIG
-  (on Ubuntu: `aptitude install build-essential python-dev python-numpy swig`)
+- Software on your computer: Python (with development headers), NumPy, GCC, and
+SWIG
+    - On Ubuntu, you can get all of these with: `sudo aptitude install build-essential python-dev python-numpy swig`
+- Familiarity with using an interactive Python prompt (preferably IPython)
+- Familiarity with the command line
+- At least 2 GB or so of RAM
+
+Installing the usual way
+------------------------
+
+If you don't already have the code, you should:
+- Download the code (no, I'm not going to link to it here; if you're on the
+  team you've got the link)
+- Download the data (unless your computer is fast enough to recompute it all!)
+- Extract it
+- Run ``sudo python setup.py develop`` (or your system's equivalent).
+
+Installing from Git
+-------------------
+If you use Git to get the code, you will be able to receive and commit updates
+to it.
+
 - Get access to git.manicsages.org from Jason Alonso (jalonso), if necessary
 - `git clone git@git.manicsages.org:solver-tools.git`
-
+- ``sudo python setup.py develop`` as normal
 The short answer on how to install this:
 
-- ``sudo python setup.py develop``
-- Or, set your ``PYTHONPATH`` to this directory
+If that doesn't work
+--------------------
+If you can't run `setup.py` because you don't have a working C compiler, you
+can try `setup-no-c.py`. Certain features will be missing.
 
-Longer answer:
-
-If Solvertools is whining at you with import errors, the appropriate
-thing to do is run "sudo python setup.py develop". This adds
-solvertools to the global Python namespace.
-
-Doing this requires python-distribute, or at least python-setuptools. It also
-needs to be able to compile some C code using SWIG.
-
-If you don't believe in packaging, that's fine, just set your
-PYTHONPATH to the directory setup.py is in instead. You might have to compile
-C extensions, like Regulus, yourself in this case.
-
-I aim to keep packaging bullshit to a minimum, because it is the least fun part
-of Python. To that end, we should not use pkg_resources or anything like it. We
-will not let setuptools zip everything into an "egg".  And we will never,
-never, never attempt to use a namespace package for anything.
-
-Rob Speer, 2010
+If the setup doesn't work for some other reason, you can try just
+setting your PYTHONPATH to the `solver-tools` directory.
 
