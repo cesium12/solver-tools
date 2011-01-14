@@ -20,7 +20,10 @@ def simple_anagram(text):
     alpha = make_alpha(text)
     return list(get_anagrams(alpha))
 
+TOO_LONG_MESSAGE = "If you want to do really long unconstrained anagrams, please download Solvertools."
 def multi_anagram(text, num=30):
+    if len(text) >= 20:
+        return [(TOO_LONG_MESSAGE, 1)]
     alpha = make_alpha(text)
     vec = letters_to_vec(alpha)
     heap = []
@@ -86,7 +89,7 @@ def swap_goodness(original, anagrammed):
 
 def wildcard_anagram(text, n=20):
     nblanks = text.count('?')
-    if nblanks > 4:
+    if nblanks > 2:
         return [('That has too many blanks.', 0)]
     strings = [text]
     for i in range(nblanks):
@@ -106,7 +109,8 @@ def wildcard_anagram(text, n=20):
         ordered = ' '.join(sorted(text.split()))
         if ordered not in used:
             used.add(ordered)
-            best.append(got[-i])
+            key, value = got[-i]
+            best.append((value, key))
             if len(used) >= n: break
     return best
 
