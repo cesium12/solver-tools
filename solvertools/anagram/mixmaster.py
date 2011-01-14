@@ -100,15 +100,7 @@ def wildcard_anagram(text, num=20):
     found = 0
     overflow = 0
     used = set()
-    first_try = simple_anagram(text)
     used.add(text)
-    if first_try:
-        found += 1
-        first_text, freq = first_try[0]
-        score = freq * 10 * differentness(first_text, used)
-        if score > 0:
-            heapq.heappush(heap, (score, first_text))
-            used.add(first_text)
     for value, alpha1 in top_wildcard(matrix, ranks, vec, nblanks, num*2):
         for text1, rank1 in get_anagrams(alpha1):
             actual_val = rank1 * differentness(text1, used)

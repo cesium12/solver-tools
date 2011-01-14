@@ -70,7 +70,9 @@ def find_pairs(matrix, ranks, vec):
             yield parallel(rank1, rank2), part1, part2
 
 def find_wildcard(matrix, ranks, vec, nblanks):
-    diffs = vec - matrix
+    sums = np.sum(matrix, axis=-1)
+    nletters = np.sum(vec)+nblanks
+    diffs = matrix - vec - 1000*(sums != nletters)[:,np.newaxis]
     margin = np.min(diffs, axis=-1)
     good_rows = np.where(margin >= 0)[0]
     for row in good_rows:
