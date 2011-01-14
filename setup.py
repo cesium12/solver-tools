@@ -35,8 +35,7 @@ setup(name='solvertools',
             'db/*.npy']
      },
      ext_modules=[Extension("solvertools.extensions.regulus._regulus",
-         prefix_path('solvertools/extensions/regulus',"regulus.i
-amtrie.cpp automaton.cpp check.cpp dict.cpp dyntrie.cpp"),
+         prefix_path('solvertools/extensions/regulus',"regulus.i amtrie.cpp automaton.cpp check.cpp dict.cpp dyntrie.cpp"),
 swig_opts=['-c++', '-Wall', '-outdir',
 'solvertools/extensions/regulus'])],
      install_requires=['ply', 'pymongo', 'wikitools'],
