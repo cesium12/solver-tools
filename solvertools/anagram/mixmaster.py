@@ -41,8 +41,8 @@ def multi_anagram(text, num=30):
             for text2, rank2 in get_anagrams(alpha2):
                 combined_text = text1+' '+text2
                 actual_val = parallel(rank1, rank2) * differentness(combined_text, used)
-                used.add(combined_text)
                 if actual_val > 0:
+                    used.add(combined_text)
                     found += 1
                     heapq.heappush(heap, (actual_val, combined_text))
                     if found > num:
