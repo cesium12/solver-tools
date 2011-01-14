@@ -69,6 +69,18 @@ def find_pairs(matrix, ranks, vec):
             part2 = vec_to_letters(diff)
             yield parallel(rank1, rank2), part1, part2
 
+def find_wildcard(matrix, ranks, vec, nblanks):
+    diffs = vec - matrix
+    margin = np.min(diffs, axis=-1)
+    good_rows = np.where(margin >= 0)[0]
+    for row in good_rows:
+        diff = diffs[row]
+        rank1 = ranks[row]
+        if np.sum(diff) == nblanks:
+            text = vec_to_letters(matrix[row])
+            yield rank1, text
+
+
 def find_vector(matrix, ranks, vec):
     """
     Tests whether this vector exists in the sorted matrix. Returns its value
@@ -89,6 +101,18 @@ def find_vector(matrix, ranks, vec):
             else:
                 end = split
     return 0
+
+def top_wildcard(matrix, ranks, vec, nblanks, n):
+    heap = []
+    found = 0
+    for rank, part1 in find_wildcard(matrix, ranks, vec, nblanks):
+        found += 1
+        heapq.heappush(heap, (rank, part1))
+        if found > n:
+            heapq.heappop(heap)
+    heap.sort()
+    heap.reverse()
+    return heap
 
 def top_pairs(matrix, ranks, vec, n):
     """
