@@ -23,7 +23,7 @@ def prefix_path(prefix, paths):
     return [os.path.join(prefix, path) for path in paths.split()]
 
 setup(name='solvertools',
-      version='2011.0',
+      version='2011.1',
       description='Manic Sages Solver Tools',
       packages=find_packages(),
       package_data={

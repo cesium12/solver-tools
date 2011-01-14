@@ -64,6 +64,10 @@ It has the following contents:
         Tools for interpreting regular expressions, and indexing into them
         as if they were non-deterministic strings.
 
+    :ref:`letter_stats.py`
+        Does frequency analysis of letters in text, often the first step
+        to breaking a cipher.
+
     `secrets.py`
         You need to store a given Manic Sages password in this file, or else
         you won't be able to use the online parts of Solvertools.
@@ -116,6 +120,11 @@ Sub-packages:
 `regex.py` -- regular expression hacks
 --------------------------------------
 .. automodule:: solvertools.regex
+   :members:
+
+`letter_stats.py` -- letter frequency analysis
+----------------------------------------------
+.. automodule:: solvertools.letter_stats
    :members:
 
 .. _all.py:
