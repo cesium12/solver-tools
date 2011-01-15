@@ -22,8 +22,6 @@ def simple_anagram(text):
 
 TOO_LONG_MESSAGE = "If you want to do really long unconstrained anagrams, please download Solvertools."
 def multi_anagram(text, num=30):
-    if len(text) >= 20:
-        return [(TOO_LONG_MESSAGE, 1)]
     alpha = make_alpha(text)
     vec = letters_to_vec(alpha)
     heap = []
