@@ -1,7 +1,7 @@
 import numpy as np
 from solvertools.anagram.db_lookup import get_anagrams
 from solvertools.wordlist import alphagram
-from solvertools.anagram.letter_matrix import letters_to_vec, top_pairs, top_wildcard, parallel
+from solvertools.anagram.letter_matrix import letters_to_vec, top_pairs, parallel
 from solvertools.wordlist import alphanumeric_only, alphanumeric_with_spaces
 from solvertools.anagram.permute import swap_distance
 from solvertools.util import get_datafile
@@ -20,7 +20,18 @@ def simple_anagram(text):
     alpha = make_alpha(text)
     return list(get_anagrams(alpha))
 
-TOO_LONG_MESSAGE = "If you want to do really long unconstrained anagrams, please download Solvertools."
+def letter_diff(first, second):
+    first = first.lower()
+    second = second.lower()
+    first_out = ''
+    second_out = ''
+    for let in string.lowercase:
+        diff = first.count(let) - second.count(let)
+        if diff > 0: first_out += let*diff
+        elif diff < 0: second_out += let*(-diff)
+    return first_out, second_out
+
+
 def multi_anagram(text, num=30):
     alpha = make_alpha(text)
     vec = letters_to_vec(alpha)
@@ -43,8 +54,8 @@ def multi_anagram(text, num=30):
                 combined_text = text1+' '+text2
                 actual_val = parallel(rank1, rank2) * differentness(combined_text, used)
                 if actual_val > 0:
-                    used.add(combined_text)
                     found += 1
+                    used.add(combined_text)
                     heapq.heappush(heap, (actual_val, combined_text))
                     if found > num:
                         heapq.heappop(heap)
@@ -63,9 +74,6 @@ def differentness(text, previous):
     return result
 
 def trigram_goodness(original, anagrammed):
-    if len(original) < 5:
-        # cheap hack
-        return trigram_goodness('123'+original, '123'+anagrammed)
     text1 = alphanumeric_only(original)
     text2 = alphanumeric_only(anagrammed)
     trigrams1 = set([text1[i:i+3] for i in xrange(len(text1)-2)])
@@ -88,36 +96,31 @@ def swap_goodness(original, anagrammed):
     str4 = ''.join(words2)
     return min(swap_distance(str1, str2), swap_distance(str3, str4))
 
-def wildcard_anagram(text, num=20):
+def wildcard_anagram(text, n=20):
     nblanks = text.count('?')
-    if len(text) >= 20:
-        return [(TOO_LONG_MESSAGE, 1)]
-    alpha = make_alpha(text)
-    vec = letters_to_vec(alpha)
-    heap = []
-    found = 0
-    overflow = 0
+    if nblanks > 4:
+        return [('That has too many blanks.', 0)]
+    strings = [text]
+    for i in range(nblanks):
+        new_strings = [st + c for st in strings for c in string.lowercase]
+        strings = new_strings
+    got = []
+    for anastring in strings:
+        simple = simple_anagram(anastring)
+        if simple:
+            newtext, freq = simple[0]
+            got.append((freq, newtext))
+    got.sort()
+    best = []
     used = set()
-    used.add(text)
-    for value, alpha1 in top_wildcard(matrix, ranks, vec, nblanks, num*2):
-        for text1, rank1 in get_anagrams(alpha1):
-            actual_val = rank1 * differentness(text1, used)
-            if actual_val > 0:
-                used.add(text1)
-                found += 1
-                heapq.heappush(heap, (actual_val, text1))
-                if found > num:
-                    heapq.heappop(heap)
-                    overflow += 1
-                # Once we hit overflow, take only one anagram from each pair
-                if overflow > num:
-                    break
-            if overflow > num:
-                break
-    heap.sort()
-    heap.reverse()
-    return [(text, val) for (val, text) in heap]
-
+    for i in range(1, len(got)+1):
+        text = got[-i][1]
+        ordered = ' '.join(sorted(text.split()))
+        if ordered not in used:
+            used.add(ordered)
+            best.append(got[-i])
+            if len(used) >= n: break
+    return best
 
 def anagram(text, num=20):
     """
