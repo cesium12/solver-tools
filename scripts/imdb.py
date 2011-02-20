@@ -1,3 +1,15 @@
+"""
+A script for generating a list of movies and actors from text files
+provided by IMDb.
+
+The IMDb text files can be found at http://www.imdb.com/interfaces#plain.
+The files that are used by this script are actors, actresses, aka-titles,
+and ratings.
+
+Unfortunately the files aren't in the most parser friendly format, so we
+need to use regexes a lot.
+"""
+
 from __future__ import with_statement
 
 import re, math
@@ -15,6 +27,23 @@ aka_re = re.compile('   \(aka ([^(]*(?<! ))')
 
 ratings = {}
 actor_list = []
+
+def precompute_exps():
+    l = [1.,1.]
+    f = math.exp(-.2)
+    x = f
+    for i in xrange(73):
+        l.append(x)
+        x*=f
+    return l
+
+exps = precompute_exps()
+
+def weight_factor(pos):
+    if pos<75:
+        return exps[pos]
+    else:
+        return 0.
 
 def strip_movie_modifiers(t):
     return title_re.match(t).groups()[0]
@@ -103,10 +132,8 @@ def parse_actors(actors):
             m = actor_pos_re.search(l)
             if m:
                 p, = m.groups()
-                pos = int(p)-2
-                if pos<0:
-                    pos=0
-                weight = int(ratings[title]*math.exp(-.2*pos))
+                pos = int(p)-1
+                weight = int(ratings[title]*weight_factor(pos))
                 actor_list.append((actor,weight))
 
 def do_actors():
@@ -120,7 +147,7 @@ def do_actors():
 import sys
 
 def usage():
-    sys.stderr.write("usage: imdb.py path list\nwhere list is either 'actors' or 'movies'")
+    sys.stderr.write("usage: imdb.py input_path list\nwhere list is either 'actors' or 'movies'\n")
     sys.exit(64)
 
 if __name__=='__main__':
