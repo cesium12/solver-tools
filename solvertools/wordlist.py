@@ -415,6 +415,18 @@ class Wordlist(object):
         return cmp((self.filename, self.convert),
                    (other.filename, other.convert))
 
+    def __getstate__(self):
+        """
+        Used for pickling this wordlist's metadata, but not the
+        list of words itself.  Currently used by language_model.
+        Maybe there is a better way of doing this.
+        """
+        d = dict(self.__dict__)
+        d['words']=None
+        d['sorted_words']=None
+        d['regulus']=None
+        return d
+
 class WordMapping(Wordlist):
     """
     A wordlist-like object that describes a many-to-many mapping from one set
