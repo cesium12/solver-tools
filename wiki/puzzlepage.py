@@ -37,7 +37,7 @@ PUZZLE_PAGE_INIT = u"""{{Puzzle2011
 When you start working on this puzzle, tell the chat box above who and where you are. Even if nobody is here right now, people who come to the page later will see it. When you make significant progress, edit this section and describe it!
 </small>
 
-<editgrid name="%(title)s"/>
+<etherpad name="%(title)s"/>
 
 <!-- Page created by Solvertools -->
 """
