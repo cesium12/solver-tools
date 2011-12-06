@@ -138,6 +138,13 @@ def tsv(text):
     return (word, valstr)
 tab_separated = tsv
 
+def tsv_keys(text):
+    """
+    Get only the left column of a tab-separated file.
+    """
+    word, freq = text.rsplit('\t', 1)
+    return word
+
 def csv_rev(text):
     """
     Use this to get the reverse mapping from a comma-separated list of words
@@ -496,15 +503,16 @@ PHRASES = Wordlist('google_phrases', alphanumeric_with_spaces, with_frequency)
 LATIN = Wordlist('wikipedia_la', classical_latin_letters, with_frequency)
 CHAOTIC = Wordlist('chaotic', letters_only, with_frequency)
 WORDNET = Wordlist('wordnet', case_insensitive)
+WIKTIONARY = Wordlist('wiktionary_english', alphanumeric_with_spaces, tsv_keys)
 WIKIPEDIA = Wordlist('wikipedia_en_titles', alphanumeric_with_spaces, wiki_title_cleanup)
 PHONETIC = WordMapping('phonetic', case_insensitive, ensure_unicode, csv)
 CROSSWORD = WordMapping('crossword_clues', letters_only, ensure_unicode, tsv)
 WORDNET_DEFS = WordMapping('wordnet_definitions', alphanumeric_only, ensure_unicode, tsv)
+WIKTIONARY_DEFS = WordMapping('wiktionary_english', alphanumeric_only, ensure_unicode, tsv)
 SCRABBLE_RACK = Wordlist('scrabble_rack', case_insensitive)
 MUSICBRAINZ_ARTISTS = Wordlist('musicbrainz_artists', alphanumeric_with_spaces, with_frequency)
 MUSICBRAINZ_ALBUMS = Wordlist('musicbrainz_albums', alphanumeric_with_spaces, with_frequency)
 MUSICBRAINZ_TRACKS = Wordlist('musicbrainz_tracks', alphanumeric_with_spaces, with_frequency)
 IMDB_MOVIES = Wordlist('imdb_movies', alphanumeric_with_spaces, with_frequency)
 IMDB_ACTORS = Wordlist('imdb_actors', alphanumeric_with_spaces, with_frequency)
-#TODO: spanish
 

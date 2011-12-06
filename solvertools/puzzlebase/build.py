@@ -1,5 +1,5 @@
 from solvertools.puzzlebase.mongo import add_from_wordlist, add_relation, add_alphagram, add_word, DB
-from solvertools.wordlist import NPL, ENABLE, WORDNET, PHONETIC, COMBINED_WORDY, CROSSWORD, PHRASES, WIKIPEDIA, alphagram
+from solvertools.wordlist import NPL, ENABLE, WORDNET, PHONETIC, COMBINED_WORDY, CROSSWORD, PHRASES, WIKIPEDIA, WIKTIONARY, WIKTIONARY_DEFS, WORDNET_DEFS, alphagram
 from solvertools.wordnet import morphy_roots
 from solvertools.model.tokenize import get_words
 from solvertools.util import get_dictfile
@@ -19,6 +19,16 @@ def initial_setup():
     add_from_wordlist(WIKIPEDIA, multiplier=5000)
     add_from_wordlist(WORDNET, multiplier=10000)
     add_from_wordlist(PHRASES, lexical=False)
+    add_from_wordlist(WIKTIONARY, multiplier=2000)
+
+def more_setup():
+    add_roots(WORDNET)
+    add_bigrams(WORDNET)
+    add_bigrams(NPL)
+    add_bigrams(PHRASES)
+    add_clues(CROSSWORD)
+    add_clues(WIKTIONARY_DEFS)
+    add_clues(WORDNET_DEFS)
 
 def add_roots(wordlist):
     for word in wordlist:
@@ -27,7 +37,6 @@ def add_roots(wordlist):
             logger.info(('has_root', [word, lemma]))
 
 def add_concatenations(wordlist):
-    # get the basic logic from n-c
     for word in wordlist:
         freq = wordlist[word]
         for prefixlen in xrange(1, len(word)):
@@ -51,16 +60,18 @@ def add_clues(mapping):
             add_relation('crossword_clue', [word], clue)
             clue_words = get_words(clue)
             for clue_word in clue_words:
-                possibilities = [clue_word] + list(morphy_roots(clue_word))
-                for word2 in possibilities:
-                    add_relation('clued_by', [word, word2])
-                    logger.info(('clued_by', [word, word2]))
+                if clue_word != '=>':
+                    possibilities = [clue_word] + list(morphy_roots(clue_word))
+                    for word2 in possibilities:
+                        add_relation('clued_by', [word, word2])
+                        logger.info(('clued_by', [word, word2]))
 
 def add_bigrams(wordlist):
     for phrase in wordlist:
-        words = phrase.split(' ')
-        add_relation('bigram', words, phrase, wordlist[phrase])
-        logger.info(('bigram', words, phrase, wordlist[phrase]))
+        words = [w for w in phrase.split(' ') if w.upper() != 'AND']
+        if len(words) == 2:
+            add_relation('bigram', words, phrase, wordlist[phrase])
+            logger.info(('bigram', words, phrase, wordlist[phrase]))
 
 def alphagrams_from_wordlist(wordlist, multiplier=1):
     for word in wordlist:
@@ -98,7 +109,6 @@ def fix_anagrams():
     frequencies in the combined wordlist. With so many steps trying to fix
     the errors in other steps, it's a wonder any of this works.
     """
-    out = open(get_dictfile('puzzlebase_current.txt'), 'w')
     for text in COMBINED_WORDY:
         freq = COMBINED_WORDY[text]
         add_alphagram(text, freq)

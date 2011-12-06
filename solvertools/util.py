@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 This module contains useful utilities, especially for working with external
 files.
@@ -10,12 +11,25 @@ import cPickle as pickle
 import unicodedata
 
 def asciify(text):
-    """
-    A wonderfully simple function to remove accents from characters, and
+    u"""
+    A wonderful function to remove accents from characters, and
     discard other non-ASCII characters. Outputs a plain ASCII string.
+
+    >>> print asciify(u'ædœomycodermis')
+    aedoeomycodermis
+
+    >>> print asciify('Zürich')
+    Zurich
+
+    >>> print asciify(u'-نہیں')
+    -
+
     """
     if not isinstance(text, unicode):
         text = text.decode('utf-8', 'ignore')
+    # Deal with annoying British vowel ligatures
+    text = text.replace(u'Æ', 'AE').replace(u'Œ', 'OE')\
+               .replace(u'æ', 'ae').replace(u'œ', 'oe')
     return unicodedata.normalize('NFKD', text).encode('ASCII', 'ignore')
 
 def _build_path(parts):
