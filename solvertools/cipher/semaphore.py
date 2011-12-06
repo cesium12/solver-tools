@@ -88,7 +88,7 @@ SEMAPHORE_INPUT_VI = SemaphoreTranslateInput('bjnhlyku')
 SEMAPHORE_INPUT_ARROW = SemaphoreTranslateInput(u'↙↓↘←→↖↑↗')
 
 class SemaphoreEncoder(lex_base.Encoder):
-    '''Encodes text to semaphore.
+    u'''Encodes text to semaphore.
 
         >>> enc = SemaphoreEncoder()
         >>> print enc('hello')
