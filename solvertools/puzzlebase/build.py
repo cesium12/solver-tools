@@ -12,12 +12,12 @@ logger = logging.getLogger(__name__)
 STOPWORD_CUTOFF = 1300000000
 
 def initial_setup():
-    add_from_wordlist(WORDNET, multiplier=10000)
     add_from_wordlist(ENABLE, multiplier=2000)
     add_from_wordlist(NPL, multiplier=5000, lexical=False)
     add_from_wordlist(PHONETIC, multiplier=10000)
     add_from_wordlist(CROSSWORD, multiplier=100, lexical=False)
     add_from_wordlist(WIKIPEDIA, multiplier=5000)
+    add_from_wordlist(WORDNET, multiplier=10000)
     add_from_wordlist(PHRASES, lexical=False)
 
 def add_roots(wordlist):

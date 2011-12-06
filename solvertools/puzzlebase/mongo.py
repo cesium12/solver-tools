@@ -52,7 +52,7 @@ import logging
 logger = logging.getLogger(__name__)
 DB.authenticate(DB_USERNAME, DB_PASSWORD)
 
-DB.words.ensure_index('key')
+#DB.words.ensure_index('key')
 DB.relations.ensure_index([('words', ASCENDING),
                            ('interestingness', DESCENDING),
                            ('freq', DESCENDING)])
@@ -90,7 +90,7 @@ def add_word(fulltext, freq):
     """
     key = alphanumeric_only(fulltext)
     return DB.words.update(
-        {'key': key},
+        {'_id': key},
         {'$set': {'text': fulltext},
          '$inc': {'freq': freq}},
         upsert=True
@@ -101,7 +101,7 @@ def get_word(text):
     Get the DB.words entry for `text`, or None if it does not exist.
     """
     key = alphanumeric_only(text)
-    return DB.words.find_one({'key': key})
+    return DB.words.find_one({'_id': key})
 
 def get_relations(text):
     """
@@ -130,7 +130,7 @@ def get_freq(text):
     Get the frequency of `text`, or 0 if it is not in the DB.words collection.
     """
     key = alphanumeric_only(text)
-    found = DB.words.find_one({'key': key})
+    found = DB.words.find_one({'_id': key})
     if not found:
         return 0
     else:

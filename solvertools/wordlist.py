@@ -39,6 +39,10 @@ def case_insensitive(text):
     "Collapse case by converting everything to uppercase."
     return ensure_unicode(text).upper()
 
+def case_insensitive_clean(text):
+    "Collapse case by converting everything to uppercase."
+    return split_accents(ensure_unicode(text.strip()).upper())
+
 def case_insensitive_ascii(text):
     "Convert everything to uppercase and discard non-ASCII stuff."
     return asciify(ensure_unicode(text).upper())
