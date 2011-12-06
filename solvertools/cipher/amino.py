@@ -102,16 +102,16 @@ class DNASequence(NucleotideSequence):
 
         >>> n = DNASequence('GATATCGCA')
         >>> n
-        < DNA sequence GAYATCGCA >
+        < DNA sequence GATATCGCA >
         >>> n.as_rna()
-        < RNA sequence GAUAUGGCA >
-        >> n.conjugate()
+        < RNA sequence GAUAUCGCA >
+        >>> n.conjugate()
         < DNA sequence TGCGATATC >
-        >> n[2:8]
+        >>> n[2:8]
         < DNA sequence TATCGC >
-        >> n.to_amino()
+        >>> n.to_amino()
         < Amino acid sequence DIA >
-        >> n.to_amino().long_form()
+        >>> n.to_amino().long_form()
         'ASPILEALA'
     '''
 
