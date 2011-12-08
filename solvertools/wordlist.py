@@ -145,6 +145,12 @@ def tsv_keys(text):
     word, freq = text.rsplit('\t', 1)
     return word
 
+def tsv_values(text):
+    """
+    Get all columns of a tab-separated file or entry.
+    """
+    return text.split('\t')
+
 def csv_rev(text):
     """
     Use this to get the reverse mapping from a comma-separated list of words
@@ -515,4 +521,6 @@ MUSICBRAINZ_ALBUMS = Wordlist('musicbrainz_albums', alphanumeric_with_spaces, wi
 MUSICBRAINZ_TRACKS = Wordlist('musicbrainz_tracks', alphanumeric_with_spaces, with_frequency)
 IMDB_MOVIES = Wordlist('imdb_movies', alphanumeric_with_spaces, with_frequency)
 IMDB_ACTORS = Wordlist('imdb_actors', alphanumeric_with_spaces, with_frequency)
+ANAGRAMS_HASH = WordMapping('anagrams_hash', case_insensitive, tsv_values, tsv)
+ANAGRAMS_ALPHA = WordMapping('anagrams_alpha', case_insensitive, tsv_values, tsv)
 

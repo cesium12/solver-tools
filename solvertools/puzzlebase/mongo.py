@@ -46,7 +46,7 @@ the global variable `DB`.
 from pymongo import Connection, ASCENDING, DESCENDING
 from solvertools.wordlist import alphanumeric_only, alphagram
 from solvertools.config import DB_USERNAME, DB_PASSWORD
-from solvertools.anagram.anahash import anahash
+import math
 
 CONNECTION = Connection('tortoise.csc.media.mit.edu')
 DB = CONNECTION.puzzlebase
@@ -68,10 +68,8 @@ DB.relations.ensure_index([('words', ASCENDING),
                            ('freq', DESCENDING)])
 
 DB.alphagrams.ensure_index([('alphagram', ASCENDING),
-                            ('freq', DESCENDING)])
-DB.alphagrams.ensure_index([('alphagram', ASCENDING),
-                            ('text', ASCENDING)])
-DB.alphagrams.ensure_index([('letters', ASCENDING)])
+                            ('goodness', DESCENDING)])
+DB.alphagrams.ensure_index([('anahash', ASCENDING), ('goodness', DESCENDING)])
 
 def add_relation(rel, words, value=None, freq=1):
     """
@@ -153,21 +151,6 @@ def add_from_wordlist(wordlist, multiplier=1, lexical=True, max=None):
         add_relation('in_wordlist', [word], wordlist.filename, freq*multiplier)
         logger.info((wordlist.filename, word, freq*multiplier))
 
-def add_alphagram(word, freq):
-    """
-    Add a word to the alphagram table.
-    """
-    key = alphanumeric_only(word)
-    ahash = anahash(word)
-    logger.info((word, freq, ahash))
-
-    return DB.alphagrams.update(
-        {'alphagram': alphagram(key),
-         'text': word},
-        {'$set': {'freq': freq, 'letters': list(ahash)}},
-        upsert=True
-    )
-
 def known_word(word):
     # deprecated
     return DB.relations.find_one(
@@ -186,7 +169,7 @@ def valid_for_scrabble(word):
         }
     )
 
-def make_alphagrams():    
-    for entry in DB.words.find().sort([('freq', -1)]):
-        add_alphagram(entry['text'], entry['freq'])
+def make_alphagrams(wordlist):
+    for word, freq in wordlist.iteritems():
+        add_alphagram(word, freq)
 
