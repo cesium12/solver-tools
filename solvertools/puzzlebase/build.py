@@ -1,5 +1,5 @@
 from solvertools.puzzlebase.mongo import add_from_wordlist, add_relation, add_alphagram, add_word, DB
-from solvertools.wordlist import NPL, ENABLE, WORDNET, PHONETIC, COMBINED_WORDY, CROSSWORD, PHRASES, WIKIPEDIA, WIKTIONARY, WIKTIONARY_DEFS, WORDNET_DEFS, alphagram
+from solvertools.wordlist import NPL, ENABLE, WORDNET, PHONETIC, COMBINED_WORDY, CROSSWORD, PHRASES, WIKIPEDIA, WIKTIONARY, WIKTIONARY_DEFS, WORDNET_DEFS, Google200K, alphagram
 from solvertools.wordnet import morphy_roots
 from solvertools.model.tokenize import get_words
 from solvertools.util import get_dictfile
@@ -12,14 +12,19 @@ logger = logging.getLogger(__name__)
 STOPWORD_CUTOFF = 1300000000
 
 def initial_setup():
+    # comments with num? indicate how much I wish I had run it at.
+    #
+    # Google1M was killed at a minimum of 6255 because everything sucks long
+    # before then.
     add_from_wordlist(ENABLE, multiplier=2000)
     add_from_wordlist(NPL, multiplier=5000, lexical=False)
     add_from_wordlist(PHONETIC, multiplier=10000)
     add_from_wordlist(CROSSWORD, multiplier=100, lexical=False)
-    add_from_wordlist(WIKIPEDIA, multiplier=5000)
-    add_from_wordlist(WORDNET, multiplier=10000)
+    add_from_wordlist(WIKIPEDIA, multiplier=5000) # 20000?
+    add_from_wordlist(WORDNET, multiplier=10000) # 40000?
+    add_from_wordlist(WIKTIONARY, multiplier=2000) # 30000?
+    add_from_wordlist(Google1M, lexical=False)
     add_from_wordlist(PHRASES, lexical=False)
-    add_from_wordlist(WIKTIONARY, multiplier=2000)
 
 def more_setup():
     add_roots(WORDNET)
@@ -29,6 +34,7 @@ def more_setup():
     add_clues(CROSSWORD)
     add_clues(WIKTIONARY_DEFS)
     add_clues(WORDNET_DEFS)
+    add_concatenations(ENABLE)
 
 def add_roots(wordlist):
     for word in wordlist:
@@ -36,16 +42,19 @@ def add_roots(wordlist):
             add_relation('has_root', [word, lemma])
             logger.info(('has_root', [word, lemma]))
 
-def add_concatenations(wordlist):
+def add_concatenations(wordlist, base_wordlist=None, dryrun=False):
+    if base_wordlist is None:
+        base_wordlist = wordlist
     for word in wordlist:
         freq = wordlist[word]
         for prefixlen in xrange(1, len(word)):
             prefix = word[:prefixlen]
-            if prefix in wordlist or len(prefix) == 1:
+            if prefix in base_wordlist or len(prefix) == 1:
                 suffix = word[prefixlen:]
-                if suffix in wordlist or len(suffix) == 1:
-                    add_relation('can_adjoin', [prefix, suffix],
-                                 word, freq)
+                if suffix in base_wordlist or len(suffix) == 1:
+                    if not dryrun:
+                        add_relation('can_adjoin', [prefix, suffix],
+                                     word, freq)
                     logger.info(('can_adjoin', [prefix, suffix],
                                 word, freq))
 

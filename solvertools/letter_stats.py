@@ -38,6 +38,11 @@ def letter_distribution(text, alphabet=ENGLISH):
         total = 1
     return counts / total
 
+def compare_letter_distribution(text, alphabet=ENGLISH):
+    distro = letter_distribution(text, alphabet)
+    diff = distro - ENGLISH_UNIGRAMS
+    return diff
+
 def uniform_distribution(n=26):
     return np.ones((n,)) / n
 
