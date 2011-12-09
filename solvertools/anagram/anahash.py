@@ -21,9 +21,15 @@ from solvertools.alphabet import ENGLISH
 from solvertools.wordlist import alphagram
 from solvertools.anagram.mixmaster import letter_diff
 from solvertools.puzzlebase.mongo import DB
+import math
 import numpy as np
 
+def log2(x):
+    return math.log(x) / math.log(2)
+
 def anahash(word):
+    if word == '':
+        return ''
     distro = compare_letter_distribution(word)
     return alphagram(''.join(ENGLISH[index] for index in xrange(len(distro)) if distro[index] > 0))
 
@@ -57,23 +63,90 @@ def anagram1(text):
 def anagram2(text):
     "Testing for efficiency."
     alpha = alphagram(text)
-    ana = list(anahash(text))
-    print "anahash:", ana
+    ana = anahash(text)
     nailed_it = False
     for entry in DB.alphagrams.find({'alphagram': alpha}).sort([('goodness', -1)]):
         yield entry['text'], entry['freq']
         nailed_it = True
-    if not nailed_it:
-        for entry in DB.alphagrams.find({'letters': {'$all': ana}}).sort([('goodness', -1)]):
+    for result in anagram1(alpha):
+        yield result
+    for result in anagram_search(alpha, '', ana):
+        yield result
+
+def anagram_search(alpha, ana, possible):
+    first_result = True
+    if ana:
+        for entry in DB.alphagrams.find({'anahash': {'$gte': ana}}).limit(20):
+            if entry['anahash'] != ana:
+                if first_result and not entry['anahash'].startswith(ana):
+                    return
+                else:
+                    break
+            first_result = False
             diff = sorted_diff(alpha, entry['alphagram'])
             if diff is not None:
                 if diff == '':
                     yield entry['text'], entry['freq']
                 else:
-                    print '\t', entry['text'].lower(), diff
-                    for other_piece, other_freq in anagram2(diff):
+                    for other_piece, other_freq in anagram1(diff):
                         yield entry['text'] + ' ' + other_piece, parallel(entry['freq'], other_freq)
+                        break
+    for pos in xrange(len(possible)):
+        for result in anagram_search(alpha, ana+possible[pos], possible[pos+1:]):
+            yield result
 
-def show_anagrams(text):
+MAX_FREQ = 42
+def anagram_breadth_first(text):
+    start_alpha = alphagram(text)
+    start_ana = anahash(text)
+    queue = [(0.0, start_alpha, '', start_ana, ())]
+    while queue:
+        score, alpha, ana, rest, sofar = queue.pop()
+        dead_end = False
+        if alpha == '':
+            yield sofar, score
+        elif ana:
+            first_result = True
+            limit = max(int(100 / (0-min(score, -1))), 1)
+            for entry in DB.alphagrams.find({'anahash': {'$gte': ana}}).limit(limit):
+                if entry['anahash'] != ana:
+                    if first_result and not entry['anahash'].startswith(ana):
+                        dead_end = True
+                    break
+                newscore = score + entry['goodness'] - MAX_FREQ
+                if len(queue) > 1000 and newscore < queue[-1000][0]:
+                    continue
+                first_result = False
+                diff = sorted_diff(alpha, entry['alphagram'])
+                if diff is not None:
+                    print '\t', len(queue), '(%s)' % ana, sofar, '/', entry['text'], diff.lower(), newscore
+                    for text, freq in anagram1(diff):
+                        newnewscore = newscore + log2(freq) - MAX_FREQ
+                        yield sofar + (entry['text'], text), newscore
+                        break
+                    else:
+                        if len(queue) < 10000:
+                            queue.append((newscore, diff, '', anahash(diff),
+                                          sofar+(entry['text'],)))
+
+        if rest and not dead_end:
+            for pos in xrange(len(rest)):
+                #print '\t', ana+rest[pos]
+                queue.append((score+1, alpha, ana+rest[pos], rest[pos+1:], sofar))
+        queue.sort()
+        if len(queue) > 10000:
+            queue = queue[-10000:]
+
+def show_anagrams(text, max=25, overflow=75):
+    results = []
     for result, freq in anagram2(text):
-        print result, freq
+        results.sort(key=lambda x: x[1])
+        if len(results) < max+overflow-1 or freq >= results[0][1]:
+            results.append((result, freq))
+            if len(results) > max+overflow:
+                results.sort(key=lambda x: x[1])
+                print results[-1]
+                results = results[1:-1]
+    results.reverse()
+    for result, freq in results[:max]:
+        print (result, freq)
