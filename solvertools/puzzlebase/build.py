@@ -1,4 +1,4 @@
-from solvertools.puzzlebase.mongo import add_from_wordlist, add_relation, add_alphagram, add_word, DB
+from solvertools.puzzlebase.mongo import add_from_wordlist, add_relation, add_word, DB
 from solvertools.wordlist import NPL, ENABLE, WORDNET, PHONETIC, COMBINED_WORDY, CROSSWORD, PHRASES, WIKIPEDIA, WIKTIONARY, WIKTIONARY_DEFS, WORDNET_DEFS, Google200K, alphagram
 from solvertools.wordnet import morphy_roots
 from solvertools.model.tokenize import get_words
@@ -94,31 +94,38 @@ def fix_words():
         print >> out, "%s,%s" % (text, freq)
         logger.info((text, freq))
 
-def fix_anagrams():
-    """
-    And this will recalculate the anagram frequencies based on the word
-    frequencies in the combined wordlist. With so many steps trying to fix
-    the errors in other steps, it's a wonder any of this works.
-    """
-    for text in COMBINED_WORDY:
-        freq = COMBINED_WORDY[text]
-        add_alphagram(text, freq)
-        logger.info((text, freq))
+def add_interestingness(rel_type):
+    for entry in DB.relations.find({'rel': rel_type}):
+        rel = entry['rel']
+        rel_total = 0.0
+        words = entry['words']
+        if len(words) < 2:
+            print 'not enough words', words
+            continue
+        for word in words:
+            key = rel+' '+word
+            rel_total += log(DB.totals.find_one({'_id': key})['value']['total'])
+        interestingness = log(entry['freq']+1) - rel_total/len(words)
+        DB.relations.update(
+            {'_id': entry['_id']},
+            {'$set': {'interestingness': interestingness}}
+        )
+        logger.info((rel, words, interestingness))
 
+def export_clues(filename):
+    out = open(filename, 'w')
+    for entry in DB.relations.find({'rel': {'$in': ['clued_by', 'bigram', 'can_adjoin', 'has_root']}}):
+        print >> out, ('%s\t%s\t%s' % (entry['freq'], entry['words'][0], entry['words'][1])).encode('utf-8')
 
-def add_interestingness(query={}):
-    for entry in DB.relations.find(query):
-        if not 'interestingness' in entry:
-            rel = entry['rel']
-            rel_total = 0.0
-            words = entry['words']
-            if len(words) < 2: continue
-            for word in words:
-                key = rel+' '+word
-                rel_total += log(DB.totals.find_one({'_id': key})['value']['total'])
-            interestingness = log(entry['freq']+1) - rel_total/len(words)
-            DB.relations.update(
-                {'_id': entry['_id']},
-                {'$set': {'interestingness': interestingness}}
-            )
-            logger.info((rel, words, interestingness))
+def clue_matrix(filename):
+    import divisi2
+    clue_entries = []
+    for line in open(filename):
+        val, row, col = line.strip().split('\t')
+        val = 1
+        clue_entries.append((val, row, col))
+        if len(clue_entries) % 10000 == 0:
+            print len(clue_entries)
+    sparse = divisi2.SparseMatrix.square_from_named_entries(clue_entries)
+    return sparse
+

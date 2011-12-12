@@ -96,19 +96,21 @@ def associations(words, log_min=-25, beam=1000, multiply=False):
     word_freqs = {}
     for word in words:
         word_freqs[word] = COMBINED.get(word, 100)
-        query = DB.relations.find({'words': word})
-        for match in query[:beam]:
-            for word2 in match['words']:
-                if word2 not in words:
-                    possibilities.add(word2)
-                    value = match.get('interestingness')
-                    if value is None:
-                        # interestingness hasn't yet been set on this
-                        # relation, so guess
-                        value = minimum/2
-                    elif not multiply:
-                        value = exp(value) + 0.1
-                    mapping[word2][word] = max(mapping[word2][word], value)
+        query = DB.associations.find({'source': word})
+        query2 = DB.associations.find({'target': word})
+
+        for match in list(query[:beam]) + list(query2[:beam]):
+            word2 = match['target']
+            if word2 == word:
+                word2 = match['source']
+            possibilities.add(word2)
+            value = match.get('value')
+            if multiply:
+                value = log(value)
+            #if not multiply:
+            #    value = exp(value) + 0.1
+            mapping[word2][word] = max(mapping[word2][word], value)
+
     results = {}
     for word2 in possibilities:
         results[word2] = sum([mapping[word2][word]/(word_freqs[word]**.5) for word in words])
@@ -225,3 +227,4 @@ def match_clue(clue, n=25):
         clue_words = extract_words_and_phrases(clue_text)
         multiply = False
     return [got[0] for got in match_words(clue_words, pattern=regex, n=n, multiply=multiply)]
+
