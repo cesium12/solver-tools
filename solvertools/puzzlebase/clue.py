@@ -9,8 +9,8 @@ for a very small number of matches (1 or 3). Don't do that on real puzzles.
 You might find the right answer much farther down the list. But here's an
 example:
 
-    >>> match_clue('marsupial', 3)
-    [u'WOMBATS', u'OPOSSUMRAT', u'POUCHEDMOLE']
+    >>> match_clue('marsupial', 5)
+    [u'MARSUPIALOID', u'MARSUPIATE', u'MARSUPIAN', u'DASYURID', u'OPOSSUMRAT']
 
 If you want to specify an answer length, it goes in parentheses at the end
 of the clue. It has to be a single integer; it can't be separated into
@@ -18,54 +18,57 @@ different words, because the Puzzlebase is rather vague about word
 boundaries anyway.
 
     >>> match_clue('Assertion of the falsity of a given proposition (8)', 3)
-    [u'ARGUMENT', u'DISPROOF', u'AVERMENT']
+    [u'ARGUMENT', u'DISPROOF', u'CONTRARY']
 
 Instead of a length, you can give a regex between slashes at the end of
 the clue. If the regex is the entire clue, then this module will
 hand the job off to Regulus to search the entire wordlist.
 
-    >>> match_clue('US President /.A....../', 3)
-    [u'VANBUREN', u'HARRISON', u'GARFIELD']
+    >>> match_clue('United States President /.A....../', 3)
+    [u'VANBUREN', u'GARFIELD', u'HARRISON']
 
     >>> match_clue('/.A.B.C../', 3)
-    [u'BARBECUE', u'BARBICAN', u'NAMBUCCA']
+    [u'BARBECUE', u'BARBICAN', u'TABBYCAT']
 
-Normally, the solver will extract words and short phrases from your clue
-text, and show you the words that best match *any* of them. Alternatively,
-your clue can be a set of words or short phrases separated by semicolons,
-in which case the solver will try to match *all* of them. This is useful
-for saying "what do these have in common?"
+The solver prioritizes matching as many words as possible, making it good
+for "what do these have in common?" clues:
 
-    >>> match_clue('black; union; hi', 1)
-    [u'JACK']
+    >>> match_clue('black union hi', 3)
+    [u'JACK', u'CASUAL', u'BOSS']
 
-    >>> match_clue('easy; double; new', 1)
-    [u'SPEAK']
+    >>> match_clue('easy double new', 3)
+    [u'DEADRINGER', u'TROUBLE', u'SPEAK']
+
+    >>> match_clue('noise castle lie', 3)
+    [u'WHITE', u'LIKE', u'BEAUTIFUL']
+
+The intended answers were "JACK", "SPEAK", and "WHITE" respectively, but I can
+see how "TROUBLE" gets in there.
 
 Do not expect any deep insight from these answers! It's really just
 matching words together and can be tripped up by simple paraphrases.
 It's certainly not IBM's Watson.
 
-Here's a clue that doesn't work well, because it requires understanding
-grammar and context:
+Here's a clue that doesn't entirely work well, because it requires
+understanding grammar and context:
 
-    >>> match_clue('Who shot Abraham Lincoln?', 1)
-    [u'18091865']
+    >>> match_clue('Who shot Abraham Lincoln? (15)', 1)
+    [u'LINCOLNMEMORIAL']
 
-Looking farther down the list gives even sillier answers like "STEPHENADOUGLAS" and "SLAVES" before it finally identifies the real culprit. But sometimes
-there's a way to ask:
+The next answer is "STEPHENADOUGLAS", and then "PRESIDENTARTHUR". Even
+"STEPHENSONDHEIM" rankes higher than "JOHNWILKESBOOTH", the 70th answer.
 
-    >>> match_clue('Lincoln assassin', 3)
-    [u'GUITEAU', u'ASSASSINATORS', u'JOHNWILKESBOOTH']
+Using a more specific word will get a better result:
 
-Sure, it gets two wrong answers first, but the answer you want is there.
-Like I said, it's not going on Jeopardy anytime soon. Be sure not to just
-blindly take its word for things.
+    >>> match_clue('Lincoln assassin (15)', 1)
+    [u'JOHNWILKESBOOTH']
 
 Let's conclude with a very silly example:
 
-    >>> match_clue('(50)', 1)
-    [u'THERISEANDFALLOFZIGGYSTARDUSTANDTHESPIDERSFROMMARS']
+    >>> match_clue('(50)', 3)
+    [u'THEOPHRASTUSPHILIPPUSAUREOLUSBOMBASTUSVONHOHENHEIM',
+     u'AGECANNOTWITHERHERNORCUSTOMSTALEHERINFINITEVARIETY',
+     u'ALLOVERTHEWORLDTHEVERYBESTOFELECTRICLIGHTORCHESTRA']
 """
 
 from solvertools.regex import bare_regex
@@ -75,22 +78,16 @@ from solvertools.model.tokenize import tokenize
 from math import log, exp
 from collections import defaultdict
 import re
+import divisi2
 
-def associations(words, log_min=-25, beam=1000, multiply=False):
+MATRIX = divisi2.load('clues.rmat')
+def associations(words, similarity_min=-1., beam=1000):
     """
     Find words associated with a set of words in the database. Use a few
     heuristics to find the most relevant results.
-
-    Setting multiply=True makes the results combine multiplicatively,
-    essentially saying that the results should be associated with *all* of the
-    words. With multiply=False, it adds up the best associations with *any* of
-    the words.
     """
     possibilities = set()
-    if multiply:
-        minimum = log_min
-    else:
-        minimum = exp(log_min)
+    minimum = similarity_min
     mapping = defaultdict(lambda: defaultdict(lambda: minimum))
     words = [alphanumeric_only(w) for w in words]
     word_freqs = {}
@@ -105,11 +102,19 @@ def associations(words, log_min=-25, beam=1000, multiply=False):
                 word2 = match['source']
             possibilities.add(word2)
             value = match.get('value')
-            if multiply:
-                value = log(value)
-            #if not multiply:
-            #    value = exp(value) + 0.1
             mapping[word2][word] = max(mapping[word2][word], value)
+
+        if word in MATRIX.row_labels:
+            for word2, value in MATRIX.row_named(word).top_items(beam):
+                if value > 0:
+                    value = value / 10
+                    possibilities.add(word2)
+                    mapping[word2][word] = max(mapping[word2][word], value)
+
+    for word in words:
+        for word2 in possibilities:
+            matrix_entry = MATRIX.entry_named(word, word2) / 10
+            mapping[word2][word] = max(mapping[word2][word], matrix_entry)
 
     results = {}
     for word2 in possibilities:
@@ -117,7 +122,7 @@ def associations(words, log_min=-25, beam=1000, multiply=False):
     best_results = sorted(results.items(), key=lambda x: -x[1])
     return best_results
 
-def match_words(words, pattern='.*', n=25, multiply=False):
+def match_words(words, pattern='.*', n=25, similarity_min=-1.):
     """
     Like :func:`associations`, but also takes in a pattern to match, and
     filters its results to only ones that match the pattern.
@@ -129,7 +134,7 @@ def match_words(words, pattern='.*', n=25, multiply=False):
     re_pattern = re.compile(bare_regex(pattern))
     matches = []
     used = set()
-    for word, goodness in associations(words, multiply=multiply):
+    for word, goodness in associations(words, similarity_min=similarity_min):
         match = re_pattern.match(word)
         if match and match.end() == len(word):
             matches.append((word, goodness))
@@ -192,7 +197,7 @@ def _filter_too_common(words, threshold=1000000000):
 class ClueFormatError(ValueError):
     pass
 
-def match_clue(clue, n=25):
+def match_clue(clue, n=25, similarity_min=-1.):
     """
     Takes in a clue using vaguely natural syntax, with a possible length or
     regular expression specified. Returns a list of the `n` best matches
@@ -222,9 +227,7 @@ def match_clue(clue, n=25):
 
     if ';' in clue_text:
         clue_words = [w.strip() for w in clue_text.split(';')]
-        multiply = True
     else:
         clue_words = extract_words_and_phrases(clue_text)
-        multiply = False
-    return [got[0] for got in match_words(clue_words, pattern=regex, n=n, multiply=multiply)]
+    return [got[0] for got in match_words(clue_words, pattern=regex, n=n, similarity_min=similarity_min)]
 
