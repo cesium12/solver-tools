@@ -75,12 +75,13 @@ from solvertools.regex import bare_regex
 from solvertools.wordlist import alphanumeric_only, COMBINED
 from solvertools.puzzlebase.mongo import DB, known_word
 from solvertools.model.tokenize import tokenize
+from solvertools.puzzlebase.similarity import SimilarityMatrix
 from math import log, exp
 from collections import defaultdict
 import re
 import divisi2
 
-MATRIX = divisi2.load('clues.rmat')
+MATRIX = SimilarityMatrix('clues')
 def associations(words, similarity_min=-1., beam=1000):
     """
     Find words associated with a set of words in the database. Use a few
@@ -90,9 +91,11 @@ def associations(words, similarity_min=-1., beam=1000):
     minimum = similarity_min
     mapping = defaultdict(lambda: defaultdict(lambda: minimum))
     words = [alphanumeric_only(w) for w in words]
+    weighted = []
     word_freqs = {}
     for word in words:
         word_freqs[word] = COMBINED.get(word, 100)
+        weighted.append((word, word_freqs[word]**(-0.5)))
         query = DB.associations.find({'source': word})
         query2 = DB.associations.find({'target': word})
 
@@ -104,21 +107,20 @@ def associations(words, similarity_min=-1., beam=1000):
             value = match.get('value')
             mapping[word2][word] = max(mapping[word2][word], value)
 
-        if word in MATRIX.row_labels:
-            for word2, value in MATRIX.row_named(word).top_items(beam):
-                if value > 0:
-                    value = value / 10
-                    possibilities.add(word2)
-                    mapping[word2][word] = max(mapping[word2][word], value)
-
-    for word in words:
-        for word2 in possibilities:
-            matrix_entry = MATRIX.entry_named(word, word2) / 10
-            mapping[word2][word] = max(mapping[word2][word], matrix_entry)
+    #for word in words:
+    #    for word2 in possibilities:
+    #        matrix_entry = MATRIX.pair_similarity(word, word2) / 10
+    #        mapping[word2][word] = max(mapping[word2][word], matrix_entry)
 
     results = {}
     for word2 in possibilities:
         results[word2] = sum([mapping[word2][word]/(word_freqs[word]**.5) for word in words])
+
+    for match, strength in MATRIX.similar_to_terms(weighted, n=beam):
+        results.setdefault(match, 0)
+        freq = COMBINED.get(match, 100)
+        results[match] += strength / freq**.5 / 10
+
     best_results = sorted(results.items(), key=lambda x: -x[1])
     return best_results
 
