@@ -72,8 +72,8 @@ class MorseEncoder(lex_base.Encoder):
     Converts text to Morse code.
 
         >>> enc = MorseEncoder()
-        >>> print enc('hello')
-        .... . .-.. .-.. ---
+        >>> enc('hello')
+        '.... . .-.. .-.. ---'
     '''
 
     def __init__(self,**kwargs):
@@ -113,8 +113,8 @@ class MorseDecoder(lex_base.Decoder):
     Converts Morse code to text.
 
         >>> dec = MorseDecoder()
-        >>> print dec('-- .- -. .. -.-. / ... .- --. . ...')
-        MANIC SAGES
+        >>> dec('-- .- -. .. -.-. / ... .- --. . ...')
+        'MANIC SAGES'
     '''
 
     tokens = (

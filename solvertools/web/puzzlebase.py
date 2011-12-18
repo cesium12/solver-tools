@@ -11,12 +11,6 @@ from solvertools.config import DB_USERNAME, DB_PASSWORD
 app = Flask(__name__)
 app.secret_key='oONHah2hzDJ0CiGyqH3o8mRXijm/JbNg'
 
-# force things to be loaded
-COMBINED.load()
-COMBINED.load_regulus()
-CROSSWORD.load()
-WORDNET_DEFS.load()
-
 @app.route('/')
 def start():
     return render_template('start.html')
@@ -93,5 +87,11 @@ def no_info(key):
     return render_template('no_info.html', key=key)
 
 if __name__ == '__main__':
+    # force things to be loaded
+    COMBINED.load()
+    COMBINED.load_regulus()
+    CROSSWORD.load()
+    WORDNET_DEFS.load()
+
     app.run(host='0.0.0.0', debug=True)
 

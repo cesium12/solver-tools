@@ -82,10 +82,6 @@ import re
 import divisi2
 
 MATRIX = SimilarityMatrix('clues')
-MATRIX.load()
-COMBINED.load()
-COMBINED.load_regulus()
-
 def associations(words, similarity_min=-1., beam=1000):
     """
     Find words associated with a set of words in the database. Use a few
