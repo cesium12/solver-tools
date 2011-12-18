@@ -22,6 +22,7 @@ If you don't already have the code, you should:
   team you've got the link)
 - Download the data (unless your computer is fast enough to recompute it all!)
 - Extract it
+- Make sure you have the dependencies
 - Run ``sudo python setup.py develop`` (or your system's equivalent).
 
 Installing from Git

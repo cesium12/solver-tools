@@ -51,12 +51,13 @@
 {% endfor %}
 {% endif %}
 
-{% if wordnet_defs %}
-<h2>WordNet definitions</h2>
+{% if definitions %}
+<h2>Definitions</h2>
 <ul>
-    {% for clue in wordnet_defs %}
+    {% for clue in definitions %}
     <li>{{ clue }}</li>
     {% endfor %}
 </ul>
 {% endif %}
 {% endblock %}
+

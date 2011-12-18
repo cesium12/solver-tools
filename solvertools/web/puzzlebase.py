@@ -2,7 +2,7 @@ from solvertools.puzzlebase.mongo import DB, get_word, get_relations, get_anagra
 from solvertools.puzzlebase.clue import match_clue
 from solvertools.anagram.mixmaster import anagram
 from flask import Flask, render_template, request, redirect, url_for, flash
-from solvertools.wordlist import alphanumeric_only, CROSSWORD, WORDNET_DEFS, COMBINED
+from solvertools.wordlist import alphanumeric_only, CROSSWORD, WORDNET_DEFS, WIKTIONARY_DEFS, COMBINED
 import socket, urllib
 from collections import defaultdict
 import logging
@@ -41,7 +41,7 @@ def search():
     query = request.args.get('q')
     if not query:
         return redirect(url_for('start'))
-    if ' ' not in query and ';' not in query and not query.startswith('/'):
+    if ' ' not in query and not query.startswith('/'):
         return word_info(query)
     else:
         return solve_clue(query)
@@ -51,7 +51,7 @@ def solve_clue(clue):
     DB.authenticate(DB_USERNAME, DB_PASSWORD)
     answers = match_clue(clue, 96)
     if not answers:
-        return no_info(key)
+        return no_info(clue)
     return render_template('clue.html', clue=clue, answers=answers)
 
 @app.route('/word/<key>')
@@ -64,7 +64,7 @@ def word_info(key):
     data = {}
     data['freq'] = query['freq']
     data['text'] = query['text']
-    data['key'] = query['key']
+    data['key'] = query['_id']
     data['anagrams'] = [word for word, freq in get_anagrams(key)]
     data['adjoins'] = []
     data['clues'] = []
@@ -80,7 +80,7 @@ def word_info(key):
         elif rel['rel'] == 'bigram':
             data['bigrams'].extend(tagged)
     data['crossword_clues'] = CROSSWORD[key]
-    data['wordnet_defs'] = WORDNET_DEFS[key]
+    data['definitions'] = WORDNET_DEFS.get(key, []) + WIKTIONARY_DEFS.get(key, [])
     return render_template('word_info.html', **data)
 
 def no_info(key):

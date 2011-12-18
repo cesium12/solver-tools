@@ -79,7 +79,6 @@ from solvertools.puzzlebase.similarity import SimilarityMatrix
 from math import log, exp
 from collections import defaultdict
 import re
-import divisi2
 
 MATRIX = SimilarityMatrix('clues')
 def associations(words, similarity_min=-1., beam=1000):
@@ -116,7 +115,7 @@ def associations(words, similarity_min=-1., beam=1000):
     
     for match, strength in MATRIX.similar_to_terms(weighted, n=beam):
         freq = COMBINED.get(match, 100)
-        results[match] = strength / freq**.5 / 10
+        results[match] = strength / freq**.6 / 10
         possibilities.add(match)
 
     for word2 in possibilities:
