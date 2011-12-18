@@ -10,7 +10,7 @@ You might find the right answer much farther down the list. But here's an
 example:
 
     >>> match_clue('marsupial', 5)
-    [u'MARSUPIALOID', u'MARSUPIATE', u'MARSUPIAN', u'DASYURID', u'OPOSSUMRAT']
+    [u'MARSUPIALOID', u'MARSUPIATE', u'MARSUPIAN', u'DASYURID', u'METATHERIAN']
 
 If you want to specify an answer length, it goes in parentheses at the end
 of the clue. It has to be a single integer; it can't be separated into
@@ -34,7 +34,7 @@ The solver prioritizes matching as many words as possible, making it good
 for "what do these have in common?" clues:
 
     >>> match_clue('black union hi', 3)
-    [u'JACK', u'CASUAL', u'BOSS']
+    [u'JACK', u'HAWAII', u'CONN']
 
     >>> match_clue('easy double new', 3)
     [u'DEADRINGER', u'TROUBLE', u'SPEAK']
@@ -49,14 +49,14 @@ Do not expect any deep insight from these answers! It's really just
 matching words together and can be tripped up by simple paraphrases.
 It's certainly not IBM's Watson.
 
-Here's a clue that doesn't entirely work well, because it requires
+Here's a clue that might not work well, because it requires
 understanding grammar and context:
 
-    >>> match_clue('Who shot Abraham Lincoln? (15)', 1)
-    [u'LINCOLNMEMORIAL']
+    >>> match_clue('Who killed Abraham Lincoln? (15)', 3)
+    [u'LINCOLNMEMORIAL', u'STEPHENADOUGLAS', u'JOHNWILKESBOOTH']
 
-The next answer is "STEPHENADOUGLAS", and then "PRESIDENTARTHUR". Even
-"STEPHENSONDHEIM" rankes higher than "JOHNWILKESBOOTH", the 70th answer.
+(Actually, the fact that the right answer is 3rd is a huge improvement over
+the previous version.)
 
 Using a more specific word will get a better result:
 
@@ -65,7 +65,7 @@ Using a more specific word will get a better result:
 
 Let's conclude with a very silly example:
 
-    >>> match_clue('(50)', 3)
+    >>> match_clue('(50)', 3)        #doctest: +NORMALIZE_WHITESPACE
     [u'THEOPHRASTUSPHILIPPUSAUREOLUSBOMBASTUSVONHOHENHEIM',
      u'AGECANNOTWITHERHERNORCUSTOMSTALEHERINFINITEVARIETY',
      u'ALLOVERTHEWORLDTHEVERYBESTOFELECTRICLIGHTORCHESTRA']
@@ -73,7 +73,7 @@ Let's conclude with a very silly example:
 
 from solvertools.regex import bare_regex
 from solvertools.wordlist import alphanumeric_only, COMBINED
-from solvertools.puzzlebase.mongo import DB, known_word
+from solvertools.puzzlebase.mongo import DB, known_word, get_freq
 from solvertools.model.tokenize import tokenize
 from solvertools.puzzlebase.similarity import SimilarityMatrix
 from math import log, exp
@@ -82,6 +82,10 @@ import re
 import divisi2
 
 MATRIX = SimilarityMatrix('clues')
+MATRIX.load()
+COMBINED.load()
+COMBINED.load_regulus()
+
 def associations(words, similarity_min=-1., beam=1000):
     """
     Find words associated with a set of words in the database. Use a few
@@ -112,14 +116,15 @@ def associations(words, similarity_min=-1., beam=1000):
     #        matrix_entry = MATRIX.pair_similarity(word, word2) / 10
     #        mapping[word2][word] = max(mapping[word2][word], matrix_entry)
 
-    results = {}
-    for word2 in possibilities:
-        results[word2] = sum([mapping[word2][word]/(word_freqs[word]**.5) for word in words])
-
+    results = defaultdict(float)
+    
     for match, strength in MATRIX.similar_to_terms(weighted, n=beam):
-        results.setdefault(match, 0)
         freq = COMBINED.get(match, 100)
-        results[match] += strength / freq**.5 / 10
+        results[match] = strength / freq**.5 / 10
+        possibilities.add(match)
+
+    for word2 in possibilities:
+        results[word2] += sum([mapping[word2][word]/(word_freqs[word]**.5) for word in words])
 
     best_results = sorted(results.items(), key=lambda x: -x[1])
     return best_results
@@ -199,11 +204,11 @@ def _filter_too_common(words, threshold=1000000000):
 class ClueFormatError(ValueError):
     pass
 
-def match_clue(clue, n=25, similarity_min=-1.):
+def match_clue_with_values(clue, n=25, similarity_min=-1.):
     """
     Takes in a clue using vaguely natural syntax, with a possible length or
     regular expression specified. Returns a list of the `n` best matches
-    to the clue.
+    to the clue and their match values.
 
     See this module's documentation for a full description and examples.
     """
@@ -231,5 +236,15 @@ def match_clue(clue, n=25, similarity_min=-1.):
         clue_words = [w.strip() for w in clue_text.split(';')]
     else:
         clue_words = extract_words_and_phrases(clue_text)
-    return [got[0] for got in match_words(clue_words, pattern=regex, n=n, similarity_min=similarity_min)]
+    return match_words(clue_words, pattern=regex, n=n, similarity_min=similarity_min)
 
+def match_clue(clue, n=25, similarity_min=-1.):
+    """
+    Takes in a clue using vaguely natural syntax, with a possible length or
+    regular expression specified. Returns a list of the `n` best matches
+    to the clue. Intended as the simplest interface to clue matching.
+
+    See this module's documentation for a full description and examples.
+    """
+    matches = match_clue_with_values(clue, n, similarity_min)
+    return [match[0] for match in matches]

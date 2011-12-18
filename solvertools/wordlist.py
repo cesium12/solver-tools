@@ -268,13 +268,13 @@ class Wordlist(object):
         If we need to do fast regex operations on this wordlist, we need a
         regulus object. This function ensures that such an object exists.
         """
-        if self.words is None:
-            self.load()
         logger.info("Loading %s" % self.regulus_name())
         from solvertools.extensions.regulus import regulus
         self.regulus = regulus.Dict()
         loaded_cache = self.regulus.read(get_picklefile(self.regulus_name()))
         if not loaded_cache:
+            if self.words is None:
+                self.load()
             del self.regulus
             logger.info("Building %s" % self.regulus_name())
             entries = [regulus.DictEntry(letters_and_spaces(word), freq)

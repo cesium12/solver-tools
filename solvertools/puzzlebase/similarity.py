@@ -1,6 +1,7 @@
 import logging
 import numpy as np
 import cPickle as pickle
+import codecs
 from solvertools.util import get_datafile
 from solvertools.wordlist import alphanumeric_only, COMBINED
 logger = logging.getLogger(__name__)
@@ -38,7 +39,9 @@ class SimilarityMatrix(object):
             line_num = 0
             max_lines = self.U.shape[0]
 
-            for line in open(get_datafile('array/%s.U.labels' % self.basename)):
+            filename = get_datafile('array/%s.U.labels' % self.basename)
+
+            for line in codecs.open(filename, encoding='utf-8'):
                 label = line[:-1]
                 self.labels.append(label)
                 self.label_index[label] = line_num

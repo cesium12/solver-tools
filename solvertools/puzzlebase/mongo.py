@@ -126,14 +126,15 @@ def get_anagrams(text):
             found.add(textkey)
     return anagrams
 
-def get_freq(text):
+def get_freq(text, default=0):
     """
-    Get the frequency of `text`, or 0 if it is not in the DB.words collection.
+    Get the frequency of `text`, or `default` if it is not in the DB.words
+    collection.
     """
     key = alphanumeric_only(text)
     found = DB.words.find_one({'_id': key})
     if not found:
-        return 0
+        return default
     else:
         return found['freq']
 
@@ -152,7 +153,6 @@ def add_from_wordlist(wordlist, multiplier=1, lexical=True, max=None):
         logger.info((wordlist.filename, word, freq*multiplier))
 
 def known_word(word):
-    # deprecated
     return DB.relations.find_one(
         {'rel': 'in_wordlist', 'words': alphanumeric_only(word)}
     )
