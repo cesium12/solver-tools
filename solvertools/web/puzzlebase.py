@@ -41,47 +41,31 @@ def search():
     query = request.args.get('q')
     if not query:
         return redirect(url_for('start'))
-    if ' ' not in query and not query.startswith('/'):
-        return word_info(query)
-    else:
-        return solve_clue(query)
+    return solve_clue(query)
 
 @app.route('/clue/<clue>')
 def solve_clue(clue):
     DB.authenticate(DB_USERNAME, DB_PASSWORD)
     answers = match_clue(clue, 96)
-    if not answers:
-        return no_info(clue)
-    return render_template('clue.html', clue=clue, answers=answers)
-
-@app.route('/word/<key>')
-def word_info(key):
-    DB.authenticate(DB_USERNAME, DB_PASSWORD)
-    key = alphanumeric_only(key.replace('_', ' '))
+    key = alphanumeric_only(clue)
     query = get_word(key)
+    if not answers and query is None:
+        return no_info(clue)
     if query is None:
-        return no_info(key)
+        query = {}
     data = {}
-    data['freq'] = query['freq']
-    data['text'] = query['text']
-    data['key'] = query['_id']
+    data['clue'] = clue
+    data['freq'] = query.get('freq', 0)
+    data['text'] = query.get('text', clue)
+    data['key'] = query.get('_id', clue)
+    data['answers'] = answers
     data['anagrams'] = [word for word, freq in get_anagrams(key)]
-    data['adjoins'] = []
     data['clues'] = []
-    data['bigrams'] = []
-    for rel in get_relations(key)[:1000]:
-        words = rel['words']
-        words.remove(key)
-        tagged = [(word, rel.get('interestingness', -10), rel['value']) for word in words]
-        if rel['rel'] == 'can_adjoin':
-            data['adjoins'].extend(tagged)
-        elif rel['rel'] == 'clued_by':
-            data['clues'].extend(tagged)
-        elif rel['rel'] == 'bigram':
-            data['bigrams'].extend(tagged)
     data['crossword_clues'] = CROSSWORD[key]
-    data['definitions'] = WORDNET_DEFS.get(key, []) + WIKTIONARY_DEFS.get(key, [])
-    return render_template('word_info.html', **data)
+    defs = WORDNET_DEFS.get(key, []) + WIKTIONARY_DEFS.get(key, [])
+    data['definitions'] = [defn for defn in defs if not defn.startswith('=>')]
+
+    return render_template('clue.html', **data)
 
 def no_info(key):
     return render_template('no_info.html', key=key)

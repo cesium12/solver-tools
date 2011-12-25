@@ -5,8 +5,7 @@
 <p>This page takes in natural-looking clues, and outputs what it thinks are the
 best answers that fit your constraints.</p>
 <p>You can specify a length or a regular
-expression to match. Separating words by semicolons means you want to find
-words that connect to <i>all</i> of those words.</p>
+expression to match.</p>
 <p><b>Examples:</b></p>
 <table class="examples">
 <tr class="example-row">
@@ -43,8 +42,8 @@ US President /.A....../
 
 <tr class="example-row">
 <td class="clue">
-<a href="/search?q=black;+union;+hi">
-black; union; hi
+<a href="/search?q=black+union+hi">
+black union hi
 </a>
 </td>
 <td class="answer">&rarr; JACK...</td>
@@ -52,8 +51,8 @@ black; union; hi
 
 <tr class="example-row">
 <td class="clue">
-<a href="/search?q=up;+down;+strange;+charm;+top;+bottom">
-up; down; strange; charm; top; bottom
+<a href="/search?q=up+down+strange+charm+top+bottom">
+up down strange charm top bottom
 </a>
 </td>
 <td class="answer">&rarr; QUARK, QUARKS, ...</td>

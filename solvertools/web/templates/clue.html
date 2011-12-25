@@ -1,14 +1,47 @@
 {% extends "base.html" %}
 {% block title %}Clue solver{% endblock %}
 {% block main %}
-<h3>{{clue}}</h3>
+<h2>{{clue}}</h2>
+{% if freq %}
+<p class="freq">{{text}} ({{freq}} occurrences)</p>
+{% endif %}
+
+{% if crossword_clues %}
+<h3>Crossword clues</h3>
+<ul>
+    {% for clue in crossword_clues %}
+    <li>{{ clue }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if anagrams %}
+<h3>Anagrams</h3>
+{% for word in anagrams %}
+<div class="wordlink">
+    <a href="/clue/{{word.lower()}}">{{word}}</a>
+</div>
+{% endfor %}
+{% endif %}
+
+<h3>Clued words</h3>
+
 {% set count = 0 -%}
 {% for answer in answers %}
 <div class="wordlink">
     {% set count = count + 1 -%}
     <span class="counter">({{count}})</span>
-    <a href="/word/{{answer.lower()}}">{{answer}}</a>
+    <a href="/clue/{{answer.lower()}}">{{answer}}</a>
 </div>
 {% endfor %}
+
+{% if definitions %}
+<h3>Definitions</h3>
+<ul>
+    {% for clue in definitions %}
+    <li>{{ clue }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
 
 {% endblock %}

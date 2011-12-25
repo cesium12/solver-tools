@@ -133,7 +133,7 @@ def match_words(words, pattern='.*', n=25, similarity_min=-1.):
         pattern = '.'*pattern
     if not words:
         return match_pattern(pattern, n)
-    re_pattern = re.compile(bare_regex(pattern))
+    re_pattern = re.compile(bare_regex(pattern.upper()))
     matches = []
     used = set()
     for word, goodness in associations(words, similarity_min=similarity_min):
@@ -227,10 +227,8 @@ def match_clue_with_values(clue, n=25, similarity_min=-1.):
         clue_text = clue
         regex = '.*'
 
-    if ';' in clue_text:
-        clue_words = [w.strip() for w in clue_text.split(';')]
-    else:
-        clue_words = extract_words_and_phrases(clue_text)
+    clue_words = extract_words_and_phrases(clue_text)
+    print (clue_words, regex)
     return match_words(clue_words, pattern=regex, n=n, similarity_min=similarity_min)
 
 def match_clue(clue, n=25, similarity_min=-1.):
