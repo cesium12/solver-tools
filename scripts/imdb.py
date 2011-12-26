@@ -29,10 +29,10 @@ ratings = {}
 actor_list = []
 
 def precompute_exps():
-    l = [1.,1.]
+    l = []
     f = math.exp(-.2)
-    x = f
-    for i in xrange(73):
+    x = 1
+    for i in xrange(75):
         l.append(x)
         x*=f
     return l
