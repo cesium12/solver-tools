@@ -21,11 +21,21 @@ ex3 = re.compile('DISC[\d\s]+$')
 
 ex_track = re.compile('TRACK \d+')
 
+# release group types
+RG_ALBUM = 1
+RG_EP = 3
+RG_COMPILATION = 4
+RG_SOUNDTRACK = 5
+RG_LIVE = 9
+
 def invalid_artist(s):
     return (not s) or (s=='UNKNOWN')
 
 def invalid_track(s):
     return (not s) or (s=='UNTITLED') or ex_track.match(s)
+
+def invalid_album(s):
+    return (not s)
 
 def strip(s):
     s = solvertools.util.asciify(s)
@@ -65,25 +75,39 @@ def get_artist_credit_names():
 
     return credit_names
 
-def get_release_names():
+def get_release_group(types):
 
     release_name = {}
+    release_group = {}
 
     for ss in lazy_readline(CORE_PATH+'/release_name'):
         rid = int(ss[0])
         name = strip(ss[1])
-        release_name[rid] = name
+        if not invalid_album(name):
+            release_name[rid] = name
 
-    return release_name
-
+    for ss in lazy_readline(CORE_PATH+'/release_group'):
+        try:
+            rt = int(ss[4])
+        except ValueError:
+            continue
+        if rt not in types:
+            continue
+        rgid = int(ss[0])
+        rid = int(ss[2])
+        try:
+            name = release_name[rid]
+        except KeyError:
+            continue
+        release_group[rgid]=name
 
     return release_group
 
-def get_medium_names(release_group):
-    
+def get_release(types):
+
     release = {}
-    medium = {}
-    
+    release_group = get_release_group(types)
+
     for ss in lazy_readline(CORE_PATH+'/release'):
         rgid = int(ss[4])
         rid = int(ss[0])
@@ -92,7 +116,12 @@ def get_medium_names(release_group):
         except KeyError:
             pass
 
-    del release_group
+    return release
+
+def get_counts_from_release(release):
+  
+    medium = {}
+    counts = {}
 
     for ss in lazy_readline(CORE_PATH+'/medium'):
         rid = int(ss[2])
@@ -102,27 +131,7 @@ def get_medium_names(release_group):
         except KeyError:
             pass
 
-    return medium
-
-def do_albums_count():
-
-    counts = {}
-    release_group = {}
-    release_name = get_release_names()
-
-    for ss in lazy_readline(CORE_PATH+'/release_group'):
-        try:
-            rt = int(ss[4])
-            if rt in [1,3,4,5,9]:
-                rgid = int(ss[0])
-                rid = int(ss[2])
-                release_group[rgid]=release_name[rid]
-        except ValueError:
-            pass
-
-    del release_name
-
-    medium = get_medium_names(release_group)
+    del release
 
     for ss in lazy_readline(CORE_PATH+'/medium_cdtoc'):
         mid = int(ss[1])
@@ -132,8 +141,36 @@ def do_albums_count():
         except KeyError:
             pass
 
-    del medium
+    return counts
 
+def get_track_names():
+
+    track_names = {}
+
+    for ss in lazy_readline(CORE_PATH+'/track_name'):
+        nid = int(ss[0])
+        name = strip(ss[1])
+        if not invalid_track(name):
+            track_names[nid] = name
+
+    return track_names
+
+def output_three(counts,min_count):
+    
+    items = [(artist,track,count) for ((artist,track),count) in counts.iteritems() if count>=min_count]
+    items.sort(key=lambda x: -x[2])
+    for artist, track, count in items:
+        sys.stdout.write("%s\t%s\t%d\n"%(artist,track,count))
+
+def do_albums_count():
+
+    counts = {}
+    medium = {}
+
+    release = get_release([RG_ALBUM,RG_EP,RG_COMPILATION,RG_SOUNDTRACK,RG_LIVE])
+    
+    counts = get_counts_from_release(release)
+  
     items = [(name,count) for (name,count) in counts.iteritems() if name and count>=2]
     items.sort(key=lambda x: -x[1])
     for name, count in items:
@@ -173,25 +210,27 @@ def do_artists_count():
 
 def do_tracks_count():
 
-    track_names = {}
     recording_names = {}
     counts = {}
 
-    for ss in lazy_readline(CORE_PATH+'/track_name'):
-        nid = int(ss[0])
-        name = strip(ss[1])
-        track_names[nid] = name
+    track_names = get_track_names()
 
     for ss in lazy_readline(CORE_PATH+'/recording'):
         rid = int(ss[0])
         nid = int(ss[2])
-        recording_names[rid] = track_names[nid]
+        try:
+            recording_names[rid] = track_names[nid]
+        except KeyError:
+            pass
 
     del track_names
 
     for ss in lazy_readline(CORE_PATH+'/recording_puid'):
         rid = int(ss[2])
-        name = recording_names[rid]
+        try:
+            name = recording_names[rid]
+        except KeyError:
+            continue
         counts[name]=counts.get(name,0)+1
 
     del recording_names
@@ -204,16 +243,11 @@ def do_tracks_count():
 def do_artist_track_rel():
 
     recording_names = {}
-    track_names = {}
     counts = {}
 
     credit_names = get_artist_credit_names()
 
-    for ss in lazy_readline(CORE_PATH+'/track_name'):
-        nid = int(ss[0])
-        name = strip(ss[1])
-        if not invalid_track(name):
-            track_names[nid] = name
+    track_names = get_track_names()
 
     for ss in lazy_readline(CORE_PATH+'/recording'):
         rid = int(ss[0])
@@ -236,10 +270,73 @@ def do_artist_track_rel():
 
     del recording_names
 
-    items = [(artist,track,count) for ((artist,track),count) in counts.iteritems() if count>=15]
-    items.sort(key=lambda x: -x[2])
-    for artist, track, count in items:
-        sys.stdout.write("%s\t%s\t%d\n"%(artist,track,count))
+    output_three(counts,15)
+   
+def do_album_track_rel():
+
+    tracklist = {}
+    track = {}
+    counts = {}
+
+    release = get_release([RG_ALBUM,RG_EP,RG_SOUNDTRACK,RG_LIVE])
+
+    for ss in lazy_readline(CORE_PATH+'/medium'):
+        tid = int(ss[1])
+        rid = int(ss[2])
+        try:
+            tracklist[tid] = release[rid]
+        except KeyError:
+            pass
+
+    track_name = get_track_names()
+
+    for ss in lazy_readline(CORE_PATH+'/track'):
+        rid = int(ss[1])
+        tid = int(ss[2])
+        nid = int(ss[4])
+        try:
+            aname = tracklist[tid]
+            tname = track_name[nid]
+        except KeyError:
+            continue
+        track[rid] = (aname,tname)
+
+    del tracklist, track_name
+
+    for ss in lazy_readline(CORE_PATH+'/recording_puid'):
+        rid = int(ss[2])
+        try:
+            name = track[rid]
+        except KeyError:
+            continue
+        counts[name]=counts.get(name,0)+1
+
+    output_three(counts,10)
+
+def do_artist_album_rel():
+
+    counts = {}
+    release = {}
+    
+    artist_credit = get_artist_credit_names()
+    release_group = get_release_group([RG_ALBUM,RG_EP,RG_COMPILATION,RG_SOUNDTRACK,RG_LIVE])
+
+    for ss in lazy_readline(CORE_PATH+'/release'):
+        rgid = int(ss[4])
+        rid = int(ss[0])
+        aid = int(ss[3])
+        try:
+            release[rid]=(artist_credit[aid],release_group[rgid])
+        except KeyError:
+            pass
+
+    del artist_credit, release_group
+
+    counts = get_counts_from_release(release)
+
+    del release
+
+    output_three(counts,5)
 
 def usage():
     sys.stderr.write("usage: musicbrainz.py core_data_path list\nwhere list is one of:\n")
@@ -254,6 +351,8 @@ commands = {
     'albums' : do_albums_count,
     'tracks' : do_tracks_count,
     'artist-track' : do_artist_track_rel,
+    'album-track' : do_album_track_rel,
+    'artist-album' : do_artist_album_rel,
 }
 
 if __name__ == '__main__':
