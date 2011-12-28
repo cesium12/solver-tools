@@ -15,6 +15,8 @@ from __future__ import with_statement
 
 import re, sys, solvertools.util
 
+from wordlist_util import output_wordlist, output_relation
+
 ex1 = re.compile('[^0-9A-Za-z ]')
 ex2 = re.compile('\s+')
 ex3 = re.compile('DISC[\d\s]+$')
@@ -155,13 +157,6 @@ def get_track_names():
 
     return track_names
 
-def output_three(counts,min_count):
-    
-    items = [(artist,track,count) for ((artist,track),count) in counts.iteritems() if count>=min_count]
-    items.sort(key=lambda x: -x[2])
-    for artist, track, count in items:
-        sys.stdout.write("%s\t%s\t%d\n"%(artist,track,count))
-
 def do_albums_count():
 
     counts = {}
@@ -270,7 +265,7 @@ def do_artist_track_rel():
 
     del recording_names
 
-    output_three(counts,15)
+    output_relation(counts,15)
    
 def do_album_track_rel():
 
@@ -311,7 +306,7 @@ def do_album_track_rel():
             continue
         counts[name]=counts.get(name,0)+1
 
-    output_three(counts,10)
+    output_relation(counts,10)
 
 def do_artist_album_rel():
 
@@ -336,7 +331,7 @@ def do_artist_album_rel():
 
     del release
 
-    output_three(counts,5)
+    output_relation(counts,5)
 
 def usage():
     sys.stderr.write("usage: musicbrainz.py core_data_path list\nwhere list is one of:\n")

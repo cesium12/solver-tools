@@ -12,21 +12,20 @@ need to use regexes a lot.
 
 from __future__ import with_statement
 
-import re, math
+import re, math, sys
 import itertools
 
-from wordlist_util import strip, normalize
+from wordlist_util import strip, normalize, output_relation, output_wordlist
 
 rating_re = re.compile('\s+\S+\s+(\d+)\s+\S+\s+(.+)')
 title_re = re.compile('(.[^(]*(?<! ))')
 actor_name_re = re.compile('([^\t]*)\t+(.*?)  ')
+actor_role_re = re.compile('\[([^\]]+)\]')
 actor_pos_re = re.compile('<(\d+)>')
 actor_rev_re = re.compile('([^,\t(]+),?([^\t(]*)')
 aka_title_re = re.compile('(\S[^(]*\(\d+\)(?<! ))')
 aka_re = re.compile('   \(aka ([^(]*(?<! ))')
-
-ratings = {}
-actor_list = []
+self_re = re.compile('HIMSELF|HERSELF|THEMSELVES')
 
 def precompute_exps():
     l = []
@@ -68,6 +67,11 @@ def normalize_actor(t):
         print repr(t)
     return t
 
+def normalize_role(t,actor):
+    t = strip(t)
+    t = self_re.sub(actor,t)
+    return t
+
 usa_short_re = re.compile('\(USA\) \(short title\)')
 usa_re = re.compile('\(USA\)$')
 
@@ -79,7 +83,9 @@ def aka_is_useful(t):
         usa_re.search(t)
     )
 
-def load_movies():
+def load_movie_ratings():
+    ratings = {}
+
     with open(PATH+'/ratings.list','r') as ratings_file:
         for lx in ratings_file:
             if lx=='MOVIE RATINGS REPORT\n':
@@ -90,35 +96,36 @@ def load_movies():
             if m:
                 r, title = m.groups()
                 rat = int(r)
-                ntitle = normalize_title(title)
                 if rat>=100:
                     ratings[title] = rat
+    return ratings
 
 def do_movies():
-    #akas are not guaranteed to be unique so don't stick them in a dictionary
-    akas = []
+    ratings = load_movie_ratings()
+    movies = {}
+    for title, rat in ratings.iteritems():
+        ntitle = normalize_title(title)
+        movies[ntitle] = movies.get(ntitle,0) + rat
     with open(PATH+'/aka-titles.list','r') as aka_file:
         rat = 0
         for lx in aka_file:
             l = lx.decode('Latin-1')
             m = aka_title_re.match(l)
             if m:
-                t = m.groups()[0]
-                rat = ratings.get(t,0)
-                #print repr(t), rat
+                title = m.groups()[0]
+                rat = ratings.get(title,0)
             elif rat and aka_is_useful(l):
                 try:
                     m = aka_re.match(l)
                     alt = m.groups()[0]
-                    akas.append((alt,rat))
+                    ntitle = normalize_title(alt)
+                    movies[ntitle] = movies.get(ntitle,0) + rat
                 except AttributeError:
                     # for some reason there is one movie that has a parenthesis in its title
                     pass
-    allitems = itertools.chain(ratings.iteritems(),akas)
-    for t, r in normalize(allitems,normalize_title,4000):
-        print "%s,%d"%(t,r)
+    output_wordlist(movies,4000)
 
-def parse_actors(actors):
+def parse_actors(actors,ratings,counts):
     actor = ''
     for lx in actors:
         l = lx.decode('Latin-1')
@@ -126,7 +133,7 @@ def parse_actors(actors):
         if m:
             ac, title = m.groups()
             if ac:
-                actor = ac
+                actor = normalize_actor(ac)
             if not title in ratings:
                 continue
             m = actor_pos_re.search(l)
@@ -134,33 +141,72 @@ def parse_actors(actors):
                 p, = m.groups()
                 pos = int(p)-1
                 weight = int(ratings[title]*weight_factor(pos))
-                actor_list.append((actor,weight))
+                counts[actor] = counts.get(actor,0) + weight
 
-def do_actors():
+def parse_actor_roles(actors,ratings,counts):
+    actor = ''
+    for lx in actors:
+        l = lx.decode('Latin-1')
+        m = actor_name_re.match(l)
+        if m:
+            ac, title = m.groups()
+            if ac:
+                actor = normalize_actor(ac)
+            if not title in ratings:
+                continue
+            mpos = actor_pos_re.search(l)
+            mrole = actor_role_re.search(l)
+            if mpos and mrole:
+                p, = mpos.groups()
+                pos = int(p)-1
+                weight = int(ratings[title]*weight_factor(pos))
+                r, = mrole.groups()
+                ntitle = normalize_title(title)
+                role = normalize_role(r,actor)
+                t = (ntitle,actor,role)
+                counts[t] = counts.get(t,0) + weight
+
+
+def do_actors(keyfunc=lambda a,t: a):
+    ratings = load_movie_ratings()
+    counts = {}
+    keyfunc = lambda a,t : a
     with open(PATH+'/actors.list','r') as actors:
-        parse_actors(actors)
+        parse_actors(actors,ratings,counts)
     with open(PATH+'/actresses.list','r') as actresses:
-        parse_actors(actresses)
-    for t, r in normalize(actor_list,normalize_actor,6000):
-        print "%s,%d"%(t,r)
+        parse_actors(actresses,ratings,counts)
+    output_wordlist(counts,6000)
 
-import sys
+def do_roles():
+    ratings = load_movie_ratings()
+    counts = {}
+    keyfunc = lambda a,t : (a,normalize_title(t))
+    with open(PATH+'/actors.list','r') as actors:
+        parse_actor_roles(actors,ratings,counts)
+    with open(PATH+'/actresses.list','r') as actresses:
+        parse_actor_roles(actresses,ratings,counts)
+    items = [(movie,actor,role,count) for ((movie,actor,role),count) in counts.iteritems() if count >= 24000]
+    items.sort(key=lambda x: -x[3])
+    for item in items:
+        sys.stdout.write('%s\t%s\t%s\t%d\n'%item)
 
 def usage():
-    sys.stderr.write("usage: imdb.py input_path list\nwhere list is either 'actors' or 'movies'\n")
+    sys.stderr.write("usage: imdb.py input_path list\nwhere list is one of:'\n")
+    for k in sorted(commands):
+        sys.stderr.write('\t')
+        sys.stderr.write(k)
+        sys.stderr.write('\n')
     sys.exit(64)
+
+commands = {
+    'movies' : do_movies,
+    'actors' : do_actors,
+    'roles' : do_roles
+}
 
 if __name__=='__main__':
     if len(sys.argv)!=3:
         usage()
     global PATH
     PATH = sys.argv[1]
-    if sys.argv[2]=='actors':
-        load_movies()
-        do_actors()
-    elif sys.argv[2]=='movies':
-        load_movies()
-        do_movies()
-    else:
-        usage()
-
+    commands.get(sys.argv[2],usage)()
