@@ -1,5 +1,5 @@
 from solvertools.puzzlebase.mongo import add_from_wordlist, add_relation, add_word, DB
-from solvertools.wordlist import NPL, ENABLE, WORDNET, PHONETIC, COMBINED_WORDY, CROSSWORD, PHRASES, WIKIPEDIA, WIKTIONARY, WIKTIONARY_DEFS, WORDNET_DEFS, Google200K, alphagram
+from solvertools.wordlist import *
 from solvertools.wordnet import morphy_roots
 from solvertools.model.tokenize import get_words
 from solvertools.util import get_dictfile
@@ -36,6 +36,13 @@ def more_setup():
     add_clues(WORDNET_DEFS)
     add_concatenations(ENABLE)
 
+def music_setup():
+    add_from_wordlist(MUSICBRAINZ_ARTISTS, multiplier=100)
+    add_from_wordlist(MUSICBRAINZ_ALBUMS, multiplier=1000)
+    add_from_wordlist(MUSICBRAINZ_TRACKS, multiplier=1000)
+    add_weighted_mapping(MUSICBRAINZ_ARTIST_ALBUM)
+    add_weighted_mapping(MUSICBRAINZ_ARTIST_TRACK)
+
 def add_roots(wordlist):
     for word in wordlist:
         for lemma in morphy_roots(word):
@@ -57,6 +64,12 @@ def add_concatenations(wordlist, base_wordlist=None, dryrun=False):
                                      word, freq)
                     logger.info(('can_adjoin', [prefix, suffix],
                                 word, freq))
+
+def add_weighted_mapping(mapping):
+    for source in mapping:
+        for target, weight in mapping[source]:
+            add_relation('clued_by', [source, target], freq=weight)
+            logger.info(('clued_by', [source, target], weight))
 
 def add_clues(mapping):
     """
@@ -81,6 +94,12 @@ def add_bigrams(wordlist):
         if len(words) == 2:
             add_relation('bigram', words, phrase, wordlist[phrase])
             logger.info(('bigram', words, phrase, wordlist[phrase]))
+
+def add_ngrams(filename):
+    for line in open(filename):
+        words, freq = eval(line)
+        # TODO
+        raise NotImplementedError
 
 def fix_words():
     """

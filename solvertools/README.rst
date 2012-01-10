@@ -8,16 +8,20 @@ that you can use when solving puzzles.
 
 It has the following contents:
     
-    :ref:`all.py`/
+    :ref:`all.py`
         Imports everything in this documentation (and probably a lot more)
-        into the global namespace. Useful for interactive Python.
+        into the global namespace. It means you can type this at an interactive
+        Python prompt and be able to use all the examples in this
+        documentation::
+
+            from solvertools.all import *
+
+    :ref:`calendar <calendar>`/
+        Calendar tools by Enrico Spinielli, including all major world
+        calendars.
 
     :ref:`cipher <cipher>`/
         Functions for performing and undoing simple ciphers.
-
-    :ref:`google <google>`/
-        Python interfaces to useful Google services, such as the Google
-        Translate API.
 
     :ref:`model <model>`/
         Back-end NLP code that can figure out what reasonable English text
@@ -79,7 +83,7 @@ Sub-packages:
 
    cipher/README
    anagram/README
-   google/README
+   calendar/README
    model/README
    phonetic/README
    puzzlebase/README

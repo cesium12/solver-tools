@@ -14,11 +14,13 @@ for line in codecs.open(get_datafile('inputs/3grams-common.txt'), encoding='utf-
         for bigram, unigram in groupings:
             for uroot in morphy_roots(unigram, include_self=True):
                 for broot in morphy_roots(bigram, include_self=True):
-                    themax = max(themax, PHRASES.get(broot, 0) * Google1M.get(uroot, 0))
+                    themax = max(themax, PHRASES.get(broot, 1000) * Google1M.get(uroot, 0))
         expected_freq = themax/1e20
         if expected_freq > 0:
             freq = occurrences/1e10
             score = freq**1.5 / expected_freq
             phrase = ' '.join(listything)
-            if score > 0.001:
+            if score > 0.00005:
                 print "%s,%s" % (phrase, occurrences)
+            elif score > 0.00001:
+                print "\t%s,%s" % (phrase, occurrences)

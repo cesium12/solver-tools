@@ -25,7 +25,7 @@ EDITGRID_RE = re.compile(r'<editgrid\s*name="([^"]*)"\s*/?>')
 ETHERPAD_RE = re.compile(r'<etherpad\s*name="([^"]*)"\s*/?>')
 PROPERTY_RE = re.compile(r'\|\s*([^\n=]*)\s*=\s*([^\n]*)\n')
 
-PUZZLE_PAGE_INIT = u"""{{Puzzle2011
+PUZZLE_PAGE_INIT = u"""{{Puzzle2012
 %(props)s
 }}
 

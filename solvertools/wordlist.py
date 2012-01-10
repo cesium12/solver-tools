@@ -151,6 +151,14 @@ def tsv_values(text):
     """
     return text.split('\t')
 
+def tsv_weighted(text):
+    """
+    Get (text, weight) pairs, separated by a tab.
+    """
+    text, weight = text.split('\t')[:2]
+    weight = int(weight)
+    return (text, weight)
+
 def csv_rev(text):
     """
     Use this to get the reverse mapping from a comma-separated list of words
@@ -523,4 +531,7 @@ IMDB_MOVIES = Wordlist('imdb_movies', alphanumeric_with_spaces, with_frequency)
 IMDB_ACTORS = Wordlist('imdb_actors', alphanumeric_with_spaces, with_frequency)
 ANAGRAMS_HASH = WordMapping('anagrams_hash', case_insensitive, tsv_values, tsv)
 ANAGRAMS_ALPHA = WordMapping('anagrams_alpha', case_insensitive, tsv_values, tsv)
-
+MUSICBRAINZ_ARTIST_ALBUMS = WordMapping('musicbrainz_artist_album_rel',
+  alphanumeric_with_spaces, tsv_weighted, tsv)
+MUSICBRAINZ_ARTIST_TRACKS = WordMapping('musicbrainz_artist_track_rel',
+  alphanumeric_with_spaces, tsv_weighted, tsv)

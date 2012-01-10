@@ -57,6 +57,8 @@ def morphy_roots(word, include_self=False):
     """
     wnword = word.lower().replace(' ', '_')
     lemmas = set()
+    if include_self:
+        lemmas.add(word)
     for pos in 'vna':
         lemma = wn.morphy(wnword, pos)
         if lemma is not None and (include_self or lemma != wnword):
