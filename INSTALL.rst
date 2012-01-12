@@ -20,10 +20,9 @@ If you don't already have the code, you should:
 
 - Download the code (no, I'm not going to link to it here; if you're on the
   team you've got the link)
-- Download the data (unless your computer is fast enough to recompute it all!)
-- Extract both files in the same directory; the code should become
-  `solver-tools/` and the saved data should become `solver-tools/data/pickle/`.
+- Extract the code (Linux/Mac/UNIX command: `tar xvf solvertools-*.tar.bz2`)
 - Make sure you have the dependencies
+- `cd solver-tools`
 - Run ``sudo python setup.py develop`` (or your system's equivalent).
 
 Installing from Git
