@@ -122,6 +122,16 @@ def letter_bank(text):
     return ''.join(sortedlist)
 
 def word_pattern(text):
+    """
+    Get the pattern of letters that would match this text in a cryptogram,
+    with letters assigned starting from A.
+
+        >>> word_pattern('this is a test')
+        u'ABCDCDEAFDA'
+
+        >>> word_pattern('abracadabra')
+        u'ABCADAEABCA'
+    """
     text = letters_only(text)
     used = []
     translated = []

@@ -28,6 +28,13 @@ adjoin the letter "S" has high frequency, but low interestingness.
 .. automodule:: solvertools.puzzlebase.clue
    :members:
 
+.. _wordplay.py:
+
+`wordplay.py` -- find words by their wordplay properties
+--------------------------------------------------------
+.. automodule:: solvertools.puzzlebase.wordplay
+   :members:
+
 .. _mongo.py:
 
 `mongo.py` -- retrieves Puzzlebase information from MongoDB
@@ -42,7 +49,8 @@ adjoin the letter "S" has high frequency, but low interestingness.
 This module has all the pieces in it to build the Puzzlebase out of other
 sources of information, some of which is included in Solvertools.
 
-It takes on the order of weeks to do it, so there wasn't time to go back and do
-it right.
+I haven't made a standardized process for building the whole thing yet. This is
+because it takes on the order of weeks to build it, so I have just about enough
+time to do it once.
 
-*Rob Speer, 2011*
+*Rob Speer, 2012*

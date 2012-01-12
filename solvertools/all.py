@@ -31,6 +31,7 @@ from solvertools.model.tokenize import *
 from solvertools.phonetic.arpabet import *
 from solvertools.phonetic.roman_ipa import *
 from solvertools.puzzle_array import *
+from solvertools.puzzlebase.wordplay import *
 from solvertools.puzzlebase.mongo import known_word, valid_for_scrabble, get_word, get_relations, get_freq, DB
 from solvertools.puzzlebase.clue import *
 from solvertools.regex import *

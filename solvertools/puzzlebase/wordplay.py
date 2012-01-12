@@ -9,6 +9,24 @@ logger = logging.getLogger(__name__)
 def log2(x):
     return math.log(x) / math.log(2)
 
+def find_by_alphagram(input):
+    "Find words with a given alphagram."
+    input = alphagram(input)
+    for result in DB.wordplay.find({'alphagram': input}):
+        yield result['text'], result['freq']
+
+def find_by_letter_bank(input):
+    "Find words with a given letter bank."
+    input = letter_bank(input)
+    for result in DB.wordplay.find({'letterbank': input}):
+        yield result['text'], result['freq']
+
+def find_by_word_pattern(input):
+    "Find words with a given word pattern."
+    input = word_pattern(input)
+    for result in DB.wordplay.find({'wordpattern': input}):
+        yield result['text'], result['freq']
+
 def add_wordplay(word, freq):
     """
     Add a word to the wordplay table.
@@ -30,7 +48,7 @@ def add_wordplay(word, freq):
         upsert=True
     )
 
-def wordplay_from_wordlist(wordlist, multiplier=1):
+def _wordplay_from_wordlist(wordlist, multiplier=1):
     """
     Add an entire wordlist to the wordplay table.
     """
@@ -40,7 +58,7 @@ def wordplay_from_wordlist(wordlist, multiplier=1):
             freq = 1
         add_wordplay(word, freq*multiplier)
 
-def wordplay_from_ngrams(file, cutoff=10000):
+def _wordplay_from_ngrams(file, cutoff=10000):
     """
     Add an ngrams file to the wordplay table.
     """
@@ -52,5 +70,4 @@ def wordplay_from_ngrams(file, cutoff=10000):
             phrase = ' '.join(words)
             add_wordplay(phrase, freq)
             logger.info((phrase, freq))
-
 
