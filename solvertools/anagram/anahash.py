@@ -61,7 +61,10 @@ def anagram1(text):
         yield entry['text'], entry['freq']
 
 def anagram2(text):
-    "Testing for efficiency."
+    """
+    Get all reasonable 2-part anagrams for the given text, yielding them as they are
+    found.
+    """
     alpha = alphagram(text)
     ana = anahash(text)
     nailed_it = False
@@ -70,10 +73,10 @@ def anagram2(text):
         nailed_it = True
     for result in anagram1(alpha):
         yield result
-    for result in anagram_search(alpha, '', ana):
+    for result in _anagram_search(alpha, '', ana):
         yield result
 
-def anagram_search(alpha, ana, possible):
+def _anagram_search(alpha, ana, possible):
     first_result = True
     if ana:
         for entry in DB.alphagrams.find({'anahash': {'$gte': ana}}).limit(20):
@@ -92,11 +95,16 @@ def anagram_search(alpha, ana, possible):
                         yield entry['text'] + ' ' + other_piece, parallel(entry['freq'], other_freq)
                         break
     for pos in xrange(len(possible)):
-        for result in anagram_search(alpha, ana+possible[pos], possible[pos+1:]):
+        for result in _anagram_search(alpha, ana+possible[pos], possible[pos+1:]):
             yield result
 
 MAX_FREQ = 42
 def anagram_breadth_first(text):
+    """
+    Searches breadth-first for anagrams with three or more pieces.
+
+    I recommend against actually using this. --Rob
+    """
     start_alpha = alphagram(text)
     start_ana = anahash(text)
     queue = [(0.0, start_alpha, '', start_ana, ())]
@@ -138,6 +146,9 @@ def anagram_breadth_first(text):
             queue = queue[-10000:]
 
 def show_anagrams(text, max=25, overflow=75):
+    """
+    Show anagrams of the given text by printing them at the Python command line.
+    """
     results = []
     for result, freq in anagram2(text):
         results.sort(key=lambda x: x[1])

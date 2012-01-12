@@ -1,22 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-Usage:
->>> from solvertools.wiki.editgrid import *
->>> print EditGrid('editgridtest')
-FALSE                ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
-Testing.d            abcdefghijklmnopqrstuvwxyz          
-Testing. from a wii  ~!@#$%^&*()_+`-={}|[]\:";'<>?,./    
-mii too! :D          KMUVXY78#&                          
-Testing.                                                 
-Testing.                                                 
-Testing.                                                 
-Testing.                                                 
-Testing.                                                 
-test!
+Usage example::
+
+    from solvertools.wiki.editgrid import *
+    grid = EditGrid('editgridtest')
+    print grid
+
+The result is a PuzzleArray, similar to a numpy array. You may need to trim
+off excess rows and columns, such as by taking grid[:10, :4] to get the first
+10 rows and 4 columns.
 """
 
 from solvertools.config import EDITGRID
-from solvertools.puzzle_array import PuzzleArray
+from solvertools.puzzle_array import PuzzleArray, Header
 import urllib2
 from urllib import urlencode
 import re
@@ -51,7 +47,14 @@ def grid_update(name, data):
 def strip_name(name):
     return re.sub('[^a-zA-Z]', '', name)
 
-def EditGrid(name):
-    return PuzzleArray(list(csv.reader(grid_data(WORKBOOK_BASENAME + name).rstrip().split('\n'))))
+def EditGrid(name, header=True):
+    data = list(csv.reader(grid_data(WORKBOOK_BASENAME + name).rstrip().split('\n')))
+    if header:
+        data[0] = [Header(entry) for entry in data[0]]
+    for row in data:
+        for index in xrange(len(row)):
+            if not row[index]:
+                row[index] = '/.+/'
+    return PuzzleArray(data)
 
 grid_login()

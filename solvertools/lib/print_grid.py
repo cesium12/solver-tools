@@ -4,6 +4,12 @@ Functions for pretty-printing tabular data, such as a DataArray, as a grid.
 import numpy as np
 import itertools
 
+def safe_unicode(val):
+    if isinstance(val, str):
+        return unicode(val, 'utf-8', 'replace')
+    else:
+        return unicode(val)
+
 class GridDataFormatter(object):
     """
     A GridDataFormatter takes an ndarray of objects and represents them as
@@ -34,7 +40,7 @@ class GridDataFormatter(object):
         if self.data is None:
             # no information, so just use all the space we're given
             return 100
-        return max([len(unicode(val)) for val in self.data.flat])
+        return max([len(safe_unicode(val)) for val in self.data.flat])
 
     def format(self, value, width=None):
         """

@@ -80,20 +80,28 @@ takes up much less memory.) Import this list as `WORDNET_DEFS`.
 
 `musicbrainz_artists.txt`
 -------------------------
-A list of artists that MusicBrainz knows about. They come with unreliable
-frequency counts (some of the highest counts belong to very obscure artists due
-to the messy way these were counted). Import this list as
-`MUSICBRAINZ_ARTISTS`.
+A list of artists that MusicBrainz knows about. They come with reasonably good
+frequency counts: for example, although "FRANK SINATRA" and "REGENERATOR" are
+both artist names, the first is 100 times more significant.
 
-`musicbrainz_albums.txt`
-------------------------
+Import this list as `MUSICBRAINZ_ARTISTS`.
+
+`musicbrainz_albums.txt` and `musicbrainz_artist_album_rel.txt`
+---------------------------------------------------------------
 A list of album titles with frequency counts. Import this list as
 `MUSICBRAINZ_ALBUMS`.
 
-`musicbrainz_albums.txt`
-------------------------
+To associate these albums with the artists who performed them, you can get a
+mapping from artist to (album, frequency) under the name
+`MUSICBRAINZ_ARTIST_ALBUMS`.
+
+`musicbrainz_tracks.txt` and `musicbrainz_artist_track_rel.txt`
+---------------------------------------------------------------
 A list of song titles with frequency counts. Import this list as
 `MUSICBRAINZ_TRACKS`.
+
+You can also get a mapping from artist to (title, frequency) under the name
+`MUSICBRAINZ_ARTIST_TRACKS`.
 
 `imdb_movies.txt`
 -----------------

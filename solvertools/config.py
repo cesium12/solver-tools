@@ -35,3 +35,10 @@ DB_NAME='puzzlebase'
 #                                        DB_PORT, DB_NAME)
 from solvertools.util import get_db
 DB_URL='sqlite:///'+get_db('puzzlebase.db')
+EDITGRID = {
+    'USERNAME': 'sages/sages',
+    'PASSWORD': PASSWORD,
+    'APP_KEY': '5a2e2afe2465a26af2eccb72',
+    'WORKSPACE': 'sages/common'
+}
+

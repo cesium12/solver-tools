@@ -8,6 +8,7 @@ from __future__ import with_statement
 from solvertools.util import get_dictfile, get_picklefile, save_pickle, \
                              load_pickle, file_exists, asciify
 from solvertools.regex import bare_regex
+from solvertools.alphabet import ENGLISH
 from collections import defaultdict
 import re, codecs, unicodedata, logging
 logger = logging.getLogger(__name__)
@@ -97,9 +98,41 @@ def alphagram(text):
         'AACEGIMNSS'
         >>> alphagram('scan images')
         'AACEGIMNSS'
+
+    You can search for words by their alphagrams using
+    :mod:`solvertools.puzzlebase.wordplay`.
     """
     sortedlist = sorted(text.upper().replace(' ', ''))
     return ''.join(sortedlist)
+
+def letter_bank(text):
+    """
+    Get the letter bank of a text, which is its alphagram with identical
+    characters removed.
+
+        >>> letter_bank('metallica')
+        'ACEILMT'
+        >>> letter_bank('climate')
+        'ACEILMT'
+    
+    You can search for words by their letter banks using
+    :mod:`solvertools.puzzlebase.wordplay`.
+    """
+    sortedlist = sorted(set(text.upper().replace(' ', '')))
+    return ''.join(sortedlist)
+
+def word_pattern(text):
+    text = letters_only(text)
+    used = []
+    translated = []
+    for char in text:
+        try:
+            idx = used.index(char)
+        except ValueError:
+            idx = len(used)
+            used.append(char)
+        translated.append(idx+1)
+    return ENGLISH.indices_to_text(translated)
 
 def alphabet_filter(alphabet):
     def alphabet_filter_inner(text):
@@ -224,7 +257,7 @@ class Wordlist(object):
     Finally, you can set `pickle=False` if you don't want the wordlist to be
     loaded from or saved to a pickle file.
     """
-    version = 2
+    version = 3
     def __init__(self, filename, convert=case_insensitive, reader=identity,
                  pickle=True):
         self.filename = filename

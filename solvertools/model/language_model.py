@@ -45,7 +45,7 @@ class WordListModel(LanguageModel):
     Given appropriate wordlists, this could easily be extended to other
     languages besides English.
     """
-    version = 3
+    version = 4
     def __init__(self, name, wordlist):
         pickle_name = '%s.model.%s.pickle' % (name, self.version)
         if file_exists(get_picklefile(pickle_name)):

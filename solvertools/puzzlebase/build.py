@@ -40,8 +40,8 @@ def music_setup():
     add_from_wordlist(MUSICBRAINZ_ARTISTS, multiplier=100)
     add_from_wordlist(MUSICBRAINZ_ALBUMS, multiplier=1000)
     add_from_wordlist(MUSICBRAINZ_TRACKS, multiplier=1000)
-    add_weighted_mapping(MUSICBRAINZ_ARTIST_ALBUM)
-    add_weighted_mapping(MUSICBRAINZ_ARTIST_TRACK)
+    add_weighted_mapping(MUSICBRAINZ_ARTIST_ALBUMS, 'album')
+    add_weighted_mapping(MUSICBRAINZ_ARTIST_TRACKS, 'song')
 
 def add_roots(wordlist):
     for word in wordlist:
@@ -65,11 +65,19 @@ def add_concatenations(wordlist, base_wordlist=None, dryrun=False):
                     logger.info(('can_adjoin', [prefix, suffix],
                                 word, freq))
 
-def add_weighted_mapping(mapping):
+def add_weighted_mapping(mapping, clueword=None):
     for source in mapping:
+        if source.startswith('THE '):
+            short = source[4:]
+            for target, weight in mapping[source]:
+                add_relation('clued_by', [short, target], freq=weight)
+                logger.info(('clued_by', [short, target], weight))
         for target, weight in mapping[source]:
             add_relation('clued_by', [source, target], freq=weight)
             logger.info(('clued_by', [source, target], weight))
+            if clueword is not None:
+                add_relation('clued_by', [clueword, target], freq=weight)
+                logger.info(('clued_by', [clueword, target], weight))
 
 def add_clues(mapping):
     """
@@ -101,6 +109,9 @@ def add_ngrams(filename):
         # TODO
         raise NotImplementedError
 
+def add_alphagrams_and_stuff(filename):
+    ...
+
 def fix_words():
     """
     This will re-count the word frequencies based on the alphagram frequencies.
@@ -112,24 +123,6 @@ def fix_words():
         add_word(text, freq)
         print >> out, "%s,%s" % (text, freq)
         logger.info((text, freq))
-
-def add_interestingness(rel_type):
-    for entry in DB.relations.find({'rel': rel_type}):
-        rel = entry['rel']
-        rel_total = 0.0
-        words = entry['words']
-        if len(words) < 2:
-            print 'not enough words', words
-            continue
-        for word in words:
-            key = rel+' '+word
-            rel_total += log(DB.totals.find_one({'_id': key})['value']['total'])
-        interestingness = log(entry['freq']+1) - rel_total/len(words)
-        DB.relations.update(
-            {'_id': entry['_id']},
-            {'$set': {'interestingness': interestingness}}
-        )
-        logger.info((rel, words, interestingness))
 
 def export_clues(filename):
     out = open(filename, 'w')

@@ -65,10 +65,8 @@ Using a more specific word will get a better result:
 
 Let's conclude with a very silly example:
 
-    >>> match_clue('(50)', 3)        #doctest: +NORMALIZE_WHITESPACE
-    [u'THEOPHRASTUSPHILIPPUSAUREOLUSBOMBASTUSVONHOHENHEIM',
-     u'AGECANNOTWITHERHERNORCUSTOMSTALEHERINFINITEVARIETY',
-     u'ALLOVERTHEWORLDTHEVERYBESTOFELECTRICLIGHTORCHESTRA']
+    >>> match_clue('(50)', 1)        #doctest: +NORMALIZE_WHITESPACE
+    [u'THERISEANDFALLOFZIGGYSTARDUSTANDTHESPIDERSFROMMARS']
 """
 
 from solvertools.regex import bare_regex
@@ -228,7 +226,6 @@ def match_clue_with_values(clue, n=25, similarity_min=-1.):
         regex = '.*'
 
     clue_words = extract_words_and_phrases(clue_text)
-    print (clue_words, regex)
     return match_words(clue_words, pattern=regex, n=n, similarity_min=similarity_min)
 
 def match_clue(clue, n=25, similarity_min=-1.):

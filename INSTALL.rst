@@ -12,7 +12,7 @@ SWIG
     - On Ubuntu, you can get all of these with: `sudo aptitude install build-essential python-dev python-numpy swig`
 - Familiarity with using an interactive Python prompt (preferably IPython)
 - Familiarity with the command line
-- At least 2 GB or so of RAM
+- At least 4 GB or so of RAM
 
 Installing the usual way
 ------------------------
@@ -33,12 +33,12 @@ to it.
 - Get access to git.manicsages.org from Jason Alonso (jalonso), if necessary
 - `git clone git@git.manicsages.org:solver-tools.git`
 - ``sudo python setup.py develop`` as normal
-The short answer on how to install this:
 
 If that doesn't work
 --------------------
 If you can't run `setup.py` because you don't have a working C compiler, you
-can try `setup-no-c.py`. Certain features will be missing.
+can try `setup-no-c.py`. You won't be able to grep entire wordlists within
+Solvertools in this version.
 
 If the setup doesn't work for some other reason, you can try just
 setting your PYTHONPATH to the `solver-tools` directory.

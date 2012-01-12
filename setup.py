@@ -24,15 +24,15 @@ def prefix_path(prefix, paths):
    return [os.path.join(prefix, path) for path in paths.split()]
 
 setup(name='solvertools',
-     version='2011.2', # When we "release", it will of course be 2011.0
+     version='2012.0',
      description='Manic Sages Solver Tools',
      packages=find_packages(),
      package_data={
        # Unfortunately, you have to update this if you add a new kind of data
-       'data': ['dict/*.txt', 'pickle/*.pickle',
+       'data': ['dict/*.txt', 'pickle/*.pickle', 'pickle/*.regulus',
             'corpora/answers/*.dat',
             'test/*', 'codes/*.txt',
-            'db/*.npy']
+            'array/*.npy', 'array/*.labels']
      },
      ext_modules=[Extension("solvertools.extensions.regulus._regulus",
          prefix_path('solvertools/extensions/regulus',"regulus.i amtrie.cpp automaton.cpp check.cpp dict.cpp dyntrie.cpp"),
