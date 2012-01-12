@@ -18,7 +18,7 @@ In IPython, type a function name followed by two question marks (such as
 `split_words??`) to see its documentation.
 """
 from solvertools.alphabet import *
-from solvertools.calendar import pycalcal
+from solvertools import calendar
 from solvertools.cipher.amino import *
 from solvertools.cipher.braille import *
 from solvertools.cipher.morse import *
