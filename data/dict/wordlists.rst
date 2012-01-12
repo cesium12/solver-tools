@@ -149,4 +149,4 @@ pickle files in the `data/pickle/` directory. If you change one of these
 wordlists for some reason, you will need to remove the corresponding pickle
 file so that it gets updated.
 
-*Rob Speer, 2010*
+*Rob Speer, 2012*

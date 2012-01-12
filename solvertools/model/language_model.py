@@ -145,8 +145,8 @@ class WordListModel(LanguageModel):
             >>> en = get_model('en')
             >>> en.split_words('RGBOFRELIQUARY')[0]
             u'RGB OF RELIQUARY'
-            >>> en.split_words('/.E..S....N..T...P..E/')[0]
-            u'PENNSYLVANIA TURNPIKE'
+            >>> split_words('/.U..E..F...../')[0]
+            u'NUCLEAR FUSION'
         """
         pieces = regex_pieces(text)
         textlen = len(pieces)
@@ -236,8 +236,8 @@ def split_words(text):
             
         >>> split_words('RGBOFRELIQUARY')[0]
         u'RGB OF RELIQUARY'
-        >>> split_words('/.E..S....N..T...P..E/')[0]
-        u'PENNSYLVANIA TURNPIKE'
+        >>> split_words('/.U..E..F...../')[0]
+        u'NUCLEAR FUSION'
     """
     english = get_english_model()
     return english.split_words(text)
