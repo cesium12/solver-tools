@@ -197,13 +197,21 @@ def _filter_too_common(words, threshold=1000000000):
 class ClueFormatError(ValueError):
     pass
 
-def match_clue_with_values(clue, n=25, similarity_min=-1.):
+def match_clue(clue, n=25, similarity_min=-1.):
     """
     Takes in a clue using vaguely natural syntax, with a possible length or
     regular expression specified. Returns a list of the `n` best matches
-    to the clue and their match values.
+    to the clue. Intended as the simplest interface to clue matching.
 
     See this module's documentation for a full description and examples.
+    """
+    matches = match_clue_with_values(clue, n, similarity_min)
+    return [match[0] for match in matches]
+
+def match_clue_with_values(clue, n=25, similarity_min=-1.):
+    """
+    Gives results similar to :func:`match_clue`, but outputs tuples of
+    `(answer, confidence)` instead of bare answers.
     """
     clue = clue.strip()
     if clue.endswith('/'):
@@ -228,13 +236,3 @@ def match_clue_with_values(clue, n=25, similarity_min=-1.):
     clue_words = extract_words_and_phrases(clue_text)
     return match_words(clue_words, pattern=regex, n=n, similarity_min=similarity_min)
 
-def match_clue(clue, n=25, similarity_min=-1.):
-    """
-    Takes in a clue using vaguely natural syntax, with a possible length or
-    regular expression specified. Returns a list of the `n` best matches
-    to the clue. Intended as the simplest interface to clue matching.
-
-    See this module's documentation for a full description and examples.
-    """
-    matches = match_clue_with_values(clue, n, similarity_min)
-    return [match[0] for match in matches]

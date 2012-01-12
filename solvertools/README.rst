@@ -16,7 +16,7 @@ It has the following contents:
 
             from solvertools.all import *
 
-    :ref:`calendar <calendar>`/
+    :ref:`calendars <calendars>`/
         Calendar tools by Enrico Spinielli, including all major world
         calendars.
 
@@ -46,10 +46,6 @@ It has the following contents:
     lib/
         External code that we found useful.
 
-    :ref:`wordlist.py`
-        Lazily-loaded wordlists that let you quickly determine whether a word
-        is valid (for example, in Scrabble or in a crossword).
-
     :ref:`alphabet.py`
         Rob's code for mapping between different sequences of symbols. Might
         be too generalized. Various simple :ref:`ciphers <ciphers>`
@@ -57,8 +53,9 @@ It has the following contents:
         so that (for example) you can compute a Caesar cipher in Greek as
         easily as in English.
 
-    :ref:`util.py`
-        Generally useful utilities, particularly for file I/O.
+    :ref:`letter_stats.py`
+        Does frequency analysis of letters in text, often the first step
+        to breaking a cipher.
 
     :ref:`puzzle_array.py`
         Tools for interpreting regular expressions, and indexing into them
@@ -68,9 +65,12 @@ It has the following contents:
         Tools for interpreting regular expressions, and indexing into them
         as if they were non-deterministic strings.
 
-    :ref:`letter_stats.py`
-        Does frequency analysis of letters in text, often the first step
-        to breaking a cipher.
+    :ref:`util.py`
+        Generally useful utilities, particularly for file I/O.
+
+    :ref:`wordlist.py`
+        Lazily-loaded wordlists that let you quickly determine whether a word
+        is valid (for example, in Scrabble or in a crossword).
 
     `secrets.py`
         You need to store a given Manic Sages password in this file, or else
@@ -81,14 +81,13 @@ Sub-packages:
 .. toctree::
    :maxdepth: 2
 
-   cipher/README
    anagram/README
-   calendar/README
+   calendars/README
+   cipher/README
    model/README
    phonetic/README
    puzzlebase/README
    wiki/README
-   phonetic/README
    extensions/README
 
 .. _wordlist.py:

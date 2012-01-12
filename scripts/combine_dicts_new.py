@@ -11,15 +11,18 @@ def is_google_worthy(word):
         return False
     return word in Google200K and Google200K[word] >= 100000
 
+def is_reasonable_phrase(word):
+    return word in PHRASES and PHRASES[word] >= 1000000
+
 def is_reasonable(word):
     return (word in ENABLE or word in WORDNET or
             word in NPL or word in CROSSWORD or word in PHONETIC or
-            word in IMDB_MOVIES or word in IMDB_ACTORS or word in PHRASES or
+            word in IMDB_MOVIES or word in IMDB_ACTORS or is_reasonable_phrase(word) or
             word in MUSICBRAINZ_ARTISTS or word in MUSICBRAINZ_ALBUMS or
             word in MUSICBRAINZ_TRACKS or word in extras or word in WIKTIONARY
             or is_google_worthy(word))
 
-out = open(get_dictfile('sages_combined_new'), 'w')
+out = open(get_dictfile('sages_combined_small.txt'), 'w')
 for rec in DB.words.find().sort([('freq', -1)]):
     text = rec['text']
     freq = rec['freq']

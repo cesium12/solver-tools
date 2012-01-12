@@ -55,14 +55,37 @@ From :mod:`solvertools.wordlist`, you can import this list as `PHONETIC`.
 
 `sages_combined.txt`
 --------------------
-This is the file that I trained the English `language_model` on. It contains
-ENABLE, NPL, PHONETIC, and Google200K, all smashed together, with fake
-frequency counts for ENABLE, NPL, and PHONETIC. It may contain more by the time
-Hunt happens. All the words are smashed into plain ASCII, and spaces are
-ignored.
+This is the file that I trained the English `language_model` on. It merges
+together several different wordlists so that it contains:
+
+    - Anything that is a word according to ENABLE, WordNet, or Wiktionary
+    - Any word or phrase in the NPL list or the CMU phonetic dictionary
+    - Any reasonably well-known actor, movie title, music artist, album, or
+      song title (from IMDB and MusicBrainz)
+    - Any two-word phrase that appears 1 million or more times in the Google
+      2006 corpus
+    - Any single word that appears 100,000 or more times in the Google 2006
+      corpus
+
+The frequency counts mostly come from Google, but for things that do not appear
+in Google200K, they get fake frequency counts based on which sources they came
+from.
+
+All the words are smashed into plain ASCII, and spaces are present but ignored.
 
 From :mod:`solvertools.wordlist`, you can import this list as `COMBINED`. A
 version that preserves spaces is called `COMBINED_WORDY`.
+
+`wiktionary.txt`
+----------------
+This is a mapping from words to definitions, extracted from all the
+English-to-English definitions in Wiktionary. Definitions of the form
+`=> otherword` means that the page contained a "see also" or similar link
+to "otherword".
+
+From :mod:`solvertools.wordlist`, you can import this list as
+`WIKTIONARY_DEFS`, or get a pure wordlist without the definitions as
+`WIKTIONARY`.
 
 `wordnet.txt`
 -------------

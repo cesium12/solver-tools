@@ -1,4 +1,4 @@
-.. _calendar:
+.. _calendars:
 
 `solvertools.calendars` -- universal calendar converter
 =======================================================

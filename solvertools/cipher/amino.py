@@ -136,12 +136,12 @@ class AminoSequence(object):
     '''
     Represents a sequence of amino acids.
 
-        >> a = AminoSequence('ASDF')
-        >> a
+        >>> a = AminoSequence('ASDF')
+        >>> a
         < Amino acid sequence ASDF >
-        >> a.long_form()
+        >>> a.long_form()
         'ALASERASPPHE'
-        >> AminoSequence.from_three('ALASERASPPHE')
+        >>> AminoSequence.from_three('ALASERASPPHE')
         < Amino acid sequence ASDF >
     '''
 

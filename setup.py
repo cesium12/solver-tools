@@ -38,7 +38,7 @@ setup(name='solvertools',
          prefix_path('solvertools/extensions/regulus',"regulus.i amtrie.cpp automaton.cpp check.cpp dict.cpp dyntrie.cpp"),
 swig_opts=['-c++', '-Wall', '-outdir',
 'solvertools/extensions/regulus'])],
-     install_requires=['ply', 'pymongo', 'wikitools'],
+     install_requires=['ply', 'pymongo', 'wikitools', 'mpmath'],
      zip_safe=False,   # dear Setuptools, please don't fuck with my files
     )
 
