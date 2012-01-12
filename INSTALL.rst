@@ -7,8 +7,7 @@ Prerequisites
 -------------
 Some pre-requisites to using Solvertools are:
 
-- Software on your computer: Python (with development headers), NumPy, GCC, and
-SWIG
+- Software on your computer: Python (with development headers), NumPy, GCC, and SWIG
     - On Ubuntu, you can get all of these with: `sudo aptitude install build-essential python-dev python-numpy swig`
 - Familiarity with using an interactive Python prompt (preferably IPython)
 - Familiarity with the command line
@@ -18,10 +17,12 @@ Installing the usual way
 ------------------------
 
 If you don't already have the code, you should:
+
 - Download the code (no, I'm not going to link to it here; if you're on the
   team you've got the link)
 - Download the data (unless your computer is fast enough to recompute it all!)
-- Extract it
+- Extract both files in the same directory; the code should become
+  `solver-tools/` and the saved data should become `solver-tools/data/pickle/`.
 - Make sure you have the dependencies
 - Run ``sudo python setup.py develop`` (or your system's equivalent).
 
