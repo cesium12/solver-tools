@@ -37,7 +37,7 @@ PUZZLE_PAGE_INIT = u"""{{Puzzle2012
 When you start working on this puzzle, tell the chat box above who and where you are. Even if nobody is here right now, people who come to the page later will see it. When you make significant progress, edit this section and describe it!
 </small>
 
-<etherpad name="%(title)s"/>
+<editgrid name="%(title)s"/>
 
 <!-- Page created by Solvertools -->
 """
@@ -226,6 +226,7 @@ def make_puzzle(title, **props):
     Remember to give the argument `practice=True` if it isn't actually a
     Mystery Hunt puzzle.
     """
+    props['year'] = 2012
     page = PuzzlePage.get(title)
     page.initialize_as_puzzle(**props)
 
@@ -266,5 +267,8 @@ def make_group(group_title, puzzle_titles, url=None, name=None, practice=False, 
 
     for i, puzzle_title in enumerate(puzzle_titles):
         order = i+1
-        make_puzzle(puzzle_title, group=group_title, order=order, practice=practice, url=props['url'])
+        make_puzzle(puzzle_title, group=group_title, order=order,
+        practice=practice, url=props['url'], year=2012, importance=2,
+        status='')
     return result
+
